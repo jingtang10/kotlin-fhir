@@ -1,0 +1,151 @@
+/*
+ * Copyright 2026 Open Health Stack Foundation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@file:Suppress("RedundantVisibilityModifier", "PropertyName")
+
+package dev.ohs.fhir.model.r5.search
+
+import dev.ohs.fhir.model.r5.Account
+import dev.ohs.fhir.model.r5.DateTime
+import dev.ohs.fhir.model.r5.Encounter
+import dev.ohs.fhir.model.r5.Identifier
+import dev.ohs.fhir.model.r5.Organization
+import dev.ohs.fhir.model.r5.Patient
+import dev.ohs.fhir.model.r5.PaymentReconciliation
+import dev.ohs.fhir.model.r5.Practitioner
+import dev.ohs.fhir.model.r5.PractitionerRole
+import dev.ohs.fhir.model.r5.Reference
+import dev.ohs.fhir.model.r5.RelatedPerson
+import dev.ohs.fhir.model.r5.String
+import dev.ohs.fhir.model.r5.Task
+import dev.ohs.fhir.model.r5.terminologies.SearchParamType
+import kotlin.Any
+import kotlin.Suppress
+import kotlin.collections.List
+
+/** Search parameters for the [PaymentReconciliation] resource type. */
+public object PaymentReconciliationSearchParams {
+  public val allocationAccount: SearchParam<PaymentReconciliation, Reference> =
+    SearchParam(
+      name = "allocation-account",
+      type = SearchParamType.Reference,
+      expression = "PaymentReconciliation.allocation.account",
+      target = listOf(Account::class),
+      extractor = { resource -> resource.allocation.mapNotNull { it.account } },
+    )
+
+  public val allocationEncounter: SearchParam<PaymentReconciliation, Reference> =
+    SearchParam(
+      name = "allocation-encounter",
+      type = SearchParamType.Reference,
+      expression = "PaymentReconciliation.allocation.encounter",
+      target = listOf(Encounter::class),
+      extractor = { resource -> resource.allocation.mapNotNull { it.encounter } },
+    )
+
+  public val created: SearchParam<PaymentReconciliation, DateTime> =
+    SearchParam(
+      name = "created",
+      type = SearchParamType.Date,
+      expression = "PaymentReconciliation.created",
+      extractor = { resource -> listOf(resource.created) },
+    )
+
+  public val disposition: SearchParam<PaymentReconciliation, String> =
+    SearchParam(
+      name = "disposition",
+      type = SearchParamType.String,
+      expression = "PaymentReconciliation.disposition",
+      extractor = { resource -> listOfNotNull(resource.disposition) },
+    )
+
+  public val identifier: SearchParam<PaymentReconciliation, Identifier> =
+    SearchParam(
+      name = "identifier",
+      type = SearchParamType.Token,
+      expression = "PaymentReconciliation.identifier",
+      extractor = { resource -> resource.identifier },
+    )
+
+  public val outcome: SearchParam<PaymentReconciliation, Any> =
+    SearchParam(
+      name = "outcome",
+      type = SearchParamType.Token,
+      expression = "PaymentReconciliation.outcome",
+      extractor = { resource -> listOfNotNull(resource.outcome) },
+    )
+
+  public val paymentIssuer: SearchParam<PaymentReconciliation, Reference> =
+    SearchParam(
+      name = "payment-issuer",
+      type = SearchParamType.Reference,
+      expression = "PaymentReconciliation.paymentIssuer",
+      target = listOf(Organization::class, RelatedPerson::class, Patient::class),
+      extractor = { resource -> listOfNotNull(resource.paymentIssuer) },
+    )
+
+  public val request: SearchParam<PaymentReconciliation, Reference> =
+    SearchParam(
+      name = "request",
+      type = SearchParamType.Reference,
+      expression = "PaymentReconciliation.request",
+      target = listOf(Task::class),
+      extractor = { resource -> listOfNotNull(resource.request) },
+    )
+
+  public val requestor: SearchParam<PaymentReconciliation, Reference> =
+    SearchParam(
+      name = "requestor",
+      type = SearchParamType.Reference,
+      expression = "PaymentReconciliation.requestor",
+      target = listOf(Organization::class, PractitionerRole::class, Practitioner::class),
+      extractor = { resource -> listOfNotNull(resource.requestor) },
+    )
+
+  public val status: SearchParam<PaymentReconciliation, Any> =
+    SearchParam(
+      name = "status",
+      type = SearchParamType.Token,
+      expression = "PaymentReconciliation.status",
+      extractor = { resource -> listOf(resource.status) },
+    )
+
+  /**
+   * Search parameters whose FHIRPath isn't supported yet. Calling `extractFrom` on any of these
+   * throws `NotImplementedError`. Listed here so the unsupported set is visible at a glance, and
+   * excluded from [all].
+   */
+  public val unsupported: List<SearchParam<PaymentReconciliation, *>> = listOf()
+
+  /**
+   * Supported search parameters for the PaymentReconciliation resource type. Iterating `all` and
+   * calling `extractFrom` on each entry is safe; see [unsupported] for the parameters excluded from
+   * this list.
+   */
+  public val all: List<SearchParam<PaymentReconciliation, *>> =
+    listOf(
+      allocationAccount,
+      allocationEncounter,
+      created,
+      disposition,
+      identifier,
+      outcome,
+      paymentIssuer,
+      request,
+      requestor,
+      status,
+    )
+}
