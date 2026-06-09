@@ -5,6 +5,7 @@ import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 val basePackage: String by project
 val mavenGroupId: String by project
 val mavenArtifactId: String by project
+val mavenVersion: String by project
 val androidNamespace: String by project
 
 plugins {
@@ -177,11 +178,10 @@ tasks.named<Test>("jvmTest") {
     useJUnitPlatform()
 }
 
-version = "1.0.0-beta04"
 mavenPublishing {
     publishToMavenCentral()
     signAllPublications()
-    coordinates(mavenGroupId, mavenArtifactId, version.toString())
+    coordinates(mavenGroupId, mavenArtifactId, mavenVersion)
     pom {
         name = "Kotlin FHIR"
         description = "A Kotlin Multiplatform library for FHIR data model"

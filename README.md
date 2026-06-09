@@ -6,9 +6,9 @@
 [![Release](https://img.shields.io/maven-central/v/dev.ohs.fhir/fhir-model-wasm-wasi?color=yellow&label=wasm-wasi)](https://central.sonatype.com/artifact/dev.ohs.fhir/fhir-model-wasm-wasi)
 [![Release](https://img.shields.io/maven-central/v/dev.ohs.fhir/fhir-model-js?color=yellow&label=js)](https://central.sonatype.com/artifact/dev.ohs.fhir/fhir-model-js)
 [![Release](https://img.shields.io/maven-central/v/dev.ohs.fhir/fhir-model-android?color=yellow&label=android)](https://central.sonatype.com/artifact/dev.ohs.fhir/fhir-model-android)
-[![Release](https://img.shields.io/maven-central/v/dev.ohs.fhir/fhir-model-iosx64?color=yellow&label=ios-x64)](https://central.sonatype.com/artifact/dev.ohs.fhir/fhir-model-iosx64)
-[![Release](https://img.shields.io/maven-central/v/dev.ohs.fhir/fhir-model-iosarm64?color=yellow&label=ios-arm64)](https://central.sonatype.com/artifact/dev.ohs.fhir/fhir-model-iosarm64)
-[![Release](https://img.shields.io/maven-central/v/dev.ohs.fhir/fhir-model-iossimulatorarm64?color=yellow&label=ios-simulator)](https://central.sonatype.com/artifact/dev.ohs.fhir/fhir-model-iossimulatorarm64)
+[![Release](https://img.shields.io/maven-central/v/dev.ohs.fhir/fhir-model-iossimulatorarm64?color=yellow&label=iossimulatorarm64)](https://central.sonatype.com/artifact/dev.ohs.fhir/fhir-model-iossimulatorarm64)
+[![Release](https://img.shields.io/maven-central/v/dev.ohs.fhir/fhir-model-iosarm64?color=yellow&label=iosarm64)](https://central.sonatype.com/artifact/dev.ohs.fhir/fhir-model-iosarm64)
+[![Release](https://img.shields.io/maven-central/v/dev.ohs.fhir/fhir-model-iosx64?color=yellow&label=iosx64)](https://central.sonatype.com/artifact/dev.ohs.fhir/fhir-model-iosx64)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Kotlin FHIR is a lean and fast implementation of the
@@ -44,30 +44,22 @@ Jan 2025.
 The library supports the following
 [target platforms](https://kotlinlang.org/docs/multiplatform-dsl-reference.html#targets):
 
-| Target platform                    | Target          | Artifact suffix | Support |
-|:-----------------------------------|:----------------|:----------------|:--------|
-| Kotlin/JVM                         | `jvm`           | `-jvm`          | ✅       |
-| Kotlin/Wasm                        | `wasmJs`        | `-wasm-js`      | ✅       |
-| Kotlin/Wasm                        | `wasmWasi`      | `-wasm-wasi`    | ✅       |
-| Kotlin/JS                          | `js`            | `-js`           | ✅       |
-| Android applications and libraries | `androidTarget` | `-android`      | ✅       |
+| Target platform                    | Gradle target | Artifact suffix | Support |
+|:-----------------------------------|:--------------|:----------------|:--------|
+| Kotlin/JVM                         | `jvm`         | `-jvm`          | ✅       |
+| Kotlin/Wasm                        | `wasmJs`      | `-wasm-js`      | ✅       |
+| Kotlin/Wasm                        | `wasmWasi`    | `-wasm-wasi`    | ✅       |
+| Kotlin/JS                          | `js`          | `-js`           | ✅       |
+| Android applications and libraries | `android`     | `-android`      | ✅       |
 
-as well as a subset of
-[tier 1 Kotlin/Native targets](https://kotlinlang.org/docs/native-target-support.html#tier-1), detailed below:
+The library also supports the following
+[Kotlin/Native targets](https://kotlinlang.org/docs/native-target-support.html):
 
-| Gradle target name | Artifact suffix      | Support |
-|:-------------------|:---------------------|:--------|
-| macosX64           | `-macosx64`          | ⛔       |
-| macosArm64         | `-macosarm64`        | ⛔       |
-| iosSimulatorArm64  | `-iossimulatorarm64` | ✅       |
-| iosX64             | `-iosx64`            | ✅       |
-| iosArm64           | `-iosarm64`          | ✅       |
-
-The library does not support `macos` targets in the tier 1 list, or any
-[tier2](https://kotlinlang.org/docs/native-target-support.html#tier-2) and
-[tier3](https://kotlinlang.org/docs/native-target-support.html#tier-3) Kotlin/Native targets. This
-reflects their limited usage currently rather than technical difficulty. Please contact the team if
-you require support for these platforms.
+| Gradle target     | Artifact suffix      | Tier | Support |
+|:------------------|:---------------------|:-----|:--------|
+| iosSimulatorArm64 | `-iossimulatorarm64` | 1    | ✅       |
+| iosArm64          | `-iosarm64`          | 1    | ✅       |
+| iosX64            | `-iosx64`            | 3    | ✅       |
 
 ## Data model
 
@@ -222,10 +214,11 @@ The following FHIR value sets are excluded from Kotlin enum generation.
 
 ### Search Parameters
 
-Each FHIR search parameter exposes a typed `extractFrom()` function that pulls its value out of a resource. These search parameters live in per-resource container objects in the `search` subpackage of every version (e.g. `dev.ohs.fhir.model.r4.search.PatientSearchParams`). Each container has:
+Search parameters are generated from the `SearchParameter` resource definitions in the FHIR specification packages (e.g. `SearchParameter-*.json` under `third_party/`) and placed in the `search` subpackage of each FHIR version (e.g. `dev.ohs.fhir.model.r4.search`). Each resource type has a `{Resource}SearchParams` object (e.g. `PatientSearchParams`) containing:
 
 - One `val` per search parameter, typed `SearchParam<R, T>` where `R` is the resource type and `T` is the value type.
-- An `all` list of every search parameter for that resource.
+- An `all` list of all supported search parameters.
+- An `unsupported` list of unsupported search parameters.
 
 `SearchParam<R, T>` carries the metadata for a search parameter plus a typed `extractFrom` function:
 
@@ -527,74 +520,158 @@ Within each package, you'll find the corresponding Kotlin classes for all FHIR r
 version. For example, the `Patient` class generated for FHIR R4 can be found in the
 `dev.ohs.fhir.model.r4` package.
 
-To create a new instance of a FHIR resource, use the provided builder class. For example:
+#### Creating FHIR resources
+
+To create a new instance of a FHIR resource, use the generated data class constructors directly with named arguments. Since all optional fields have default values, you only need to specify the properties you actually use.
+
+For example:
 
 ```kotlin
 import dev.ohs.fhir.model.r4.Date
 import dev.ohs.fhir.model.r4.FhirDate
 import dev.ohs.fhir.model.r4.HumanName
 import dev.ohs.fhir.model.r4.Patient
+import dev.ohs.fhir.model.r4.String as FhirString
 
 fun main() {
-    val patient =
-        Patient.Builder()
-            .apply {
-                id = "patient-01"
-                name.add(
-                    HumanName.Builder().apply {
-                        given.add(dev.ohs.fhir.model.r4.String.Builder().apply { value = "John" })
-                    }
-                )
-                birthDate = Date.Builder().apply { value = FhirDate.fromString("2000-01-01") }
-            }
-            .build()
+    val patient = Patient(
+        id = "patient-01",
+        name = listOf(
+            HumanName(
+                given = listOf(FhirString(value = "John"))
+            )
+        ),
+        birthDate = Date(value = FhirDate.fromString("2000-01-01"))
+    )
 }
+```
+
+> **Note:** Import the FHIR `String` type with an alias (e.g.
+> `import dev.ohs.fhir.model.r4.String as FhirString`) to avoid clashing with `kotlin.String`.
+
+Alternatively, you can use the nested `Builder` classes to create resources:
+
+```kotlin
+import dev.ohs.fhir.model.r4.Date
+import dev.ohs.fhir.model.r4.FhirDate
+import dev.ohs.fhir.model.r4.HumanName
+import dev.ohs.fhir.model.r4.Patient
+import dev.ohs.fhir.model.r4.String as FhirString
+
+fun main() {
+    val patient = Patient.Builder()
+        .apply {
+            id = "patient-01"
+            name.add(
+                HumanName.Builder().apply {
+                    given.add(FhirString.Builder().apply { value = "John" })
+                }
+            )
+            birthDate = Date.Builder().apply { value = FhirDate.fromString("2000-01-01") }
+        }
+        .build()
+}
+```
+
+#### Modifying FHIR resources
+
+All generated FHIR classes are immutable Kotlin `data class`es. To modify a resource, use `copy()` with named arguments:
+
+```kotlin
+val updated = patient.copy(
+    id = "patient-02",
+    birthDate = Date(value = FhirDate.fromString("1990-06-15"))
+)
+```
+
+For deeper mutations (e.g. appending to lists or modifying nested elements), use `toBuilder()`:
+
+```kotlin
+val updated = patient.toBuilder().apply {
+    name.add(
+        HumanName.Builder().apply {
+            given.add(FhirString.Builder().apply { value = "Jane" })
+        }
+    )
+}.build()
 ```
 
 ### Working with search parameters
 
-Each generated `{Resource}SearchParams` container exposes a typed `extractFrom()` per parameter, plus an `all` list for iterating every parameter on the resource.
+You can extract search parameter values from resources using the parameters in the generated `{Resource}SearchParams` objects.
+
+To extract a specific parameter:
 
 ```kotlin
 import dev.ohs.fhir.model.r4.search.PatientSearchParams
 
-// Type-safe access to a single parameter:
 val birthdates: List<Date> = PatientSearchParams.birthdate.extractFrom(patient)
+```
 
-// Iterate every parameter (e.g. to build a search index):
+Alternatively, use the more fluent `extract()` extension function on the resource object itself:
+
+```kotlin
+import dev.ohs.fhir.model.r4.search.extract
+
+val birthdates: List<Date> = patient.extract(PatientSearchParams.birthdate)
+```
+
+To iterate over all supported parameters for a given resource type (e.g. to build a search index):
+
+```kotlin
+import dev.ohs.fhir.model.r4.search.PatientSearchParams
+
 PatientSearchParams.all.forEach { searchParam ->
     val values = searchParam.extractFrom(patient)
-    // index `searchParam.name` against `values`
+    // ...
 }
 ```
 
-`all` only contains parameters whose FHIRPath is supported. The container's `unsupported` property enumerates the excluded ones (e.g. `PatientSearchParams.unsupported`), and each is still accessible directly by name (e.g. `PatientSearchParams.deceased`). Calling `extractFrom` on them throws `NotImplementedError`.
-
-### Non-JSON Serializers
-
-The FHIR Resource models work with any serializer, but only
-[JSON](https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/json.md) is extensively
-tested and considered stable. Formats like `CBOR` should work fine, but are not currently tested.
-
-Binary formats such as `protobuf` are reliant on the internal indexing of the serializer
-descriptors. While these indexes are deterministically generated, they are arbitrary and not
-currently guaranteed to be stable across kotlin-fhir versions. This means using `protobuf` is not
-guaranteed to be wire compatible across versions of `kotlin-fhir`.
-
 ### Serialization and deserialization
 
-Each generated FHIR class carries a hand-rolled `KSerializer` via `@Serializable(with = ...)`, so a
-plain [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization) `Json` instance can
-encode and decode FHIR resources directly:
+Each generated FHIR resource class has its own generated serializer (marked by the `@Serializable`
+annotation). Simply use [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization)'s
+`Json` object to encode and decode FHIR resources:
+
+#### Configuration
+
+```kotlin
+import kotlinx.serialization.json.Json
+
+// See https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/json.md#json-configuration
+val json = Json {
+    // No effect on FHIR serialization:
+    // explicitNulls, encodeDefaults, useAlternativeNames,
+    // serializersModule (assuming you don't override FHIR resources), classDiscriminator
+
+    // Safe to use, but may affect serialization:
+    // ignoreUnknownKeys, isLenient, allowComments, allowTrailingComma, prettyPrintIndent,
+    // coerceInputValues, decodeEnumsCaseInsensitive
+
+    // Incompatible with FHIR:
+    // useArrayPolymorphism, namingStrategy
+}
+```
+
+#### Serialization
+
+To serialize a FHIR resource to a JSON string, use `encodeToString()`:
+
+```kotlin
+import kotlinx.serialization.encodeToString
+
+val serializedPatient = json.encodeToString(patient)
+```
+
+#### Deserialization
 
 ```kotlin
 import dev.ohs.fhir.model.r4.OperationOutcome
 import dev.ohs.fhir.model.r4.Patient
 import dev.ohs.fhir.model.r4.Resource
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
+import kotlinx.serialization.decodeFromString
 
-val example = """
+val patientJson = """
     {
       "resourceType": "Patient",
       "id": "example",
@@ -610,38 +687,27 @@ val example = """
     }
 """.trimIndent()
 
-val json = Json {
-    // configure Json here
-    // https://github.com/Kotlin/kotlinx.serialization/blob/master/docs/json.md#json-configuration
+// Deserialize to a specific type when you know the resource type
+val patient = json.decodeFromString<Patient>(patientJson)
 
-    // These configurations have no effect on FHIR serialization/deserialization by design
-    // explicitNulls, encodeDefaults, useAlternativeNames,
-    // serializersModule (assuming you don't override FHIR resources), classDiscriminator
+// Deserialize to Resource when the type is unknown
+val resource = json.decodeFromString<Resource>(patientJson)
 
-    // These configurations can affect how serialization occurs, but are generally compatible with FHIR
-    // ignoreUnknownKeys, isLenient, allowComments, allowTrailingComma, prettyPrintIndent,
-    // coerceInputValues, decodeEnumsCaseInsensitive
-
-    // Changing these will break FHIR wire compatibility
-    // useArrayPolymorphism, namingStrategy
-}
-
-// if you know the exact FHIR type you can deserialize directly to a Patient instance
-val patient = json.decodeFromString<Patient>(example)
-
-// if you don't know the type (e.g. a FHIR Server response) deserialize as a generic FHIR Resource
-val resource = json.decodeFromString<Resource>(example)
-
-// then dispatch on the result
+// Then handle the resource based on the type
 when (resource) {
     is OperationOutcome -> { /* parse error */ }
     is Patient -> { /* parse patient */ }
     else -> { /* other resource types */ }
 }
-
-// To serialize a FHIR resource simply call encodeToString(instance)
-val serializedPatient = json.encodeToString(patient)
 ```
+
+#### Non-JSON Serializers
+
+The generated models can be serialized to and deserialized from any format [supported](https://github.com/Kotlin/kotlinx.serialization/blob/master/formats/README.md) by
+`kotlinx.serialization`, but only JSON is extensively tested.
+
+> **Note:** Compatibility between serialized Protocol Buffers from this library and
+> [Google's FHIR Protos](https://github.com/google/fhir) has not been tested.
 
 ## Developer Guide
 
@@ -649,7 +715,7 @@ This section is for developers who want to contribute to the library.
 
 ### Running the codegen locally
 
-You can run the codegen locally to generated FHIR models for all supported FHIR versions at once[^6]:
+You can run the codegen locally to generate FHIR models for all supported FHIR versions at once[^6]:
 
 [^6]: To generate FHIR models for specific versions, run `./gradlew <FHIR_VERSION>` where
 `<FHIR_VERSION>`∈ {`r4`, `r4b`, `r5`}. The generated code will be located in the
@@ -710,15 +776,8 @@ These tests are set up to run on JVM and as Android unit tests. To run them loca
 
 ### Publishing
 
-For a comprehensive understanding of publishing KMP libraries to Maven Central, see the
-[Kotlin Multiplatform Publishing Guide](https://kotlinlang.org/docs/multiplatform-publish-lib.html)
-and the
-[Maven Central Publishing Guide](https://central.sonatype.org/publish/publish-portal-guide/).
-
-> **Note:** The project has already been set up to be released to Maven using the
-> [`gradle-maven-publish-plugin`](https://github.com/vanniktech/gradle-maven-publish-plugin). The
-> following sections outline the additional setup required for a developer to publish to Maven Local
-> and Maven Central.
+To publish a new release, first update `mavenVersion` in `gradle.properties` to the new version.
+Then follow one of the methods below:
 
 #### Maven Local
 
@@ -761,7 +820,7 @@ signing.secretKeyRingFile=/path/to/secring.gpg
 Then run:
 
 ```bash
-./gradlew :datacapture:publishToMavenCentral
+./gradlew :fhir-model:publishToMavenCentral
 ```
 
 ##### Publishing to Maven Central using GitHub Actions
@@ -769,7 +828,7 @@ Then run:
 The project includes a GitHub Actions [workflow](.github/workflows/publish.yml) that publishes to
 Maven Central when a new GitHub release (or pre-release) is created.
 
-The workflow requires the following GitHub organization or repository secrets:
+The workflow requires the following GitHub organization or repository secrets (already set up):
 
 | Secret                   | Description                                                                           |
 |:-------------------------|:--------------------------------------------------------------------------------------|
