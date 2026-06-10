@@ -19,12 +19,16 @@ package dev.ohs.fhir.model.test
 import dev.ohs.fhir.model.r4.Resource as R4Resource
 import dev.ohs.fhir.model.r4b.Resource as R4bResource
 import dev.ohs.fhir.model.r5.Resource as R5Resource
-import io.kotest.assertions.json.shouldEqualJson
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.core.test.Enabled
+import kotlin.test.assertEquals
 import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.serializer
 
 /** A map from the test case name to the reason why the test case is skipped in R4. */
@@ -80,8 +84,8 @@ private val plainJson = Json { prettyPrint = true }
 @OptIn(InternalSerializationApi::class)
 @Suppress("UNCHECKED_CAST")
 private fun directRoundTrip(json: String): String {
-  val klass = plainJson.decodeFromString<dev.ohs.fhir.model.r4.Resource>(json)::class
-  val serializer = klass.serializer() as KSerializer<dev.ohs.fhir.model.r4.Resource>
+  val klass = plainJson.decodeFromString<R4Resource>(json)::class
+  val serializer = klass.serializer() as KSerializer<R4Resource>
   val decoded = plainJson.decodeFromString(serializer, json)
   return plainJson.encodeToString(serializer, decoded)
 }
@@ -89,8 +93,8 @@ private fun directRoundTrip(json: String): String {
 @OptIn(InternalSerializationApi::class)
 @Suppress("UNCHECKED_CAST")
 private fun directRoundTripR4B(json: String): String {
-  val klass = plainJson.decodeFromString<dev.ohs.fhir.model.r4b.Resource>(json)::class
-  val serializer = klass.serializer() as KSerializer<dev.ohs.fhir.model.r4b.Resource>
+  val klass = plainJson.decodeFromString<R4bResource>(json)::class
+  val serializer = klass.serializer() as KSerializer<R4bResource>
   val decoded = plainJson.decodeFromString(serializer, json)
   return plainJson.encodeToString(serializer, decoded)
 }
@@ -98,8 +102,8 @@ private fun directRoundTripR4B(json: String): String {
 @OptIn(InternalSerializationApi::class)
 @Suppress("UNCHECKED_CAST")
 private fun directRoundTripR5(json: String): String {
-  val klass = plainJson.decodeFromString<dev.ohs.fhir.model.r5.Resource>(json)::class
-  val serializer = klass.serializer() as KSerializer<dev.ohs.fhir.model.r5.Resource>
+  val klass = plainJson.decodeFromString<R5Resource>(json)::class
+  val serializer = klass.serializer() as KSerializer<R5Resource>
   val decoded = plainJson.decodeFromString(serializer, json)
   return plainJson.encodeToString(serializer, decoded)
 }
@@ -177,7 +181,48 @@ private fun assertEqualsIgnoringZeros(exampleJson: String, reserializedString: S
       .removeZeroMilliseconds()
       .replace("+00:00", "Z") // Unify UTC offset representation for Z
   val actual = reserializedString.removeZeroMilliseconds()
-  actual.shouldEqualJson(expected)
+  val expectedJson = plainJson.parseToJsonElement(expected)
+  val actualJson = plainJson.parseToJsonElement(actual)
+  assertJsonEquals(expectedJson, actualJson)
+}
+
+private fun assertJsonEquals(expected: JsonElement, actual: JsonElement) {
+  when {
+    expected is JsonObject && actual is JsonObject -> {
+      assertEquals(expected.keys, actual.keys, "JSON object keys do not match")
+      for (key in expected.keys) {
+        assertJsonEquals(expected[key]!!, actual[key]!!)
+      }
+    }
+    expected is JsonArray && actual is JsonArray -> {
+      assertEquals(expected.size, actual.size, "JSON array sizes do not match")
+      for (i in expected.indices) {
+        assertJsonEquals(expected[i], actual[i])
+      }
+    }
+    expected is JsonPrimitive && actual is JsonPrimitive -> {
+      if (expected.isString != actual.isString) {
+        assertEquals(expected.content, actual.content, "JSON primitive string-ness does not match")
+      } else if (!expected.isString) {
+        val expectedDouble = expected.content.toDoubleOrNull()
+        val actualDouble = actual.content.toDoubleOrNull()
+        if (expectedDouble != null && actualDouble != null) {
+          assertEquals(
+            expectedDouble,
+            actualDouble,
+            "JSON numeric values do not match: ${expected.content} vs ${actual.content}",
+          )
+        } else {
+          assertEquals(expected.content, actual.content)
+        }
+      } else {
+        assertEquals(expected.content, actual.content)
+      }
+    }
+    else -> {
+      assertEquals(expected, actual)
+    }
+  }
 }
 
 private val zeroMillisecondsPlusRegex = "\\.000\\+".toRegex()
