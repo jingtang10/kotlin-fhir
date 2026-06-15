@@ -39,8 +39,14 @@ class FhirModelConventionsPlugin : Plugin<Project> {
   @OptIn(ExperimentalWasmDsl::class)
   override fun apply(project: Project) =
     with(project) {
+      // Can be disabled via command line (-Pfhir.android.enabled=false) or in
+      // ~/.gradle/gradle.properties to avoid requiring Android SDK for non-Android builds (e.g. to
+      // speed up builds in GitHub CI).
+      val androidEnabled =
+        providers.gradleProperty("fhir.android.enabled").orNull?.toBoolean() ?: true
+
       // Apply plugins
-      pluginManager.apply("com.android.library")
+      if (androidEnabled) pluginManager.apply("com.android.library")
       pluginManager.apply("com.google.devtools.ksp")
       pluginManager.apply("org.jetbrains.kotlin.multiplatform")
       pluginManager.apply("org.jetbrains.kotlin.plugin.serialization")
@@ -88,7 +94,9 @@ class FhirModelConventionsPlugin : Plugin<Project> {
           browser()
           binaries.library()
         }
-        androidTarget { compilerOptions { jvmTarget.set(JvmTarget.JVM_1_8) } }
+        if (androidEnabled) {
+          androidTarget { compilerOptions { jvmTarget.set(JvmTarget.JVM_1_8) } }
+        }
         iosSimulatorArm64()
         iosArm64()
         iosX64 { binaries { framework { baseName = "KotlinFhir$fhirVersionLabel" } } }
@@ -104,10 +112,12 @@ class FhirModelConventionsPlugin : Plugin<Project> {
       }
 
       // ── Android ───────────────────────────────────────────────────────────
-      extensions.configure<LibraryExtension> {
-        namespace = "dev.ohs.fhir.model.$fhirVersionSuffix"
-        this.compileSdk = compileSdk
-        defaultConfig { this.minSdk = minSdk }
+      if (androidEnabled) {
+        extensions.configure<LibraryExtension> {
+          namespace = "dev.ohs.fhir.model.$fhirVersionSuffix"
+          this.compileSdk = compileSdk
+          defaultConfig { this.minSdk = minSdk }
+        }
       }
 
       // ── Maven Central Publishing ──────────────────────────────────────────
