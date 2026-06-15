@@ -71,12 +71,8 @@ public object ResourceSearchParams {
     SearchParam(
       name = "_id",
       type = SearchParamType.Token,
-      expression = "id",
-      extractor = {
-        throw NotImplementedError(
-          "Search parameter '_id' has expression 'id' which is not yet supported."
-        )
-      },
+      expression = "Resource.id",
+      extractor = { resource -> listOfNotNull(resource.id) },
     )
 
   public val _lastUpdated: SearchParam<Resource, Instant> =
@@ -173,7 +169,7 @@ public object ResourceSearchParams {
    * excluded from [all].
    */
   public val unsupported: List<SearchParam<Resource, *>> =
-    listOf(_content, _filter, _has, _id, _list, _query, _text, _type)
+    listOf(_content, _filter, _has, _list, _query, _text, _type)
 
   /**
    * Supported search parameters for the Resource resource type. Iterating `all` and calling
@@ -181,5 +177,5 @@ public object ResourceSearchParams {
    * list.
    */
   public val all: List<SearchParam<Resource, *>> =
-    listOf(_lastUpdated, _profile, _security, _source, _tag)
+    listOf(_id, _lastUpdated, _profile, _security, _source, _tag)
 }

@@ -1,4 +1,4 @@
-name: CI
+name: Run Tests
 
 on:
   push:
@@ -16,27 +16,34 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  run-tests:
+    name: ${{ matrix.name }}
     strategy:
       fail-fast: false
       matrix:
         include:
           - target: jvmTest
+            name: JVM
             os: ubuntu-latest
             android: false
           - target: wasmJsBrowserTest
+            name: Wasm
             os: ubuntu-latest
             android: false
           - target: wasmWasiNodeTest
+            name: WASI
             os: ubuntu-latest
             android: false
           - target: jsBrowserTest
+            name: JS
             os: ubuntu-latest
             android: false
           - target: testDebugUnitTest
+            name: Android
             os: ubuntu-latest
             android: true
           - target: iosSimulatorArm64Test
+            name: iOS Simulator
             os: macos-latest
             android: false
     runs-on: ${{ matrix.os }}

@@ -3,8 +3,8 @@ on:
   release:
     types: [released, prereleased]
 jobs:
-  publish:
-    name: Release build and publish
+  publish-release:
+    name: Maven Central
     runs-on: macOS-latest
     steps:
       - name: Check out code

@@ -184,7 +184,13 @@ abstract class FhirCodegenTask : DefaultTask() {
         .asSequence()
         .flatMap { file ->
           file.walkTopDown().filter {
-            it.isFile && it.name.matches("SearchParameter-.*\\.json".toRegex())
+            it.isFile &&
+              it.name.matches("SearchParameter-.*\\.json".toRegex()) &&
+              // Exclude example search parameters (not standard parameters).
+              !it.name.startsWith("SearchParameter-example") &&
+              // Exclude redundant Resource-filter definition, which has a type mismatch bug in R4B.
+              // We use SearchParameter-filter.json instead.
+              it.name != "SearchParameter-Resource-filter.json"
           }
         }
         .map { json.decodeFromString<SearchParameterDefinition>(it.readText(Charsets.UTF_8)) }
