@@ -57,7 +57,8 @@ private val skippedR5CaseNameToReasonMap =
 private val plainJson = Json { prettyPrint = true }
 
 /**
- * Round-trips through the *concrete-type* serializer rather than the polymorphic [Resource] path.
+ * Round-trips through the *concrete-type* serializer rather than the polymorphic
+ * [dev.ohs.fhir.model.r4.Resource] path.
  *
  * The polymorphic decode picks the runtime class (e.g. `Patient`); we then re-encode using that
  * class's standalone serializer (e.g. `PatientSerializer`, descriptor with `resourceType` at slot
@@ -144,7 +145,7 @@ class SerializationRoundTripTest :
                   ?: Enabled.enabled
               }
             ) {
-              assertEqualsIgnoringZeros(json, testSuite.roundTripFunction(json))
+              assertSemanticEquivalence(json, testSuite.roundTripFunction(json))
             }
           }
         }
@@ -198,55 +199,42 @@ private data class SerializationRoundTripTestSuite(
   val roundTripFunction: (String) -> String,
 )
 
-private fun assertEqualsIgnoringZeros(exampleJson: String, reserializedString: String) {
-  val expected =
-    exampleJson
-      .removeTrailingZerosInFractionalSeconds()
-      .replace("+00:00", "Z") // Unify UTC offset representation for Z
-  val actual = reserializedString.removeTrailingZerosInFractionalSeconds()
-  val expectedJson = plainJson.parseToJsonElement(expected)
-  val actualJson = plainJson.parseToJsonElement(actual)
-  assertJsonEquals(expectedJson, actualJson)
+private fun assertSemanticEquivalence(exampleJson: String, reserializedString: String) {
+  val expectedJson = plainJson.parseToJsonElement(exampleJson)
+  val actualJson = plainJson.parseToJsonElement(reserializedString)
+  assertSemanticEquivalence(expectedJson, actualJson)
 }
 
-private fun assertJsonEquals(expected: JsonElement, actual: JsonElement) {
-  when {
-    expected is JsonObject && actual is JsonObject -> {
+private fun assertSemanticEquivalence(expected: JsonElement, actual: JsonElement) {
+  when (expected) {
+    is JsonObject if actual is JsonObject -> {
       assertEquals(expected.keys, actual.keys, "JSON object keys do not match")
       for (key in expected.keys) {
-        assertJsonEquals(expected[key]!!, actual[key]!!)
+        assertSemanticEquivalence(expected[key]!!, actual[key]!!)
       }
     }
-    expected is JsonArray && actual is JsonArray -> {
+
+    is JsonArray if actual is JsonArray -> {
       assertEquals(expected.size, actual.size, "JSON array sizes do not match")
       for (i in expected.indices) {
-        assertJsonEquals(expected[i], actual[i])
+        assertSemanticEquivalence(expected[i], actual[i])
       }
     }
-    expected is JsonPrimitive && actual is JsonPrimitive -> {
-      if (expected.isString != actual.isString) {
-        assertEquals(expected.content, actual.content, "JSON primitive string-ness does not match")
-      } else if (!expected.isString) {
-        val expectedDouble = expected.content.toDoubleOrNull()
-        val actualDouble = actual.content.toDoubleOrNull()
-        if (expectedDouble != null && actualDouble != null) {
-          assertEquals(
-            expectedDouble,
-            actualDouble,
-            "JSON numeric values do not match: ${expected.content} vs ${actual.content}",
-          )
-        } else {
-          assertEquals(expected.content, actual.content)
-        }
-      } else {
-        assertEquals(expected.content, actual.content)
-      }
+
+    is JsonPrimitive if actual is JsonPrimitive -> {
+      assertEquals(normalizeDateTime(expected.content), normalizeDateTime(actual.content))
     }
+
     else -> {
       assertEquals(expected, actual)
     }
   }
 }
+
+private fun normalizeDateTime(content: String): String =
+  content
+    .removeTrailingZerosInFractionalSeconds()
+    .replace("+00:00", "Z") // Unify UTC offset representation for Z
 
 // Matches trailing zeros in fractional seconds, e.g. ".1200Z" -> ".12Z" (preserves the non-zero
 // digits before the trailing zeros)

@@ -176,7 +176,8 @@ internal class PropertyMapper(
         MappingContext.MODEL,
         MappingContext.BUILDER ->
           nestBuilderClass(ClassName(modelClassName.packageName, type.code.capitalized()))
-        MappingContext.WIRE -> FhirPathType.getFromFhirTypeCode(type.code)!!.wireType
+        MappingContext.WIRE ->
+          FhirPathType.getFromFhirTypeCode(type.code)!!.getWireType(modelClassName.packageName)
       }
     }
 
@@ -184,7 +185,7 @@ internal class PropertyMapper(
       // Type for the 'value' field in FHIR primitive data type.
       // For example, the FHIR primitive data type string has a 'value' field with FHIRPath type
       // "http://hl7.org/fhirpath/System.String". The Kotlin type for this field is a Kotlin String.
-      return FhirPathType.getFromUri(type.code)!!.getTypeInModelClass(modelClassName.packageName)
+      return FhirPathType.getFromUri(type.code)!!.getDataModelType(modelClassName.packageName)
     }
 
     // An external complex type, e.g., `HumanName`.
