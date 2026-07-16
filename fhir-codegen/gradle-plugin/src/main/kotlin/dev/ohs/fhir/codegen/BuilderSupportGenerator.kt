@@ -22,6 +22,7 @@ import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.PropertySpec
+import com.squareup.kotlinpoet.STRING
 import com.squareup.kotlinpoet.TypeSpec
 import dev.ohs.fhir.codegen.primitives.FhirPathType
 import dev.ohs.fhir.codegen.schema.Element
@@ -173,6 +174,15 @@ private class BuilderSupportGenerator(
     typeSpecBuilder.addType(
       TypeSpec.classBuilder("Builder")
         .addModifiers(KModifier.ABSTRACT)
+        // Lets callers set an id on any resource without knowing its concrete type; concrete
+        // builders override this property. KDoc is not generated from the element comment since
+        // the generated code allows setting the id.
+        .addProperty(
+          PropertySpec.builder("id", STRING.copy(nullable = true))
+            .mutable()
+            .addModifiers(KModifier.ABSTRACT)
+            .build()
+        )
         .addFunction(
           FunSpec.builder("build").returns(baseClassName).addModifiers(KModifier.ABSTRACT).build()
         )
@@ -229,6 +239,8 @@ private class BuilderSupportGenerator(
             elements,
             override = overrideBaseProperties,
             open = open,
+            overridesResourceId =
+              overrideBaseBuilder && structureDefinition.kind == StructureDefinition.Kind.RESOURCE,
           )
         }
         .addFunction(
@@ -289,19 +301,22 @@ private class BuilderSupportGenerator(
     elements: List<Element>,
     override: Boolean,
     open: Boolean,
+    overridesResourceId: Boolean,
   ) {
     val propertyMapper =
       PropertyMapper(PropertyMapper.MappingContext.BUILDER, baseClassName, valueSetMap)
     val constructorBuilder = FunSpec.constructorBuilder()
     elements.forEach { element ->
       val propertyInfo = propertyMapper.mapToProperty(element)
+      // Concrete resource builders override the abstract `id` declared on Resource.Builder.
+      val isInheritedResourceId = overridesResourceId && element.getElementName() == "id"
       val property =
         PropertySpec.builder(propertyInfo.name, propertyInfo.typeName)
           .mutable()
           .apply {
             initializer(propertyInfo.defaultValue ?: propertyInfo.name)
             val modifiers = buildList {
-              if (override) add(KModifier.OVERRIDE)
+              if (override || isInheritedResourceId) add(KModifier.OVERRIDE)
               if (open) add(KModifier.OPEN)
             }
             if (modifiers.isNotEmpty()) addModifiers(modifiers)

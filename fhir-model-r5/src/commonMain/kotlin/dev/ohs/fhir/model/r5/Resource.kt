@@ -75,6 +75,8 @@ public abstract class Resource : Base() {
   public abstract fun toBuilder(): Builder
 
   public abstract class Builder {
+    public abstract var id: String?
+
     public abstract fun build(): Resource
   }
 }
