@@ -1017,6 +1017,10 @@ public data class HealthcareService(
 
     public companion object {
       public fun fromCode(code: kotlin.String): DaysOfWeek =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum DaysOfWeek")
+
+      public fun fromCodeOrNull(code: kotlin.String?): DaysOfWeek? =
         when (code) {
           "mon" -> Mon
           "tue" -> Tue
@@ -1025,7 +1029,7 @@ public data class HealthcareService(
           "fri" -> Fri
           "sat" -> Sat
           "sun" -> Sun
-          else -> throw IllegalArgumentException("Unknown code $code for enum DaysOfWeek")
+          else -> null
         }
     }
   }

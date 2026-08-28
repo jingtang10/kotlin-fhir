@@ -778,11 +778,15 @@ public data class Appointment(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ParticipantRequired =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ParticipantRequired")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ParticipantRequired? =
         when (code) {
           "required" -> Required
           "optional" -> Optional
           "information-only" -> Information_Only
-          else -> throw IllegalArgumentException("Unknown code $code for enum ParticipantRequired")
+          else -> null
         }
     }
   }
@@ -802,12 +806,16 @@ public data class Appointment(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ParticipationStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ParticipationStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ParticipationStatus? =
         when (code) {
           "accepted" -> Accepted
           "declined" -> Declined
           "tentative" -> Tentative
           "needs-action" -> Needs_Action
-          else -> throw IllegalArgumentException("Unknown code $code for enum ParticipationStatus")
+          else -> null
         }
     }
   }
@@ -837,6 +845,10 @@ public data class Appointment(
 
     public companion object {
       public fun fromCode(code: kotlin.String): AppointmentStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum AppointmentStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): AppointmentStatus? =
         when (code) {
           "proposed" -> Proposed
           "pending" -> Pending
@@ -848,7 +860,7 @@ public data class Appointment(
           "entered-in-error" -> Entered_In_Error
           "checked-in" -> Checked_In
           "waitlist" -> Waitlist
-          else -> throw IllegalArgumentException("Unknown code $code for enum AppointmentStatus")
+          else -> null
         }
     }
   }

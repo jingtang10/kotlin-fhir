@@ -1926,6 +1926,10 @@ public data class CodeSystem(
 
     public companion object {
       public fun fromCode(code: kotlin.String): FilterOperator =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum FilterOperator")
+
+      public fun fromCodeOrNull(code: kotlin.String?): FilterOperator? =
         when (code) {
           "=" -> EqualTo
           "is-a" -> Is_A
@@ -1938,7 +1942,7 @@ public data class CodeSystem(
           "child-of" -> Child_Of
           "descendent-leaf" -> Descendent_Leaf
           "exists" -> Exists
-          else -> throw IllegalArgumentException("Unknown code $code for enum FilterOperator")
+          else -> null
         }
     }
   }
@@ -1961,6 +1965,10 @@ public data class CodeSystem(
 
     public companion object {
       public fun fromCode(code: kotlin.String): PropertyType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum PropertyType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): PropertyType? =
         when (code) {
           "code" -> Code
           "Coding" -> Coding
@@ -1969,7 +1977,7 @@ public data class CodeSystem(
           "boolean" -> Boolean
           "dateTime" -> DateTime
           "decimal" -> Decimal
-          else -> throw IllegalArgumentException("Unknown code $code for enum PropertyType")
+          else -> null
         }
     }
   }
@@ -1993,13 +2001,18 @@ public data class CodeSystem(
 
     public companion object {
       public fun fromCode(code: kotlin.String): CodeSystemHierarchyMeaning =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum CodeSystemHierarchyMeaning"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): CodeSystemHierarchyMeaning? =
         when (code) {
           "grouped-by" -> Grouped_By
           "is-a" -> Is_A
           "part-of" -> Part_Of
           "classified-with" -> Classified_With
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum CodeSystemHierarchyMeaning")
+          else -> null
         }
     }
   }
@@ -2023,14 +2036,17 @@ public data class CodeSystem(
 
     public companion object {
       public fun fromCode(code: kotlin.String): CodeSystemContentMode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum CodeSystemContentMode")
+
+      public fun fromCodeOrNull(code: kotlin.String?): CodeSystemContentMode? =
         when (code) {
           "not-present" -> Not_Present
           "example" -> Example
           "fragment" -> Fragment
           "complete" -> Complete
           "supplement" -> Supplement
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum CodeSystemContentMode")
+          else -> null
         }
     }
   }

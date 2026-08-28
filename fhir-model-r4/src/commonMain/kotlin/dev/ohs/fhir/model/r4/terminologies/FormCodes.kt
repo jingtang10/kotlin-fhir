@@ -32,10 +32,14 @@ public enum class FormCodes(
 
   public companion object {
     public fun fromCode(code: String): FormCodes =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum FormCodes")
+
+    public fun fromCodeOrNull(code: String?): FormCodes? =
       when (code) {
         "1" -> _1
         "2" -> _2
-        else -> throw IllegalArgumentException("Unknown code $code for enum FormCodes")
+        else -> null
       }
   }
 }

@@ -953,6 +953,12 @@ public data class MedicationDispense(
 
     public companion object {
       public fun fromCode(code: String): MedicationDispenseStatusCodes =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum MedicationDispenseStatusCodes"
+          )
+
+      public fun fromCodeOrNull(code: String?): MedicationDispenseStatusCodes? =
         when (code) {
           "preparation" -> Preparation
           "in-progress" -> In_Progress
@@ -963,10 +969,7 @@ public data class MedicationDispense(
           "stopped" -> Stopped
           "declined" -> Declined
           "unknown" -> Unknown
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum MedicationDispenseStatusCodes"
-            )
+          else -> null
         }
     }
   }

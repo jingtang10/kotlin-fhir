@@ -636,11 +636,15 @@ public data class List(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ListStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ListStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ListStatus? =
         when (code) {
           "current" -> Current
           "retired" -> Retired
           "entered-in-error" -> Entered_In_Error
-          else -> throw IllegalArgumentException("Unknown code $code for enum ListStatus")
+          else -> null
         }
     }
   }
@@ -659,11 +663,15 @@ public data class List(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ListMode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ListMode")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ListMode? =
         when (code) {
           "working" -> Working
           "snapshot" -> Snapshot
           "changes" -> Changes
-          else -> throw IllegalArgumentException("Unknown code $code for enum ListMode")
+          else -> null
         }
     }
   }

@@ -860,13 +860,17 @@ public data class Invoice(
 
     public companion object {
       public fun fromCode(code: kotlin.String): InvoiceStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum InvoiceStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): InvoiceStatus? =
         when (code) {
           "draft" -> Draft
           "issued" -> Issued
           "balanced" -> Balanced
           "cancelled" -> Cancelled
           "entered-in-error" -> Entered_In_Error
-          else -> throw IllegalArgumentException("Unknown code $code for enum InvoiceStatus")
+          else -> null
         }
     }
   }

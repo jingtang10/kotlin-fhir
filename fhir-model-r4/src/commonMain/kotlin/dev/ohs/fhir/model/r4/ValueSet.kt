@@ -690,7 +690,7 @@ public data class ValueSet(
            *
            * In the absence of a language, the resource language applies.
            */
-          public val language: Enumeration<CommonLanguages>? = null,
+          public val language: ExtensibleEnumeration<CommonLanguages>? = null,
           /**
            * A code that represents types of uses of designations.
            *
@@ -763,7 +763,7 @@ public data class ValueSet(
              *
              * In the absence of a language, the resource language applies.
              */
-            public var language: Enumeration<CommonLanguages>? = null
+            public var language: ExtensibleEnumeration<CommonLanguages>? = null
 
             /**
              * A code that represents types of uses of designations.
@@ -2245,6 +2245,10 @@ public data class ValueSet(
 
     public companion object {
       public fun fromCode(code: kotlin.String): FilterOperator =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum FilterOperator")
+
+      public fun fromCodeOrNull(code: kotlin.String?): FilterOperator? =
         when (code) {
           "=" -> EqualTo
           "is-a" -> Is_A
@@ -2255,7 +2259,7 @@ public data class ValueSet(
           "not-in" -> Not_In
           "generalizes" -> Generalizes
           "exists" -> Exists
-          else -> throw IllegalArgumentException("Unknown code $code for enum FilterOperator")
+          else -> null
         }
     }
   }

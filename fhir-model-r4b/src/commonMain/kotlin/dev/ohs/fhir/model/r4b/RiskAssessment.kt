@@ -676,6 +676,10 @@ public data class RiskAssessment(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ObservationStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ObservationStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ObservationStatus? =
         when (code) {
           "registered" -> Registered
           "preliminary" -> Preliminary
@@ -685,7 +689,7 @@ public data class RiskAssessment(
           "cancelled" -> Cancelled
           "entered-in-error" -> Entered_In_Error
           "unknown" -> Unknown
-          else -> throw IllegalArgumentException("Unknown code $code for enum ObservationStatus")
+          else -> null
         }
     }
   }

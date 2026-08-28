@@ -966,14 +966,17 @@ public data class BiologicallyDerivedProduct(
 
     public companion object {
       public fun fromCode(code: kotlin.String): BiologicallyDerivedProductStorageScale =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum BiologicallyDerivedProductStorageScale"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): BiologicallyDerivedProductStorageScale? =
         when (code) {
           "farenheit" -> Farenheit
           "celsius" -> Celsius
           "kelvin" -> Kelvin
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum BiologicallyDerivedProductStorageScale"
-            )
+          else -> null
         }
     }
   }
@@ -994,16 +997,19 @@ public data class BiologicallyDerivedProduct(
 
     public companion object {
       public fun fromCode(code: kotlin.String): BiologicallyDerivedProductCategory =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum BiologicallyDerivedProductCategory"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): BiologicallyDerivedProductCategory? =
         when (code) {
           "organ" -> Organ
           "tissue" -> Tissue
           "fluid" -> Fluid
           "cells" -> Cells
           "biologicalAgent" -> BiologicalAgent
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum BiologicallyDerivedProductCategory"
-            )
+          else -> null
         }
     }
   }
@@ -1021,13 +1027,16 @@ public data class BiologicallyDerivedProduct(
 
     public companion object {
       public fun fromCode(code: kotlin.String): BiologicallyDerivedProductStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum BiologicallyDerivedProductStatus"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): BiologicallyDerivedProductStatus? =
         when (code) {
           "available" -> Available
           "unavailable" -> Unavailable
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum BiologicallyDerivedProductStatus"
-            )
+          else -> null
         }
     }
   }

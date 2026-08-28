@@ -32,10 +32,14 @@ public enum class SpecimenCombined(
 
   public companion object {
     public fun fromCode(code: String): SpecimenCombined =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum SpecimenCombined")
+
+    public fun fromCodeOrNull(code: String?): SpecimenCombined? =
       when (code) {
         "grouped" -> Grouped
         "pooled" -> Pooled
-        else -> throw IllegalArgumentException("Unknown code $code for enum SpecimenCombined")
+        else -> null
       }
   }
 }

@@ -1256,6 +1256,10 @@ public data class DeviceDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): DeviceNameType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum DeviceNameType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): DeviceNameType? =
         when (code) {
           "udi-label-name" -> Udi_Label_Name
           "user-friendly-name" -> User_Friendly_Name
@@ -1263,7 +1267,7 @@ public data class DeviceDefinition(
           "manufacturer-name" -> Manufacturer_Name
           "model-name" -> Model_Name
           "other" -> Other
-          else -> throw IllegalArgumentException("Unknown code $code for enum DeviceNameType")
+          else -> null
         }
     }
   }

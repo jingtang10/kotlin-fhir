@@ -787,12 +787,16 @@ public data class DetectedIssue(
 
     public companion object {
       public fun fromCode(code: String): DetectedIssueStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum DetectedIssueStatus")
+
+      public fun fromCodeOrNull(code: String?): DetectedIssueStatus? =
         when (code) {
           "preliminary" -> Preliminary
           "final" -> Final
           "entered-in-error" -> Entered_In_Error
           "mitigated" -> Mitigated
-          else -> throw IllegalArgumentException("Unknown code $code for enum DetectedIssueStatus")
+          else -> null
         }
     }
   }
@@ -811,12 +815,15 @@ public data class DetectedIssue(
 
     public companion object {
       public fun fromCode(code: String): DetectedIssueSeverity =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum DetectedIssueSeverity")
+
+      public fun fromCodeOrNull(code: String?): DetectedIssueSeverity? =
         when (code) {
           "high" -> High
           "moderate" -> Moderate
           "low" -> Low
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum DetectedIssueSeverity")
+          else -> null
         }
     }
   }

@@ -1425,13 +1425,16 @@ public data class ActivityDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ActionParticipantType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ActionParticipantType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ActionParticipantType? =
         when (code) {
           "patient" -> Patient
           "practitioner" -> Practitioner
           "related-person" -> Related_Person
           "device" -> Device
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ActionParticipantType")
+          else -> null
         }
     }
   }
@@ -1456,6 +1459,10 @@ public data class ActivityDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): RequestIntent =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum RequestIntent")
+
+      public fun fromCodeOrNull(code: kotlin.String?): RequestIntent? =
         when (code) {
           "proposal" -> Proposal
           "plan" -> Plan
@@ -1466,7 +1473,7 @@ public data class ActivityDefinition(
           "filler-order" -> Filler_Order
           "instance-order" -> Instance_Order
           "option" -> Option
-          else -> throw IllegalArgumentException("Unknown code $code for enum RequestIntent")
+          else -> null
         }
     }
   }
@@ -1486,12 +1493,16 @@ public data class ActivityDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): RequestPriority =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum RequestPriority")
+
+      public fun fromCodeOrNull(code: kotlin.String?): RequestPriority? =
         when (code) {
           "routine" -> Routine
           "urgent" -> Urgent
           "asap" -> Asap
           "stat" -> Stat
-          else -> throw IllegalArgumentException("Unknown code $code for enum RequestPriority")
+          else -> null
         }
     }
   }

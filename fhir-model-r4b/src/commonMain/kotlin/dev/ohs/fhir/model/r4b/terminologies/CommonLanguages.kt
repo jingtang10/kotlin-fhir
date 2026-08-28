@@ -86,6 +86,10 @@ public enum class CommonLanguages(
 
   public companion object {
     public fun fromCode(code: String): CommonLanguages =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum CommonLanguages")
+
+    public fun fromCodeOrNull(code: String?): CommonLanguages? =
       when (code) {
         "ar" -> Ar
         "bn" -> Bn
@@ -143,7 +147,7 @@ public enum class CommonLanguages(
         "zh-HK" -> Zh_Hk
         "zh-SG" -> Zh_Sg
         "zh-TW" -> Zh_Tw
-        else -> throw IllegalArgumentException("Unknown code $code for enum CommonLanguages")
+        else -> null
       }
   }
 }

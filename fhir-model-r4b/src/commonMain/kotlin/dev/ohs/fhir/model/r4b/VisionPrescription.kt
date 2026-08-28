@@ -707,10 +707,14 @@ public data class VisionPrescription(
 
     public companion object {
       public fun fromCode(code: kotlin.String): VisionEyes =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum VisionEyes")
+
+      public fun fromCodeOrNull(code: kotlin.String?): VisionEyes? =
         when (code) {
           "right" -> Right
           "left" -> Left
-          else -> throw IllegalArgumentException("Unknown code $code for enum VisionEyes")
+          else -> null
         }
     }
   }
@@ -730,12 +734,16 @@ public data class VisionPrescription(
 
     public companion object {
       public fun fromCode(code: kotlin.String): VisionBase =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum VisionBase")
+
+      public fun fromCodeOrNull(code: kotlin.String?): VisionBase? =
         when (code) {
           "up" -> Up
           "down" -> Down
           "in" -> In
           "out" -> Out
-          else -> throw IllegalArgumentException("Unknown code $code for enum VisionBase")
+          else -> null
         }
     }
   }
@@ -755,15 +763,18 @@ public data class VisionPrescription(
 
     public companion object {
       public fun fromCode(code: kotlin.String): FinancialResourceStatusCodes =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum FinancialResourceStatusCodes"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): FinancialResourceStatusCodes? =
         when (code) {
           "active" -> Active
           "cancelled" -> Cancelled
           "draft" -> Draft
           "entered-in-error" -> Entered_In_Error
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum FinancialResourceStatusCodes"
-            )
+          else -> null
         }
     }
   }

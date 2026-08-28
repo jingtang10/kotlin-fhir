@@ -1097,12 +1097,16 @@ public data class Patient(
 
     public companion object {
       public fun fromCode(code: String): LinkType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum LinkType")
+
+      public fun fromCodeOrNull(code: String?): LinkType? =
         when (code) {
           "replaced-by" -> Replaced_By
           "replaces" -> Replaces
           "refer" -> Refer
           "seealso" -> Seealso
-          else -> throw IllegalArgumentException("Unknown code $code for enum LinkType")
+          else -> null
         }
     }
   }

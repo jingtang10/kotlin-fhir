@@ -809,6 +809,10 @@ public data class ChargeItem(
 
     public companion object {
       public fun fromCode(code: String): ChargeItemStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ChargeItemStatus")
+
+      public fun fromCodeOrNull(code: String?): ChargeItemStatus? =
         when (code) {
           "planned" -> Planned
           "billable" -> Billable
@@ -817,7 +821,7 @@ public data class ChargeItem(
           "billed" -> Billed
           "entered-in-error" -> Entered_In_Error
           "unknown" -> Unknown
-          else -> throw IllegalArgumentException("Unknown code $code for enum ChargeItemStatus")
+          else -> null
         }
     }
   }

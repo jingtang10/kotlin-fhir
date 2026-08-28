@@ -585,12 +585,16 @@ public data class SupplyDelivery(
 
     public companion object {
       public fun fromCode(code: String): SupplyDeliveryStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SupplyDeliveryStatus")
+
+      public fun fromCodeOrNull(code: String?): SupplyDeliveryStatus? =
         when (code) {
           "in-progress" -> In_Progress
           "completed" -> Completed
           "abandoned" -> Abandoned
           "entered-in-error" -> Entered_In_Error
-          else -> throw IllegalArgumentException("Unknown code $code for enum SupplyDeliveryStatus")
+          else -> null
         }
     }
   }

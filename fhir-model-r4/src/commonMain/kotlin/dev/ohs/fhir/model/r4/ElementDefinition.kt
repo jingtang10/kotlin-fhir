@@ -3326,11 +3326,15 @@ public data class ElementDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SlicingRules =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SlicingRules")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SlicingRules? =
         when (code) {
           "closed" -> Closed
           "open" -> Open
           "openAtEnd" -> OpenAtEnd
-          else -> throw IllegalArgumentException("Unknown code $code for enum SlicingRules")
+          else -> null
         }
     }
   }
@@ -3351,13 +3355,17 @@ public data class ElementDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): DiscriminatorType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum DiscriminatorType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): DiscriminatorType? =
         when (code) {
           "value" -> Value
           "exists" -> Exists
           "pattern" -> Pattern
           "type" -> Type
           "profile" -> Profile
-          else -> throw IllegalArgumentException("Unknown code $code for enum DiscriminatorType")
+          else -> null
         }
     }
   }
@@ -3376,11 +3384,15 @@ public data class ElementDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): AggregationMode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum AggregationMode")
+
+      public fun fromCodeOrNull(code: kotlin.String?): AggregationMode? =
         when (code) {
           "contained" -> Contained
           "referenced" -> Referenced
           "bundled" -> Bundled
-          else -> throw IllegalArgumentException("Unknown code $code for enum AggregationMode")
+          else -> null
         }
     }
   }
@@ -3410,12 +3422,15 @@ public data class ElementDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ReferenceVersionRules =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ReferenceVersionRules")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ReferenceVersionRules? =
         when (code) {
           "either" -> Either
           "independent" -> Independent
           "specific" -> Specific
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ReferenceVersionRules")
+          else -> null
         }
     }
   }
@@ -3433,10 +3448,14 @@ public data class ElementDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ConstraintSeverity =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ConstraintSeverity")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ConstraintSeverity? =
         when (code) {
           "error" -> Error
           "warning" -> Warning
-          else -> throw IllegalArgumentException("Unknown code $code for enum ConstraintSeverity")
+          else -> null
         }
     }
   }
@@ -3457,14 +3476,17 @@ public data class ElementDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): PropertyRepresentation =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum PropertyRepresentation")
+
+      public fun fromCodeOrNull(code: kotlin.String?): PropertyRepresentation? =
         when (code) {
           "xmlAttr" -> XmlAttr
           "xmlText" -> XmlText
           "typeAttr" -> TypeAttr
           "cdaText" -> CdaText
           "xhtml" -> Xhtml
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum PropertyRepresentation")
+          else -> null
         }
     }
   }

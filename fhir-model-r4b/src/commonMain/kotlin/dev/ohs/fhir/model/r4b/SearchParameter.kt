@@ -889,13 +889,17 @@ public data class SearchParameter(
 
     public companion object {
       public fun fromCode(code: kotlin.String): XPathUsageType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum XPathUsageType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): XPathUsageType? =
         when (code) {
           "normal" -> Normal
           "phonetic" -> Phonetic
           "nearby" -> Nearby
           "distance" -> Distance
           "other" -> Other
-          else -> throw IllegalArgumentException("Unknown code $code for enum XPathUsageType")
+          else -> null
         }
     }
   }
@@ -920,6 +924,10 @@ public data class SearchParameter(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SearchComparator =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SearchComparator")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SearchComparator? =
         when (code) {
           "eq" -> Eq
           "ne" -> Ne
@@ -930,7 +938,7 @@ public data class SearchParameter(
           "sa" -> Sa
           "eb" -> Eb
           "ap" -> Ap
-          else -> throw IllegalArgumentException("Unknown code $code for enum SearchComparator")
+          else -> null
         }
     }
   }
@@ -958,6 +966,10 @@ public data class SearchParameter(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SearchModifierCode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SearchModifierCode")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SearchModifierCode? =
         when (code) {
           "missing" -> Missing
           "exact" -> Exact
@@ -971,7 +983,7 @@ public data class SearchParameter(
           "type" -> Type
           "identifier" -> Identifier
           "ofType" -> OfType
-          else -> throw IllegalArgumentException("Unknown code $code for enum SearchModifierCode")
+          else -> null
         }
     }
   }

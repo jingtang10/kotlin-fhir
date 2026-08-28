@@ -1502,6 +1502,10 @@ public data class Encounter(
 
     public companion object {
       public fun fromCode(code: String): EncounterStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum EncounterStatus")
+
+      public fun fromCodeOrNull(code: String?): EncounterStatus? =
         when (code) {
           "planned" -> Planned
           "arrived" -> Arrived
@@ -1512,7 +1516,7 @@ public data class Encounter(
           "cancelled" -> Cancelled
           "entered-in-error" -> Entered_In_Error
           "unknown" -> Unknown
-          else -> throw IllegalArgumentException("Unknown code $code for enum EncounterStatus")
+          else -> null
         }
     }
   }
@@ -1532,13 +1536,16 @@ public data class Encounter(
 
     public companion object {
       public fun fromCode(code: String): EncounterLocationStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum EncounterLocationStatus")
+
+      public fun fromCodeOrNull(code: String?): EncounterLocationStatus? =
         when (code) {
           "planned" -> Planned
           "active" -> Active
           "reserved" -> Reserved
           "completed" -> Completed
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum EncounterLocationStatus")
+          else -> null
         }
     }
   }

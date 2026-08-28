@@ -2105,14 +2105,17 @@ public data class TerminologyCapabilities(
 
     public companion object {
       public fun fromCode(code: kotlin.String): CodeSystemContentMode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum CodeSystemContentMode")
+
+      public fun fromCodeOrNull(code: kotlin.String?): CodeSystemContentMode? =
         when (code) {
           "not-present" -> Not_Present
           "example" -> Example
           "fragment" -> Fragment
           "complete" -> Complete
           "supplement" -> Supplement
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum CodeSystemContentMode")
+          else -> null
         }
     }
   }
@@ -2210,6 +2213,10 @@ public data class TerminologyCapabilities(
 
     public companion object {
       public fun fromCode(code: kotlin.String): CommonLanguages =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum CommonLanguages")
+
+      public fun fromCodeOrNull(code: kotlin.String?): CommonLanguages? =
         when (code) {
           "ar" -> Ar
           "bg" -> Bg
@@ -2293,7 +2300,7 @@ public data class TerminologyCapabilities(
           "zh-HK" -> Zh_Hk
           "zh-SG" -> Zh_Sg
           "zh-TW" -> Zh_Tw
-          else -> throw IllegalArgumentException("Unknown code $code for enum CommonLanguages")
+          else -> null
         }
     }
   }
@@ -2312,12 +2319,15 @@ public data class TerminologyCapabilities(
 
     public companion object {
       public fun fromCode(code: kotlin.String): CapabilityStatementKind =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum CapabilityStatementKind")
+
+      public fun fromCodeOrNull(code: kotlin.String?): CapabilityStatementKind? =
         when (code) {
           "instance" -> Instance
           "capability" -> Capability
           "requirements" -> Requirements
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum CapabilityStatementKind")
+          else -> null
         }
     }
   }
@@ -2343,11 +2353,15 @@ public data class TerminologyCapabilities(
 
     public companion object {
       public fun fromCode(code: kotlin.String): CodeSearchSupport =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum CodeSearchSupport")
+
+      public fun fromCodeOrNull(code: kotlin.String?): CodeSearchSupport? =
         when (code) {
           "in-compose" -> In_Compose
           "in-expansion" -> In_Expansion
           "in-compose-or-expansion" -> In_Compose_Or_Expansion
-          else -> throw IllegalArgumentException("Unknown code $code for enum CodeSearchSupport")
+          else -> null
         }
     }
   }

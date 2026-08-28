@@ -1515,6 +1515,10 @@ public data class EvidenceReport(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ReportRelationshipType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ReportRelationshipType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ReportRelationshipType? =
         when (code) {
           "replaces" -> Replaces
           "amends" -> Amends
@@ -1524,8 +1528,7 @@ public data class EvidenceReport(
           "amendedWith" -> AmendedWith
           "appendedWith" -> AppendedWith
           "transformedWith" -> TransformedWith
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ReportRelationshipType")
+          else -> null
         }
     }
   }
@@ -1544,11 +1547,15 @@ public data class EvidenceReport(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ListMode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ListMode")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ListMode? =
         when (code) {
           "working" -> Working
           "snapshot" -> Snapshot
           "changes" -> Changes
-          else -> throw IllegalArgumentException("Unknown code $code for enum ListMode")
+          else -> null
         }
     }
   }

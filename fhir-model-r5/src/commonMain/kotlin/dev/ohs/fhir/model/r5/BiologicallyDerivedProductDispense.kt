@@ -561,6 +561,12 @@ public data class BiologicallyDerivedProductDispense(
 
     public companion object {
       public fun fromCode(code: kotlin.String): BiologicallyDerivedProductDispenseCodes =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum BiologicallyDerivedProductDispenseCodes"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): BiologicallyDerivedProductDispenseCodes? =
         when (code) {
           "preparation" -> Preparation
           "in-progress" -> In_Progress
@@ -570,10 +576,7 @@ public data class BiologicallyDerivedProductDispense(
           "returned" -> Returned
           "entered-in-error" -> Entered_In_Error
           "unknown" -> Unknown
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum BiologicallyDerivedProductDispenseCodes"
-            )
+          else -> null
         }
     }
   }

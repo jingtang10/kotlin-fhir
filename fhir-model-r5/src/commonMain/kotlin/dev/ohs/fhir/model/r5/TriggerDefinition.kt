@@ -252,6 +252,10 @@ public data class TriggerDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): TriggerType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum TriggerType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): TriggerType? =
         when (code) {
           "named-event" -> Named_Event
           "periodic" -> Periodic
@@ -261,7 +265,7 @@ public data class TriggerDefinition(
           "data-removed" -> Data_Removed
           "data-accessed" -> Data_Accessed
           "data-access-ended" -> Data_Access_Ended
-          else -> throw IllegalArgumentException("Unknown code $code for enum TriggerType")
+          else -> null
         }
     }
   }

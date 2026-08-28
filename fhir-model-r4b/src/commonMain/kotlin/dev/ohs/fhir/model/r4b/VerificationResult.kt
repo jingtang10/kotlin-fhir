@@ -856,6 +856,9 @@ public data class VerificationResult(
 
     public companion object {
       public fun fromCode(code: kotlin.String): Status =
+        fromCodeOrNull(code) ?: throw IllegalArgumentException("Unknown code $code for enum Status")
+
+      public fun fromCodeOrNull(code: kotlin.String?): Status? =
         when (code) {
           "attested" -> Attested
           "validated" -> Validated
@@ -863,7 +866,7 @@ public data class VerificationResult(
           "req-revalid" -> Req_Revalid
           "val-fail" -> Val_Fail
           "reval-fail" -> Reval_Fail
-          else -> throw IllegalArgumentException("Unknown code $code for enum Status")
+          else -> null
         }
     }
   }

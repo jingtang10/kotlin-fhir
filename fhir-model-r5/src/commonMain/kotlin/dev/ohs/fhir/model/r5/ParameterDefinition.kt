@@ -167,11 +167,14 @@ public data class ParameterDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): OperationParameterUse =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum OperationParameterUse")
+
+      public fun fromCodeOrNull(code: kotlin.String?): OperationParameterUse? =
         when (code) {
           "in" -> In
           "out" -> Out
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum OperationParameterUse")
+          else -> null
         }
     }
   }

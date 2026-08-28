@@ -636,13 +636,17 @@ public data class Endpoint(
 
     public companion object {
       public fun fromCode(code: kotlin.String): EndpointStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum EndpointStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): EndpointStatus? =
         when (code) {
           "active" -> Active
           "suspended" -> Suspended
           "error" -> Error
           "off" -> Off
           "entered-in-error" -> Entered_In_Error
-          else -> throw IllegalArgumentException("Unknown code $code for enum EndpointStatus")
+          else -> null
         }
     }
   }

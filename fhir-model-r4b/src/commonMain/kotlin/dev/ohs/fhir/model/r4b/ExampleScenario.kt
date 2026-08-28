@@ -1694,11 +1694,14 @@ public data class ExampleScenario(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ExampleScenarioActorType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ExampleScenarioActorType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ExampleScenarioActorType? =
         when (code) {
           "person" -> Person
           "entity" -> Entity
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ExampleScenarioActorType")
+          else -> null
         }
     }
   }

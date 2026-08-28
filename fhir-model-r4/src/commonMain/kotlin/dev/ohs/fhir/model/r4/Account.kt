@@ -690,13 +690,17 @@ public data class Account(
 
     public companion object {
       public fun fromCode(code: kotlin.String): AccountStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum AccountStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): AccountStatus? =
         when (code) {
           "active" -> Active
           "inactive" -> Inactive
           "entered-in-error" -> Entered_In_Error
           "on-hold" -> On_Hold
           "unknown" -> Unknown
-          else -> throw IllegalArgumentException("Unknown code $code for enum AccountStatus")
+          else -> null
         }
     }
   }

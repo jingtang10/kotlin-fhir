@@ -801,6 +801,10 @@ public data class DataRequirement(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ValueFilterComparator =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ValueFilterComparator")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ValueFilterComparator? =
         when (code) {
           "eq" -> Eq
           "gt" -> Gt
@@ -809,8 +813,7 @@ public data class DataRequirement(
           "le" -> Le
           "sa" -> Sa
           "eb" -> Eb
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ValueFilterComparator")
+          else -> null
         }
     }
   }
@@ -828,10 +831,14 @@ public data class DataRequirement(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SortDirection =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SortDirection")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SortDirection? =
         when (code) {
           "ascending" -> Ascending
           "descending" -> Descending
-          else -> throw IllegalArgumentException("Unknown code $code for enum SortDirection")
+          else -> null
         }
     }
   }

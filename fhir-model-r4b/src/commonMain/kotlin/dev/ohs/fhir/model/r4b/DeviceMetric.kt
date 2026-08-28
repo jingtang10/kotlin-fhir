@@ -551,15 +551,18 @@ public data class DeviceMetric(
 
     public companion object {
       public fun fromCode(code: String): DeviceMetricCalibrationType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum DeviceMetricCalibrationType"
+          )
+
+      public fun fromCodeOrNull(code: String?): DeviceMetricCalibrationType? =
         when (code) {
           "unspecified" -> Unspecified
           "offset" -> Offset
           "gain" -> Gain
           "two-point" -> Two_Point
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum DeviceMetricCalibrationType"
-            )
+          else -> null
         }
     }
   }
@@ -587,15 +590,18 @@ public data class DeviceMetric(
 
     public companion object {
       public fun fromCode(code: String): DeviceMetricCalibrationState =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum DeviceMetricCalibrationState"
+          )
+
+      public fun fromCodeOrNull(code: String?): DeviceMetricCalibrationState? =
         when (code) {
           "not-calibrated" -> Not_Calibrated
           "calibration-required" -> Calibration_Required
           "calibrated" -> Calibrated
           "unspecified" -> Unspecified
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum DeviceMetricCalibrationState"
-            )
+          else -> null
         }
     }
   }
@@ -619,15 +625,18 @@ public data class DeviceMetric(
 
     public companion object {
       public fun fromCode(code: String): DeviceMetricOperationalStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum DeviceMetricOperationalStatus"
+          )
+
+      public fun fromCodeOrNull(code: String?): DeviceMetricOperationalStatus? =
         when (code) {
           "on" -> On
           "off" -> Off
           "standby" -> Standby
           "entered-in-error" -> Entered_In_Error
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum DeviceMetricOperationalStatus"
-            )
+          else -> null
         }
     }
   }
@@ -651,6 +660,10 @@ public data class DeviceMetric(
 
     public companion object {
       public fun fromCode(code: String): DeviceMetricColor =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum DeviceMetricColor")
+
+      public fun fromCodeOrNull(code: String?): DeviceMetricColor? =
         when (code) {
           "black" -> Black
           "red" -> Red
@@ -660,7 +673,7 @@ public data class DeviceMetric(
           "magenta" -> Magenta
           "cyan" -> Cyan
           "white" -> White
-          else -> throw IllegalArgumentException("Unknown code $code for enum DeviceMetricColor")
+          else -> null
         }
     }
   }
@@ -680,12 +693,16 @@ public data class DeviceMetric(
 
     public companion object {
       public fun fromCode(code: String): DeviceMetricCategory =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum DeviceMetricCategory")
+
+      public fun fromCodeOrNull(code: String?): DeviceMetricCategory? =
         when (code) {
           "measurement" -> Measurement
           "setting" -> Setting
           "calculation" -> Calculation
           "unspecified" -> Unspecified
-          else -> throw IllegalArgumentException("Unknown code $code for enum DeviceMetricCategory")
+          else -> null
         }
     }
   }

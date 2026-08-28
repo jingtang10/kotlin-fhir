@@ -34,12 +34,16 @@ public enum class PublicationStatus(
 
   public companion object {
     public fun fromCode(code: String): PublicationStatus =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum PublicationStatus")
+
+    public fun fromCodeOrNull(code: String?): PublicationStatus? =
       when (code) {
         "draft" -> Draft
         "active" -> Active
         "retired" -> Retired
         "unknown" -> Unknown
-        else -> throw IllegalArgumentException("Unknown code $code for enum PublicationStatus")
+        else -> null
       }
   }
 }

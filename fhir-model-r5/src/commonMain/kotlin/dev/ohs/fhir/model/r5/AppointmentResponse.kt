@@ -493,14 +493,17 @@ public data class AppointmentResponse(
 
     public companion object {
       public fun fromCode(code: String): AppointmentResponseStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum AppointmentResponseStatus")
+
+      public fun fromCodeOrNull(code: String?): AppointmentResponseStatus? =
         when (code) {
           "accepted" -> Accepted
           "declined" -> Declined
           "tentative" -> Tentative
           "needs-action" -> Needs_Action
           "entered-in-error" -> Entered_In_Error
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum AppointmentResponseStatus")
+          else -> null
         }
     }
   }

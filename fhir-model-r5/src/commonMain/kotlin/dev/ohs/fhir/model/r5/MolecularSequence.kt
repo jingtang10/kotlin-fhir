@@ -925,10 +925,14 @@ public data class MolecularSequence(
 
     public companion object {
       public fun fromCode(code: kotlin.String): OrientationType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum OrientationType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): OrientationType? =
         when (code) {
           "sense" -> Sense
           "antisense" -> Antisense
-          else -> throw IllegalArgumentException("Unknown code $code for enum OrientationType")
+          else -> null
         }
     }
   }
@@ -946,10 +950,14 @@ public data class MolecularSequence(
 
     public companion object {
       public fun fromCode(code: kotlin.String): StrandType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum StrandType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): StrandType? =
         when (code) {
           "watson" -> Watson
           "crick" -> Crick
-          else -> throw IllegalArgumentException("Unknown code $code for enum StrandType")
+          else -> null
         }
     }
   }
@@ -968,11 +976,15 @@ public data class MolecularSequence(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SequenceType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SequenceType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SequenceType? =
         when (code) {
           "aa" -> Aa
           "dna" -> Dna
           "rna" -> Rna
-          else -> throw IllegalArgumentException("Unknown code $code for enum SequenceType")
+          else -> null
         }
     }
   }

@@ -216,6 +216,10 @@ public data class HumanName(
 
     public companion object {
       public fun fromCode(code: kotlin.String): NameUse =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum NameUse")
+
+      public fun fromCodeOrNull(code: kotlin.String?): NameUse? =
         when (code) {
           "usual" -> Usual
           "official" -> Official
@@ -224,7 +228,7 @@ public data class HumanName(
           "anonymous" -> Anonymous
           "old" -> Old
           "maiden" -> Maiden
-          else -> throw IllegalArgumentException("Unknown code $code for enum NameUse")
+          else -> null
         }
     }
   }

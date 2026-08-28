@@ -203,6 +203,10 @@ public data class ContactPoint(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ContactPointSystem =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ContactPointSystem")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ContactPointSystem? =
         when (code) {
           "phone" -> Phone
           "fax" -> Fax
@@ -211,7 +215,7 @@ public data class ContactPoint(
           "url" -> Url
           "sms" -> Sms
           "other" -> Other
-          else -> throw IllegalArgumentException("Unknown code $code for enum ContactPointSystem")
+          else -> null
         }
     }
   }
@@ -232,13 +236,17 @@ public data class ContactPoint(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ContactPointUse =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ContactPointUse")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ContactPointUse? =
         when (code) {
           "home" -> Home
           "work" -> Work
           "temp" -> Temp
           "old" -> Old
           "mobile" -> Mobile
-          else -> throw IllegalArgumentException("Unknown code $code for enum ContactPointUse")
+          else -> null
         }
     }
   }

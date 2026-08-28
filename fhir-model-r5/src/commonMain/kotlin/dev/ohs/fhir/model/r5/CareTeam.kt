@@ -633,13 +633,17 @@ public data class CareTeam(
 
     public companion object {
       public fun fromCode(code: kotlin.String): CareTeamStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum CareTeamStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): CareTeamStatus? =
         when (code) {
           "proposed" -> Proposed
           "active" -> Active
           "suspended" -> Suspended
           "inactive" -> Inactive
           "entered-in-error" -> Entered_In_Error
-          else -> throw IllegalArgumentException("Unknown code $code for enum CareTeamStatus")
+          else -> null
         }
     }
   }

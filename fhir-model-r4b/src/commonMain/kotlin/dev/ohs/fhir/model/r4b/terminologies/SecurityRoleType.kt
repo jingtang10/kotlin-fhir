@@ -219,6 +219,10 @@ public enum class SecurityRoleType(
 
   public companion object {
     public fun fromCode(code: String): SecurityRoleType =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum SecurityRoleType")
+
+    public fun fromCodeOrNull(code: String?): SecurityRoleType? =
       when (code) {
         "AMENDER" -> Amender
         "COAUTH" -> Coauth
@@ -296,7 +300,7 @@ public enum class SecurityRoleType(
         "110153" -> _110153
         "110154" -> _110154
         "110155" -> _110155
-        else -> throw IllegalArgumentException("Unknown code $code for enum SecurityRoleType")
+        else -> null
       }
   }
 }

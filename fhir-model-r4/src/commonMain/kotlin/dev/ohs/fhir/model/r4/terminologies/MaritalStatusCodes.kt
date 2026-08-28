@@ -44,6 +44,10 @@ public enum class MaritalStatusCodes(
 
   public companion object {
     public fun fromCode(code: String): MaritalStatusCodes =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum MaritalStatusCodes")
+
+    public fun fromCodeOrNull(code: String?): MaritalStatusCodes? =
       when (code) {
         "A" -> A
         "D" -> D
@@ -56,7 +60,7 @@ public enum class MaritalStatusCodes(
         "U" -> U
         "W" -> W
         "UNK" -> Unk
-        else -> throw IllegalArgumentException("Unknown code $code for enum MaritalStatusCodes")
+        else -> null
       }
   }
 }

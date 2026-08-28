@@ -125,12 +125,16 @@ public data class Contributor(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ContributorType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ContributorType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ContributorType? =
         when (code) {
           "author" -> Author
           "editor" -> Editor
           "reviewer" -> Reviewer
           "endorser" -> Endorser
-          else -> throw IllegalArgumentException("Unknown code $code for enum ContributorType")
+          else -> null
         }
     }
   }

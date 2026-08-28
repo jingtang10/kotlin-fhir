@@ -2381,12 +2381,16 @@ public data class ImplementationGuide(
 
     public companion object {
       public fun fromCode(code: kotlin.String): GuidePageGeneration =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum GuidePageGeneration")
+
+      public fun fromCodeOrNull(code: kotlin.String?): GuidePageGeneration? =
         when (code) {
           "html" -> Html
           "markdown" -> Markdown
           "xml" -> Xml
           "generated" -> Generated
-          else -> throw IllegalArgumentException("Unknown code $code for enum GuidePageGeneration")
+          else -> null
         }
     }
   }
@@ -2428,6 +2432,10 @@ public data class ImplementationGuide(
 
     public companion object {
       public fun fromCode(code: kotlin.String): GuideParameterCode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum GuideParameterCode")
+
+      public fun fromCodeOrNull(code: kotlin.String?): GuideParameterCode? =
         when (code) {
           "apply" -> Apply
           "path-resource" -> Path_Resource
@@ -2439,7 +2447,7 @@ public data class ImplementationGuide(
           "generate-json" -> Generate_Json
           "generate-turtle" -> Generate_Turtle
           "html-template" -> Html_Template
-          else -> throw IllegalArgumentException("Unknown code $code for enum GuideParameterCode")
+          else -> null
         }
     }
   }
@@ -3321,6 +3329,10 @@ public data class ImplementationGuide(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SPDXLicense =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SPDXLicense")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SPDXLicense? =
         when (code) {
           "not-open-source" -> Not_Open_Source
           "0BSD" -> _0BSD
@@ -3668,7 +3680,7 @@ public data class ImplementationGuide(
           "ZPL-1.1" -> Zpl_1_1
           "ZPL-2.0" -> Zpl_2_0
           "ZPL-2.1" -> Zpl_2_1
-          else -> throw IllegalArgumentException("Unknown code $code for enum SPDXLicense")
+          else -> null
         }
     }
   }

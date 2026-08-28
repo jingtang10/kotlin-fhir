@@ -37,12 +37,15 @@ public enum class DocumentReferenceStatus(
 
   public companion object {
     public fun fromCode(code: String): DocumentReferenceStatus =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum DocumentReferenceStatus")
+
+    public fun fromCodeOrNull(code: String?): DocumentReferenceStatus? =
       when (code) {
         "current" -> Current
         "superseded" -> Superseded
         "entered-in-error" -> Entered_In_Error
-        else ->
-          throw IllegalArgumentException("Unknown code $code for enum DocumentReferenceStatus")
+        else -> null
       }
   }
 }

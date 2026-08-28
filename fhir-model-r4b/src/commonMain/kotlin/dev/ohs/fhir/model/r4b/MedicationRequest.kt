@@ -1354,6 +1354,10 @@ public data class MedicationRequest(
 
     public companion object {
       public fun fromCode(code: String): MedicationrequestStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum MedicationrequestStatus")
+
+      public fun fromCodeOrNull(code: String?): MedicationrequestStatus? =
         when (code) {
           "active" -> Active
           "on-hold" -> On_Hold
@@ -1363,8 +1367,7 @@ public data class MedicationRequest(
           "stopped" -> Stopped
           "draft" -> Draft
           "unknown" -> Unknown
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum MedicationrequestStatus")
+          else -> null
         }
     }
   }
@@ -1404,6 +1407,10 @@ public data class MedicationRequest(
 
     public companion object {
       public fun fromCode(code: String): MedicationRequestIntent =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum MedicationRequestIntent")
+
+      public fun fromCodeOrNull(code: String?): MedicationRequestIntent? =
         when (code) {
           "proposal" -> Proposal
           "plan" -> Plan
@@ -1413,8 +1420,7 @@ public data class MedicationRequest(
           "filler-order" -> Filler_Order
           "instance-order" -> Instance_Order
           "option" -> Option
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum MedicationRequestIntent")
+          else -> null
         }
     }
   }
@@ -1434,12 +1440,16 @@ public data class MedicationRequest(
 
     public companion object {
       public fun fromCode(code: String): RequestPriority =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum RequestPriority")
+
+      public fun fromCodeOrNull(code: String?): RequestPriority? =
         when (code) {
           "routine" -> Routine
           "urgent" -> Urgent
           "asap" -> Asap
           "stat" -> Stat
-          else -> throw IllegalArgumentException("Unknown code $code for enum RequestPriority")
+          else -> null
         }
     }
   }

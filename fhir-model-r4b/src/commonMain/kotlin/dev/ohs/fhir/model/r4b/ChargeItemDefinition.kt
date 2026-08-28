@@ -1173,6 +1173,10 @@ public data class ChargeItemDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): InvoicePriceComponentType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum InvoicePriceComponentType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): InvoicePriceComponentType? =
         when (code) {
           "base" -> Base
           "surcharge" -> Surcharge
@@ -1180,8 +1184,7 @@ public data class ChargeItemDefinition(
           "discount" -> Discount
           "tax" -> Tax
           "informational" -> Informational
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum InvoicePriceComponentType")
+          else -> null
         }
     }
   }

@@ -393,13 +393,17 @@ public data class Slot(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SlotStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SlotStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SlotStatus? =
         when (code) {
           "busy" -> Busy
           "free" -> Free
           "busy-unavailable" -> Busy_Unavailable
           "busy-tentative" -> Busy_Tentative
           "entered-in-error" -> Entered_In_Error
-          else -> throw IllegalArgumentException("Unknown code $code for enum SlotStatus")
+          else -> null
         }
     }
   }

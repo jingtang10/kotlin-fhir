@@ -218,13 +218,17 @@ public data class Identifier(
 
     public companion object {
       public fun fromCode(code: kotlin.String): IdentifierUse =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum IdentifierUse")
+
+      public fun fromCodeOrNull(code: kotlin.String?): IdentifierUse? =
         when (code) {
           "usual" -> Usual
           "official" -> Official
           "temp" -> Temp
           "secondary" -> Secondary
           "old" -> Old
-          else -> throw IllegalArgumentException("Unknown code $code for enum IdentifierUse")
+          else -> null
         }
     }
   }

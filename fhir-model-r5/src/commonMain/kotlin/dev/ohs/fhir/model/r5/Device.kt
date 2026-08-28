@@ -1564,6 +1564,10 @@ public data class Device(
 
     public companion object {
       public fun fromCode(code: kotlin.String): UDIEntryType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum UDIEntryType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): UDIEntryType? =
         when (code) {
           "barcode" -> Barcode
           "rfid" -> Rfid
@@ -1572,7 +1576,7 @@ public data class Device(
           "self-reported" -> Self_Reported
           "electronic-transmission" -> Electronic_Transmission
           "unknown" -> Unknown
-          else -> throw IllegalArgumentException("Unknown code $code for enum UDIEntryType")
+          else -> null
         }
     }
   }
@@ -1599,11 +1603,15 @@ public data class Device(
 
     public companion object {
       public fun fromCode(code: kotlin.String): DeviceNameType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum DeviceNameType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): DeviceNameType? =
         when (code) {
           "registered-name" -> Registered_Name
           "user-friendly-name" -> User_Friendly_Name
           "patient-reported-name" -> Patient_Reported_Name
-          else -> throw IllegalArgumentException("Unknown code $code for enum DeviceNameType")
+          else -> null
         }
     }
   }
@@ -1622,11 +1630,15 @@ public data class Device(
 
     public companion object {
       public fun fromCode(code: kotlin.String): FHIRDeviceStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum FHIRDeviceStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): FHIRDeviceStatus? =
         when (code) {
           "active" -> Active
           "inactive" -> Inactive
           "entered-in-error" -> Entered_In_Error
-          else -> throw IllegalArgumentException("Unknown code $code for enum FHIRDeviceStatus")
+          else -> null
         }
     }
   }

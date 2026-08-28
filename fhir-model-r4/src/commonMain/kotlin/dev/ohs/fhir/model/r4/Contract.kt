@@ -3533,6 +3533,12 @@ public data class Contract(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ContractResourcePublicationStatusCodes =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum ContractResourcePublicationStatusCodes"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): ContractResourcePublicationStatusCodes? =
         when (code) {
           "amended" -> Amended
           "appended" -> Appended
@@ -3549,10 +3555,7 @@ public data class Contract(
           "revoked" -> Revoked
           "resolved" -> Resolved
           "terminated" -> Terminated
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum ContractResourcePublicationStatusCodes"
-            )
+          else -> null
         }
     }
   }
@@ -3583,6 +3586,12 @@ public data class Contract(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ContractResourceStatusCodes =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum ContractResourceStatusCodes"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): ContractResourceStatusCodes? =
         when (code) {
           "amended" -> Amended
           "appended" -> Appended
@@ -3599,10 +3608,7 @@ public data class Contract(
           "revoked" -> Revoked
           "resolved" -> Resolved
           "terminated" -> Terminated
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum ContractResourceStatusCodes"
-            )
+          else -> null
         }
     }
   }

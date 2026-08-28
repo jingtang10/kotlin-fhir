@@ -837,6 +837,10 @@ public data class Subscription(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SearchComparator =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SearchComparator")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SearchComparator? =
         when (code) {
           "eq" -> Eq
           "ne" -> Ne
@@ -847,7 +851,7 @@ public data class Subscription(
           "sa" -> Sa
           "eb" -> Eb
           "ap" -> Ap
-          else -> throw IllegalArgumentException("Unknown code $code for enum SearchComparator")
+          else -> null
         }
     }
   }
@@ -878,6 +882,10 @@ public data class Subscription(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SearchModifierCode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SearchModifierCode")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SearchModifierCode? =
         when (code) {
           "missing" -> Missing
           "exact" -> Exact
@@ -894,7 +902,7 @@ public data class Subscription(
           "code-text" -> Code_Text
           "text-advanced" -> Text_Advanced
           "iterate" -> Iterate
-          else -> throw IllegalArgumentException("Unknown code $code for enum SearchModifierCode")
+          else -> null
         }
     }
   }
@@ -919,14 +927,17 @@ public data class Subscription(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SubscriptionStatusCodes =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SubscriptionStatusCodes")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SubscriptionStatusCodes? =
         when (code) {
           "requested" -> Requested
           "active" -> Active
           "error" -> Error
           "off" -> Off
           "entered-in-error" -> Entered_In_Error
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum SubscriptionStatusCodes")
+          else -> null
         }
     }
   }
@@ -949,12 +960,17 @@ public data class Subscription(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SubscriptionPayloadContent =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum SubscriptionPayloadContent"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): SubscriptionPayloadContent? =
         when (code) {
           "empty" -> Empty
           "id-only" -> Id_Only
           "full-resource" -> Full_Resource
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum SubscriptionPayloadContent")
+          else -> null
         }
     }
   }

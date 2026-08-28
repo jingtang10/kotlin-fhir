@@ -32,10 +32,14 @@ public enum class AdjudicationErrorCodes(
 
   public companion object {
     public fun fromCode(code: String): AdjudicationErrorCodes =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum AdjudicationErrorCodes")
+
+    public fun fromCodeOrNull(code: String?): AdjudicationErrorCodes? =
       when (code) {
         "a001" -> A001
         "a002" -> A002
-        else -> throw IllegalArgumentException("Unknown code $code for enum AdjudicationErrorCodes")
+        else -> null
       }
   }
 }

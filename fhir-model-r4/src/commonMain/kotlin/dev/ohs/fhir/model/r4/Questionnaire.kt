@@ -1778,6 +1778,10 @@ public data class Questionnaire(
 
     public companion object {
       public fun fromCode(code: kotlin.String): QuestionnaireItemType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum QuestionnaireItemType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): QuestionnaireItemType? =
         when (code) {
           "group" -> Group
           "display" -> Display
@@ -1795,8 +1799,7 @@ public data class Questionnaire(
           "attachment" -> Attachment
           "reference" -> Reference
           "quantity" -> Quantity
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum QuestionnaireItemType")
+          else -> null
         }
     }
   }
@@ -1814,10 +1817,14 @@ public data class Questionnaire(
 
     public companion object {
       public fun fromCode(code: kotlin.String): EnableWhenBehavior =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum EnableWhenBehavior")
+
+      public fun fromCodeOrNull(code: kotlin.String?): EnableWhenBehavior? =
         when (code) {
           "all" -> All
           "any" -> Any
-          else -> throw IllegalArgumentException("Unknown code $code for enum EnableWhenBehavior")
+          else -> null
         }
     }
   }
@@ -1844,6 +1851,10 @@ public data class Questionnaire(
 
     public companion object {
       public fun fromCode(code: kotlin.String): QuestionnaireItemOperator =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum QuestionnaireItemOperator")
+
+      public fun fromCodeOrNull(code: kotlin.String?): QuestionnaireItemOperator? =
         when (code) {
           "exists" -> Exists
           "=" -> EqualTo
@@ -1852,8 +1863,7 @@ public data class Questionnaire(
           "<" -> LessThan
           ">=" -> GreaterThanOrEqualTo
           "<=" -> LessThanOrEqualTo
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum QuestionnaireItemOperator")
+          else -> null
         }
     }
   }

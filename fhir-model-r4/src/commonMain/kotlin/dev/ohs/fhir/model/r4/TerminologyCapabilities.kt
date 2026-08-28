@@ -1966,12 +1966,15 @@ public data class TerminologyCapabilities(
 
     public companion object {
       public fun fromCode(code: kotlin.String): CapabilityStatementKind =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum CapabilityStatementKind")
+
+      public fun fromCodeOrNull(code: kotlin.String?): CapabilityStatementKind? =
         when (code) {
           "instance" -> Instance
           "capability" -> Capability
           "requirements" -> Requirements
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum CapabilityStatementKind")
+          else -> null
         }
     }
   }
@@ -1992,10 +1995,14 @@ public data class TerminologyCapabilities(
 
     public companion object {
       public fun fromCode(code: kotlin.String): CodeSearchSupport =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum CodeSearchSupport")
+
+      public fun fromCodeOrNull(code: kotlin.String?): CodeSearchSupport? =
         when (code) {
           "explicit" -> Explicit
           "all" -> All
-          else -> throw IllegalArgumentException("Unknown code $code for enum CodeSearchSupport")
+          else -> null
         }
     }
   }

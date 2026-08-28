@@ -1367,6 +1367,10 @@ public data class ServiceRequest(
 
     public companion object {
       public fun fromCode(code: String): RequestStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum RequestStatus")
+
+      public fun fromCodeOrNull(code: String?): RequestStatus? =
         when (code) {
           "draft" -> Draft
           "active" -> Active
@@ -1375,7 +1379,7 @@ public data class ServiceRequest(
           "completed" -> Completed
           "entered-in-error" -> Entered_In_Error
           "unknown" -> Unknown
-          else -> throw IllegalArgumentException("Unknown code $code for enum RequestStatus")
+          else -> null
         }
     }
   }
@@ -1400,6 +1404,10 @@ public data class ServiceRequest(
 
     public companion object {
       public fun fromCode(code: String): RequestIntent =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum RequestIntent")
+
+      public fun fromCodeOrNull(code: String?): RequestIntent? =
         when (code) {
           "proposal" -> Proposal
           "plan" -> Plan
@@ -1410,7 +1418,7 @@ public data class ServiceRequest(
           "filler-order" -> Filler_Order
           "instance-order" -> Instance_Order
           "option" -> Option
-          else -> throw IllegalArgumentException("Unknown code $code for enum RequestIntent")
+          else -> null
         }
     }
   }
@@ -1430,12 +1438,16 @@ public data class ServiceRequest(
 
     public companion object {
       public fun fromCode(code: String): RequestPriority =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum RequestPriority")
+
+      public fun fromCodeOrNull(code: String?): RequestPriority? =
         when (code) {
           "routine" -> Routine
           "urgent" -> Urgent
           "asap" -> Asap
           "stat" -> Stat
-          else -> throw IllegalArgumentException("Unknown code $code for enum RequestPriority")
+          else -> null
         }
     }
   }

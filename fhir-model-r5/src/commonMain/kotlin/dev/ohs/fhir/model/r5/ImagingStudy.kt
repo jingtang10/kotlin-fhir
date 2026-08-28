@@ -1061,13 +1061,17 @@ public data class ImagingStudy(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ImagingStudyStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ImagingStudyStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ImagingStudyStatus? =
         when (code) {
           "registered" -> Registered
           "available" -> Available
           "cancelled" -> Cancelled
           "entered-in-error" -> Entered_In_Error
           "unknown" -> Unknown
-          else -> throw IllegalArgumentException("Unknown code $code for enum ImagingStudyStatus")
+          else -> null
         }
     }
   }

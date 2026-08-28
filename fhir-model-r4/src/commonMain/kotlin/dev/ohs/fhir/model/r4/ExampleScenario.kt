@@ -1693,11 +1693,14 @@ public data class ExampleScenario(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ExampleScenarioActorType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ExampleScenarioActorType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ExampleScenarioActorType? =
         when (code) {
           "person" -> Person
           "entity" -> Entity
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ExampleScenarioActorType")
+          else -> null
         }
     }
   }
@@ -2081,6 +2084,10 @@ public data class ExampleScenario(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ResourceType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ResourceType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ResourceType? =
         when (code) {
           "Account" -> Account
           "ActivityDefinition" -> ActivityDefinition
@@ -2230,7 +2237,7 @@ public data class ExampleScenario(
           "ValueSet" -> ValueSet
           "VerificationResult" -> VerificationResult
           "VisionPrescription" -> VisionPrescription
-          else -> throw IllegalArgumentException("Unknown code $code for enum ResourceType")
+          else -> null
         }
     }
   }

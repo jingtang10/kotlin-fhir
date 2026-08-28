@@ -341,6 +341,10 @@ public enum class ResourceType(
 
   public companion object {
     public fun fromCode(code: String): ResourceType =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum ResourceType")
+
+    public fun fromCodeOrNull(code: String?): ResourceType? =
       when (code) {
         "Resource" -> Resource
         "Binary" -> Binary
@@ -485,7 +489,7 @@ public enum class ResourceType(
         "VerificationResult" -> VerificationResult
         "VisionPrescription" -> VisionPrescription
         "Parameters" -> Parameters
-        else -> throw IllegalArgumentException("Unknown code $code for enum ResourceType")
+        else -> null
       }
   }
 }

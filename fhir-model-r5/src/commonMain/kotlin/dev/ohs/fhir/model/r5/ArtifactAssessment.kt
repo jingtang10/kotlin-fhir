@@ -682,6 +682,12 @@ public data class ArtifactAssessment(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ArtifactAssessmentInformationType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum ArtifactAssessmentInformationType"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): ArtifactAssessmentInformationType? =
         when (code) {
           "comment" -> Comment
           "classifier" -> Classifier
@@ -689,10 +695,7 @@ public data class ArtifactAssessment(
           "container" -> Container
           "response" -> Response
           "change-request" -> Change_Request
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum ArtifactAssessmentInformationType"
-            )
+          else -> null
         }
     }
   }
@@ -738,6 +741,12 @@ public data class ArtifactAssessment(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ArtifactAssessmentWorkflowStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum ArtifactAssessmentWorkflowStatus"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): ArtifactAssessmentWorkflowStatus? =
         when (code) {
           "submitted" -> Submitted
           "triaged" -> Triaged
@@ -749,10 +758,7 @@ public data class ArtifactAssessment(
           "applied" -> Applied
           "published" -> Published
           "entered-in-error" -> Entered_In_Error
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum ArtifactAssessmentWorkflowStatus"
-            )
+          else -> null
         }
     }
   }
@@ -789,16 +795,19 @@ public data class ArtifactAssessment(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ArtifactAssessmentDisposition =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum ArtifactAssessmentDisposition"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): ArtifactAssessmentDisposition? =
         when (code) {
           "unresolved" -> Unresolved
           "not-persuasive" -> Not_Persuasive
           "persuasive" -> Persuasive
           "persuasive-with-modification" -> Persuasive_With_Modification
           "not-persuasive-with-modification" -> Not_Persuasive_With_Modification
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum ArtifactAssessmentDisposition"
-            )
+          else -> null
         }
     }
   }

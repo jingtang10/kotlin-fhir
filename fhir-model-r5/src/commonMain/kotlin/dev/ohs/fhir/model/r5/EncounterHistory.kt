@@ -625,6 +625,10 @@ public data class EncounterHistory(
 
     public companion object {
       public fun fromCode(code: String): EncounterStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum EncounterStatus")
+
+      public fun fromCodeOrNull(code: String?): EncounterStatus? =
         when (code) {
           "planned" -> Planned
           "in-progress" -> In_Progress
@@ -635,7 +639,7 @@ public data class EncounterHistory(
           "discontinued" -> Discontinued
           "entered-in-error" -> Entered_In_Error
           "unknown" -> Unknown
-          else -> throw IllegalArgumentException("Unknown code $code for enum EncounterStatus")
+          else -> null
         }
     }
   }

@@ -1047,13 +1047,16 @@ public data class DocumentReference(
 
     public companion object {
       public fun fromCode(code: kotlin.String): DocumentRelationshipType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum DocumentRelationshipType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): DocumentRelationshipType? =
         when (code) {
           "replaces" -> Replaces
           "transforms" -> Transforms
           "signs" -> Signs
           "appends" -> Appends
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum DocumentRelationshipType")
+          else -> null
         }
     }
   }
@@ -1077,12 +1080,16 @@ public data class DocumentReference(
 
     public companion object {
       public fun fromCode(code: kotlin.String): CompositionStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum CompositionStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): CompositionStatus? =
         when (code) {
           "preliminary" -> Preliminary
           "final" -> Final
           "amended" -> Amended
           "entered-in-error" -> Entered_In_Error
-          else -> throw IllegalArgumentException("Unknown code $code for enum CompositionStatus")
+          else -> null
         }
     }
   }

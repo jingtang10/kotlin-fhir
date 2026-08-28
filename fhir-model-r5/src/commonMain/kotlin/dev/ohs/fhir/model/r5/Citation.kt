@@ -3905,6 +3905,12 @@ public data class Citation(
 
     public companion object {
       public fun fromCode(code: kotlin.String): RelatedArtifactTypeExpanded =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum RelatedArtifactTypeExpanded"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): RelatedArtifactTypeExpanded? =
         when (code) {
           "documentation" -> Documentation
           "justification" -> Justification
@@ -3944,10 +3950,7 @@ public data class Citation(
           "cite-as" -> Cite_As
           "reprint" -> Reprint
           "reprint-of" -> Reprint_Of
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum RelatedArtifactTypeExpanded"
-            )
+          else -> null
         }
     }
   }

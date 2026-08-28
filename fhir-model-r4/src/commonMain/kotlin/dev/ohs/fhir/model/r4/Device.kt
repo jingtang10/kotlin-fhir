@@ -1292,6 +1292,10 @@ public data class Device(
 
     public companion object {
       public fun fromCode(code: kotlin.String): UDIEntryType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum UDIEntryType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): UDIEntryType? =
         when (code) {
           "barcode" -> Barcode
           "rfid" -> Rfid
@@ -1299,7 +1303,7 @@ public data class Device(
           "card" -> Card
           "self-reported" -> Self_Reported
           "unknown" -> Unknown
-          else -> throw IllegalArgumentException("Unknown code $code for enum UDIEntryType")
+          else -> null
         }
     }
   }
@@ -1333,6 +1337,10 @@ public data class Device(
 
     public companion object {
       public fun fromCode(code: kotlin.String): DeviceNameType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum DeviceNameType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): DeviceNameType? =
         when (code) {
           "udi-label-name" -> Udi_Label_Name
           "user-friendly-name" -> User_Friendly_Name
@@ -1340,7 +1348,7 @@ public data class Device(
           "manufacturer-name" -> Manufacturer_Name
           "model-name" -> Model_Name
           "other" -> Other
-          else -> throw IllegalArgumentException("Unknown code $code for enum DeviceNameType")
+          else -> null
         }
     }
   }
@@ -1360,12 +1368,16 @@ public data class Device(
 
     public companion object {
       public fun fromCode(code: kotlin.String): FHIRDeviceStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum FHIRDeviceStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): FHIRDeviceStatus? =
         when (code) {
           "active" -> Active
           "inactive" -> Inactive
           "entered-in-error" -> Entered_In_Error
           "unknown" -> Unknown
-          else -> throw IllegalArgumentException("Unknown code $code for enum FHIRDeviceStatus")
+          else -> null
         }
     }
   }

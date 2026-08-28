@@ -1658,12 +1658,15 @@ public data class TestReport(
 
     public companion object {
       public fun fromCode(code: kotlin.String): TestReportParticipantType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum TestReportParticipantType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): TestReportParticipantType? =
         when (code) {
           "test-engine" -> Test_Engine
           "client" -> Client
           "server" -> Server
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum TestReportParticipantType")
+          else -> null
         }
     }
   }
@@ -1684,14 +1687,17 @@ public data class TestReport(
 
     public companion object {
       public fun fromCode(code: kotlin.String): TestReportActionResult =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum TestReportActionResult")
+
+      public fun fromCodeOrNull(code: kotlin.String?): TestReportActionResult? =
         when (code) {
           "pass" -> Pass
           "skip" -> Skip
           "fail" -> Fail
           "warning" -> Warning
           "error" -> Error
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum TestReportActionResult")
+          else -> null
         }
     }
   }
@@ -1716,13 +1722,17 @@ public data class TestReport(
 
     public companion object {
       public fun fromCode(code: kotlin.String): TestReportStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum TestReportStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): TestReportStatus? =
         when (code) {
           "completed" -> Completed
           "in-progress" -> In_Progress
           "waiting" -> Waiting
           "stopped" -> Stopped
           "entered-in-error" -> Entered_In_Error
-          else -> throw IllegalArgumentException("Unknown code $code for enum TestReportStatus")
+          else -> null
         }
     }
   }
@@ -1741,11 +1751,15 @@ public data class TestReport(
 
     public companion object {
       public fun fromCode(code: kotlin.String): TestReportResult =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum TestReportResult")
+
+      public fun fromCodeOrNull(code: kotlin.String?): TestReportResult? =
         when (code) {
           "pass" -> Pass
           "fail" -> Fail
           "pending" -> Pending
-          else -> throw IllegalArgumentException("Unknown code $code for enum TestReportResult")
+          else -> null
         }
     }
   }

@@ -408,6 +408,10 @@ public enum class ElementTypes(
 
   public companion object {
     public fun fromCode(code: kotlin.String): ElementTypes =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum ElementTypes")
+
+    public fun fromCodeOrNull(code: kotlin.String?): ElementTypes? =
       when (code) {
         "http://hl7.org/fhirpath/System.String" -> String
         "http://hl7.org/fhirpath/System.Boolean" -> Boolean
@@ -623,7 +627,7 @@ public enum class ElementTypes(
         "VerificationResult" -> VerificationResult
         "VisionPrescription" -> VisionPrescription
         "Parameters" -> Parameters
-        else -> throw IllegalArgumentException("Unknown code $code for enum ElementTypes")
+        else -> null
       }
   }
 }

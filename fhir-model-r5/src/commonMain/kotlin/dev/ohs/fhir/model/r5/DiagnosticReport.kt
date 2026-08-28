@@ -934,6 +934,10 @@ public data class DiagnosticReport(
 
     public companion object {
       public fun fromCode(code: kotlin.String): DiagnosticReportStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum DiagnosticReportStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): DiagnosticReportStatus? =
         when (code) {
           "registered" -> Registered
           "partial" -> Partial
@@ -946,8 +950,7 @@ public data class DiagnosticReport(
           "cancelled" -> Cancelled
           "entered-in-error" -> Entered_In_Error
           "unknown" -> Unknown
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum DiagnosticReportStatus")
+          else -> null
         }
     }
   }

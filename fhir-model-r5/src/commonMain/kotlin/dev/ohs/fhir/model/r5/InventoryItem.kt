@@ -1311,6 +1311,10 @@ public data class InventoryItem(
 
     public companion object {
       public fun fromCode(code: kotlin.String): CommonLanguages =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum CommonLanguages")
+
+      public fun fromCodeOrNull(code: kotlin.String?): CommonLanguages? =
         when (code) {
           "ar" -> Ar
           "bg" -> Bg
@@ -1394,7 +1398,7 @@ public data class InventoryItem(
           "zh-HK" -> Zh_Hk
           "zh-SG" -> Zh_Sg
           "zh-TW" -> Zh_Tw
-          else -> throw IllegalArgumentException("Unknown code $code for enum CommonLanguages")
+          else -> null
         }
     }
   }
@@ -1418,13 +1422,16 @@ public data class InventoryItem(
 
     public companion object {
       public fun fromCode(code: kotlin.String): InventoryItemStatusCodes =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum InventoryItemStatusCodes")
+
+      public fun fromCodeOrNull(code: kotlin.String?): InventoryItemStatusCodes? =
         when (code) {
           "active" -> Active
           "inactive" -> Inactive
           "entered-in-error" -> Entered_In_Error
           "unknown" -> Unknown
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum InventoryItemStatusCodes")
+          else -> null
         }
     }
   }

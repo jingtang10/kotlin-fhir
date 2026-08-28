@@ -2477,6 +2477,10 @@ public data class ConceptMap(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ConceptMapPropertyType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ConceptMapPropertyType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ConceptMapPropertyType? =
         when (code) {
           "Coding" -> Coding
           "string" -> String
@@ -2485,8 +2489,7 @@ public data class ConceptMap(
           "dateTime" -> DateTime
           "decimal" -> Decimal
           "code" -> Code
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ConceptMapPropertyType")
+          else -> null
         }
     }
   }
@@ -2507,14 +2510,17 @@ public data class ConceptMap(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ConceptMapAttributeType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ConceptMapAttributeType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ConceptMapAttributeType? =
         when (code) {
           "code" -> Code
           "Coding" -> Coding
           "string" -> String
           "boolean" -> Boolean
           "Quantity" -> Quantity
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ConceptMapAttributeType")
+          else -> null
         }
     }
   }
@@ -2537,14 +2543,17 @@ public data class ConceptMap(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ConceptMapGroupUnmappedMode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum ConceptMapGroupUnmappedMode"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): ConceptMapGroupUnmappedMode? =
         when (code) {
           "use-source-code" -> Use_Source_Code
           "fixed" -> Fixed
           "other-map" -> Other_Map
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum ConceptMapGroupUnmappedMode"
-            )
+          else -> null
         }
     }
   }

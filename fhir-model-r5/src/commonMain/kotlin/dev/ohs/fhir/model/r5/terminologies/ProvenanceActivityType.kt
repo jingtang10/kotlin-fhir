@@ -71,6 +71,10 @@ public enum class ProvenanceActivityType(
 
   public companion object {
     public fun fromCode(code: String): ProvenanceActivityType =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum ProvenanceActivityType")
+
+    public fun fromCodeOrNull(code: String?): ProvenanceActivityType? =
       when (code) {
         "amend" -> Amend
         "originate" -> Originate
@@ -79,7 +83,7 @@ public enum class ProvenanceActivityType(
         "receive" -> Receive
         "transform" -> Transform
         "verify" -> Verify
-        else -> throw IllegalArgumentException("Unknown code $code for enum ProvenanceActivityType")
+        else -> null
       }
   }
 }

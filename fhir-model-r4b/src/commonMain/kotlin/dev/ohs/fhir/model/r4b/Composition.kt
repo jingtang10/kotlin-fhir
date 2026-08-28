@@ -1307,13 +1307,18 @@ public data class Composition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): CompositionAttestationMode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum CompositionAttestationMode"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): CompositionAttestationMode? =
         when (code) {
           "personal" -> Personal
           "professional" -> Professional
           "legal" -> Legal
           "official" -> Official
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum CompositionAttestationMode")
+          else -> null
         }
     }
   }
@@ -1333,13 +1338,16 @@ public data class Composition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): DocumentRelationshipType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum DocumentRelationshipType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): DocumentRelationshipType? =
         when (code) {
           "replaces" -> Replaces
           "transforms" -> Transforms
           "signs" -> Signs
           "appends" -> Appends
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum DocumentRelationshipType")
+          else -> null
         }
     }
   }
@@ -1358,11 +1366,15 @@ public data class Composition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ListMode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ListMode")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ListMode? =
         when (code) {
           "working" -> Working
           "snapshot" -> Snapshot
           "changes" -> Changes
-          else -> throw IllegalArgumentException("Unknown code $code for enum ListMode")
+          else -> null
         }
     }
   }
@@ -1386,12 +1398,16 @@ public data class Composition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): CompositionStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum CompositionStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): CompositionStatus? =
         when (code) {
           "preliminary" -> Preliminary
           "final" -> Final
           "amended" -> Amended
           "entered-in-error" -> Entered_In_Error
-          else -> throw IllegalArgumentException("Unknown code $code for enum CompositionStatus")
+          else -> null
         }
     }
   }
@@ -1416,6 +1432,10 @@ public data class Composition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): Confidentiality =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum Confidentiality")
+
+      public fun fromCodeOrNull(code: kotlin.String?): Confidentiality? =
         when (code) {
           "L" -> L
           "M" -> M
@@ -1423,7 +1443,7 @@ public data class Composition(
           "R" -> R
           "U" -> U
           "V" -> V
-          else -> throw IllegalArgumentException("Unknown code $code for enum Confidentiality")
+          else -> null
         }
     }
   }

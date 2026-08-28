@@ -936,15 +936,18 @@ public data class PaymentReconciliation(
 
     public companion object {
       public fun fromCode(code: kotlin.String): FinancialResourceStatusCodes =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum FinancialResourceStatusCodes"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): FinancialResourceStatusCodes? =
         when (code) {
           "active" -> Active
           "cancelled" -> Cancelled
           "draft" -> Draft
           "entered-in-error" -> Entered_In_Error
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum FinancialResourceStatusCodes"
-            )
+          else -> null
         }
     }
   }
@@ -964,12 +967,16 @@ public data class PaymentReconciliation(
 
     public companion object {
       public fun fromCode(code: kotlin.String): PaymentOutcome =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum PaymentOutcome")
+
+      public fun fromCodeOrNull(code: kotlin.String?): PaymentOutcome? =
         when (code) {
           "queued" -> Queued
           "complete" -> Complete
           "error" -> Error
           "partial" -> Partial
-          else -> throw IllegalArgumentException("Unknown code $code for enum PaymentOutcome")
+          else -> null
         }
     }
   }

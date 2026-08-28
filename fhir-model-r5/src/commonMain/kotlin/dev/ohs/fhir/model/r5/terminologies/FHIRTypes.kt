@@ -416,6 +416,10 @@ public enum class FHIRTypes(
 
   public companion object {
     public fun fromCode(code: kotlin.String): FHIRTypes =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum FHIRTypes")
+
+    public fun fromCodeOrNull(code: kotlin.String?): FHIRTypes? =
       when (code) {
         "Base" -> Base
         "Element" -> Element
@@ -648,7 +652,7 @@ public enum class FHIRTypes(
         "VerificationResult" -> VerificationResult
         "VisionPrescription" -> VisionPrescription
         "Parameters" -> Parameters
-        else -> throw IllegalArgumentException("Unknown code $code for enum FHIRTypes")
+        else -> null
       }
   }
 }

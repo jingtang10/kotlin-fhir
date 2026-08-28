@@ -1629,11 +1629,14 @@ public data class OperationDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): OperationParameterUse =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum OperationParameterUse")
+
+      public fun fromCodeOrNull(code: kotlin.String?): OperationParameterUse? =
         when (code) {
           "in" -> In
           "out" -> Out
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum OperationParameterUse")
+          else -> null
         }
     }
   }
@@ -1654,12 +1657,15 @@ public data class OperationDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): OperationParameterScope =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum OperationParameterScope")
+
+      public fun fromCodeOrNull(code: kotlin.String?): OperationParameterScope? =
         when (code) {
           "instance" -> Instance
           "type" -> Type
           "system" -> System
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum OperationParameterScope")
+          else -> null
         }
     }
   }
@@ -1677,10 +1683,14 @@ public data class OperationDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): OperationKind =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum OperationKind")
+
+      public fun fromCodeOrNull(code: kotlin.String?): OperationKind? =
         when (code) {
           "operation" -> Operation
           "query" -> Query
-          else -> throw IllegalArgumentException("Unknown code $code for enum OperationKind")
+          else -> null
         }
     }
   }
@@ -2159,6 +2169,12 @@ public data class OperationDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): VersionIndependentResourceTypesAll =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum VersionIndependentResourceTypesAll"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): VersionIndependentResourceTypesAll? =
         when (code) {
           "Account" -> Account
           "ActivityDefinition" -> ActivityDefinition
@@ -2363,10 +2379,7 @@ public data class OperationDefinition(
           "Sequence" -> Sequence
           "ServiceDefinition" -> ServiceDefinition
           "SubstanceSpecification" -> SubstanceSpecification
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum VersionIndependentResourceTypesAll"
-            )
+          else -> null
         }
     }
   }

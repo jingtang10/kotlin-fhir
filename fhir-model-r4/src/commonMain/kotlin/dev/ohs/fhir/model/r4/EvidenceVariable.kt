@@ -1038,6 +1038,10 @@ public data class EvidenceVariable(
 
     public companion object {
       public fun fromCode(code: kotlin.String): GroupMeasure =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum GroupMeasure")
+
+      public fun fromCodeOrNull(code: kotlin.String?): GroupMeasure? =
         when (code) {
           "mean" -> Mean
           "median" -> Median
@@ -1045,7 +1049,7 @@ public data class EvidenceVariable(
           "mean-of-median" -> Mean_Of_Median
           "median-of-mean" -> Median_Of_Mean
           "median-of-median" -> Median_Of_Median
-          else -> throw IllegalArgumentException("Unknown code $code for enum GroupMeasure")
+          else -> null
         }
     }
   }
@@ -1067,11 +1071,15 @@ public data class EvidenceVariable(
 
     public companion object {
       public fun fromCode(code: kotlin.String): EvidenceVariableType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum EvidenceVariableType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): EvidenceVariableType? =
         when (code) {
           "dichotomous" -> Dichotomous
           "continuous" -> Continuous
           "descriptive" -> Descriptive
-          else -> throw IllegalArgumentException("Unknown code $code for enum EvidenceVariableType")
+          else -> null
         }
     }
   }

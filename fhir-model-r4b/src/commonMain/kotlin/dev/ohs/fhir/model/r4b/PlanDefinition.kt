@@ -2347,12 +2347,16 @@ public data class PlanDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): RequestPriority =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum RequestPriority")
+
+      public fun fromCodeOrNull(code: kotlin.String?): RequestPriority? =
         when (code) {
           "routine" -> Routine
           "urgent" -> Urgent
           "asap" -> Asap
           "stat" -> Stat
-          else -> throw IllegalArgumentException("Unknown code $code for enum RequestPriority")
+          else -> null
         }
     }
   }
@@ -2375,12 +2379,15 @@ public data class PlanDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ActionGroupingBehavior =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ActionGroupingBehavior")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ActionGroupingBehavior? =
         when (code) {
           "visual-group" -> Visual_Group
           "logical-group" -> Logical_Group
           "sentence-group" -> Sentence_Group
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ActionGroupingBehavior")
+          else -> null
         }
     }
   }
@@ -2402,6 +2409,10 @@ public data class PlanDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ActionSelectionBehavior =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ActionSelectionBehavior")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ActionSelectionBehavior? =
         when (code) {
           "any" -> Any
           "all" -> All
@@ -2409,8 +2420,7 @@ public data class PlanDefinition(
           "exactly-one" -> Exactly_One
           "at-most-one" -> At_Most_One
           "one-or-more" -> One_Or_More
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ActionSelectionBehavior")
+          else -> null
         }
     }
   }
@@ -2433,12 +2443,15 @@ public data class PlanDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ActionRequiredBehavior =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ActionRequiredBehavior")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ActionRequiredBehavior? =
         when (code) {
           "must" -> Must
           "could" -> Could
           "must-unless-documented" -> Must_Unless_Documented
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ActionRequiredBehavior")
+          else -> null
         }
     }
   }
@@ -2456,11 +2469,14 @@ public data class PlanDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ActionPrecheckBehavior =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ActionPrecheckBehavior")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ActionPrecheckBehavior? =
         when (code) {
           "yes" -> Yes
           "no" -> No
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ActionPrecheckBehavior")
+          else -> null
         }
     }
   }
@@ -2478,11 +2494,14 @@ public data class PlanDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ActionCardinalityBehavior =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ActionCardinalityBehavior")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ActionCardinalityBehavior? =
         when (code) {
           "single" -> Single
           "multiple" -> Multiple
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ActionCardinalityBehavior")
+          else -> null
         }
     }
   }
@@ -2501,11 +2520,15 @@ public data class PlanDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ActionConditionKind =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ActionConditionKind")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ActionConditionKind? =
         when (code) {
           "applicability" -> Applicability
           "start" -> Start
           "stop" -> Stop
-          else -> throw IllegalArgumentException("Unknown code $code for enum ActionConditionKind")
+          else -> null
         }
     }
   }
@@ -2538,6 +2561,10 @@ public data class PlanDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ActionRelationshipType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ActionRelationshipType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ActionRelationshipType? =
         when (code) {
           "before-start" -> Before_Start
           "before" -> Before
@@ -2548,8 +2575,7 @@ public data class PlanDefinition(
           "after-start" -> After_Start
           "after" -> After
           "after-end" -> After_End
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ActionRelationshipType")
+          else -> null
         }
     }
   }
@@ -2573,13 +2599,16 @@ public data class PlanDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ActionParticipantType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ActionParticipantType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ActionParticipantType? =
         when (code) {
           "patient" -> Patient
           "practitioner" -> Practitioner
           "related-person" -> Related_Person
           "device" -> Device
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ActionParticipantType")
+          else -> null
         }
     }
   }

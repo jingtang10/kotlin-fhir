@@ -334,12 +334,15 @@ public data class FormularyItem(
 
     public companion object {
       public fun fromCode(code: String): FormularyItemStatusCodes =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum FormularyItemStatusCodes")
+
+      public fun fromCodeOrNull(code: String?): FormularyItemStatusCodes? =
         when (code) {
           "active" -> Active
           "entered-in-error" -> Entered_In_Error
           "inactive" -> Inactive
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum FormularyItemStatusCodes")
+          else -> null
         }
     }
   }

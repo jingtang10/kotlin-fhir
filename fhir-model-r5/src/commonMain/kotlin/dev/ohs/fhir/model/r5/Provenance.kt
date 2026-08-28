@@ -820,13 +820,17 @@ public data class Provenance(
 
     public companion object {
       public fun fromCode(code: String): ProvenanceEntityRole =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ProvenanceEntityRole")
+
+      public fun fromCodeOrNull(code: String?): ProvenanceEntityRole? =
         when (code) {
           "revision" -> Revision
           "quotation" -> Quotation
           "source" -> Source
           "instantiates" -> Instantiates
           "removal" -> Removal
-          else -> throw IllegalArgumentException("Unknown code $code for enum ProvenanceEntityRole")
+          else -> null
         }
     }
   }

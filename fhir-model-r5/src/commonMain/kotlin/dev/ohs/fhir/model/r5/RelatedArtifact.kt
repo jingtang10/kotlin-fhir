@@ -291,6 +291,10 @@ public data class RelatedArtifact(
 
     public companion object {
       public fun fromCode(code: kotlin.String): RelatedArtifactType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum RelatedArtifactType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): RelatedArtifactType? =
         when (code) {
           "documentation" -> Documentation
           "justification" -> Justification
@@ -328,7 +332,7 @@ public data class RelatedArtifact(
           "specification-of" -> Specification_Of
           "created-with" -> Created_With
           "cite-as" -> Cite_As
-          else -> throw IllegalArgumentException("Unknown code $code for enum RelatedArtifactType")
+          else -> null
         }
     }
   }

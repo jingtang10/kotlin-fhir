@@ -703,13 +703,18 @@ public data class NamingSystem(
 
     public companion object {
       public fun fromCode(code: kotlin.String): NamingSystemIdentifierType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum NamingSystemIdentifierType"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): NamingSystemIdentifierType? =
         when (code) {
           "oid" -> Oid
           "uuid" -> Uuid
           "uri" -> Uri
           "other" -> Other
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum NamingSystemIdentifierType")
+          else -> null
         }
     }
   }
@@ -728,11 +733,15 @@ public data class NamingSystem(
 
     public companion object {
       public fun fromCode(code: kotlin.String): NamingSystemType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum NamingSystemType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): NamingSystemType? =
         when (code) {
           "codesystem" -> Codesystem
           "identifier" -> Identifier
           "root" -> Root
-          else -> throw IllegalArgumentException("Unknown code $code for enum NamingSystemType")
+          else -> null
         }
     }
   }

@@ -1651,6 +1651,12 @@ public data class GraphDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): VersionIndependentResourceTypesAll =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum VersionIndependentResourceTypesAll"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): VersionIndependentResourceTypesAll? =
         when (code) {
           "Account" -> Account
           "ActivityDefinition" -> ActivityDefinition
@@ -1855,10 +1861,7 @@ public data class GraphDefinition(
           "Sequence" -> Sequence
           "ServiceDefinition" -> ServiceDefinition
           "SubstanceSpecification" -> SubstanceSpecification
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum VersionIndependentResourceTypesAll"
-            )
+          else -> null
         }
     }
   }
@@ -1876,10 +1879,14 @@ public data class GraphDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): GraphCompartmentUse =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum GraphCompartmentUse")
+
+      public fun fromCodeOrNull(code: kotlin.String?): GraphCompartmentUse? =
         when (code) {
           "where" -> Where
           "requires" -> Requires
-          else -> throw IllegalArgumentException("Unknown code $code for enum GraphCompartmentUse")
+          else -> null
         }
     }
   }
@@ -1899,12 +1906,16 @@ public data class GraphDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): GraphCompartmentRule =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum GraphCompartmentRule")
+
+      public fun fromCodeOrNull(code: kotlin.String?): GraphCompartmentRule? =
         when (code) {
           "identical" -> Identical
           "matching" -> Matching
           "different" -> Different
           "custom" -> Custom
-          else -> throw IllegalArgumentException("Unknown code $code for enum GraphCompartmentRule")
+          else -> null
         }
     }
   }
@@ -1926,6 +1937,10 @@ public data class GraphDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): CompartmentType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum CompartmentType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): CompartmentType? =
         when (code) {
           "Patient" -> Patient
           "Encounter" -> Encounter
@@ -1933,7 +1948,7 @@ public data class GraphDefinition(
           "Practitioner" -> Practitioner
           "Device" -> Device
           "EpisodeOfCare" -> EpisodeOfCare
-          else -> throw IllegalArgumentException("Unknown code $code for enum CompartmentType")
+          else -> null
         }
     }
   }

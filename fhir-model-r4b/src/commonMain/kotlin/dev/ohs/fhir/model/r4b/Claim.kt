@@ -3008,15 +3008,18 @@ public data class Claim(
 
     public companion object {
       public fun fromCode(code: kotlin.String): FinancialResourceStatusCodes =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum FinancialResourceStatusCodes"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): FinancialResourceStatusCodes? =
         when (code) {
           "active" -> Active
           "cancelled" -> Cancelled
           "draft" -> Draft
           "entered-in-error" -> Entered_In_Error
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum FinancialResourceStatusCodes"
-            )
+          else -> null
         }
     }
   }
@@ -3035,11 +3038,14 @@ public data class Claim(
 
     public companion object {
       public fun fromCode(code: kotlin.String): Use =
+        fromCodeOrNull(code) ?: throw IllegalArgumentException("Unknown code $code for enum Use")
+
+      public fun fromCodeOrNull(code: kotlin.String?): Use? =
         when (code) {
           "claim" -> Claim
           "preauthorization" -> Preauthorization
           "predetermination" -> Predetermination
-          else -> throw IllegalArgumentException("Unknown code $code for enum Use")
+          else -> null
         }
     }
   }

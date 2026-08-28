@@ -34,12 +34,16 @@ public enum class ClaimProcessingCodes(
 
   public companion object {
     public fun fromCode(code: String): ClaimProcessingCodes =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum ClaimProcessingCodes")
+
+    public fun fromCodeOrNull(code: String?): ClaimProcessingCodes? =
       when (code) {
         "queued" -> Queued
         "complete" -> Complete
         "error" -> Error
         "partial" -> Partial
-        else -> throw IllegalArgumentException("Unknown code $code for enum ClaimProcessingCodes")
+        else -> null
       }
   }
 }

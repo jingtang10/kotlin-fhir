@@ -49,12 +49,15 @@ public enum class IngredientManufacturerRole(
 
   public companion object {
     public fun fromCode(code: String): IngredientManufacturerRole =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum IngredientManufacturerRole")
+
+    public fun fromCodeOrNull(code: String?): IngredientManufacturerRole? =
       when (code) {
         "allowed" -> Allowed
         "possible" -> Possible
         "actual" -> Actual
-        else ->
-          throw IllegalArgumentException("Unknown code $code for enum IngredientManufacturerRole")
+        else -> null
       }
   }
 }

@@ -523,6 +523,10 @@ public data class GuidanceResponse(
 
     public companion object {
       public fun fromCode(code: String): GuidanceResponseStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum GuidanceResponseStatus")
+
+      public fun fromCodeOrNull(code: String?): GuidanceResponseStatus? =
         when (code) {
           "success" -> Success
           "data-requested" -> Data_Requested
@@ -530,8 +534,7 @@ public data class GuidanceResponse(
           "in-progress" -> In_Progress
           "failure" -> Failure
           "entered-in-error" -> Entered_In_Error
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum GuidanceResponseStatus")
+          else -> null
         }
     }
   }

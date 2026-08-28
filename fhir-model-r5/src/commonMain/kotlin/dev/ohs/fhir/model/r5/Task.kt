@@ -1989,6 +1989,10 @@ public data class Task(
 
     public companion object {
       public fun fromCode(code: kotlin.String): TaskStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum TaskStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): TaskStatus? =
         when (code) {
           "draft" -> Draft
           "requested" -> Requested
@@ -2002,7 +2006,7 @@ public data class Task(
           "failed" -> Failed
           "completed" -> Completed
           "entered-in-error" -> Entered_In_Error
-          else -> throw IllegalArgumentException("Unknown code $code for enum TaskStatus")
+          else -> null
         }
     }
   }
@@ -2027,6 +2031,10 @@ public data class Task(
 
     public companion object {
       public fun fromCode(code: kotlin.String): TaskIntent =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum TaskIntent")
+
+      public fun fromCodeOrNull(code: kotlin.String?): TaskIntent? =
         when (code) {
           "unknown" -> Unknown
           "proposal" -> Proposal
@@ -2037,7 +2045,7 @@ public data class Task(
           "filler-order" -> Filler_Order
           "instance-order" -> Instance_Order
           "option" -> Option
-          else -> throw IllegalArgumentException("Unknown code $code for enum TaskIntent")
+          else -> null
         }
     }
   }
@@ -2057,12 +2065,16 @@ public data class Task(
 
     public companion object {
       public fun fromCode(code: kotlin.String): RequestPriority =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum RequestPriority")
+
+      public fun fromCodeOrNull(code: kotlin.String?): RequestPriority? =
         when (code) {
           "routine" -> Routine
           "urgent" -> Urgent
           "asap" -> Asap
           "stat" -> Stat
-          else -> throw IllegalArgumentException("Unknown code $code for enum RequestPriority")
+          else -> null
         }
     }
   }

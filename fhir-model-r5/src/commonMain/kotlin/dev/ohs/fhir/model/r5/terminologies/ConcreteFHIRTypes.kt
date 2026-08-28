@@ -406,6 +406,10 @@ public enum class ConcreteFHIRTypes(
 
   public companion object {
     public fun fromCode(code: kotlin.String): ConcreteFHIRTypes =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum ConcreteFHIRTypes")
+
+    public fun fromCodeOrNull(code: kotlin.String?): ConcreteFHIRTypes? =
       when (code) {
         "Account" -> Account
         "ActivityDefinition" -> ActivityDefinition
@@ -628,7 +632,7 @@ public enum class ConcreteFHIRTypes(
         "VirtualServiceDetail" -> VirtualServiceDetail
         "VisionPrescription" -> VisionPrescription
         "xhtml" -> Xhtml
-        else -> throw IllegalArgumentException("Unknown code $code for enum ConcreteFHIRTypes")
+        else -> null
       }
   }
 }

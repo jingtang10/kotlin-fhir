@@ -546,14 +546,17 @@ public data class Subscription(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SubscriptionChannelType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SubscriptionChannelType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SubscriptionChannelType? =
         when (code) {
           "rest-hook" -> Rest_Hook
           "websocket" -> Websocket
           "email" -> Email
           "sms" -> Sms
           "message" -> Message
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum SubscriptionChannelType")
+          else -> null
         }
     }
   }
@@ -573,12 +576,16 @@ public data class Subscription(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SubscriptionStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SubscriptionStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SubscriptionStatus? =
         when (code) {
           "requested" -> Requested
           "active" -> Active
           "error" -> Error
           "off" -> Off
-          else -> throw IllegalArgumentException("Unknown code $code for enum SubscriptionStatus")
+          else -> null
         }
     }
   }

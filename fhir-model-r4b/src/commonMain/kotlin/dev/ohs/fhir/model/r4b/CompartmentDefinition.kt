@@ -715,13 +715,17 @@ public data class CompartmentDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): CompartmentType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum CompartmentType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): CompartmentType? =
         when (code) {
           "Patient" -> Patient
           "Encounter" -> Encounter
           "RelatedPerson" -> RelatedPerson
           "Practitioner" -> Practitioner
           "Device" -> Device
-          else -> throw IllegalArgumentException("Unknown code $code for enum CompartmentType")
+          else -> null
         }
     }
   }

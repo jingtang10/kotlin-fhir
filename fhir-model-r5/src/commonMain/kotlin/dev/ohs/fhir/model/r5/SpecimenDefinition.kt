@@ -1450,13 +1450,16 @@ public data class SpecimenDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SpecimenContainedPreference =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum SpecimenContainedPreference"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): SpecimenContainedPreference? =
         when (code) {
           "preferred" -> Preferred
           "alternate" -> Alternate
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum SpecimenContainedPreference"
-            )
+          else -> null
         }
     }
   }

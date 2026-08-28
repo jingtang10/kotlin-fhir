@@ -446,11 +446,15 @@ public data class Linkage(
 
     public companion object {
       public fun fromCode(code: String): LinkageType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum LinkageType")
+
+      public fun fromCodeOrNull(code: String?): LinkageType? =
         when (code) {
           "source" -> Source
           "alternate" -> Alternate
           "historical" -> Historical
-          else -> throw IllegalArgumentException("Unknown code $code for enum LinkageType")
+          else -> null
         }
     }
   }

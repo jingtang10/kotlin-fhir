@@ -3760,6 +3760,12 @@ public data class TestScript(
 
     public companion object {
       public fun fromCode(code: kotlin.String): TestScriptRequestMethodCode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum TestScriptRequestMethodCode"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): TestScriptRequestMethodCode? =
         when (code) {
           "delete" -> Delete
           "get" -> Get
@@ -3768,10 +3774,7 @@ public data class TestScript(
           "post" -> Post
           "put" -> Put
           "head" -> Head
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum TestScriptRequestMethodCode"
-            )
+          else -> null
         }
     }
   }
@@ -3789,11 +3792,14 @@ public data class TestScript(
 
     public companion object {
       public fun fromCode(code: kotlin.String): AssertionDirectionType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum AssertionDirectionType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): AssertionDirectionType? =
         when (code) {
           "response" -> Response
           "request" -> Request
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum AssertionDirectionType")
+          else -> null
         }
     }
   }
@@ -3820,6 +3826,10 @@ public data class TestScript(
 
     public companion object {
       public fun fromCode(code: kotlin.String): AssertionOperatorType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum AssertionOperatorType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): AssertionOperatorType? =
         when (code) {
           "equals" -> Equals
           "notEquals" -> NotEquals
@@ -3832,8 +3842,7 @@ public data class TestScript(
           "contains" -> Contains
           "notContains" -> NotContains
           "eval" -> Eval
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum AssertionOperatorType")
+          else -> null
         }
     }
   }
@@ -3873,6 +3882,10 @@ public data class TestScript(
 
     public companion object {
       public fun fromCode(code: kotlin.String): AssertionResponseTypes =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum AssertionResponseTypes")
+
+      public fun fromCodeOrNull(code: kotlin.String?): AssertionResponseTypes? =
         when (code) {
           "okay" -> Okay
           "created" -> Created
@@ -3886,8 +3899,7 @@ public data class TestScript(
           "gone" -> Gone
           "preconditionFailed" -> PreconditionFailed
           "unprocessable" -> Unprocessable
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum AssertionResponseTypes")
+          else -> null
         }
     }
   }

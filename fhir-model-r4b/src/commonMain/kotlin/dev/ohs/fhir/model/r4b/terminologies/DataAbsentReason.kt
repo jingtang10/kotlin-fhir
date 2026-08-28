@@ -85,6 +85,10 @@ public enum class DataAbsentReason(
 
   public companion object {
     public fun fromCode(code: String): DataAbsentReason =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum DataAbsentReason")
+
+    public fun fromCodeOrNull(code: String?): DataAbsentReason? =
       when (code) {
         "unknown" -> Unknown
         "asked-unknown" -> Asked_Unknown
@@ -101,7 +105,7 @@ public enum class DataAbsentReason(
         "positive-infinity" -> Positive_Infinity
         "not-performed" -> Not_Performed
         "not-permitted" -> Not_Permitted
-        else -> throw IllegalArgumentException("Unknown code $code for enum DataAbsentReason")
+        else -> null
       }
   }
 }

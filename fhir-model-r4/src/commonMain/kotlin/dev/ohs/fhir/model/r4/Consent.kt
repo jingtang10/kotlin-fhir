@@ -1281,10 +1281,14 @@ public data class Consent(
 
     public companion object {
       public fun fromCode(code: String): ConsentProvisionType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ConsentProvisionType")
+
+      public fun fromCodeOrNull(code: String?): ConsentProvisionType? =
         when (code) {
           "deny" -> Deny
           "permit" -> Permit
-          else -> throw IllegalArgumentException("Unknown code $code for enum ConsentProvisionType")
+          else -> null
         }
     }
   }
@@ -1304,12 +1308,16 @@ public data class Consent(
 
     public companion object {
       public fun fromCode(code: String): ConsentDataMeaning =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ConsentDataMeaning")
+
+      public fun fromCodeOrNull(code: String?): ConsentDataMeaning? =
         when (code) {
           "instance" -> Instance
           "related" -> Related
           "dependents" -> Dependents
           "authoredby" -> Authoredby
-          else -> throw IllegalArgumentException("Unknown code $code for enum ConsentDataMeaning")
+          else -> null
         }
     }
   }
@@ -1335,6 +1343,10 @@ public data class Consent(
 
     public companion object {
       public fun fromCode(code: String): ConsentState =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ConsentState")
+
+      public fun fromCodeOrNull(code: String?): ConsentState? =
         when (code) {
           "draft" -> Draft
           "proposed" -> Proposed
@@ -1342,7 +1354,7 @@ public data class Consent(
           "rejected" -> Rejected
           "inactive" -> Inactive
           "entered-in-error" -> Entered_In_Error
-          else -> throw IllegalArgumentException("Unknown code $code for enum ConsentState")
+          else -> null
         }
     }
   }

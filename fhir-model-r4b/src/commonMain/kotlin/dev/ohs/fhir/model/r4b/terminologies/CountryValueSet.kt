@@ -782,6 +782,10 @@ public enum class CountryValueSet(
 
   public companion object {
     public fun fromCode(code: String): CountryValueSet =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum CountryValueSet")
+
+    public fun fromCodeOrNull(code: String?): CountryValueSet? =
       when (code) {
         "AD" -> Ad
         "AE" -> Ae
@@ -1530,7 +1534,7 @@ public enum class CountryValueSet(
         "882" -> _882
         "887" -> _887
         "894" -> _894
-        else -> throw IllegalArgumentException("Unknown code $code for enum CountryValueSet")
+        else -> null
       }
   }
 }

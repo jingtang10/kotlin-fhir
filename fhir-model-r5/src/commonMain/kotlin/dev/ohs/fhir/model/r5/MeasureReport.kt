@@ -1699,11 +1699,15 @@ public data class MeasureReport(
 
     public companion object {
       public fun fromCode(code: kotlin.String): MeasureReportStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum MeasureReportStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): MeasureReportStatus? =
         when (code) {
           "complete" -> Complete
           "pending" -> Pending
           "error" -> Error
-          else -> throw IllegalArgumentException("Unknown code $code for enum MeasureReportStatus")
+          else -> null
         }
     }
   }
@@ -1723,12 +1727,16 @@ public data class MeasureReport(
 
     public companion object {
       public fun fromCode(code: kotlin.String): MeasureReportType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum MeasureReportType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): MeasureReportType? =
         when (code) {
           "individual" -> Individual
           "subject-list" -> Subject_List
           "summary" -> Summary
           "data-exchange" -> Data_Exchange
-          else -> throw IllegalArgumentException("Unknown code $code for enum MeasureReportType")
+          else -> null
         }
     }
   }
@@ -1753,10 +1761,14 @@ public data class MeasureReport(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SubmitDataUpdateType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SubmitDataUpdateType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SubmitDataUpdateType? =
         when (code) {
           "incremental" -> Incremental
           "snapshot" -> Snapshot
-          else -> throw IllegalArgumentException("Unknown code $code for enum SubmitDataUpdateType")
+          else -> null
         }
     }
   }

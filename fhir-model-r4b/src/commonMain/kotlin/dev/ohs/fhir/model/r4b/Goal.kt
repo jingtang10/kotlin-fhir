@@ -782,6 +782,10 @@ public data class Goal(
 
     public companion object {
       public fun fromCode(code: kotlin.String): GoalLifecycleStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum GoalLifecycleStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): GoalLifecycleStatus? =
         when (code) {
           "proposed" -> Proposed
           "planned" -> Planned
@@ -792,7 +796,7 @@ public data class Goal(
           "cancelled" -> Cancelled
           "entered-in-error" -> Entered_In_Error
           "rejected" -> Rejected
-          else -> throw IllegalArgumentException("Unknown code $code for enum GoalLifecycleStatus")
+          else -> null
         }
     }
   }

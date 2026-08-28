@@ -130,6 +130,10 @@ public data class MonetaryComponent(
 
     public companion object {
       public fun fromCode(code: String): PriceComponentType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum PriceComponentType")
+
+      public fun fromCodeOrNull(code: String?): PriceComponentType? =
         when (code) {
           "base" -> Base
           "surcharge" -> Surcharge
@@ -137,7 +141,7 @@ public data class MonetaryComponent(
           "discount" -> Discount
           "tax" -> Tax
           "informational" -> Informational
-          else -> throw IllegalArgumentException("Unknown code $code for enum PriceComponentType")
+          else -> null
         }
     }
   }

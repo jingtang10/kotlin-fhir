@@ -1210,11 +1210,15 @@ public data class Bundle(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SearchEntryMode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SearchEntryMode")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SearchEntryMode? =
         when (code) {
           "match" -> Match
           "include" -> Include
           "outcome" -> Outcome
-          else -> throw IllegalArgumentException("Unknown code $code for enum SearchEntryMode")
+          else -> null
         }
     }
   }
@@ -1239,6 +1243,10 @@ public data class Bundle(
 
     public companion object {
       public fun fromCode(code: kotlin.String): HTTPVerb =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum HTTPVerb")
+
+      public fun fromCodeOrNull(code: kotlin.String?): HTTPVerb? =
         when (code) {
           "GET" -> Get
           "HEAD" -> Head
@@ -1246,7 +1254,7 @@ public data class Bundle(
           "PUT" -> Put
           "DELETE" -> Delete
           "PATCH" -> Patch
-          else -> throw IllegalArgumentException("Unknown code $code for enum HTTPVerb")
+          else -> null
         }
     }
   }
@@ -1275,6 +1283,10 @@ public data class Bundle(
 
     public companion object {
       public fun fromCode(code: kotlin.String): BundleType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum BundleType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): BundleType? =
         when (code) {
           "document" -> Document
           "message" -> Message
@@ -1285,7 +1297,7 @@ public data class Bundle(
           "history" -> History
           "searchset" -> Searchset
           "collection" -> Collection
-          else -> throw IllegalArgumentException("Unknown code $code for enum BundleType")
+          else -> null
         }
     }
   }

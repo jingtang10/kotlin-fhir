@@ -1566,10 +1566,14 @@ public data class EffectEvidenceSynthesis(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ExposureState =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ExposureState")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ExposureState? =
         when (code) {
           "exposure" -> Exposure
           "exposure-alternative" -> Exposure_Alternative
-          else -> throw IllegalArgumentException("Unknown code $code for enum ExposureState")
+          else -> null
         }
     }
   }

@@ -34,12 +34,16 @@ public enum class BindingStrength(
 
   public companion object {
     public fun fromCode(code: String): BindingStrength =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum BindingStrength")
+
+    public fun fromCodeOrNull(code: String?): BindingStrength? =
       when (code) {
         "required" -> Required
         "extensible" -> Extensible
         "preferred" -> Preferred
         "example" -> Example
-        else -> throw IllegalArgumentException("Unknown code $code for enum BindingStrength")
+        else -> null
       }
   }
 }

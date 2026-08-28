@@ -33,6 +33,7 @@ import dev.ohs.fhir.model.r4b.DateTime
 import dev.ohs.fhir.model.r4b.Decimal
 import dev.ohs.fhir.model.r4b.Element
 import dev.ohs.fhir.model.r4b.Enumeration
+import dev.ohs.fhir.model.r4b.ExtensibleEnumeration
 import dev.ohs.fhir.model.r4b.Extension
 import dev.ohs.fhir.model.r4b.FhirDateTime
 import dev.ohs.fhir.model.r4b.FhirDecimal
@@ -586,7 +587,7 @@ internal object CodeSystemConceptDesignationSerializer :
       id = id,
       extension = extension ?: listOf(),
       modifierExtension = modifierExtension ?: listOf(),
-      language = Enumeration.of(language?.let { CommonLanguages.fromCode(it) }, _language),
+      language = ExtensibleEnumeration.of(language, _language, CommonLanguages::fromCodeOrNull),
       use = use,
       `value` =
         R4bString.of(`value`, _value)
@@ -610,7 +611,7 @@ internal object CodeSystemConceptDesignationSerializer :
         Hoisted.extensionSer,
         value.modifierExtension,
       )
-    ((value.language?.value?.code))?.let { encoder.encodeStringElement(descriptor, 3, it) }
+    ((value.language?.rawCode))?.let { encoder.encodeStringElement(descriptor, 3, it) }
     (value.language?.toElement())?.let {
       encoder.encodeSerializableElement(descriptor, 4, Hoisted.languageSer, it)
     }

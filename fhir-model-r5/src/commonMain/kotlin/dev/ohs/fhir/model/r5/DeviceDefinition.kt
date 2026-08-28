@@ -2761,14 +2761,17 @@ public data class DeviceDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): DeviceDefinitionRegulatoryIdentifierType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum DeviceDefinitionRegulatoryIdentifierType"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): DeviceDefinitionRegulatoryIdentifierType? =
         when (code) {
           "basic" -> Basic
           "master" -> Master
           "license" -> License
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum DeviceDefinitionRegulatoryIdentifierType"
-            )
+          else -> null
         }
     }
   }
@@ -2795,11 +2798,15 @@ public data class DeviceDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): DeviceNameType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum DeviceNameType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): DeviceNameType? =
         when (code) {
           "registered-name" -> Registered_Name
           "user-friendly-name" -> User_Friendly_Name
           "patient-reported-name" -> Patient_Reported_Name
-          else -> throw IllegalArgumentException("Unknown code $code for enum DeviceNameType")
+          else -> null
         }
     }
   }
@@ -2822,14 +2829,17 @@ public data class DeviceDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): DeviceCorrectiveActionScope =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum DeviceCorrectiveActionScope"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): DeviceCorrectiveActionScope? =
         when (code) {
           "model" -> Model
           "lot-numbers" -> Lot_Numbers
           "serial-numbers" -> Serial_Numbers
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum DeviceCorrectiveActionScope"
-            )
+          else -> null
         }
     }
   }
@@ -2871,6 +2881,12 @@ public data class DeviceDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): DeviceProductionIdentifierInUDI =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum DeviceProductionIdentifierInUDI"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): DeviceProductionIdentifierInUDI? =
         when (code) {
           "lot-number" -> Lot_Number
           "manufactured-date" -> Manufactured_Date
@@ -2878,10 +2894,7 @@ public data class DeviceDefinition(
           "expiration-date" -> Expiration_Date
           "biological-source" -> Biological_Source
           "software-version" -> Software_Version
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum DeviceProductionIdentifierInUDI"
-            )
+          else -> null
         }
     }
   }

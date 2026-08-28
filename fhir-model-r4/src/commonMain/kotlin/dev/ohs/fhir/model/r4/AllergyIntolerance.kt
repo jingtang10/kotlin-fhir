@@ -936,12 +936,17 @@ public data class AllergyIntolerance(
 
     public companion object {
       public fun fromCode(code: kotlin.String): AllergyIntoleranceSeverity =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum AllergyIntoleranceSeverity"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): AllergyIntoleranceSeverity? =
         when (code) {
           "mild" -> Mild
           "moderate" -> Moderate
           "severe" -> Severe
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum AllergyIntoleranceSeverity")
+          else -> null
         }
     }
   }
@@ -959,11 +964,14 @@ public data class AllergyIntolerance(
 
     public companion object {
       public fun fromCode(code: kotlin.String): AllergyIntoleranceType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum AllergyIntoleranceType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): AllergyIntoleranceType? =
         when (code) {
           "allergy" -> Allergy
           "intolerance" -> Intolerance
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum AllergyIntoleranceType")
+          else -> null
         }
     }
   }
@@ -983,13 +991,18 @@ public data class AllergyIntolerance(
 
     public companion object {
       public fun fromCode(code: kotlin.String): AllergyIntoleranceCategory =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum AllergyIntoleranceCategory"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): AllergyIntoleranceCategory? =
         when (code) {
           "food" -> Food
           "medication" -> Medication
           "environment" -> Environment
           "biologic" -> Biologic
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum AllergyIntoleranceCategory")
+          else -> null
         }
     }
   }
@@ -1015,14 +1028,17 @@ public data class AllergyIntolerance(
 
     public companion object {
       public fun fromCode(code: kotlin.String): AllergyIntoleranceCriticality =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum AllergyIntoleranceCriticality"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): AllergyIntoleranceCriticality? =
         when (code) {
           "low" -> Low
           "high" -> High
           "unable-to-assess" -> Unable_To_Assess
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum AllergyIntoleranceCriticality"
-            )
+          else -> null
         }
     }
   }

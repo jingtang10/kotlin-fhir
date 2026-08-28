@@ -212,6 +212,10 @@ public enum class Currencies(
 
   public companion object {
     public fun fromCode(code: String): Currencies =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum Currencies")
+
+    public fun fromCodeOrNull(code: String?): Currencies? =
       when (code) {
         "AED" -> Aed
         "AFN" -> Afn
@@ -395,7 +399,7 @@ public enum class Currencies(
         "ZAR" -> Zar
         "ZMW" -> Zmw
         "ZWL" -> Zwl
-        else -> throw IllegalArgumentException("Unknown code $code for enum Currencies")
+        else -> null
       }
   }
 }

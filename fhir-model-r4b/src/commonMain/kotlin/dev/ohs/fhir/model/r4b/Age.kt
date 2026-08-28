@@ -169,12 +169,16 @@ public data class Age(
 
     public companion object {
       public fun fromCode(code: kotlin.String): QuantityComparator =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum QuantityComparator")
+
+      public fun fromCodeOrNull(code: kotlin.String?): QuantityComparator? =
         when (code) {
           "<" -> LessThan
           "<=" -> LessThanOrEqualTo
           ">=" -> GreaterThanOrEqualTo
           ">" -> GreaterThan
-          else -> throw IllegalArgumentException("Unknown code $code for enum QuantityComparator")
+          else -> null
         }
     }
   }

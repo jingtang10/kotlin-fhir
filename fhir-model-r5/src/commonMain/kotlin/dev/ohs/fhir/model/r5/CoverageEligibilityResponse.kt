@@ -1391,15 +1391,18 @@ public data class CoverageEligibilityResponse(
 
     public companion object {
       public fun fromCode(code: kotlin.String): FinancialResourceStatusCodes =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum FinancialResourceStatusCodes"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): FinancialResourceStatusCodes? =
         when (code) {
           "active" -> Active
           "cancelled" -> Cancelled
           "draft" -> Draft
           "entered-in-error" -> Entered_In_Error
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum FinancialResourceStatusCodes"
-            )
+          else -> null
         }
     }
   }
@@ -1427,13 +1430,18 @@ public data class CoverageEligibilityResponse(
 
     public companion object {
       public fun fromCode(code: kotlin.String): EligibilityResponsePurpose =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum EligibilityResponsePurpose"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): EligibilityResponsePurpose? =
         when (code) {
           "auth-requirements" -> Auth_Requirements
           "benefits" -> Benefits
           "discovery" -> Discovery
           "validation" -> Validation
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum EligibilityResponsePurpose")
+          else -> null
         }
     }
   }
@@ -1453,12 +1461,16 @@ public data class CoverageEligibilityResponse(
 
     public companion object {
       public fun fromCode(code: kotlin.String): EligibilityOutcome =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum EligibilityOutcome")
+
+      public fun fromCodeOrNull(code: kotlin.String?): EligibilityOutcome? =
         when (code) {
           "queued" -> Queued
           "complete" -> Complete
           "error" -> Error
           "partial" -> Partial
-          else -> throw IllegalArgumentException("Unknown code $code for enum EligibilityOutcome")
+          else -> null
         }
     }
   }

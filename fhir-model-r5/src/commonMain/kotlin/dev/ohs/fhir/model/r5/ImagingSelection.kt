@@ -1154,16 +1154,19 @@ public data class ImagingSelection(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ImagingSelection2DGraphicType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum ImagingSelection2DGraphicType"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): ImagingSelection2DGraphicType? =
         when (code) {
           "point" -> Point
           "polyline" -> Polyline
           "interpolated" -> Interpolated
           "circle" -> Circle
           "ellipse" -> Ellipse
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum ImagingSelection2DGraphicType"
-            )
+          else -> null
         }
     }
   }
@@ -1185,6 +1188,12 @@ public data class ImagingSelection(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ImagingSelection3DGraphicType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum ImagingSelection3DGraphicType"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): ImagingSelection3DGraphicType? =
         when (code) {
           "point" -> Point
           "multipoint" -> Multipoint
@@ -1192,10 +1201,7 @@ public data class ImagingSelection(
           "polygon" -> Polygon
           "ellipse" -> Ellipse
           "ellipsoid" -> Ellipsoid
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum ImagingSelection3DGraphicType"
-            )
+          else -> null
         }
     }
   }
@@ -1218,12 +1224,15 @@ public data class ImagingSelection(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ImagingSelectionStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ImagingSelectionStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ImagingSelectionStatus? =
         when (code) {
           "available" -> Available
           "entered-in-error" -> Entered_In_Error
           "unknown" -> Unknown
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ImagingSelectionStatus")
+          else -> null
         }
     }
   }

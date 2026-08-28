@@ -1020,12 +1020,16 @@ public data class Specimen(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SpecimenStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SpecimenStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SpecimenStatus? =
         when (code) {
           "available" -> Available
           "unavailable" -> Unavailable
           "unsatisfactory" -> Unsatisfactory
           "entered-in-error" -> Entered_In_Error
-          else -> throw IllegalArgumentException("Unknown code $code for enum SpecimenStatus")
+          else -> null
         }
     }
   }

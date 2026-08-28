@@ -1037,14 +1037,17 @@ public data class MessageDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): MessageSignificanceCategory =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum MessageSignificanceCategory"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): MessageSignificanceCategory? =
         when (code) {
           "consequence" -> Consequence
           "currency" -> Currency
           "notification" -> Notification
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum MessageSignificanceCategory"
-            )
+          else -> null
         }
     }
   }
@@ -1075,15 +1078,18 @@ public data class MessageDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): MessageheaderResponseRequest =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum MessageheaderResponseRequest"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): MessageheaderResponseRequest? =
         when (code) {
           "always" -> Always
           "on-error" -> On_Error
           "never" -> Never
           "on-success" -> On_Success
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum MessageheaderResponseRequest"
-            )
+          else -> null
         }
     }
   }

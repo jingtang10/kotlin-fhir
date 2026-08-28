@@ -203,13 +203,17 @@ public open class Quantity(
 
     public companion object {
       public fun fromCode(code: kotlin.String): QuantityComparator =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum QuantityComparator")
+
+      public fun fromCodeOrNull(code: kotlin.String?): QuantityComparator? =
         when (code) {
           "<" -> LessThan
           "<=" -> LessThanOrEqualTo
           ">=" -> GreaterThanOrEqualTo
           ">" -> GreaterThan
           "ad" -> Ad
-          else -> throw IllegalArgumentException("Unknown code $code for enum QuantityComparator")
+          else -> null
         }
     }
   }

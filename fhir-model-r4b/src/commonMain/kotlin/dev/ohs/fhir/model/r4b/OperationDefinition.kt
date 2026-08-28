@@ -1433,11 +1433,14 @@ public data class OperationDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): OperationParameterUse =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum OperationParameterUse")
+
+      public fun fromCodeOrNull(code: kotlin.String?): OperationParameterUse? =
         when (code) {
           "in" -> In
           "out" -> Out
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum OperationParameterUse")
+          else -> null
         }
     }
   }
@@ -1455,10 +1458,14 @@ public data class OperationDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): OperationKind =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum OperationKind")
+
+      public fun fromCodeOrNull(code: kotlin.String?): OperationKind? =
         when (code) {
           "operation" -> Operation
           "query" -> Query
-          else -> throw IllegalArgumentException("Unknown code $code for enum OperationKind")
+          else -> null
         }
     }
   }

@@ -40,6 +40,10 @@ public enum class ParticipantResourceTypes(
 
   public companion object {
     public fun fromCode(code: String): ParticipantResourceTypes =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum ParticipantResourceTypes")
+
+    public fun fromCodeOrNull(code: String?): ParticipantResourceTypes? =
       when (code) {
         "CareTeam" -> CareTeam
         "Device" -> Device
@@ -51,8 +55,7 @@ public enum class ParticipantResourceTypes(
         "Practitioner" -> Practitioner
         "PractitionerRole" -> PractitionerRole
         "RelatedPerson" -> RelatedPerson
-        else ->
-          throw IllegalArgumentException("Unknown code $code for enum ParticipantResourceTypes")
+        else -> null
       }
   }
 }

@@ -1220,11 +1220,15 @@ public data class MeasureReport(
 
     public companion object {
       public fun fromCode(code: String): MeasureReportStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum MeasureReportStatus")
+
+      public fun fromCodeOrNull(code: String?): MeasureReportStatus? =
         when (code) {
           "complete" -> Complete
           "pending" -> Pending
           "error" -> Error
-          else -> throw IllegalArgumentException("Unknown code $code for enum MeasureReportStatus")
+          else -> null
         }
     }
   }
@@ -1248,12 +1252,16 @@ public data class MeasureReport(
 
     public companion object {
       public fun fromCode(code: String): MeasureReportType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum MeasureReportType")
+
+      public fun fromCodeOrNull(code: String?): MeasureReportType? =
         when (code) {
           "individual" -> Individual
           "subject-list" -> Subject_List
           "summary" -> Summary
           "data-collection" -> Data_Collection
-          else -> throw IllegalArgumentException("Unknown code $code for enum MeasureReportType")
+          else -> null
         }
     }
   }

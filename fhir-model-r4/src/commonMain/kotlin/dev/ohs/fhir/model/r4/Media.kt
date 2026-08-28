@@ -624,6 +624,10 @@ public data class Media(
 
     public companion object {
       public fun fromCode(code: kotlin.String): EventStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum EventStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): EventStatus? =
         when (code) {
           "preparation" -> Preparation
           "in-progress" -> In_Progress
@@ -633,7 +637,7 @@ public data class Media(
           "completed" -> Completed
           "entered-in-error" -> Entered_In_Error
           "unknown" -> Unknown
-          else -> throw IllegalArgumentException("Unknown code $code for enum EventStatus")
+          else -> null
         }
     }
   }

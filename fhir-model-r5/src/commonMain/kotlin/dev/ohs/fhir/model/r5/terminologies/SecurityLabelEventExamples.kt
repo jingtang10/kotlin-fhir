@@ -49,6 +49,10 @@ public enum class SecurityLabelEventExamples(
 
   public companion object {
     public fun fromCode(code: String): SecurityLabelEventExamples =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum SecurityLabelEventExamples")
+
+    public fun fromCodeOrNull(code: String?): SecurityLabelEventExamples? =
       when (code) {
         "TREAT" -> Treat
         "HPAYMT" -> Hpaymt
@@ -56,8 +60,7 @@ public enum class SecurityLabelEventExamples(
         "NOAUTH" -> Noauth
         "DELAU" -> Delau
         "NORDSCLCD" -> Nordsclcd
-        else ->
-          throw IllegalArgumentException("Unknown code $code for enum SecurityLabelEventExamples")
+        else -> null
       }
   }
 }

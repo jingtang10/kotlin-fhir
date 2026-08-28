@@ -410,11 +410,15 @@ public data class Flag(
 
     public companion object {
       public fun fromCode(code: String): FlagStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum FlagStatus")
+
+      public fun fromCodeOrNull(code: String?): FlagStatus? =
         when (code) {
           "active" -> Active
           "inactive" -> Inactive
           "entered-in-error" -> Entered_In_Error
-          else -> throw IllegalArgumentException("Unknown code $code for enum FlagStatus")
+          else -> null
         }
     }
   }

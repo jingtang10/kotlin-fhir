@@ -1811,6 +1811,10 @@ public data class EvidenceVariable(
 
     public companion object {
       public fun fromCode(code: kotlin.String): CharacteristicCombination =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum CharacteristicCombination")
+
+      public fun fromCodeOrNull(code: kotlin.String?): CharacteristicCombination? =
         when (code) {
           "all-of" -> All_Of
           "any-of" -> Any_Of
@@ -1819,8 +1823,7 @@ public data class EvidenceVariable(
           "statistical" -> Statistical
           "net-effect" -> Net_Effect
           "dataset" -> Dataset
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum CharacteristicCombination")
+          else -> null
         }
     }
   }
@@ -1847,13 +1850,16 @@ public data class EvidenceVariable(
 
     public companion object {
       public fun fromCode(code: kotlin.String): EvidenceVariableHandling =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum EvidenceVariableHandling")
+
+      public fun fromCodeOrNull(code: kotlin.String?): EvidenceVariableHandling? =
         when (code) {
           "continuous" -> Continuous
           "dichotomous" -> Dichotomous
           "ordinal" -> Ordinal
           "polychotomous" -> Polychotomous
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum EvidenceVariableHandling")
+          else -> null
         }
     }
   }

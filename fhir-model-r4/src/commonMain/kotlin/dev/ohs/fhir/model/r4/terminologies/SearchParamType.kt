@@ -38,6 +38,10 @@ public enum class SearchParamType(
 
   public companion object {
     public fun fromCode(code: kotlin.String): SearchParamType =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum SearchParamType")
+
+    public fun fromCodeOrNull(code: kotlin.String?): SearchParamType? =
       when (code) {
         "number" -> Number
         "date" -> Date
@@ -48,7 +52,7 @@ public enum class SearchParamType(
         "quantity" -> Quantity
         "uri" -> Uri
         "special" -> Special
-        else -> throw IllegalArgumentException("Unknown code $code for enum SearchParamType")
+        else -> null
       }
   }
 }

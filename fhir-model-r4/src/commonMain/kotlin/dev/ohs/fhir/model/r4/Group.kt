@@ -744,6 +744,10 @@ public data class Group(
 
     public companion object {
       public fun fromCode(code: kotlin.String): GroupType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum GroupType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): GroupType? =
         when (code) {
           "person" -> Person
           "animal" -> Animal
@@ -751,7 +755,7 @@ public data class Group(
           "device" -> Device
           "medication" -> Medication
           "substance" -> Substance
-          else -> throw IllegalArgumentException("Unknown code $code for enum GroupType")
+          else -> null
         }
     }
   }

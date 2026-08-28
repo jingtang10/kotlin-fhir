@@ -33,11 +33,15 @@ public enum class FundsReservationCodes(
 
   public companion object {
     public fun fromCode(code: String): FundsReservationCodes =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum FundsReservationCodes")
+
+    public fun fromCodeOrNull(code: String?): FundsReservationCodes? =
       when (code) {
         "patient" -> Patient
         "provider" -> Provider
         "none" -> None
-        else -> throw IllegalArgumentException("Unknown code $code for enum FundsReservationCodes")
+        else -> null
       }
   }
 }

@@ -1561,14 +1561,17 @@ public data class ConceptMap(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ConceptMapGroupUnmappedMode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum ConceptMapGroupUnmappedMode"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): ConceptMapGroupUnmappedMode? =
         when (code) {
           "provided" -> Provided
           "fixed" -> Fixed
           "other-map" -> Other_Map
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum ConceptMapGroupUnmappedMode"
-            )
+          else -> null
         }
     }
   }

@@ -34,12 +34,16 @@ public enum class AdministrativeGender(
 
   public companion object {
     public fun fromCode(code: String): AdministrativeGender =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum AdministrativeGender")
+
+    public fun fromCodeOrNull(code: String?): AdministrativeGender? =
       when (code) {
         "male" -> Male
         "female" -> Female
         "other" -> Other
         "unknown" -> Unknown
-        else -> throw IllegalArgumentException("Unknown code $code for enum AdministrativeGender")
+        else -> null
       }
   }
 }

@@ -55,6 +55,10 @@ public enum class IdentifierTypeCodes(
 
   public companion object {
     public fun fromCode(code: String): IdentifierTypeCodes =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum IdentifierTypeCodes")
+
+    public fun fromCodeOrNull(code: String?): IdentifierTypeCodes? =
       when (code) {
         "DL" -> Dl
         "PPN" -> Ppn
@@ -74,7 +78,7 @@ public enum class IdentifierTypeCodes(
         "PLAC" -> Plac
         "FILL" -> Fill
         "JHN" -> Jhn
-        else -> throw IllegalArgumentException("Unknown code $code for enum IdentifierTypeCodes")
+        else -> null
       }
   }
 }

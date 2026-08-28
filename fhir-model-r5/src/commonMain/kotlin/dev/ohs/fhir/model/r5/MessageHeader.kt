@@ -969,11 +969,15 @@ public data class MessageHeader(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ResponseType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ResponseType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ResponseType? =
         when (code) {
           "ok" -> Ok
           "transient-error" -> Transient_Error
           "fatal-error" -> Fatal_Error
-          else -> throw IllegalArgumentException("Unknown code $code for enum ResponseType")
+          else -> null
         }
     }
   }

@@ -1758,6 +1758,10 @@ public data class Transport(
 
     public companion object {
       public fun fromCode(code: kotlin.String): TransportStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum TransportStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): TransportStatus? =
         when (code) {
           "in-progress" -> In_Progress
           "completed" -> Completed
@@ -1765,7 +1769,7 @@ public data class Transport(
           "cancelled" -> Cancelled
           "planned" -> Planned
           "entered-in-error" -> Entered_In_Error
-          else -> throw IllegalArgumentException("Unknown code $code for enum TransportStatus")
+          else -> null
         }
     }
   }
@@ -1790,6 +1794,10 @@ public data class Transport(
 
     public companion object {
       public fun fromCode(code: kotlin.String): TransportIntent =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum TransportIntent")
+
+      public fun fromCodeOrNull(code: kotlin.String?): TransportIntent? =
         when (code) {
           "unknown" -> Unknown
           "proposal" -> Proposal
@@ -1800,7 +1808,7 @@ public data class Transport(
           "filler-order" -> Filler_Order
           "instance-order" -> Instance_Order
           "option" -> Option
-          else -> throw IllegalArgumentException("Unknown code $code for enum TransportIntent")
+          else -> null
         }
     }
   }
@@ -1820,12 +1828,16 @@ public data class Transport(
 
     public companion object {
       public fun fromCode(code: kotlin.String): RequestPriority =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum RequestPriority")
+
+      public fun fromCodeOrNull(code: kotlin.String?): RequestPriority? =
         when (code) {
           "routine" -> Routine
           "urgent" -> Urgent
           "asap" -> Asap
           "stat" -> Stat
-          else -> throw IllegalArgumentException("Unknown code $code for enum RequestPriority")
+          else -> null
         }
     }
   }

@@ -1212,6 +1212,10 @@ public data class EvidenceVariable(
 
     public companion object {
       public fun fromCode(code: kotlin.String): GroupMeasure =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum GroupMeasure")
+
+      public fun fromCodeOrNull(code: kotlin.String?): GroupMeasure? =
         when (code) {
           "mean" -> Mean
           "median" -> Median
@@ -1219,7 +1223,7 @@ public data class EvidenceVariable(
           "mean-of-median" -> Mean_Of_Median
           "median-of-mean" -> Median_Of_Mean
           "median-of-median" -> Median_Of_Median
-          else -> throw IllegalArgumentException("Unknown code $code for enum GroupMeasure")
+          else -> null
         }
     }
   }
@@ -1237,11 +1241,14 @@ public data class EvidenceVariable(
 
     public companion object {
       public fun fromCode(code: kotlin.String): CharacteristicCombination =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum CharacteristicCombination")
+
+      public fun fromCodeOrNull(code: kotlin.String?): CharacteristicCombination? =
         when (code) {
           "intersection" -> Intersection
           "union" -> Union
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum CharacteristicCombination")
+          else -> null
         }
     }
   }
@@ -1268,13 +1275,16 @@ public data class EvidenceVariable(
 
     public companion object {
       public fun fromCode(code: kotlin.String): EvidenceVariableHandling =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum EvidenceVariableHandling")
+
+      public fun fromCodeOrNull(code: kotlin.String?): EvidenceVariableHandling? =
         when (code) {
           "continuous" -> Continuous
           "dichotomous" -> Dichotomous
           "ordinal" -> Ordinal
           "polychotomous" -> Polychotomous
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum EvidenceVariableHandling")
+          else -> null
         }
     }
   }

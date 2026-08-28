@@ -1397,11 +1397,14 @@ public data class ConditionDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ConditionPreconditionType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ConditionPreconditionType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ConditionPreconditionType? =
         when (code) {
           "sensitive" -> Sensitive
           "specific" -> Specific
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ConditionPreconditionType")
+          else -> null
         }
     }
   }
@@ -1424,14 +1427,17 @@ public data class ConditionDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ConditionQuestionnairePurpose =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum ConditionQuestionnairePurpose"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): ConditionQuestionnairePurpose? =
         when (code) {
           "preadmit" -> Preadmit
           "diff-diagnosis" -> Diff_Diagnosis
           "outcome" -> Outcome
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum ConditionQuestionnairePurpose"
-            )
+          else -> null
         }
     }
   }

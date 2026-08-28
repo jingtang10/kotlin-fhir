@@ -1469,13 +1469,17 @@ public data class AuditEvent(
 
     public companion object {
       public fun fromCode(code: String): AuditEventAction =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum AuditEventAction")
+
+      public fun fromCodeOrNull(code: String?): AuditEventAction? =
         when (code) {
           "C" -> C
           "R" -> R
           "U" -> U
           "D" -> D
           "E" -> E
-          else -> throw IllegalArgumentException("Unknown code $code for enum AuditEventAction")
+          else -> null
         }
     }
   }
@@ -1499,6 +1503,10 @@ public data class AuditEvent(
 
     public companion object {
       public fun fromCode(code: String): AuditEventSeverity =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum AuditEventSeverity")
+
+      public fun fromCodeOrNull(code: String?): AuditEventSeverity? =
         when (code) {
           "emergency" -> Emergency
           "alert" -> Alert
@@ -1508,7 +1516,7 @@ public data class AuditEvent(
           "notice" -> Notice
           "informational" -> Informational
           "debug" -> Debug
-          else -> throw IllegalArgumentException("Unknown code $code for enum AuditEventSeverity")
+          else -> null
         }
     }
   }

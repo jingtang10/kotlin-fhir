@@ -772,11 +772,14 @@ public data class AdverseEvent(
 
     public companion object {
       public fun fromCode(code: kotlin.String): AdverseEventActuality =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum AdverseEventActuality")
+
+      public fun fromCodeOrNull(code: kotlin.String?): AdverseEventActuality? =
         when (code) {
           "actual" -> Actual
           "potential" -> Potential
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum AdverseEventActuality")
+          else -> null
         }
     }
   }

@@ -63,7 +63,7 @@ public data class Expression(
    */
   public val name: Code? = null,
   /** The media type of the language for the expression. */
-  public val language: Enumeration<ExpressionLanguage>? = null,
+  public val language: ExtensibleEnumeration<ExpressionLanguage>? = null,
   /**
    * An expression in the specified language that returns a value.
    *
@@ -126,7 +126,7 @@ public data class Expression(
     public open var name: Code.Builder? = null
 
     /** The media type of the language for the expression. */
-    public open var language: Enumeration<ExpressionLanguage>? = null
+    public open var language: ExtensibleEnumeration<ExpressionLanguage>? = null
 
     /**
      * An expression in the specified language that returns a value.
@@ -172,13 +172,17 @@ public data class Expression(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ExpressionLanguage =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ExpressionLanguage")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ExpressionLanguage? =
         when (code) {
           "text/cql" -> Text_Cql
           "text/fhirpath" -> Text_Fhirpath
           "text/x-fhir-query" -> Text_X_Fhir_Query
           "text/cql-identifier" -> Text_Cql_Identifier
           "text/cql-expression" -> Text_Cql_Expression
-          else -> throw IllegalArgumentException("Unknown code $code for enum ExpressionLanguage")
+          else -> null
         }
     }
   }

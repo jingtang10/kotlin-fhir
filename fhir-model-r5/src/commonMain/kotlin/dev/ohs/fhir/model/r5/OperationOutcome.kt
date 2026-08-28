@@ -511,13 +511,17 @@ public data class OperationOutcome(
 
     public companion object {
       public fun fromCode(code: kotlin.String): IssueSeverity =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum IssueSeverity")
+
+      public fun fromCodeOrNull(code: kotlin.String?): IssueSeverity? =
         when (code) {
           "fatal" -> Fatal
           "error" -> Error
           "warning" -> Warning
           "information" -> Information
           "success" -> Success
-          else -> throw IllegalArgumentException("Unknown code $code for enum IssueSeverity")
+          else -> null
         }
     }
   }
@@ -570,6 +574,10 @@ public data class OperationOutcome(
 
     public companion object {
       public fun fromCode(code: kotlin.String): IssueType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum IssueType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): IssueType? =
         when (code) {
           "invalid" -> Invalid
           "structure" -> Structure
@@ -604,7 +612,7 @@ public data class OperationOutcome(
           "throttled" -> Throttled
           "informational" -> Informational
           "success" -> Success
-          else -> throw IllegalArgumentException("Unknown code $code for enum IssueType")
+          else -> null
         }
     }
   }

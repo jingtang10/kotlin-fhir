@@ -1976,13 +1976,16 @@ public data class Evidence(
 
     public companion object {
       public fun fromCode(code: kotlin.String): EvidenceVariableHandling =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum EvidenceVariableHandling")
+
+      public fun fromCodeOrNull(code: kotlin.String?): EvidenceVariableHandling? =
         when (code) {
           "continuous" -> Continuous
           "dichotomous" -> Dichotomous
           "ordinal" -> Ordinal
           "polychotomous" -> Polychotomous
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum EvidenceVariableHandling")
+          else -> null
         }
     }
   }

@@ -457,13 +457,16 @@ public data class ImmunizationEvaluation(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ImmunizationEvaluationStatusCodes =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum ImmunizationEvaluationStatusCodes"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): ImmunizationEvaluationStatusCodes? =
         when (code) {
           "completed" -> Completed
           "entered-in-error" -> Entered_In_Error
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum ImmunizationEvaluationStatusCodes"
-            )
+          else -> null
         }
     }
   }

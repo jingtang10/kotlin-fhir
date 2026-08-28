@@ -1337,14 +1337,19 @@ public data class AuditEvent(
 
     public companion object {
       public fun fromCode(code: kotlin.String): AuditEventAgentNetworkType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum AuditEventAgentNetworkType"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): AuditEventAgentNetworkType? =
         when (code) {
           "1" -> _1
           "2" -> _2
           "3" -> _3
           "4" -> _4
           "5" -> _5
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum AuditEventAgentNetworkType")
+          else -> null
         }
     }
   }
@@ -1365,13 +1370,17 @@ public data class AuditEvent(
 
     public companion object {
       public fun fromCode(code: kotlin.String): AuditEventAction =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum AuditEventAction")
+
+      public fun fromCodeOrNull(code: kotlin.String?): AuditEventAction? =
         when (code) {
           "C" -> C
           "R" -> R
           "U" -> U
           "D" -> D
           "E" -> E
-          else -> throw IllegalArgumentException("Unknown code $code for enum AuditEventAction")
+          else -> null
         }
     }
   }
@@ -1391,12 +1400,16 @@ public data class AuditEvent(
 
     public companion object {
       public fun fromCode(code: kotlin.String): AuditEventOutcome =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum AuditEventOutcome")
+
+      public fun fromCodeOrNull(code: kotlin.String?): AuditEventOutcome? =
         when (code) {
           "0" -> _0
           "4" -> _4
           "8" -> _8
           "12" -> _12
-          else -> throw IllegalArgumentException("Unknown code $code for enum AuditEventOutcome")
+          else -> null
         }
     }
   }

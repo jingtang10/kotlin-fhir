@@ -248,13 +248,17 @@ public data class Address(
 
     public companion object {
       public fun fromCode(code: kotlin.String): AddressUse =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum AddressUse")
+
+      public fun fromCodeOrNull(code: kotlin.String?): AddressUse? =
         when (code) {
           "home" -> Home
           "work" -> Work
           "temp" -> Temp
           "old" -> Old
           "billing" -> Billing
-          else -> throw IllegalArgumentException("Unknown code $code for enum AddressUse")
+          else -> null
         }
     }
   }
@@ -273,11 +277,15 @@ public data class Address(
 
     public companion object {
       public fun fromCode(code: kotlin.String): AddressType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum AddressType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): AddressType? =
         when (code) {
           "postal" -> Postal
           "physical" -> Physical
           "both" -> Both
-          else -> throw IllegalArgumentException("Unknown code $code for enum AddressType")
+          else -> null
         }
     }
   }

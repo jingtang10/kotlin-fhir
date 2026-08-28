@@ -1161,15 +1161,18 @@ public data class Coverage(
 
     public companion object {
       public fun fromCode(code: kotlin.String): FinancialResourceStatusCodes =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum FinancialResourceStatusCodes"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): FinancialResourceStatusCodes? =
         when (code) {
           "active" -> Active
           "cancelled" -> Cancelled
           "draft" -> Draft
           "entered-in-error" -> Entered_In_Error
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum FinancialResourceStatusCodes"
-            )
+          else -> null
         }
     }
   }
@@ -1188,11 +1191,14 @@ public data class Coverage(
 
     public companion object {
       public fun fromCode(code: kotlin.String): Kind =
+        fromCodeOrNull(code) ?: throw IllegalArgumentException("Unknown code $code for enum Kind")
+
+      public fun fromCodeOrNull(code: kotlin.String?): Kind? =
         when (code) {
           "insurance" -> Insurance
           "self-pay" -> Self_Pay
           "other" -> Other
-          else -> throw IllegalArgumentException("Unknown code $code for enum Kind")
+          else -> null
         }
     }
   }

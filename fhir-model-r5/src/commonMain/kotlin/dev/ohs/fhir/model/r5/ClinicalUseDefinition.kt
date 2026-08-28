@@ -1438,14 +1438,17 @@ public data class ClinicalUseDefinition(
 
     public companion object {
       public fun fromCode(code: String): ClinicalUseDefinitionType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ClinicalUseDefinitionType")
+
+      public fun fromCodeOrNull(code: String?): ClinicalUseDefinitionType? =
         when (code) {
           "indication" -> Indication
           "contraindication" -> Contraindication
           "interaction" -> Interaction
           "undesirable-effect" -> Undesirable_Effect
           "warning" -> Warning
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ClinicalUseDefinitionType")
+          else -> null
         }
     }
   }

@@ -268,6 +268,10 @@ public enum class OperationOutcomeCodes(
 
   public companion object {
     public fun fromCode(code: String): OperationOutcomeCodes =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum OperationOutcomeCodes")
+
+    public fun fromCodeOrNull(code: String?): OperationOutcomeCodes? =
       when (code) {
         "DELETE_MULTIPLE_MATCHES" -> Delete_Multiple_Matches
         "MSG_AUTH_REQUIRED" -> Msg_Auth_Required
@@ -320,7 +324,7 @@ public enum class OperationOutcomeCodes(
         "SEARCH_MULTIPLE" -> Search_Multiple
         "SEARCH_NONE" -> Search_None
         "UPDATE_MULTIPLE_MATCHES" -> Update_Multiple_Matches
-        else -> throw IllegalArgumentException("Unknown code $code for enum OperationOutcomeCodes")
+        else -> null
       }
   }
 }

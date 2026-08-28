@@ -32,10 +32,14 @@ public enum class EncounterDiagnosisUse(
 
   public companion object {
     public fun fromCode(code: String): EncounterDiagnosisUse =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum EncounterDiagnosisUse")
+
+    public fun fromCodeOrNull(code: String?): EncounterDiagnosisUse? =
       when (code) {
         "working" -> Working
         "final" -> Final
-        else -> throw IllegalArgumentException("Unknown code $code for enum EncounterDiagnosisUse")
+        else -> null
       }
   }
 }

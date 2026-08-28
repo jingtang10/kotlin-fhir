@@ -504,13 +504,16 @@ public data class SubscriptionStatus(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SubscriptionStatusCodes =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SubscriptionStatusCodes")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SubscriptionStatusCodes? =
         when (code) {
           "requested" -> Requested
           "active" -> Active
           "error" -> Error
           "off" -> Off
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum SubscriptionStatusCodes")
+          else -> null
         }
     }
   }
@@ -539,16 +542,19 @@ public data class SubscriptionStatus(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SubscriptionNotificationType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum SubscriptionNotificationType"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): SubscriptionNotificationType? =
         when (code) {
           "handshake" -> Handshake
           "heartbeat" -> Heartbeat
           "event-notification" -> Event_Notification
           "query-status" -> Query_Status
           "query-event" -> Query_Event
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum SubscriptionNotificationType"
-            )
+          else -> null
         }
     }
   }

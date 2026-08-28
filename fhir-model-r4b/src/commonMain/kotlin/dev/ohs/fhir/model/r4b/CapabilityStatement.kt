@@ -3028,11 +3028,14 @@ public data class CapabilityStatement(
 
     public companion object {
       public fun fromCode(code: kotlin.String): RestfulCapabilityMode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum RestfulCapabilityMode")
+
+      public fun fromCodeOrNull(code: kotlin.String?): RestfulCapabilityMode? =
         when (code) {
           "client" -> Client
           "server" -> Server
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum RestfulCapabilityMode")
+          else -> null
         }
     }
   }
@@ -3055,12 +3058,15 @@ public data class CapabilityStatement(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ResourceVersionPolicy =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ResourceVersionPolicy")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ResourceVersionPolicy? =
         when (code) {
           "no-version" -> No_Version
           "versioned" -> Versioned
           "versioned-update" -> Versioned_Update
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ResourceVersionPolicy")
+          else -> null
         }
     }
   }
@@ -3084,13 +3090,16 @@ public data class CapabilityStatement(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ConditionalReadStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ConditionalReadStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ConditionalReadStatus? =
         when (code) {
           "not-supported" -> Not_Supported
           "modified-since" -> Modified_Since
           "not-match" -> Not_Match
           "full-support" -> Full_Support
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ConditionalReadStatus")
+          else -> null
         }
     }
   }
@@ -3117,12 +3126,15 @@ public data class CapabilityStatement(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ConditionalDeleteStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ConditionalDeleteStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ConditionalDeleteStatus? =
         when (code) {
           "not-supported" -> Not_Supported
           "single" -> Single
           "multiple" -> Multiple
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ConditionalDeleteStatus")
+          else -> null
         }
     }
   }
@@ -3147,14 +3159,17 @@ public data class CapabilityStatement(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ReferenceHandlingPolicy =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ReferenceHandlingPolicy")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ReferenceHandlingPolicy? =
         when (code) {
           "literal" -> Literal
           "logical" -> Logical
           "resolves" -> Resolves
           "enforced" -> Enforced
           "local" -> Local
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ReferenceHandlingPolicy")
+          else -> null
         }
     }
   }
@@ -3183,6 +3198,10 @@ public data class CapabilityStatement(
 
     public companion object {
       public fun fromCode(code: kotlin.String): TypeRestfulInteraction =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum TypeRestfulInteraction")
+
+      public fun fromCodeOrNull(code: kotlin.String?): TypeRestfulInteraction? =
         when (code) {
           "read" -> Read
           "vread" -> Vread
@@ -3193,8 +3212,7 @@ public data class CapabilityStatement(
           "history-type" -> History_Type
           "create" -> Create
           "search-type" -> Search_Type
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum TypeRestfulInteraction")
+          else -> null
         }
     }
   }
@@ -3214,13 +3232,16 @@ public data class CapabilityStatement(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SystemRestfulInteraction =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SystemRestfulInteraction")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SystemRestfulInteraction? =
         when (code) {
           "transaction" -> Transaction
           "batch" -> Batch
           "search-system" -> Search_System
           "history-system" -> History_System
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum SystemRestfulInteraction")
+          else -> null
         }
     }
   }
@@ -3238,10 +3259,14 @@ public data class CapabilityStatement(
 
     public companion object {
       public fun fromCode(code: kotlin.String): EventCapabilityMode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum EventCapabilityMode")
+
+      public fun fromCodeOrNull(code: kotlin.String?): EventCapabilityMode? =
         when (code) {
           "sender" -> Sender
           "receiver" -> Receiver
-          else -> throw IllegalArgumentException("Unknown code $code for enum EventCapabilityMode")
+          else -> null
         }
     }
   }
@@ -3259,10 +3284,14 @@ public data class CapabilityStatement(
 
     public companion object {
       public fun fromCode(code: kotlin.String): DocumentMode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum DocumentMode")
+
+      public fun fromCodeOrNull(code: kotlin.String?): DocumentMode? =
         when (code) {
           "producer" -> Producer
           "consumer" -> Consumer
-          else -> throw IllegalArgumentException("Unknown code $code for enum DocumentMode")
+          else -> null
         }
     }
   }
@@ -3281,12 +3310,15 @@ public data class CapabilityStatement(
 
     public companion object {
       public fun fromCode(code: kotlin.String): CapabilityStatementKind =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum CapabilityStatementKind")
+
+      public fun fromCodeOrNull(code: kotlin.String?): CapabilityStatementKind? =
         when (code) {
           "instance" -> Instance
           "capability" -> Capability
           "requirements" -> Requirements
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum CapabilityStatementKind")
+          else -> null
         }
     }
   }

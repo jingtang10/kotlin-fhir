@@ -3210,6 +3210,10 @@ public data class ValueSet(
 
     public companion object {
       public fun fromCode(code: kotlin.String): FilterOperator =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum FilterOperator")
+
+      public fun fromCodeOrNull(code: kotlin.String?): FilterOperator? =
         when (code) {
           "=" -> EqualTo
           "is-a" -> Is_A
@@ -3222,7 +3226,7 @@ public data class ValueSet(
           "child-of" -> Child_Of
           "descendent-leaf" -> Descendent_Leaf
           "exists" -> Exists
-          else -> throw IllegalArgumentException("Unknown code $code for enum FilterOperator")
+          else -> null
         }
     }
   }

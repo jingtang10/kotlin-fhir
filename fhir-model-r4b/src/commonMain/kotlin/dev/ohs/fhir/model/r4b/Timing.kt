@@ -508,6 +508,10 @@ public data class Timing(
 
     public companion object {
       public fun fromCode(code: String): UnitsOfTime =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum UnitsOfTime")
+
+      public fun fromCodeOrNull(code: String?): UnitsOfTime? =
         when (code) {
           "s" -> S
           "min" -> Min
@@ -516,7 +520,7 @@ public data class Timing(
           "wk" -> Wk
           "mo" -> Mo
           "a" -> A
-          else -> throw IllegalArgumentException("Unknown code $code for enum UnitsOfTime")
+          else -> null
         }
     }
   }
@@ -539,6 +543,10 @@ public data class Timing(
 
     public companion object {
       public fun fromCode(code: String): DaysOfWeek =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum DaysOfWeek")
+
+      public fun fromCodeOrNull(code: String?): DaysOfWeek? =
         when (code) {
           "mon" -> Mon
           "tue" -> Tue
@@ -547,7 +555,7 @@ public data class Timing(
           "fri" -> Fri
           "sat" -> Sat
           "sun" -> Sun
-          else -> throw IllegalArgumentException("Unknown code $code for enum DaysOfWeek")
+          else -> null
         }
     }
   }
@@ -589,6 +597,10 @@ public data class Timing(
 
     public companion object {
       public fun fromCode(code: String): EventTiming =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum EventTiming")
+
+      public fun fromCodeOrNull(code: String?): EventTiming? =
         when (code) {
           "MORN" -> Morn
           "MORN.early" -> Morn_Early
@@ -616,7 +628,7 @@ public data class Timing(
           "PCM" -> Pcm
           "PCD" -> Pcd
           "PCV" -> Pcv
-          else -> throw IllegalArgumentException("Unknown code $code for enum EventTiming")
+          else -> null
         }
     }
   }

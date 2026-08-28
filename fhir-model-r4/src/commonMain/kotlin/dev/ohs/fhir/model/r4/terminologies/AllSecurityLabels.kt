@@ -662,6 +662,10 @@ public enum class AllSecurityLabels(
 
   public companion object {
     public fun fromCode(code: String): AllSecurityLabels =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum AllSecurityLabels")
+
+    public fun fromCodeOrNull(code: String?): AllSecurityLabels? =
       when (code) {
         "U" -> U
         "L" -> L
@@ -863,7 +867,7 @@ public enum class AllSecurityLabels(
         "BTG" -> Btg
         "ERTREAT" -> Ertreat
         "POPHLTH" -> Pophlth
-        else -> throw IllegalArgumentException("Unknown code $code for enum AllSecurityLabels")
+        else -> null
       }
   }
 }

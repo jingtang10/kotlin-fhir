@@ -6010,13 +6010,18 @@ public data class ExplanationOfBenefit(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ExplanationOfBenefitStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum ExplanationOfBenefitStatus"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): ExplanationOfBenefitStatus? =
         when (code) {
           "active" -> Active
           "cancelled" -> Cancelled
           "draft" -> Draft
           "entered-in-error" -> Entered_In_Error
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ExplanationOfBenefitStatus")
+          else -> null
         }
     }
   }
@@ -6035,11 +6040,14 @@ public data class ExplanationOfBenefit(
 
     public companion object {
       public fun fromCode(code: kotlin.String): Use =
+        fromCodeOrNull(code) ?: throw IllegalArgumentException("Unknown code $code for enum Use")
+
+      public fun fromCodeOrNull(code: kotlin.String?): Use? =
         when (code) {
           "claim" -> Claim
           "preauthorization" -> Preauthorization
           "predetermination" -> Predetermination
-          else -> throw IllegalArgumentException("Unknown code $code for enum Use")
+          else -> null
         }
     }
   }
@@ -6059,12 +6067,16 @@ public data class ExplanationOfBenefit(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ClaimProcessingCodes =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ClaimProcessingCodes")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ClaimProcessingCodes? =
         when (code) {
           "queued" -> Queued
           "complete" -> Complete
           "error" -> Error
           "partial" -> Partial
-          else -> throw IllegalArgumentException("Unknown code $code for enum ClaimProcessingCodes")
+          else -> null
         }
     }
   }

@@ -1014,10 +1014,14 @@ public data class Permission(
 
     public companion object {
       public fun fromCode(code: String): ConsentProvisionType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ConsentProvisionType")
+
+      public fun fromCodeOrNull(code: String?): ConsentProvisionType? =
         when (code) {
           "deny" -> Deny
           "permit" -> Permit
-          else -> throw IllegalArgumentException("Unknown code $code for enum ConsentProvisionType")
+          else -> null
         }
     }
   }
@@ -1037,12 +1041,16 @@ public data class Permission(
 
     public companion object {
       public fun fromCode(code: String): ConsentDataMeaning =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ConsentDataMeaning")
+
+      public fun fromCodeOrNull(code: String?): ConsentDataMeaning? =
         when (code) {
           "instance" -> Instance
           "related" -> Related
           "dependents" -> Dependents
           "authoredby" -> Authoredby
-          else -> throw IllegalArgumentException("Unknown code $code for enum ConsentDataMeaning")
+          else -> null
         }
     }
   }
@@ -1066,12 +1074,16 @@ public data class Permission(
 
     public companion object {
       public fun fromCode(code: String): PermissionStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum PermissionStatus")
+
+      public fun fromCodeOrNull(code: String?): PermissionStatus? =
         when (code) {
           "active" -> Active
           "entered-in-error" -> Entered_In_Error
           "draft" -> Draft
           "rejected" -> Rejected
-          else -> throw IllegalArgumentException("Unknown code $code for enum PermissionStatus")
+          else -> null
         }
     }
   }
@@ -1117,6 +1129,10 @@ public data class Permission(
 
     public companion object {
       public fun fromCode(code: String): PermissionRuleCombining =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum PermissionRuleCombining")
+
+      public fun fromCodeOrNull(code: String?): PermissionRuleCombining? =
         when (code) {
           "deny-overrides" -> Deny_Overrides
           "permit-overrides" -> Permit_Overrides
@@ -1124,8 +1140,7 @@ public data class Permission(
           "ordered-permit-overrides" -> Ordered_Permit_Overrides
           "deny-unless-permit" -> Deny_Unless_Permit
           "permit-unless-deny" -> Permit_Unless_Deny
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum PermissionRuleCombining")
+          else -> null
         }
     }
   }

@@ -69,6 +69,10 @@ public enum class RequestResourceType(
 
   public companion object {
     public fun fromCode(code: String): RequestResourceType =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum RequestResourceType")
+
+    public fun fromCodeOrNull(code: String?): RequestResourceType? =
       when (code) {
         "Appointment" -> Appointment
         "AppointmentResponse" -> AppointmentResponse
@@ -85,7 +89,7 @@ public enum class RequestResourceType(
         "SupplyRequest" -> SupplyRequest
         "Task" -> Task
         "VisionPrescription" -> VisionPrescription
-        else -> throw IllegalArgumentException("Unknown code $code for enum RequestResourceType")
+        else -> null
       }
   }
 }

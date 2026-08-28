@@ -775,6 +775,10 @@ public data class Location(
 
     public companion object {
       public fun fromCode(code: kotlin.String): DaysOfWeek =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum DaysOfWeek")
+
+      public fun fromCodeOrNull(code: kotlin.String?): DaysOfWeek? =
         when (code) {
           "mon" -> Mon
           "tue" -> Tue
@@ -783,7 +787,7 @@ public data class Location(
           "fri" -> Fri
           "sat" -> Sat
           "sun" -> Sun
-          else -> throw IllegalArgumentException("Unknown code $code for enum DaysOfWeek")
+          else -> null
         }
     }
   }
@@ -802,11 +806,15 @@ public data class Location(
 
     public companion object {
       public fun fromCode(code: kotlin.String): LocationStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum LocationStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): LocationStatus? =
         when (code) {
           "active" -> Active
           "suspended" -> Suspended
           "inactive" -> Inactive
-          else -> throw IllegalArgumentException("Unknown code $code for enum LocationStatus")
+          else -> null
         }
     }
   }
@@ -826,10 +834,14 @@ public data class Location(
 
     public companion object {
       public fun fromCode(code: kotlin.String): LocationMode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum LocationMode")
+
+      public fun fromCodeOrNull(code: kotlin.String?): LocationMode? =
         when (code) {
           "instance" -> Instance
           "kind" -> Kind
-          else -> throw IllegalArgumentException("Unknown code $code for enum LocationMode")
+          else -> null
         }
     }
   }

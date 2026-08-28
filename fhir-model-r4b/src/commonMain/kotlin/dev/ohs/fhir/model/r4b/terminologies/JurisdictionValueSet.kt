@@ -1862,6 +1862,10 @@ public enum class JurisdictionValueSet(
 
   public companion object {
     public fun fromCode(code: String): JurisdictionValueSet =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum JurisdictionValueSet")
+
+    public fun fromCodeOrNull(code: String?): JurisdictionValueSet? =
       when (code) {
         "AD" -> Ad
         "AE" -> Ae
@@ -3639,7 +3643,7 @@ public enum class JurisdictionValueSet(
         "054" -> _054
         "057" -> _057
         "061" -> _061
-        else -> throw IllegalArgumentException("Unknown code $code for enum JurisdictionValueSet")
+        else -> null
       }
   }
 }

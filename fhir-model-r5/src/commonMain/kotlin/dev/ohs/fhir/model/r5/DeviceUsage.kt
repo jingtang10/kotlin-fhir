@@ -631,6 +631,10 @@ public data class DeviceUsage(
 
     public companion object {
       public fun fromCode(code: String): DeviceUsageStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum DeviceUsageStatus")
+
+      public fun fromCodeOrNull(code: String?): DeviceUsageStatus? =
         when (code) {
           "active" -> Active
           "completed" -> Completed
@@ -639,7 +643,7 @@ public data class DeviceUsage(
           "intended" -> Intended
           "stopped" -> Stopped
           "on-hold" -> On_Hold
-          else -> throw IllegalArgumentException("Unknown code $code for enum DeviceUsageStatus")
+          else -> null
         }
     }
   }

@@ -47,13 +47,17 @@ public enum class ConceptMapRelationship(
 
   public companion object {
     public fun fromCode(code: String): ConceptMapRelationship =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum ConceptMapRelationship")
+
+    public fun fromCodeOrNull(code: String?): ConceptMapRelationship? =
       when (code) {
         "related-to" -> Related_To
         "equivalent" -> Equivalent
         "source-is-narrower-than-target" -> Source_Is_Narrower_Than_Target
         "source-is-broader-than-target" -> Source_Is_Broader_Than_Target
         "not-related-to" -> Not_Related_To
-        else -> throw IllegalArgumentException("Unknown code $code for enum ConceptMapRelationship")
+        else -> null
       }
   }
 }

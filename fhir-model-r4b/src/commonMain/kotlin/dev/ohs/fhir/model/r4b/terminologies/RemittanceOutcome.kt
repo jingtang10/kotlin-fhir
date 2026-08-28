@@ -34,12 +34,16 @@ public enum class RemittanceOutcome(
 
   public companion object {
     public fun fromCode(code: String): RemittanceOutcome =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum RemittanceOutcome")
+
+    public fun fromCodeOrNull(code: String?): RemittanceOutcome? =
       when (code) {
         "queued" -> Queued
         "complete" -> Complete
         "error" -> Error
         "partial" -> Partial
-        else -> throw IllegalArgumentException("Unknown code $code for enum RemittanceOutcome")
+        else -> null
       }
   }
 }

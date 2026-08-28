@@ -709,12 +709,15 @@ public data class Medication(
 
     public companion object {
       public fun fromCode(code: kotlin.String): MedicationStatusCodes =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum MedicationStatusCodes")
+
+      public fun fromCodeOrNull(code: kotlin.String?): MedicationStatusCodes? =
         when (code) {
           "active" -> Active
           "inactive" -> Inactive
           "entered-in-error" -> Entered_In_Error
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum MedicationStatusCodes")
+          else -> null
         }
     }
   }

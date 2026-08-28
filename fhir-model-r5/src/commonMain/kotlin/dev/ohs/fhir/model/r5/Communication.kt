@@ -773,6 +773,10 @@ public data class Communication(
 
     public companion object {
       public fun fromCode(code: String): EventStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum EventStatus")
+
+      public fun fromCodeOrNull(code: String?): EventStatus? =
         when (code) {
           "preparation" -> Preparation
           "in-progress" -> In_Progress
@@ -782,7 +786,7 @@ public data class Communication(
           "completed" -> Completed
           "entered-in-error" -> Entered_In_Error
           "unknown" -> Unknown
-          else -> throw IllegalArgumentException("Unknown code $code for enum EventStatus")
+          else -> null
         }
     }
   }
@@ -802,12 +806,16 @@ public data class Communication(
 
     public companion object {
       public fun fromCode(code: String): RequestPriority =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum RequestPriority")
+
+      public fun fromCodeOrNull(code: String?): RequestPriority? =
         when (code) {
           "routine" -> Routine
           "urgent" -> Urgent
           "asap" -> Asap
           "stat" -> Stat
-          else -> throw IllegalArgumentException("Unknown code $code for enum RequestPriority")
+          else -> null
         }
     }
   }

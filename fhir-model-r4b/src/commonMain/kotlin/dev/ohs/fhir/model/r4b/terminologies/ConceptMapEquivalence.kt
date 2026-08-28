@@ -40,6 +40,10 @@ public enum class ConceptMapEquivalence(
 
   public companion object {
     public fun fromCode(code: String): ConceptMapEquivalence =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum ConceptMapEquivalence")
+
+    public fun fromCodeOrNull(code: String?): ConceptMapEquivalence? =
       when (code) {
         "relatedto" -> Relatedto
         "equivalent" -> Equivalent
@@ -51,7 +55,7 @@ public enum class ConceptMapEquivalence(
         "inexact" -> Inexact
         "unmatched" -> Unmatched
         "disjoint" -> Disjoint
-        else -> throw IllegalArgumentException("Unknown code $code for enum ConceptMapEquivalence")
+        else -> null
       }
   }
 }

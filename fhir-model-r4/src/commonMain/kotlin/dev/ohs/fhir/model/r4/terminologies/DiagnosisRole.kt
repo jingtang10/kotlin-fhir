@@ -40,6 +40,10 @@ public enum class DiagnosisRole(
 
   public companion object {
     public fun fromCode(code: String): DiagnosisRole =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum DiagnosisRole")
+
+    public fun fromCodeOrNull(code: String?): DiagnosisRole? =
       when (code) {
         "AD" -> Ad
         "DD" -> Dd
@@ -48,7 +52,7 @@ public enum class DiagnosisRole(
         "pre-op" -> Pre_Op
         "post-op" -> Post_Op
         "billing" -> Billing
-        else -> throw IllegalArgumentException("Unknown code $code for enum DiagnosisRole")
+        else -> null
       }
   }
 }

@@ -52,6 +52,10 @@ public enum class FHIRVersion(
 
   public companion object {
     public fun fromCode(code: String): FHIRVersion =
+      fromCodeOrNull(code)
+        ?: throw IllegalArgumentException("Unknown code $code for enum FHIRVersion")
+
+    public fun fromCodeOrNull(code: String?): FHIRVersion? =
       when (code) {
         "0.01" -> _0_01
         "0.05" -> _0_05
@@ -75,7 +79,7 @@ public enum class FHIRVersion(
         "3.5.0" -> _3_5_0
         "4.0.0" -> _4_0_0
         "4.0.1" -> _4_0_1
-        else -> throw IllegalArgumentException("Unknown code $code for enum FHIRVersion")
+        else -> null
       }
   }
 }

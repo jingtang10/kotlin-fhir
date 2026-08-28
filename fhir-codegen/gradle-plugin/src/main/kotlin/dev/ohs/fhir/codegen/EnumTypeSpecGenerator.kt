@@ -96,6 +96,16 @@ object EnumTypeSpecGenerator {
                 FunSpec.builder("fromCode")
                   .addParameter("code", String::class)
                   .returns(ClassName.bestGuess(enumClassName))
+                  .addStatement(
+                    "return fromCodeOrNull(code) ?: throw IllegalArgumentException(\"Unknown code \$code for enum %L\")",
+                    enumClassName,
+                  )
+                  .build()
+              )
+              .addFunction(
+                FunSpec.builder("fromCodeOrNull")
+                  .addParameter("code", String::class.asClassName().copy(nullable = true))
+                  .returns(ClassName.bestGuess(enumClassName).copy(nullable = true))
                   .beginControlFlow("return when (code)")
                   .apply {
                     fhirEnum.constants
@@ -103,10 +113,7 @@ object EnumTypeSpecGenerator {
                       .forEach {
                         addStatement("%S -> %L", it.code, it.name)
                       }
-                    addStatement(
-                      "else -> throw IllegalArgumentException(\"Unknown code \$code for enum %L\")",
-                      enumClassName,
-                    )
+                    addStatement("else -> null")
                   }
                   .endControlFlow()
                   .build()

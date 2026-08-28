@@ -1047,12 +1047,17 @@ public data class Ingredient(
 
     public companion object {
       public fun fromCode(code: kotlin.String): IngredientManufacturerRole =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum IngredientManufacturerRole"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): IngredientManufacturerRole? =
         when (code) {
           "allowed" -> Allowed
           "possible" -> Possible
           "actual" -> Actual
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum IngredientManufacturerRole")
+          else -> null
         }
     }
   }

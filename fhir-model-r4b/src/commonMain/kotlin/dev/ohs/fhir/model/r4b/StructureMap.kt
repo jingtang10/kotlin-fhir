@@ -2210,13 +2210,16 @@ public data class StructureMap(
 
     public companion object {
       public fun fromCode(code: kotlin.String): StructureMapModelMode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum StructureMapModelMode")
+
+      public fun fromCodeOrNull(code: kotlin.String?): StructureMapModelMode? =
         when (code) {
           "source" -> Source
           "queried" -> Queried
           "target" -> Target
           "produced" -> Produced
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum StructureMapModelMode")
+          else -> null
         }
     }
   }
@@ -2239,12 +2242,15 @@ public data class StructureMap(
 
     public companion object {
       public fun fromCode(code: kotlin.String): StructureMapGroupTypeMode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum StructureMapGroupTypeMode")
+
+      public fun fromCodeOrNull(code: kotlin.String?): StructureMapGroupTypeMode? =
         when (code) {
           "none" -> None
           "types" -> Types
           "type-and-types" -> Type_And_Types
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum StructureMapGroupTypeMode")
+          else -> null
         }
     }
   }
@@ -2262,11 +2268,14 @@ public data class StructureMap(
 
     public companion object {
       public fun fromCode(code: kotlin.String): StructureMapInputMode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum StructureMapInputMode")
+
+      public fun fromCodeOrNull(code: kotlin.String?): StructureMapInputMode? =
         when (code) {
           "source" -> Source
           "target" -> Target
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum StructureMapInputMode")
+          else -> null
         }
     }
   }
@@ -2287,14 +2296,19 @@ public data class StructureMap(
 
     public companion object {
       public fun fromCode(code: kotlin.String): StructureMapSourceListMode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum StructureMapSourceListMode"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): StructureMapSourceListMode? =
         when (code) {
           "first" -> First
           "not_first" -> Not_First
           "last" -> Last
           "not_last" -> Not_Last
           "only_one" -> Only_One
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum StructureMapSourceListMode")
+          else -> null
         }
     }
   }
@@ -2312,11 +2326,14 @@ public data class StructureMap(
 
     public companion object {
       public fun fromCode(code: kotlin.String): StructureMapContextType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum StructureMapContextType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): StructureMapContextType? =
         when (code) {
           "type" -> Type
           "variable" -> Variable
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum StructureMapContextType")
+          else -> null
         }
     }
   }
@@ -2336,13 +2353,18 @@ public data class StructureMap(
 
     public companion object {
       public fun fromCode(code: kotlin.String): StructureMapTargetListMode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum StructureMapTargetListMode"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): StructureMapTargetListMode? =
         when (code) {
           "first" -> First
           "share" -> Share
           "last" -> Last
           "collate" -> Collate
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum StructureMapTargetListMode")
+          else -> null
         }
     }
   }
@@ -2375,6 +2397,10 @@ public data class StructureMap(
 
     public companion object {
       public fun fromCode(code: kotlin.String): StructureMapTransform =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum StructureMapTransform")
+
+      public fun fromCodeOrNull(code: kotlin.String?): StructureMapTransform? =
         when (code) {
           "create" -> Create
           "copy" -> Copy
@@ -2393,8 +2419,7 @@ public data class StructureMap(
           "qty" -> Qty
           "id" -> Id
           "cp" -> Cp
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum StructureMapTransform")
+          else -> null
         }
     }
   }

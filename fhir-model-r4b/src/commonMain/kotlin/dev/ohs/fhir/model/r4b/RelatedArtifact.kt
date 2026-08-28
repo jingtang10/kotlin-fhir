@@ -203,6 +203,10 @@ public data class RelatedArtifact(
 
     public companion object {
       public fun fromCode(code: kotlin.String): RelatedArtifactType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum RelatedArtifactType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): RelatedArtifactType? =
         when (code) {
           "documentation" -> Documentation
           "justification" -> Justification
@@ -212,7 +216,7 @@ public data class RelatedArtifact(
           "derived-from" -> Derived_From
           "depends-on" -> Depends_On
           "composed-of" -> Composed_Of
-          else -> throw IllegalArgumentException("Unknown code $code for enum RelatedArtifactType")
+          else -> null
         }
     }
   }

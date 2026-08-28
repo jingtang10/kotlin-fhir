@@ -1556,11 +1556,15 @@ public data class SubscriptionTopic(
 
     public companion object {
       public fun fromCode(code: kotlin.String): InteractionTrigger =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum InteractionTrigger")
+
+      public fun fromCodeOrNull(code: kotlin.String?): InteractionTrigger? =
         when (code) {
           "create" -> Create
           "update" -> Update
           "delete" -> Delete
-          else -> throw IllegalArgumentException("Unknown code $code for enum InteractionTrigger")
+          else -> null
         }
     }
   }
@@ -1581,11 +1585,14 @@ public data class SubscriptionTopic(
 
     public companion object {
       public fun fromCode(code: kotlin.String): CriteriaNotExistsBehavior =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum CriteriaNotExistsBehavior")
+
+      public fun fromCodeOrNull(code: kotlin.String?): CriteriaNotExistsBehavior? =
         when (code) {
           "test-passes" -> Test_Passes
           "test-fails" -> Test_Fails
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum CriteriaNotExistsBehavior")
+          else -> null
         }
     }
   }
@@ -1632,6 +1639,12 @@ public data class SubscriptionTopic(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SubscriptionSearchModifier =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum SubscriptionSearchModifier"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): SubscriptionSearchModifier? =
         when (code) {
           "=" -> EqualTo
           "eq" -> Eq
@@ -1648,8 +1661,7 @@ public data class SubscriptionTopic(
           "in" -> In
           "not-in" -> Not_In
           "of-type" -> Of_Type
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum SubscriptionSearchModifier")
+          else -> null
         }
     }
   }

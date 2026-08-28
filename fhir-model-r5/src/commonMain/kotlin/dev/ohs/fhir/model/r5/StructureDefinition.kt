@@ -1484,11 +1484,15 @@ public data class StructureDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ExtensionContextType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ExtensionContextType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ExtensionContextType? =
         when (code) {
           "fhirpath" -> Fhirpath
           "element" -> Element
           "extension" -> Extension
-          else -> throw IllegalArgumentException("Unknown code $code for enum ExtensionContextType")
+          else -> null
         }
     }
   }
@@ -1516,13 +1520,16 @@ public data class StructureDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): StructureDefinitionKind =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum StructureDefinitionKind")
+
+      public fun fromCodeOrNull(code: kotlin.String?): StructureDefinitionKind? =
         when (code) {
           "primitive-type" -> Primitive_Type
           "complex-type" -> Complex_Type
           "resource" -> Resource
           "logical" -> Logical
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum StructureDefinitionKind")
+          else -> null
         }
     }
   }
@@ -1540,10 +1547,14 @@ public data class StructureDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): TypeDerivationRule =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum TypeDerivationRule")
+
+      public fun fromCodeOrNull(code: kotlin.String?): TypeDerivationRule? =
         when (code) {
           "specialization" -> Specialization
           "constraint" -> Constraint
-          else -> throw IllegalArgumentException("Unknown code $code for enum TypeDerivationRule")
+          else -> null
         }
     }
   }

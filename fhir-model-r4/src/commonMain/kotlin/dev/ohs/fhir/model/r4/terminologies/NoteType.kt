@@ -33,11 +33,14 @@ public enum class NoteType(
 
   public companion object {
     public fun fromCode(code: String): NoteType =
+      fromCodeOrNull(code) ?: throw IllegalArgumentException("Unknown code $code for enum NoteType")
+
+    public fun fromCodeOrNull(code: String?): NoteType? =
       when (code) {
         "display" -> Display
         "print" -> Print
         "printoper" -> Printoper
-        else -> throw IllegalArgumentException("Unknown code $code for enum NoteType")
+        else -> null
       }
   }
 }

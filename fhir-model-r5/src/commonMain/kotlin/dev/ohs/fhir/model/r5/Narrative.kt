@@ -141,12 +141,16 @@ public data class Narrative(
 
     public companion object {
       public fun fromCode(code: String): NarrativeStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum NarrativeStatus")
+
+      public fun fromCodeOrNull(code: String?): NarrativeStatus? =
         when (code) {
           "generated" -> Generated
           "extensions" -> Extensions
           "additional" -> Additional
           "empty" -> Empty
-          else -> throw IllegalArgumentException("Unknown code $code for enum NarrativeStatus")
+          else -> null
         }
     }
   }

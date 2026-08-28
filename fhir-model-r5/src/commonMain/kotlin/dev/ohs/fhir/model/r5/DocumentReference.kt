@@ -1223,6 +1223,10 @@ public data class DocumentReference(
 
     public companion object {
       public fun fromCode(code: kotlin.String): CompositionStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum CompositionStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): CompositionStatus? =
         when (code) {
           "registered" -> Registered
           "partial" -> Partial
@@ -1235,7 +1239,7 @@ public data class DocumentReference(
           "entered-in-error" -> Entered_In_Error
           "deprecated" -> Deprecated
           "unknown" -> Unknown
-          else -> throw IllegalArgumentException("Unknown code $code for enum CompositionStatus")
+          else -> null
         }
     }
   }

@@ -979,16 +979,19 @@ public data class QuestionnaireResponse(
 
     public companion object {
       public fun fromCode(code: kotlin.String): QuestionnaireResponseStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum QuestionnaireResponseStatus"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): QuestionnaireResponseStatus? =
         when (code) {
           "in-progress" -> In_Progress
           "completed" -> Completed
           "amended" -> Amended
           "entered-in-error" -> Entered_In_Error
           "stopped" -> Stopped
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum QuestionnaireResponseStatus"
-            )
+          else -> null
         }
     }
   }

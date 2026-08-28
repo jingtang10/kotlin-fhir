@@ -513,11 +513,14 @@ public data class CatalogEntry(
 
     public companion object {
       public fun fromCode(code: String): CatalogEntryRelationType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum CatalogEntryRelationType")
+
+      public fun fromCodeOrNull(code: String?): CatalogEntryRelationType? =
         when (code) {
           "triggers" -> Triggers
           "is-replaced-by" -> Is_Replaced_By
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum CatalogEntryRelationType")
+          else -> null
         }
     }
   }

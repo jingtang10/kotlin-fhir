@@ -998,13 +998,16 @@ public data class Requirements(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ConformanceExpectation =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ConformanceExpectation")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ConformanceExpectation? =
         when (code) {
           "SHALL" -> Shall
           "SHOULD" -> Should
           "MAY" -> May
           "SHOULD-NOT" -> Should_Not
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ConformanceExpectation")
+          else -> null
         }
     }
   }

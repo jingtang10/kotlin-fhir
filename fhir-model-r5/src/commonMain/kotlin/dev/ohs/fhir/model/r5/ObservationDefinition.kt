@@ -1387,12 +1387,15 @@ public data class ObservationDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ObservationRangeCategory =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ObservationRangeCategory")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ObservationRangeCategory? =
         when (code) {
           "reference" -> Reference
           "critical" -> Critical
           "absolute" -> Absolute
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ObservationRangeCategory")
+          else -> null
         }
     }
   }
@@ -1423,6 +1426,10 @@ public data class ObservationDefinition(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ObservationDataType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ObservationDataType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ObservationDataType? =
         when (code) {
           "Quantity" -> Quantity
           "CodeableConcept" -> CodeableConcept
@@ -1435,7 +1442,7 @@ public data class ObservationDefinition(
           "time" -> Time
           "dateTime" -> DateTime
           "Period" -> Period
-          else -> throw IllegalArgumentException("Unknown code $code for enum ObservationDataType")
+          else -> null
         }
     }
   }

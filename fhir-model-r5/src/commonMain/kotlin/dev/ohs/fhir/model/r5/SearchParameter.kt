@@ -1541,6 +1541,12 @@ public data class SearchParameter(
 
     public companion object {
       public fun fromCode(code: kotlin.String): VersionIndependentResourceTypesAll =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException(
+            "Unknown code $code for enum VersionIndependentResourceTypesAll"
+          )
+
+      public fun fromCodeOrNull(code: kotlin.String?): VersionIndependentResourceTypesAll? =
         when (code) {
           "Account" -> Account
           "ActivityDefinition" -> ActivityDefinition
@@ -1745,10 +1751,7 @@ public data class SearchParameter(
           "Sequence" -> Sequence
           "ServiceDefinition" -> ServiceDefinition
           "SubstanceSpecification" -> SubstanceSpecification
-          else ->
-            throw IllegalArgumentException(
-              "Unknown code $code for enum VersionIndependentResourceTypesAll"
-            )
+          else -> null
         }
     }
   }
@@ -1770,12 +1773,15 @@ public data class SearchParameter(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SearchProcessingModeType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SearchProcessingModeType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SearchProcessingModeType? =
         when (code) {
           "normal" -> Normal
           "phonetic" -> Phonetic
           "other" -> Other
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum SearchProcessingModeType")
+          else -> null
         }
     }
   }
@@ -1800,6 +1806,10 @@ public data class SearchParameter(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SearchComparator =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SearchComparator")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SearchComparator? =
         when (code) {
           "eq" -> Eq
           "ne" -> Ne
@@ -1810,7 +1820,7 @@ public data class SearchParameter(
           "sa" -> Sa
           "eb" -> Eb
           "ap" -> Ap
-          else -> throw IllegalArgumentException("Unknown code $code for enum SearchComparator")
+          else -> null
         }
     }
   }
@@ -1841,6 +1851,10 @@ public data class SearchParameter(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SearchModifierCode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SearchModifierCode")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SearchModifierCode? =
         when (code) {
           "missing" -> Missing
           "exact" -> Exact
@@ -1857,7 +1871,7 @@ public data class SearchParameter(
           "code-text" -> Code_Text
           "text-advanced" -> Text_Advanced
           "iterate" -> Iterate
-          else -> throw IllegalArgumentException("Unknown code $code for enum SearchModifierCode")
+          else -> null
         }
     }
   }

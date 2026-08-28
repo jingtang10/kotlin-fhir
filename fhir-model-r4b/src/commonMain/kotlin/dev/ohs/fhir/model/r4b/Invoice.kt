@@ -969,6 +969,10 @@ public data class Invoice(
 
     public companion object {
       public fun fromCode(code: kotlin.String): InvoicePriceComponentType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum InvoicePriceComponentType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): InvoicePriceComponentType? =
         when (code) {
           "base" -> Base
           "surcharge" -> Surcharge
@@ -976,8 +980,7 @@ public data class Invoice(
           "discount" -> Discount
           "tax" -> Tax
           "informational" -> Informational
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum InvoicePriceComponentType")
+          else -> null
         }
     }
   }
@@ -998,13 +1001,17 @@ public data class Invoice(
 
     public companion object {
       public fun fromCode(code: kotlin.String): InvoiceStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum InvoiceStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): InvoiceStatus? =
         when (code) {
           "draft" -> Draft
           "issued" -> Issued
           "balanced" -> Balanced
           "cancelled" -> Cancelled
           "entered-in-error" -> Entered_In_Error
-          else -> throw IllegalArgumentException("Unknown code $code for enum InvoiceStatus")
+          else -> null
         }
     }
   }

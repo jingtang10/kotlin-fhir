@@ -1752,11 +1752,15 @@ public data class SubscriptionTopic(
 
     public companion object {
       public fun fromCode(code: kotlin.String): InteractionTrigger =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum InteractionTrigger")
+
+      public fun fromCodeOrNull(code: kotlin.String?): InteractionTrigger? =
         when (code) {
           "create" -> Create
           "update" -> Update
           "delete" -> Delete
-          else -> throw IllegalArgumentException("Unknown code $code for enum InteractionTrigger")
+          else -> null
         }
     }
   }
@@ -1777,11 +1781,14 @@ public data class SubscriptionTopic(
 
     public companion object {
       public fun fromCode(code: kotlin.String): CriteriaNotExistsBehavior =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum CriteriaNotExistsBehavior")
+
+      public fun fromCodeOrNull(code: kotlin.String?): CriteriaNotExistsBehavior? =
         when (code) {
           "test-passes" -> Test_Passes
           "test-fails" -> Test_Fails
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum CriteriaNotExistsBehavior")
+          else -> null
         }
     }
   }
@@ -1806,6 +1813,10 @@ public data class SubscriptionTopic(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SearchComparator =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SearchComparator")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SearchComparator? =
         when (code) {
           "eq" -> Eq
           "ne" -> Ne
@@ -1816,7 +1827,7 @@ public data class SubscriptionTopic(
           "sa" -> Sa
           "eb" -> Eb
           "ap" -> Ap
-          else -> throw IllegalArgumentException("Unknown code $code for enum SearchComparator")
+          else -> null
         }
     }
   }
@@ -1847,6 +1858,10 @@ public data class SubscriptionTopic(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SearchModifierCode =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SearchModifierCode")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SearchModifierCode? =
         when (code) {
           "missing" -> Missing
           "exact" -> Exact
@@ -1863,7 +1878,7 @@ public data class SubscriptionTopic(
           "code-text" -> Code_Text
           "text-advanced" -> Text_Advanced
           "iterate" -> Iterate
-          else -> throw IllegalArgumentException("Unknown code $code for enum SearchModifierCode")
+          else -> null
         }
     }
   }

@@ -831,12 +831,16 @@ public data class FamilyMemberHistory(
 
     public companion object {
       public fun fromCode(code: kotlin.String): FamilyHistoryStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum FamilyHistoryStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): FamilyHistoryStatus? =
         when (code) {
           "partial" -> Partial
           "completed" -> Completed
           "entered-in-error" -> Entered_In_Error
           "health-unknown" -> Health_Unknown
-          else -> throw IllegalArgumentException("Unknown code $code for enum FamilyHistoryStatus")
+          else -> null
         }
     }
   }

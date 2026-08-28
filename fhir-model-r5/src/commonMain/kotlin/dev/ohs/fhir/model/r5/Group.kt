@@ -795,6 +795,10 @@ public data class Group(
 
     public companion object {
       public fun fromCode(code: kotlin.String): GroupType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum GroupType")
+
+      public fun fromCodeOrNull(code: kotlin.String?): GroupType? =
         when (code) {
           "person" -> Person
           "animal" -> Animal
@@ -806,7 +810,7 @@ public data class Group(
           "organization" -> Organization
           "relatedperson" -> Relatedperson
           "specimen" -> Specimen
-          else -> throw IllegalArgumentException("Unknown code $code for enum GroupType")
+          else -> null
         }
     }
   }
@@ -824,10 +828,14 @@ public data class Group(
 
     public companion object {
       public fun fromCode(code: kotlin.String): GroupMembershipBasis =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum GroupMembershipBasis")
+
+      public fun fromCodeOrNull(code: kotlin.String?): GroupMembershipBasis? =
         when (code) {
           "definitional" -> Definitional
           "enumerated" -> Enumerated
-          else -> throw IllegalArgumentException("Unknown code $code for enum GroupMembershipBasis")
+          else -> null
         }
     }
   }

@@ -623,13 +623,16 @@ public data class InventoryReport(
 
     public companion object {
       public fun fromCode(code: String): InventoryReportStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum InventoryReportStatus")
+
+      public fun fromCodeOrNull(code: String?): InventoryReportStatus? =
         when (code) {
           "draft" -> Draft
           "requested" -> Requested
           "active" -> Active
           "entered-in-error" -> Entered_In_Error
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum InventoryReportStatus")
+          else -> null
         }
     }
   }
@@ -647,10 +650,14 @@ public data class InventoryReport(
 
     public companion object {
       public fun fromCode(code: String): InventoryCountType =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum InventoryCountType")
+
+      public fun fromCodeOrNull(code: String?): InventoryCountType? =
         when (code) {
           "snapshot" -> Snapshot
           "difference" -> Difference
-          else -> throw IllegalArgumentException("Unknown code $code for enum InventoryCountType")
+          else -> null
         }
     }
   }

@@ -523,13 +523,16 @@ public data class Person(
 
     public companion object {
       public fun fromCode(code: String): IdentityAssuranceLevel =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum IdentityAssuranceLevel")
+
+      public fun fromCodeOrNull(code: String?): IdentityAssuranceLevel? =
         when (code) {
           "level1" -> Level1
           "level2" -> Level2
           "level3" -> Level3
           "level4" -> Level4
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum IdentityAssuranceLevel")
+          else -> null
         }
     }
   }

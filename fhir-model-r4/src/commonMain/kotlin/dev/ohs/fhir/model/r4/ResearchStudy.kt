@@ -799,6 +799,10 @@ public data class ResearchStudy(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ResearchStudyStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ResearchStudyStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ResearchStudyStatus? =
         when (code) {
           "active" -> Active
           "administratively-completed" -> Administratively_Completed
@@ -812,7 +816,7 @@ public data class ResearchStudy(
           "temporarily-closed-to-accrual-and-intervention" ->
             Temporarily_Closed_To_Accrual_And_Intervention
           "withdrawn" -> Withdrawn
-          else -> throw IllegalArgumentException("Unknown code $code for enum ResearchStudyStatus")
+          else -> null
         }
     }
   }

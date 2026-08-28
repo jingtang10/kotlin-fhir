@@ -634,10 +634,14 @@ public data class DataRequirement(
 
     public companion object {
       public fun fromCode(code: kotlin.String): SortDirection =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum SortDirection")
+
+      public fun fromCodeOrNull(code: kotlin.String?): SortDirection? =
         when (code) {
           "ascending" -> Ascending
           "descending" -> Descending
-          else -> throw IllegalArgumentException("Unknown code $code for enum SortDirection")
+          else -> null
         }
     }
   }

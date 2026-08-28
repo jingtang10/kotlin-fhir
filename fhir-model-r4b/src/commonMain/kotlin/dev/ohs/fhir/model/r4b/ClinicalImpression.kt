@@ -859,12 +859,15 @@ public data class ClinicalImpression(
 
     public companion object {
       public fun fromCode(code: kotlin.String): ClinicalImpressionStatus =
+        fromCodeOrNull(code)
+          ?: throw IllegalArgumentException("Unknown code $code for enum ClinicalImpressionStatus")
+
+      public fun fromCodeOrNull(code: kotlin.String?): ClinicalImpressionStatus? =
         when (code) {
           "in-progress" -> In_Progress
           "completed" -> Completed
           "entered-in-error" -> Entered_In_Error
-          else ->
-            throw IllegalArgumentException("Unknown code $code for enum ClinicalImpressionStatus")
+          else -> null
         }
     }
   }
