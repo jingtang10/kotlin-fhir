@@ -205,14 +205,23 @@ class ModelConstructionHelpers(val codegenContext: CodegenContext) {
       // non-null `.value` field on the wrapper, so the wire value must be coerced non-null at the
       // call site. `Type.of(...)` then returns non-null, making any outer `!!` redundant.
       val wireValueIsNonNull = codegenContext.primitiveValueIsNonNull[type.code] == true
-      val coerceWireValue = if (wireValueIsNonNull) "!!" else ""
       add("%T.of(", ClassName(modelClassName.packageName, type.code.capitalized()))
       fhirPathType.addCodeToDecodeWirePropertyToModel(
         this,
         modelClassName.packageName,
         propertyName,
       )
-      add(coerceWireValue)
+      if (wireValueIsNonNull) {
+        if (element.min == 1) {
+          add(
+            " ?: throw %T(%S)",
+            serializationExceptionClassName,
+            "Missing required property '$propertyName' on $modelDisplayName",
+          )
+        } else {
+          add("!!")
+        }
+      }
       add(", %N)", elementPropertyName)
       if (element.min == 1 && !wireValueIsNonNull) {
         add(

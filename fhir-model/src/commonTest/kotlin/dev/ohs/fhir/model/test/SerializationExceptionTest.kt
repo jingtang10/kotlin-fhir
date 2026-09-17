@@ -51,6 +51,17 @@ class SerializationExceptionTest :
       """
         .trimIndent()
 
+    val patientWithoutNarrativeDivJson =
+      """
+      {
+        "resourceType": "Patient",
+        "text": {
+          "status": "generated"
+        }
+      }
+      """
+        .trimIndent()
+
     fun <TResource : Any> serializationExceptionTestSuite(
       fhirVersion: String,
       resourceSerializer: KSerializer<TResource>,
@@ -71,6 +82,17 @@ class SerializationExceptionTest :
             }
           assertEquals(
             "Missing required property 'linkId' on Questionnaire.Item",
+            exception.message,
+          )
+        }
+
+        test("missing required div property on Narrative throws SerializationException") {
+          val exception =
+            assertFailsWith<SerializationException> {
+              testJson.decodeFromString(resourceSerializer, patientWithoutNarrativeDivJson)
+            }
+          assertEquals(
+            "Missing required property 'div' on Narrative",
             exception.message,
           )
         }
