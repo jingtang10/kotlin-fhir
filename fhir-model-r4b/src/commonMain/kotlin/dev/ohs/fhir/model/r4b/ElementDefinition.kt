@@ -1028,7 +1028,7 @@ public data class ElementDefinition(
           }
       }
 
-    public sealed interface Value {
+    public sealed interface Value : FhirChoice {
       public fun asBase64Binary(): Base64Binary? = this as? Base64Binary
 
       public fun asBoolean(): Boolean? = this as? Boolean
@@ -1131,123 +1131,127 @@ public data class ElementDefinition(
 
       public fun asDosage(): Dosage? = this as? Dosage
 
-      public data class Base64Binary(public val `value`: dev.ohs.fhir.model.r4b.Base64Binary) :
+      public data class Base64Binary(override val `value`: dev.ohs.fhir.model.r4b.Base64Binary) :
         Value
 
-      public data class Boolean(public val `value`: dev.ohs.fhir.model.r4b.Boolean) : Value
+      public data class Boolean(override val `value`: dev.ohs.fhir.model.r4b.Boolean) : Value
 
-      public data class Canonical(public val `value`: dev.ohs.fhir.model.r4b.Canonical) : Value
+      public data class Canonical(override val `value`: dev.ohs.fhir.model.r4b.Canonical) : Value
 
-      public data class Code(public val `value`: dev.ohs.fhir.model.r4b.Code) : Value
+      public data class Code(override val `value`: dev.ohs.fhir.model.r4b.Code) : Value
 
-      public data class Date(public val `value`: dev.ohs.fhir.model.r4b.Date) : Value
+      public data class Date(override val `value`: dev.ohs.fhir.model.r4b.Date) : Value
 
-      public data class DateTime(public val `value`: dev.ohs.fhir.model.r4b.DateTime) : Value
+      public data class DateTime(override val `value`: dev.ohs.fhir.model.r4b.DateTime) : Value
 
-      public data class Decimal(public val `value`: dev.ohs.fhir.model.r4b.Decimal) : Value
+      public data class Decimal(override val `value`: dev.ohs.fhir.model.r4b.Decimal) : Value
 
-      public data class Id(public val `value`: dev.ohs.fhir.model.r4b.Id) : Value
+      public data class Id(override val `value`: dev.ohs.fhir.model.r4b.Id) : Value
 
-      public data class Instant(public val `value`: dev.ohs.fhir.model.r4b.Instant) : Value
+      public data class Instant(override val `value`: dev.ohs.fhir.model.r4b.Instant) : Value
 
-      public data class Integer(public val `value`: dev.ohs.fhir.model.r4b.Integer) : Value
+      public data class Integer(override val `value`: dev.ohs.fhir.model.r4b.Integer) : Value
 
-      public data class Markdown(public val `value`: dev.ohs.fhir.model.r4b.Markdown) : Value
+      public data class Markdown(override val `value`: dev.ohs.fhir.model.r4b.Markdown) : Value
 
-      public data class Oid(public val `value`: dev.ohs.fhir.model.r4b.Oid) : Value
+      public data class Oid(override val `value`: dev.ohs.fhir.model.r4b.Oid) : Value
 
-      public data class PositiveInt(public val `value`: dev.ohs.fhir.model.r4b.PositiveInt) : Value
+      public data class PositiveInt(override val `value`: dev.ohs.fhir.model.r4b.PositiveInt) :
+        Value
 
-      public data class String(public val `value`: dev.ohs.fhir.model.r4b.String) : Value
+      public data class String(override val `value`: dev.ohs.fhir.model.r4b.String) : Value
 
-      public data class Time(public val `value`: dev.ohs.fhir.model.r4b.Time) : Value
+      public data class Time(override val `value`: dev.ohs.fhir.model.r4b.Time) : Value
 
-      public data class UnsignedInt(public val `value`: dev.ohs.fhir.model.r4b.UnsignedInt) : Value
+      public data class UnsignedInt(override val `value`: dev.ohs.fhir.model.r4b.UnsignedInt) :
+        Value
 
-      public data class Uri(public val `value`: dev.ohs.fhir.model.r4b.Uri) : Value
+      public data class Uri(override val `value`: dev.ohs.fhir.model.r4b.Uri) : Value
 
-      public data class Url(public val `value`: dev.ohs.fhir.model.r4b.Url) : Value
+      public data class Url(override val `value`: dev.ohs.fhir.model.r4b.Url) : Value
 
-      public data class Uuid(public val `value`: dev.ohs.fhir.model.r4b.Uuid) : Value
+      public data class Uuid(override val `value`: dev.ohs.fhir.model.r4b.Uuid) : Value
 
-      public data class Address(public val `value`: dev.ohs.fhir.model.r4b.Address) : Value
+      public data class Address(override val `value`: dev.ohs.fhir.model.r4b.Address) : Value
 
-      public data class Age(public val `value`: dev.ohs.fhir.model.r4b.Age) : Value
+      public data class Age(override val `value`: dev.ohs.fhir.model.r4b.Age) : Value
 
-      public data class Annotation(public val `value`: dev.ohs.fhir.model.r4b.Annotation) : Value
+      public data class Annotation(override val `value`: dev.ohs.fhir.model.r4b.Annotation) : Value
 
-      public data class Attachment(public val `value`: dev.ohs.fhir.model.r4b.Attachment) : Value
+      public data class Attachment(override val `value`: dev.ohs.fhir.model.r4b.Attachment) : Value
 
       public data class CodeableConcept(
-        public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+        override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
       ) : Value
 
       public data class CodeableReference(
-        public val `value`: dev.ohs.fhir.model.r4b.CodeableReference
+        override val `value`: dev.ohs.fhir.model.r4b.CodeableReference
       ) : Value
 
-      public data class Coding(public val `value`: dev.ohs.fhir.model.r4b.Coding) : Value
+      public data class Coding(override val `value`: dev.ohs.fhir.model.r4b.Coding) : Value
 
-      public data class ContactPoint(public val `value`: dev.ohs.fhir.model.r4b.ContactPoint) :
+      public data class ContactPoint(override val `value`: dev.ohs.fhir.model.r4b.ContactPoint) :
         Value
 
-      public data class Count(public val `value`: dev.ohs.fhir.model.r4b.Count) : Value
+      public data class Count(override val `value`: dev.ohs.fhir.model.r4b.Count) : Value
 
-      public data class Distance(public val `value`: dev.ohs.fhir.model.r4b.Distance) : Value
+      public data class Distance(override val `value`: dev.ohs.fhir.model.r4b.Distance) : Value
 
-      public data class Duration(public val `value`: dev.ohs.fhir.model.r4b.Duration) : Value
+      public data class Duration(override val `value`: dev.ohs.fhir.model.r4b.Duration) : Value
 
-      public data class HumanName(public val `value`: dev.ohs.fhir.model.r4b.HumanName) : Value
+      public data class HumanName(override val `value`: dev.ohs.fhir.model.r4b.HumanName) : Value
 
-      public data class Identifier(public val `value`: dev.ohs.fhir.model.r4b.Identifier) : Value
+      public data class Identifier(override val `value`: dev.ohs.fhir.model.r4b.Identifier) : Value
 
-      public data class Money(public val `value`: dev.ohs.fhir.model.r4b.Money) : Value
+      public data class Money(override val `value`: dev.ohs.fhir.model.r4b.Money) : Value
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r4b.Period) : Value
+      public data class Period(override val `value`: dev.ohs.fhir.model.r4b.Period) : Value
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r4b.Quantity) : Value
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r4b.Quantity) : Value
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r4b.Range) : Value
+      public data class Range(override val `value`: dev.ohs.fhir.model.r4b.Range) : Value
 
-      public data class Ratio(public val `value`: dev.ohs.fhir.model.r4b.Ratio) : Value
+      public data class Ratio(override val `value`: dev.ohs.fhir.model.r4b.Ratio) : Value
 
-      public data class RatioRange(public val `value`: dev.ohs.fhir.model.r4b.RatioRange) : Value
+      public data class RatioRange(override val `value`: dev.ohs.fhir.model.r4b.RatioRange) : Value
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : Value
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) : Value
 
-      public data class SampledData(public val `value`: dev.ohs.fhir.model.r4b.SampledData) : Value
-
-      public data class Signature(public val `value`: dev.ohs.fhir.model.r4b.Signature) : Value
-
-      public data class Timing(public val `value`: dev.ohs.fhir.model.r4b.Timing) : Value
-
-      public data class ContactDetail(public val `value`: dev.ohs.fhir.model.r4b.ContactDetail) :
+      public data class SampledData(override val `value`: dev.ohs.fhir.model.r4b.SampledData) :
         Value
 
-      public data class Contributor(public val `value`: dev.ohs.fhir.model.r4b.Contributor) : Value
+      public data class Signature(override val `value`: dev.ohs.fhir.model.r4b.Signature) : Value
+
+      public data class Timing(override val `value`: dev.ohs.fhir.model.r4b.Timing) : Value
+
+      public data class ContactDetail(override val `value`: dev.ohs.fhir.model.r4b.ContactDetail) :
+        Value
+
+      public data class Contributor(override val `value`: dev.ohs.fhir.model.r4b.Contributor) :
+        Value
 
       public data class DataRequirement(
-        public val `value`: dev.ohs.fhir.model.r4b.DataRequirement
+        override val `value`: dev.ohs.fhir.model.r4b.DataRequirement
       ) : Value
 
-      public data class Expression(public val `value`: dev.ohs.fhir.model.r4b.Expression) : Value
+      public data class Expression(override val `value`: dev.ohs.fhir.model.r4b.Expression) : Value
 
       public data class ParameterDefinition(
-        public val `value`: dev.ohs.fhir.model.r4b.ParameterDefinition
+        override val `value`: dev.ohs.fhir.model.r4b.ParameterDefinition
       ) : Value
 
       public data class RelatedArtifact(
-        public val `value`: dev.ohs.fhir.model.r4b.RelatedArtifact
+        override val `value`: dev.ohs.fhir.model.r4b.RelatedArtifact
       ) : Value
 
       public data class TriggerDefinition(
-        public val `value`: dev.ohs.fhir.model.r4b.TriggerDefinition
+        override val `value`: dev.ohs.fhir.model.r4b.TriggerDefinition
       ) : Value
 
-      public data class UsageContext(public val `value`: dev.ohs.fhir.model.r4b.UsageContext) :
+      public data class UsageContext(override val `value`: dev.ohs.fhir.model.r4b.UsageContext) :
         Value
 
-      public data class Dosage(public val `value`: dev.ohs.fhir.model.r4b.Dosage) : Value
+      public data class Dosage(override val `value`: dev.ohs.fhir.model.r4b.Dosage) : Value
 
       public companion object {
         internal fun from(
@@ -1785,7 +1789,7 @@ public data class ElementDefinition(
     }
   }
 
-  public sealed interface DefaultValue {
+  public sealed interface DefaultValue : FhirChoice {
     public fun asBase64Binary(): Base64Binary? = this as? Base64Binary
 
     public fun asBoolean(): Boolean? = this as? Boolean
@@ -1888,129 +1892,136 @@ public data class ElementDefinition(
 
     public fun asDosage(): Dosage? = this as? Dosage
 
-    public data class Base64Binary(public val `value`: dev.ohs.fhir.model.r4b.Base64Binary) :
+    public data class Base64Binary(override val `value`: dev.ohs.fhir.model.r4b.Base64Binary) :
       DefaultValue
 
-    public data class Boolean(public val `value`: dev.ohs.fhir.model.r4b.Boolean) : DefaultValue
+    public data class Boolean(override val `value`: dev.ohs.fhir.model.r4b.Boolean) : DefaultValue
 
-    public data class Canonical(public val `value`: dev.ohs.fhir.model.r4b.Canonical) : DefaultValue
-
-    public data class Code(public val `value`: dev.ohs.fhir.model.r4b.Code) : DefaultValue
-
-    public data class Date(public val `value`: dev.ohs.fhir.model.r4b.Date) : DefaultValue
-
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r4b.DateTime) : DefaultValue
-
-    public data class Decimal(public val `value`: dev.ohs.fhir.model.r4b.Decimal) : DefaultValue
-
-    public data class Id(public val `value`: dev.ohs.fhir.model.r4b.Id) : DefaultValue
-
-    public data class Instant(public val `value`: dev.ohs.fhir.model.r4b.Instant) : DefaultValue
-
-    public data class Integer(public val `value`: dev.ohs.fhir.model.r4b.Integer) : DefaultValue
-
-    public data class Markdown(public val `value`: dev.ohs.fhir.model.r4b.Markdown) : DefaultValue
-
-    public data class Oid(public val `value`: dev.ohs.fhir.model.r4b.Oid) : DefaultValue
-
-    public data class PositiveInt(public val `value`: dev.ohs.fhir.model.r4b.PositiveInt) :
+    public data class Canonical(override val `value`: dev.ohs.fhir.model.r4b.Canonical) :
       DefaultValue
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r4b.String) : DefaultValue
+    public data class Code(override val `value`: dev.ohs.fhir.model.r4b.Code) : DefaultValue
 
-    public data class Time(public val `value`: dev.ohs.fhir.model.r4b.Time) : DefaultValue
+    public data class Date(override val `value`: dev.ohs.fhir.model.r4b.Date) : DefaultValue
 
-    public data class UnsignedInt(public val `value`: dev.ohs.fhir.model.r4b.UnsignedInt) :
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r4b.DateTime) : DefaultValue
+
+    public data class Decimal(override val `value`: dev.ohs.fhir.model.r4b.Decimal) : DefaultValue
+
+    public data class Id(override val `value`: dev.ohs.fhir.model.r4b.Id) : DefaultValue
+
+    public data class Instant(override val `value`: dev.ohs.fhir.model.r4b.Instant) : DefaultValue
+
+    public data class Integer(override val `value`: dev.ohs.fhir.model.r4b.Integer) : DefaultValue
+
+    public data class Markdown(override val `value`: dev.ohs.fhir.model.r4b.Markdown) : DefaultValue
+
+    public data class Oid(override val `value`: dev.ohs.fhir.model.r4b.Oid) : DefaultValue
+
+    public data class PositiveInt(override val `value`: dev.ohs.fhir.model.r4b.PositiveInt) :
       DefaultValue
 
-    public data class Uri(public val `value`: dev.ohs.fhir.model.r4b.Uri) : DefaultValue
+    public data class String(override val `value`: dev.ohs.fhir.model.r4b.String) : DefaultValue
 
-    public data class Url(public val `value`: dev.ohs.fhir.model.r4b.Url) : DefaultValue
+    public data class Time(override val `value`: dev.ohs.fhir.model.r4b.Time) : DefaultValue
 
-    public data class Uuid(public val `value`: dev.ohs.fhir.model.r4b.Uuid) : DefaultValue
-
-    public data class Address(public val `value`: dev.ohs.fhir.model.r4b.Address) : DefaultValue
-
-    public data class Age(public val `value`: dev.ohs.fhir.model.r4b.Age) : DefaultValue
-
-    public data class Annotation(public val `value`: dev.ohs.fhir.model.r4b.Annotation) :
+    public data class UnsignedInt(override val `value`: dev.ohs.fhir.model.r4b.UnsignedInt) :
       DefaultValue
 
-    public data class Attachment(public val `value`: dev.ohs.fhir.model.r4b.Attachment) :
+    public data class Uri(override val `value`: dev.ohs.fhir.model.r4b.Uri) : DefaultValue
+
+    public data class Url(override val `value`: dev.ohs.fhir.model.r4b.Url) : DefaultValue
+
+    public data class Uuid(override val `value`: dev.ohs.fhir.model.r4b.Uuid) : DefaultValue
+
+    public data class Address(override val `value`: dev.ohs.fhir.model.r4b.Address) : DefaultValue
+
+    public data class Age(override val `value`: dev.ohs.fhir.model.r4b.Age) : DefaultValue
+
+    public data class Annotation(override val `value`: dev.ohs.fhir.model.r4b.Annotation) :
       DefaultValue
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept) :
+    public data class Attachment(override val `value`: dev.ohs.fhir.model.r4b.Attachment) :
       DefaultValue
 
-    public data class CodeableReference(
-      public val `value`: dev.ohs.fhir.model.r4b.CodeableReference
+    public data class CodeableConcept(
+      override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
     ) : DefaultValue
 
-    public data class Coding(public val `value`: dev.ohs.fhir.model.r4b.Coding) : DefaultValue
+    public data class CodeableReference(
+      override val `value`: dev.ohs.fhir.model.r4b.CodeableReference
+    ) : DefaultValue
 
-    public data class ContactPoint(public val `value`: dev.ohs.fhir.model.r4b.ContactPoint) :
+    public data class Coding(override val `value`: dev.ohs.fhir.model.r4b.Coding) : DefaultValue
+
+    public data class ContactPoint(override val `value`: dev.ohs.fhir.model.r4b.ContactPoint) :
       DefaultValue
 
-    public data class Count(public val `value`: dev.ohs.fhir.model.r4b.Count) : DefaultValue
+    public data class Count(override val `value`: dev.ohs.fhir.model.r4b.Count) : DefaultValue
 
-    public data class Distance(public val `value`: dev.ohs.fhir.model.r4b.Distance) : DefaultValue
+    public data class Distance(override val `value`: dev.ohs.fhir.model.r4b.Distance) : DefaultValue
 
-    public data class Duration(public val `value`: dev.ohs.fhir.model.r4b.Duration) : DefaultValue
+    public data class Duration(override val `value`: dev.ohs.fhir.model.r4b.Duration) : DefaultValue
 
-    public data class HumanName(public val `value`: dev.ohs.fhir.model.r4b.HumanName) : DefaultValue
-
-    public data class Identifier(public val `value`: dev.ohs.fhir.model.r4b.Identifier) :
+    public data class HumanName(override val `value`: dev.ohs.fhir.model.r4b.HumanName) :
       DefaultValue
 
-    public data class Money(public val `value`: dev.ohs.fhir.model.r4b.Money) : DefaultValue
-
-    public data class Period(public val `value`: dev.ohs.fhir.model.r4b.Period) : DefaultValue
-
-    public data class Quantity(public val `value`: dev.ohs.fhir.model.r4b.Quantity) : DefaultValue
-
-    public data class Range(public val `value`: dev.ohs.fhir.model.r4b.Range) : DefaultValue
-
-    public data class Ratio(public val `value`: dev.ohs.fhir.model.r4b.Ratio) : DefaultValue
-
-    public data class RatioRange(public val `value`: dev.ohs.fhir.model.r4b.RatioRange) :
+    public data class Identifier(override val `value`: dev.ohs.fhir.model.r4b.Identifier) :
       DefaultValue
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : DefaultValue
+    public data class Money(override val `value`: dev.ohs.fhir.model.r4b.Money) : DefaultValue
 
-    public data class SampledData(public val `value`: dev.ohs.fhir.model.r4b.SampledData) :
+    public data class Period(override val `value`: dev.ohs.fhir.model.r4b.Period) : DefaultValue
+
+    public data class Quantity(override val `value`: dev.ohs.fhir.model.r4b.Quantity) : DefaultValue
+
+    public data class Range(override val `value`: dev.ohs.fhir.model.r4b.Range) : DefaultValue
+
+    public data class Ratio(override val `value`: dev.ohs.fhir.model.r4b.Ratio) : DefaultValue
+
+    public data class RatioRange(override val `value`: dev.ohs.fhir.model.r4b.RatioRange) :
       DefaultValue
 
-    public data class Signature(public val `value`: dev.ohs.fhir.model.r4b.Signature) : DefaultValue
-
-    public data class Timing(public val `value`: dev.ohs.fhir.model.r4b.Timing) : DefaultValue
-
-    public data class ContactDetail(public val `value`: dev.ohs.fhir.model.r4b.ContactDetail) :
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) :
       DefaultValue
 
-    public data class Contributor(public val `value`: dev.ohs.fhir.model.r4b.Contributor) :
+    public data class SampledData(override val `value`: dev.ohs.fhir.model.r4b.SampledData) :
       DefaultValue
 
-    public data class DataRequirement(public val `value`: dev.ohs.fhir.model.r4b.DataRequirement) :
+    public data class Signature(override val `value`: dev.ohs.fhir.model.r4b.Signature) :
       DefaultValue
 
-    public data class Expression(public val `value`: dev.ohs.fhir.model.r4b.Expression) :
+    public data class Timing(override val `value`: dev.ohs.fhir.model.r4b.Timing) : DefaultValue
+
+    public data class ContactDetail(override val `value`: dev.ohs.fhir.model.r4b.ContactDetail) :
+      DefaultValue
+
+    public data class Contributor(override val `value`: dev.ohs.fhir.model.r4b.Contributor) :
+      DefaultValue
+
+    public data class DataRequirement(
+      override val `value`: dev.ohs.fhir.model.r4b.DataRequirement
+    ) : DefaultValue
+
+    public data class Expression(override val `value`: dev.ohs.fhir.model.r4b.Expression) :
       DefaultValue
 
     public data class ParameterDefinition(
-      public val `value`: dev.ohs.fhir.model.r4b.ParameterDefinition
+      override val `value`: dev.ohs.fhir.model.r4b.ParameterDefinition
     ) : DefaultValue
 
-    public data class RelatedArtifact(public val `value`: dev.ohs.fhir.model.r4b.RelatedArtifact) :
-      DefaultValue
+    public data class RelatedArtifact(
+      override val `value`: dev.ohs.fhir.model.r4b.RelatedArtifact
+    ) : DefaultValue
 
     public data class TriggerDefinition(
-      public val `value`: dev.ohs.fhir.model.r4b.TriggerDefinition
+      override val `value`: dev.ohs.fhir.model.r4b.TriggerDefinition
     ) : DefaultValue
 
-    public data class UsageContext(public val `value`: dev.ohs.fhir.model.r4b.UsageContext) :
+    public data class UsageContext(override val `value`: dev.ohs.fhir.model.r4b.UsageContext) :
       DefaultValue
 
-    public data class Dosage(public val `value`: dev.ohs.fhir.model.r4b.Dosage) : DefaultValue
+    public data class Dosage(override val `value`: dev.ohs.fhir.model.r4b.Dosage) : DefaultValue
 
     public companion object {
       internal fun from(
@@ -2122,7 +2133,7 @@ public data class ElementDefinition(
     }
   }
 
-  public sealed interface Fixed {
+  public sealed interface Fixed : FhirChoice {
     public fun asBase64Binary(): Base64Binary? = this as? Base64Binary
 
     public fun asBoolean(): Boolean? = this as? Boolean
@@ -2225,117 +2236,123 @@ public data class ElementDefinition(
 
     public fun asDosage(): Dosage? = this as? Dosage
 
-    public data class Base64Binary(public val `value`: dev.ohs.fhir.model.r4b.Base64Binary) : Fixed
-
-    public data class Boolean(public val `value`: dev.ohs.fhir.model.r4b.Boolean) : Fixed
-
-    public data class Canonical(public val `value`: dev.ohs.fhir.model.r4b.Canonical) : Fixed
-
-    public data class Code(public val `value`: dev.ohs.fhir.model.r4b.Code) : Fixed
-
-    public data class Date(public val `value`: dev.ohs.fhir.model.r4b.Date) : Fixed
-
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r4b.DateTime) : Fixed
-
-    public data class Decimal(public val `value`: dev.ohs.fhir.model.r4b.Decimal) : Fixed
-
-    public data class Id(public val `value`: dev.ohs.fhir.model.r4b.Id) : Fixed
-
-    public data class Instant(public val `value`: dev.ohs.fhir.model.r4b.Instant) : Fixed
-
-    public data class Integer(public val `value`: dev.ohs.fhir.model.r4b.Integer) : Fixed
-
-    public data class Markdown(public val `value`: dev.ohs.fhir.model.r4b.Markdown) : Fixed
-
-    public data class Oid(public val `value`: dev.ohs.fhir.model.r4b.Oid) : Fixed
-
-    public data class PositiveInt(public val `value`: dev.ohs.fhir.model.r4b.PositiveInt) : Fixed
-
-    public data class String(public val `value`: dev.ohs.fhir.model.r4b.String) : Fixed
-
-    public data class Time(public val `value`: dev.ohs.fhir.model.r4b.Time) : Fixed
-
-    public data class UnsignedInt(public val `value`: dev.ohs.fhir.model.r4b.UnsignedInt) : Fixed
-
-    public data class Uri(public val `value`: dev.ohs.fhir.model.r4b.Uri) : Fixed
-
-    public data class Url(public val `value`: dev.ohs.fhir.model.r4b.Url) : Fixed
-
-    public data class Uuid(public val `value`: dev.ohs.fhir.model.r4b.Uuid) : Fixed
-
-    public data class Address(public val `value`: dev.ohs.fhir.model.r4b.Address) : Fixed
-
-    public data class Age(public val `value`: dev.ohs.fhir.model.r4b.Age) : Fixed
-
-    public data class Annotation(public val `value`: dev.ohs.fhir.model.r4b.Annotation) : Fixed
-
-    public data class Attachment(public val `value`: dev.ohs.fhir.model.r4b.Attachment) : Fixed
-
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept) :
+    public data class Base64Binary(override val `value`: dev.ohs.fhir.model.r4b.Base64Binary) :
       Fixed
+
+    public data class Boolean(override val `value`: dev.ohs.fhir.model.r4b.Boolean) : Fixed
+
+    public data class Canonical(override val `value`: dev.ohs.fhir.model.r4b.Canonical) : Fixed
+
+    public data class Code(override val `value`: dev.ohs.fhir.model.r4b.Code) : Fixed
+
+    public data class Date(override val `value`: dev.ohs.fhir.model.r4b.Date) : Fixed
+
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r4b.DateTime) : Fixed
+
+    public data class Decimal(override val `value`: dev.ohs.fhir.model.r4b.Decimal) : Fixed
+
+    public data class Id(override val `value`: dev.ohs.fhir.model.r4b.Id) : Fixed
+
+    public data class Instant(override val `value`: dev.ohs.fhir.model.r4b.Instant) : Fixed
+
+    public data class Integer(override val `value`: dev.ohs.fhir.model.r4b.Integer) : Fixed
+
+    public data class Markdown(override val `value`: dev.ohs.fhir.model.r4b.Markdown) : Fixed
+
+    public data class Oid(override val `value`: dev.ohs.fhir.model.r4b.Oid) : Fixed
+
+    public data class PositiveInt(override val `value`: dev.ohs.fhir.model.r4b.PositiveInt) : Fixed
+
+    public data class String(override val `value`: dev.ohs.fhir.model.r4b.String) : Fixed
+
+    public data class Time(override val `value`: dev.ohs.fhir.model.r4b.Time) : Fixed
+
+    public data class UnsignedInt(override val `value`: dev.ohs.fhir.model.r4b.UnsignedInt) : Fixed
+
+    public data class Uri(override val `value`: dev.ohs.fhir.model.r4b.Uri) : Fixed
+
+    public data class Url(override val `value`: dev.ohs.fhir.model.r4b.Url) : Fixed
+
+    public data class Uuid(override val `value`: dev.ohs.fhir.model.r4b.Uuid) : Fixed
+
+    public data class Address(override val `value`: dev.ohs.fhir.model.r4b.Address) : Fixed
+
+    public data class Age(override val `value`: dev.ohs.fhir.model.r4b.Age) : Fixed
+
+    public data class Annotation(override val `value`: dev.ohs.fhir.model.r4b.Annotation) : Fixed
+
+    public data class Attachment(override val `value`: dev.ohs.fhir.model.r4b.Attachment) : Fixed
+
+    public data class CodeableConcept(
+      override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+    ) : Fixed
 
     public data class CodeableReference(
-      public val `value`: dev.ohs.fhir.model.r4b.CodeableReference
+      override val `value`: dev.ohs.fhir.model.r4b.CodeableReference
     ) : Fixed
 
-    public data class Coding(public val `value`: dev.ohs.fhir.model.r4b.Coding) : Fixed
+    public data class Coding(override val `value`: dev.ohs.fhir.model.r4b.Coding) : Fixed
 
-    public data class ContactPoint(public val `value`: dev.ohs.fhir.model.r4b.ContactPoint) : Fixed
-
-    public data class Count(public val `value`: dev.ohs.fhir.model.r4b.Count) : Fixed
-
-    public data class Distance(public val `value`: dev.ohs.fhir.model.r4b.Distance) : Fixed
-
-    public data class Duration(public val `value`: dev.ohs.fhir.model.r4b.Duration) : Fixed
-
-    public data class HumanName(public val `value`: dev.ohs.fhir.model.r4b.HumanName) : Fixed
-
-    public data class Identifier(public val `value`: dev.ohs.fhir.model.r4b.Identifier) : Fixed
-
-    public data class Money(public val `value`: dev.ohs.fhir.model.r4b.Money) : Fixed
-
-    public data class Period(public val `value`: dev.ohs.fhir.model.r4b.Period) : Fixed
-
-    public data class Quantity(public val `value`: dev.ohs.fhir.model.r4b.Quantity) : Fixed
-
-    public data class Range(public val `value`: dev.ohs.fhir.model.r4b.Range) : Fixed
-
-    public data class Ratio(public val `value`: dev.ohs.fhir.model.r4b.Ratio) : Fixed
-
-    public data class RatioRange(public val `value`: dev.ohs.fhir.model.r4b.RatioRange) : Fixed
-
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : Fixed
-
-    public data class SampledData(public val `value`: dev.ohs.fhir.model.r4b.SampledData) : Fixed
-
-    public data class Signature(public val `value`: dev.ohs.fhir.model.r4b.Signature) : Fixed
-
-    public data class Timing(public val `value`: dev.ohs.fhir.model.r4b.Timing) : Fixed
-
-    public data class ContactDetail(public val `value`: dev.ohs.fhir.model.r4b.ContactDetail) :
+    public data class ContactPoint(override val `value`: dev.ohs.fhir.model.r4b.ContactPoint) :
       Fixed
 
-    public data class Contributor(public val `value`: dev.ohs.fhir.model.r4b.Contributor) : Fixed
+    public data class Count(override val `value`: dev.ohs.fhir.model.r4b.Count) : Fixed
 
-    public data class DataRequirement(public val `value`: dev.ohs.fhir.model.r4b.DataRequirement) :
+    public data class Distance(override val `value`: dev.ohs.fhir.model.r4b.Distance) : Fixed
+
+    public data class Duration(override val `value`: dev.ohs.fhir.model.r4b.Duration) : Fixed
+
+    public data class HumanName(override val `value`: dev.ohs.fhir.model.r4b.HumanName) : Fixed
+
+    public data class Identifier(override val `value`: dev.ohs.fhir.model.r4b.Identifier) : Fixed
+
+    public data class Money(override val `value`: dev.ohs.fhir.model.r4b.Money) : Fixed
+
+    public data class Period(override val `value`: dev.ohs.fhir.model.r4b.Period) : Fixed
+
+    public data class Quantity(override val `value`: dev.ohs.fhir.model.r4b.Quantity) : Fixed
+
+    public data class Range(override val `value`: dev.ohs.fhir.model.r4b.Range) : Fixed
+
+    public data class Ratio(override val `value`: dev.ohs.fhir.model.r4b.Ratio) : Fixed
+
+    public data class RatioRange(override val `value`: dev.ohs.fhir.model.r4b.RatioRange) : Fixed
+
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) : Fixed
+
+    public data class SampledData(override val `value`: dev.ohs.fhir.model.r4b.SampledData) : Fixed
+
+    public data class Signature(override val `value`: dev.ohs.fhir.model.r4b.Signature) : Fixed
+
+    public data class Timing(override val `value`: dev.ohs.fhir.model.r4b.Timing) : Fixed
+
+    public data class ContactDetail(override val `value`: dev.ohs.fhir.model.r4b.ContactDetail) :
       Fixed
 
-    public data class Expression(public val `value`: dev.ohs.fhir.model.r4b.Expression) : Fixed
+    public data class Contributor(override val `value`: dev.ohs.fhir.model.r4b.Contributor) : Fixed
+
+    public data class DataRequirement(
+      override val `value`: dev.ohs.fhir.model.r4b.DataRequirement
+    ) : Fixed
+
+    public data class Expression(override val `value`: dev.ohs.fhir.model.r4b.Expression) : Fixed
 
     public data class ParameterDefinition(
-      public val `value`: dev.ohs.fhir.model.r4b.ParameterDefinition
+      override val `value`: dev.ohs.fhir.model.r4b.ParameterDefinition
     ) : Fixed
 
-    public data class RelatedArtifact(public val `value`: dev.ohs.fhir.model.r4b.RelatedArtifact) :
-      Fixed
+    public data class RelatedArtifact(
+      override val `value`: dev.ohs.fhir.model.r4b.RelatedArtifact
+    ) : Fixed
 
     public data class TriggerDefinition(
-      public val `value`: dev.ohs.fhir.model.r4b.TriggerDefinition
+      override val `value`: dev.ohs.fhir.model.r4b.TriggerDefinition
     ) : Fixed
 
-    public data class UsageContext(public val `value`: dev.ohs.fhir.model.r4b.UsageContext) : Fixed
+    public data class UsageContext(override val `value`: dev.ohs.fhir.model.r4b.UsageContext) :
+      Fixed
 
-    public data class Dosage(public val `value`: dev.ohs.fhir.model.r4b.Dosage) : Fixed
+    public data class Dosage(override val `value`: dev.ohs.fhir.model.r4b.Dosage) : Fixed
 
     public companion object {
       internal fun from(
@@ -2447,7 +2464,7 @@ public data class ElementDefinition(
     }
   }
 
-  public sealed interface Pattern {
+  public sealed interface Pattern : FhirChoice {
     public fun asBase64Binary(): Base64Binary? = this as? Base64Binary
 
     public fun asBoolean(): Boolean? = this as? Boolean
@@ -2550,120 +2567,127 @@ public data class ElementDefinition(
 
     public fun asDosage(): Dosage? = this as? Dosage
 
-    public data class Base64Binary(public val `value`: dev.ohs.fhir.model.r4b.Base64Binary) :
+    public data class Base64Binary(override val `value`: dev.ohs.fhir.model.r4b.Base64Binary) :
       Pattern
 
-    public data class Boolean(public val `value`: dev.ohs.fhir.model.r4b.Boolean) : Pattern
+    public data class Boolean(override val `value`: dev.ohs.fhir.model.r4b.Boolean) : Pattern
 
-    public data class Canonical(public val `value`: dev.ohs.fhir.model.r4b.Canonical) : Pattern
+    public data class Canonical(override val `value`: dev.ohs.fhir.model.r4b.Canonical) : Pattern
 
-    public data class Code(public val `value`: dev.ohs.fhir.model.r4b.Code) : Pattern
+    public data class Code(override val `value`: dev.ohs.fhir.model.r4b.Code) : Pattern
 
-    public data class Date(public val `value`: dev.ohs.fhir.model.r4b.Date) : Pattern
+    public data class Date(override val `value`: dev.ohs.fhir.model.r4b.Date) : Pattern
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r4b.DateTime) : Pattern
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r4b.DateTime) : Pattern
 
-    public data class Decimal(public val `value`: dev.ohs.fhir.model.r4b.Decimal) : Pattern
+    public data class Decimal(override val `value`: dev.ohs.fhir.model.r4b.Decimal) : Pattern
 
-    public data class Id(public val `value`: dev.ohs.fhir.model.r4b.Id) : Pattern
+    public data class Id(override val `value`: dev.ohs.fhir.model.r4b.Id) : Pattern
 
-    public data class Instant(public val `value`: dev.ohs.fhir.model.r4b.Instant) : Pattern
+    public data class Instant(override val `value`: dev.ohs.fhir.model.r4b.Instant) : Pattern
 
-    public data class Integer(public val `value`: dev.ohs.fhir.model.r4b.Integer) : Pattern
+    public data class Integer(override val `value`: dev.ohs.fhir.model.r4b.Integer) : Pattern
 
-    public data class Markdown(public val `value`: dev.ohs.fhir.model.r4b.Markdown) : Pattern
+    public data class Markdown(override val `value`: dev.ohs.fhir.model.r4b.Markdown) : Pattern
 
-    public data class Oid(public val `value`: dev.ohs.fhir.model.r4b.Oid) : Pattern
+    public data class Oid(override val `value`: dev.ohs.fhir.model.r4b.Oid) : Pattern
 
-    public data class PositiveInt(public val `value`: dev.ohs.fhir.model.r4b.PositiveInt) : Pattern
-
-    public data class String(public val `value`: dev.ohs.fhir.model.r4b.String) : Pattern
-
-    public data class Time(public val `value`: dev.ohs.fhir.model.r4b.Time) : Pattern
-
-    public data class UnsignedInt(public val `value`: dev.ohs.fhir.model.r4b.UnsignedInt) : Pattern
-
-    public data class Uri(public val `value`: dev.ohs.fhir.model.r4b.Uri) : Pattern
-
-    public data class Url(public val `value`: dev.ohs.fhir.model.r4b.Url) : Pattern
-
-    public data class Uuid(public val `value`: dev.ohs.fhir.model.r4b.Uuid) : Pattern
-
-    public data class Address(public val `value`: dev.ohs.fhir.model.r4b.Address) : Pattern
-
-    public data class Age(public val `value`: dev.ohs.fhir.model.r4b.Age) : Pattern
-
-    public data class Annotation(public val `value`: dev.ohs.fhir.model.r4b.Annotation) : Pattern
-
-    public data class Attachment(public val `value`: dev.ohs.fhir.model.r4b.Attachment) : Pattern
-
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept) :
+    public data class PositiveInt(override val `value`: dev.ohs.fhir.model.r4b.PositiveInt) :
       Pattern
+
+    public data class String(override val `value`: dev.ohs.fhir.model.r4b.String) : Pattern
+
+    public data class Time(override val `value`: dev.ohs.fhir.model.r4b.Time) : Pattern
+
+    public data class UnsignedInt(override val `value`: dev.ohs.fhir.model.r4b.UnsignedInt) :
+      Pattern
+
+    public data class Uri(override val `value`: dev.ohs.fhir.model.r4b.Uri) : Pattern
+
+    public data class Url(override val `value`: dev.ohs.fhir.model.r4b.Url) : Pattern
+
+    public data class Uuid(override val `value`: dev.ohs.fhir.model.r4b.Uuid) : Pattern
+
+    public data class Address(override val `value`: dev.ohs.fhir.model.r4b.Address) : Pattern
+
+    public data class Age(override val `value`: dev.ohs.fhir.model.r4b.Age) : Pattern
+
+    public data class Annotation(override val `value`: dev.ohs.fhir.model.r4b.Annotation) : Pattern
+
+    public data class Attachment(override val `value`: dev.ohs.fhir.model.r4b.Attachment) : Pattern
+
+    public data class CodeableConcept(
+      override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+    ) : Pattern
 
     public data class CodeableReference(
-      public val `value`: dev.ohs.fhir.model.r4b.CodeableReference
+      override val `value`: dev.ohs.fhir.model.r4b.CodeableReference
     ) : Pattern
 
-    public data class Coding(public val `value`: dev.ohs.fhir.model.r4b.Coding) : Pattern
+    public data class Coding(override val `value`: dev.ohs.fhir.model.r4b.Coding) : Pattern
 
-    public data class ContactPoint(public val `value`: dev.ohs.fhir.model.r4b.ContactPoint) :
+    public data class ContactPoint(override val `value`: dev.ohs.fhir.model.r4b.ContactPoint) :
       Pattern
 
-    public data class Count(public val `value`: dev.ohs.fhir.model.r4b.Count) : Pattern
+    public data class Count(override val `value`: dev.ohs.fhir.model.r4b.Count) : Pattern
 
-    public data class Distance(public val `value`: dev.ohs.fhir.model.r4b.Distance) : Pattern
+    public data class Distance(override val `value`: dev.ohs.fhir.model.r4b.Distance) : Pattern
 
-    public data class Duration(public val `value`: dev.ohs.fhir.model.r4b.Duration) : Pattern
+    public data class Duration(override val `value`: dev.ohs.fhir.model.r4b.Duration) : Pattern
 
-    public data class HumanName(public val `value`: dev.ohs.fhir.model.r4b.HumanName) : Pattern
+    public data class HumanName(override val `value`: dev.ohs.fhir.model.r4b.HumanName) : Pattern
 
-    public data class Identifier(public val `value`: dev.ohs.fhir.model.r4b.Identifier) : Pattern
+    public data class Identifier(override val `value`: dev.ohs.fhir.model.r4b.Identifier) : Pattern
 
-    public data class Money(public val `value`: dev.ohs.fhir.model.r4b.Money) : Pattern
+    public data class Money(override val `value`: dev.ohs.fhir.model.r4b.Money) : Pattern
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r4b.Period) : Pattern
+    public data class Period(override val `value`: dev.ohs.fhir.model.r4b.Period) : Pattern
 
-    public data class Quantity(public val `value`: dev.ohs.fhir.model.r4b.Quantity) : Pattern
+    public data class Quantity(override val `value`: dev.ohs.fhir.model.r4b.Quantity) : Pattern
 
-    public data class Range(public val `value`: dev.ohs.fhir.model.r4b.Range) : Pattern
+    public data class Range(override val `value`: dev.ohs.fhir.model.r4b.Range) : Pattern
 
-    public data class Ratio(public val `value`: dev.ohs.fhir.model.r4b.Ratio) : Pattern
+    public data class Ratio(override val `value`: dev.ohs.fhir.model.r4b.Ratio) : Pattern
 
-    public data class RatioRange(public val `value`: dev.ohs.fhir.model.r4b.RatioRange) : Pattern
+    public data class RatioRange(override val `value`: dev.ohs.fhir.model.r4b.RatioRange) : Pattern
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : Pattern
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) : Pattern
 
-    public data class SampledData(public val `value`: dev.ohs.fhir.model.r4b.SampledData) : Pattern
-
-    public data class Signature(public val `value`: dev.ohs.fhir.model.r4b.Signature) : Pattern
-
-    public data class Timing(public val `value`: dev.ohs.fhir.model.r4b.Timing) : Pattern
-
-    public data class ContactDetail(public val `value`: dev.ohs.fhir.model.r4b.ContactDetail) :
+    public data class SampledData(override val `value`: dev.ohs.fhir.model.r4b.SampledData) :
       Pattern
 
-    public data class Contributor(public val `value`: dev.ohs.fhir.model.r4b.Contributor) : Pattern
+    public data class Signature(override val `value`: dev.ohs.fhir.model.r4b.Signature) : Pattern
 
-    public data class DataRequirement(public val `value`: dev.ohs.fhir.model.r4b.DataRequirement) :
+    public data class Timing(override val `value`: dev.ohs.fhir.model.r4b.Timing) : Pattern
+
+    public data class ContactDetail(override val `value`: dev.ohs.fhir.model.r4b.ContactDetail) :
       Pattern
 
-    public data class Expression(public val `value`: dev.ohs.fhir.model.r4b.Expression) : Pattern
+    public data class Contributor(override val `value`: dev.ohs.fhir.model.r4b.Contributor) :
+      Pattern
+
+    public data class DataRequirement(
+      override val `value`: dev.ohs.fhir.model.r4b.DataRequirement
+    ) : Pattern
+
+    public data class Expression(override val `value`: dev.ohs.fhir.model.r4b.Expression) : Pattern
 
     public data class ParameterDefinition(
-      public val `value`: dev.ohs.fhir.model.r4b.ParameterDefinition
+      override val `value`: dev.ohs.fhir.model.r4b.ParameterDefinition
     ) : Pattern
 
-    public data class RelatedArtifact(public val `value`: dev.ohs.fhir.model.r4b.RelatedArtifact) :
-      Pattern
+    public data class RelatedArtifact(
+      override val `value`: dev.ohs.fhir.model.r4b.RelatedArtifact
+    ) : Pattern
 
     public data class TriggerDefinition(
-      public val `value`: dev.ohs.fhir.model.r4b.TriggerDefinition
+      override val `value`: dev.ohs.fhir.model.r4b.TriggerDefinition
     ) : Pattern
 
-    public data class UsageContext(public val `value`: dev.ohs.fhir.model.r4b.UsageContext) :
+    public data class UsageContext(override val `value`: dev.ohs.fhir.model.r4b.UsageContext) :
       Pattern
 
-    public data class Dosage(public val `value`: dev.ohs.fhir.model.r4b.Dosage) : Pattern
+    public data class Dosage(override val `value`: dev.ohs.fhir.model.r4b.Dosage) : Pattern
 
     public companion object {
       internal fun from(
@@ -2775,7 +2799,7 @@ public data class ElementDefinition(
     }
   }
 
-  public sealed interface MinValue {
+  public sealed interface MinValue : FhirChoice {
     public fun asDate(): Date? = this as? Date
 
     public fun asDateTime(): DateTime? = this as? DateTime
@@ -2794,23 +2818,25 @@ public data class ElementDefinition(
 
     public fun asQuantity(): Quantity? = this as? Quantity
 
-    public data class Date(public val `value`: dev.ohs.fhir.model.r4b.Date) : MinValue
+    public data class Date(override val `value`: dev.ohs.fhir.model.r4b.Date) : MinValue
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r4b.DateTime) : MinValue
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r4b.DateTime) : MinValue
 
-    public data class Instant(public val `value`: dev.ohs.fhir.model.r4b.Instant) : MinValue
+    public data class Instant(override val `value`: dev.ohs.fhir.model.r4b.Instant) : MinValue
 
-    public data class Time(public val `value`: dev.ohs.fhir.model.r4b.Time) : MinValue
+    public data class Time(override val `value`: dev.ohs.fhir.model.r4b.Time) : MinValue
 
-    public data class Decimal(public val `value`: dev.ohs.fhir.model.r4b.Decimal) : MinValue
+    public data class Decimal(override val `value`: dev.ohs.fhir.model.r4b.Decimal) : MinValue
 
-    public data class Integer(public val `value`: dev.ohs.fhir.model.r4b.Integer) : MinValue
+    public data class Integer(override val `value`: dev.ohs.fhir.model.r4b.Integer) : MinValue
 
-    public data class PositiveInt(public val `value`: dev.ohs.fhir.model.r4b.PositiveInt) : MinValue
+    public data class PositiveInt(override val `value`: dev.ohs.fhir.model.r4b.PositiveInt) :
+      MinValue
 
-    public data class UnsignedInt(public val `value`: dev.ohs.fhir.model.r4b.UnsignedInt) : MinValue
+    public data class UnsignedInt(override val `value`: dev.ohs.fhir.model.r4b.UnsignedInt) :
+      MinValue
 
-    public data class Quantity(public val `value`: dev.ohs.fhir.model.r4b.Quantity) : MinValue
+    public data class Quantity(override val `value`: dev.ohs.fhir.model.r4b.Quantity) : MinValue
 
     public companion object {
       internal fun from(
@@ -2838,7 +2864,7 @@ public data class ElementDefinition(
     }
   }
 
-  public sealed interface MaxValue {
+  public sealed interface MaxValue : FhirChoice {
     public fun asDate(): Date? = this as? Date
 
     public fun asDateTime(): DateTime? = this as? DateTime
@@ -2857,23 +2883,25 @@ public data class ElementDefinition(
 
     public fun asQuantity(): Quantity? = this as? Quantity
 
-    public data class Date(public val `value`: dev.ohs.fhir.model.r4b.Date) : MaxValue
+    public data class Date(override val `value`: dev.ohs.fhir.model.r4b.Date) : MaxValue
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r4b.DateTime) : MaxValue
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r4b.DateTime) : MaxValue
 
-    public data class Instant(public val `value`: dev.ohs.fhir.model.r4b.Instant) : MaxValue
+    public data class Instant(override val `value`: dev.ohs.fhir.model.r4b.Instant) : MaxValue
 
-    public data class Time(public val `value`: dev.ohs.fhir.model.r4b.Time) : MaxValue
+    public data class Time(override val `value`: dev.ohs.fhir.model.r4b.Time) : MaxValue
 
-    public data class Decimal(public val `value`: dev.ohs.fhir.model.r4b.Decimal) : MaxValue
+    public data class Decimal(override val `value`: dev.ohs.fhir.model.r4b.Decimal) : MaxValue
 
-    public data class Integer(public val `value`: dev.ohs.fhir.model.r4b.Integer) : MaxValue
+    public data class Integer(override val `value`: dev.ohs.fhir.model.r4b.Integer) : MaxValue
 
-    public data class PositiveInt(public val `value`: dev.ohs.fhir.model.r4b.PositiveInt) : MaxValue
+    public data class PositiveInt(override val `value`: dev.ohs.fhir.model.r4b.PositiveInt) :
+      MaxValue
 
-    public data class UnsignedInt(public val `value`: dev.ohs.fhir.model.r4b.UnsignedInt) : MaxValue
+    public data class UnsignedInt(override val `value`: dev.ohs.fhir.model.r4b.UnsignedInt) :
+      MaxValue
 
-    public data class Quantity(public val `value`: dev.ohs.fhir.model.r4b.Quantity) : MaxValue
+    public data class Quantity(override val `value`: dev.ohs.fhir.model.r4b.Quantity) : MaxValue
 
     public companion object {
       internal fun from(

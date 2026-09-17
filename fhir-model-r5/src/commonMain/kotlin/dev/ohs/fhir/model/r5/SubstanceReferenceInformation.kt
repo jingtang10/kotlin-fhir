@@ -476,18 +476,18 @@ public data class SubstanceReferenceInformation(
         }
       }
 
-    public sealed interface Amount {
+    public sealed interface Amount : FhirChoice {
       public fun asQuantity(): Quantity? = this as? Quantity
 
       public fun asRange(): Range? = this as? Range
 
       public fun asString(): String? = this as? String
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Amount
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Amount
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Amount
+      public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Amount
 
-      public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Amount
+      public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Amount
 
       public companion object {
         internal fun from(

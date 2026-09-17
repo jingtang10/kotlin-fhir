@@ -264,14 +264,14 @@ public data class BiologicallyDerivedProduct(
         }
       }
 
-    public sealed interface Collected {
+    public sealed interface Collected : FhirChoice {
       public fun asDateTime(): DateTime? = this as? DateTime
 
       public fun asPeriod(): Period? = this as? Period
 
-      public data class DateTime(public val `value`: dev.ohs.fhir.model.r4b.DateTime) : Collected
+      public data class DateTime(override val `value`: dev.ohs.fhir.model.r4b.DateTime) : Collected
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r4b.Period) : Collected
+      public data class Period(override val `value`: dev.ohs.fhir.model.r4b.Period) : Collected
 
       public companion object {
         internal fun from(
@@ -416,14 +416,14 @@ public data class BiologicallyDerivedProduct(
         }
       }
 
-    public sealed interface Time {
+    public sealed interface Time : FhirChoice {
       public fun asDateTime(): DateTime? = this as? DateTime
 
       public fun asPeriod(): Period? = this as? Period
 
-      public data class DateTime(public val `value`: dev.ohs.fhir.model.r4b.DateTime) : Time
+      public data class DateTime(override val `value`: dev.ohs.fhir.model.r4b.DateTime) : Time
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r4b.Period) : Time
+      public data class Period(override val `value`: dev.ohs.fhir.model.r4b.Period) : Time
 
       public companion object {
         internal fun from(
@@ -563,14 +563,14 @@ public data class BiologicallyDerivedProduct(
         }
       }
 
-    public sealed interface Time {
+    public sealed interface Time : FhirChoice {
       public fun asDateTime(): DateTime? = this as? DateTime
 
       public fun asPeriod(): Period? = this as? Period
 
-      public data class DateTime(public val `value`: dev.ohs.fhir.model.r4b.DateTime) : Time
+      public data class DateTime(override val `value`: dev.ohs.fhir.model.r4b.DateTime) : Time
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r4b.Period) : Time
+      public data class Period(override val `value`: dev.ohs.fhir.model.r4b.Period) : Time
 
       public companion object {
         internal fun from(

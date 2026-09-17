@@ -526,14 +526,14 @@ public data class PackagedProductDefinition(
           }
         }
 
-      public sealed interface Period {
+      public sealed interface Period : FhirChoice {
         public fun asDuration(): Duration? = this as? Duration
 
         public fun asString(): String? = this as? String
 
-        public data class Duration(public val `value`: dev.ohs.fhir.model.r4b.Duration) : Period
+        public data class Duration(override val `value`: dev.ohs.fhir.model.r4b.Duration) : Period
 
-        public data class String(public val `value`: dev.ohs.fhir.model.r4b.String) : Period
+        public data class String(override val `value`: dev.ohs.fhir.model.r4b.String) : Period
 
         public companion object {
           internal fun from(
@@ -679,7 +679,7 @@ public data class PackagedProductDefinition(
           }
         }
 
-      public sealed interface Value {
+      public sealed interface Value : FhirChoice {
         public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
         public fun asQuantity(): Quantity? = this as? Quantity
@@ -691,16 +691,17 @@ public data class PackagedProductDefinition(
         public fun asAttachment(): Attachment? = this as? Attachment
 
         public data class CodeableConcept(
-          public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+          override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
         ) : Value
 
-        public data class Quantity(public val `value`: dev.ohs.fhir.model.r4b.Quantity) : Value
+        public data class Quantity(override val `value`: dev.ohs.fhir.model.r4b.Quantity) : Value
 
-        public data class Date(public val `value`: dev.ohs.fhir.model.r4b.Date) : Value
+        public data class Date(override val `value`: dev.ohs.fhir.model.r4b.Date) : Value
 
-        public data class Boolean(public val `value`: dev.ohs.fhir.model.r4b.Boolean) : Value
+        public data class Boolean(override val `value`: dev.ohs.fhir.model.r4b.Boolean) : Value
 
-        public data class Attachment(public val `value`: dev.ohs.fhir.model.r4b.Attachment) : Value
+        public data class Attachment(override val `value`: dev.ohs.fhir.model.r4b.Attachment) :
+          Value
 
         public companion object {
           internal fun from(

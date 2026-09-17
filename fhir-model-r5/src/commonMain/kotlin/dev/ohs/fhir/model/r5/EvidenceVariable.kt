@@ -615,7 +615,7 @@ public data class EvidenceVariable(
             }
         }
 
-      public sealed interface Value {
+      public sealed interface Value : FhirChoice {
         public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
         public fun asBoolean(): Boolean? = this as? Boolean
@@ -629,18 +629,18 @@ public data class EvidenceVariable(
         public fun asId(): Id? = this as? Id
 
         public data class CodeableConcept(
-          public val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+          override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
         ) : Value
 
-        public data class Boolean(public val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
+        public data class Boolean(override val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
 
-        public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
+        public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
 
-        public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Value
+        public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Value
 
-        public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Value
+        public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Value
 
-        public data class Id(public val `value`: dev.ohs.fhir.model.r5.Id) : Value
+        public data class Id(override val `value`: dev.ohs.fhir.model.r5.Id) : Value
 
         public companion object {
           internal fun from(
@@ -921,7 +921,7 @@ public data class EvidenceVariable(
           }
         }
 
-      public sealed interface Event {
+      public sealed interface Event : FhirChoice {
         public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
         public fun asReference(): Reference? = this as? Reference
@@ -931,14 +931,14 @@ public data class EvidenceVariable(
         public fun asId(): Id? = this as? Id
 
         public data class CodeableConcept(
-          public val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+          override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
         ) : Event
 
-        public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Event
+        public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Event
 
-        public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Event
+        public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Event
 
-        public data class Id(public val `value`: dev.ohs.fhir.model.r5.Id) : Event
+        public data class Id(override val `value`: dev.ohs.fhir.model.r5.Id) : Event
 
         public companion object {
           internal fun from(
@@ -1028,14 +1028,14 @@ public data class EvidenceVariable(
       }
     }
 
-    public sealed interface Instances {
+    public sealed interface Instances : FhirChoice {
       public fun asQuantity(): Quantity? = this as? Quantity
 
       public fun asRange(): Range? = this as? Range
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Instances
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Instances
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Instances
+      public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Instances
 
       public companion object {
         internal fun from(
@@ -1049,14 +1049,14 @@ public data class EvidenceVariable(
       }
     }
 
-    public sealed interface Duration {
+    public sealed interface Duration : FhirChoice {
       public fun asQuantity(): Quantity? = this as? Quantity
 
       public fun asRange(): Range? = this as? Range
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Duration
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Duration
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Duration
+      public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Duration
 
       public companion object {
         internal fun from(
@@ -1244,19 +1244,20 @@ public data class EvidenceVariable(
         }
       }
 
-    public sealed interface Value {
+    public sealed interface Value : FhirChoice {
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
       public fun asQuantity(): Quantity? = this as? Quantity
 
       public fun asRange(): Range? = this as? Range
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
-        Value
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+      ) : Value
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Value
+      public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Value
 
       public companion object {
         internal fun from(
@@ -1330,14 +1331,14 @@ public data class EvidenceVariable(
     }
   }
 
-  public sealed interface VersionAlgorithm {
+  public sealed interface VersionAlgorithm : FhirChoice {
     public fun asString(): String? = this as? String
 
     public fun asCoding(): Coding? = this as? Coding
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : VersionAlgorithm
+    public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : VersionAlgorithm
 
-    public data class Coding(public val `value`: dev.ohs.fhir.model.r5.Coding) : VersionAlgorithm
+    public data class Coding(override val `value`: dev.ohs.fhir.model.r5.Coding) : VersionAlgorithm
 
     public companion object {
       internal fun from(

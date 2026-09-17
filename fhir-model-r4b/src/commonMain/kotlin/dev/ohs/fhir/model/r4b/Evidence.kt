@@ -1423,14 +1423,14 @@ public data class Evidence(
     }
   }
 
-  public sealed interface CiteAs {
+  public sealed interface CiteAs : FhirChoice {
     public fun asReference(): Reference? = this as? Reference
 
     public fun asMarkdown(): Markdown? = this as? Markdown
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : CiteAs
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) : CiteAs
 
-    public data class Markdown(public val `value`: dev.ohs.fhir.model.r4b.Markdown) : CiteAs
+    public data class Markdown(override val `value`: dev.ohs.fhir.model.r4b.Markdown) : CiteAs
 
     public companion object {
       internal fun from(

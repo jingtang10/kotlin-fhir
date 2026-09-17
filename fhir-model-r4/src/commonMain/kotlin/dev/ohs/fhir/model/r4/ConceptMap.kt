@@ -1190,14 +1190,14 @@ public data class ConceptMap(
     }
   }
 
-  public sealed interface Source {
+  public sealed interface Source : FhirChoice {
     public fun asUri(): Uri? = this as? Uri
 
     public fun asCanonical(): Canonical? = this as? Canonical
 
-    public data class Uri(public val `value`: dev.ohs.fhir.model.r4.Uri) : Source
+    public data class Uri(override val `value`: dev.ohs.fhir.model.r4.Uri) : Source
 
-    public data class Canonical(public val `value`: dev.ohs.fhir.model.r4.Canonical) : Source
+    public data class Canonical(override val `value`: dev.ohs.fhir.model.r4.Canonical) : Source
 
     public companion object {
       internal fun from(
@@ -1211,14 +1211,14 @@ public data class ConceptMap(
     }
   }
 
-  public sealed interface Target {
+  public sealed interface Target : FhirChoice {
     public fun asUri(): Uri? = this as? Uri
 
     public fun asCanonical(): Canonical? = this as? Canonical
 
-    public data class Uri(public val `value`: dev.ohs.fhir.model.r4.Uri) : Target
+    public data class Uri(override val `value`: dev.ohs.fhir.model.r4.Uri) : Target
 
-    public data class Canonical(public val `value`: dev.ohs.fhir.model.r4.Canonical) : Target
+    public data class Canonical(override val `value`: dev.ohs.fhir.model.r4.Canonical) : Target
 
     public companion object {
       internal fun from(

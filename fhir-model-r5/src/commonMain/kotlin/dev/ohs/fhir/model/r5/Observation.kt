@@ -896,7 +896,7 @@ public data class Observation(
         }
       }
 
-    public sealed interface Value {
+    public sealed interface Value : FhirChoice {
       public fun asQuantity(): Quantity? = this as? Quantity
 
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
@@ -923,32 +923,33 @@ public data class Observation(
 
       public fun asReference(): Reference? = this as? Reference
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
-        Value
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+      ) : Value
 
-      public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Value
+      public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Value
 
-      public data class Boolean(public val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
+      public data class Boolean(override val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
 
-      public data class Integer(public val `value`: dev.ohs.fhir.model.r5.Integer) : Value
+      public data class Integer(override val `value`: dev.ohs.fhir.model.r5.Integer) : Value
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Value
+      public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Value
 
-      public data class Ratio(public val `value`: dev.ohs.fhir.model.r5.Ratio) : Value
+      public data class Ratio(override val `value`: dev.ohs.fhir.model.r5.Ratio) : Value
 
-      public data class SampledData(public val `value`: dev.ohs.fhir.model.r5.SampledData) : Value
+      public data class SampledData(override val `value`: dev.ohs.fhir.model.r5.SampledData) : Value
 
-      public data class Time(public val `value`: dev.ohs.fhir.model.r5.Time) : Value
+      public data class Time(override val `value`: dev.ohs.fhir.model.r5.Time) : Value
 
-      public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Value
+      public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Value
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Value
+      public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Value
 
-      public data class Attachment(public val `value`: dev.ohs.fhir.model.r5.Attachment) : Value
+      public data class Attachment(override val `value`: dev.ohs.fhir.model.r5.Attachment) : Value
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Value
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Value
 
       public companion object {
         internal fun from(
@@ -1112,14 +1113,16 @@ public data class Observation(
     }
   }
 
-  public sealed interface Instantiates {
+  public sealed interface Instantiates : FhirChoice {
     public fun asCanonical(): Canonical? = this as? Canonical
 
     public fun asReference(): Reference? = this as? Reference
 
-    public data class Canonical(public val `value`: dev.ohs.fhir.model.r5.Canonical) : Instantiates
+    public data class Canonical(override val `value`: dev.ohs.fhir.model.r5.Canonical) :
+      Instantiates
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Instantiates
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) :
+      Instantiates
 
     public companion object {
       internal fun from(
@@ -1133,7 +1136,7 @@ public data class Observation(
     }
   }
 
-  public sealed interface Effective {
+  public sealed interface Effective : FhirChoice {
     public fun asDateTime(): DateTime? = this as? DateTime
 
     public fun asPeriod(): Period? = this as? Period
@@ -1142,13 +1145,13 @@ public data class Observation(
 
     public fun asInstant(): Instant? = this as? Instant
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Effective
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Effective
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Effective
+    public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Effective
 
-    public data class Timing(public val `value`: dev.ohs.fhir.model.r5.Timing) : Effective
+    public data class Timing(override val `value`: dev.ohs.fhir.model.r5.Timing) : Effective
 
-    public data class Instant(public val `value`: dev.ohs.fhir.model.r5.Instant) : Effective
+    public data class Instant(override val `value`: dev.ohs.fhir.model.r5.Instant) : Effective
 
     public companion object {
       internal fun from(
@@ -1166,7 +1169,7 @@ public data class Observation(
     }
   }
 
-  public sealed interface Value {
+  public sealed interface Value : FhirChoice {
     public fun asQuantity(): Quantity? = this as? Quantity
 
     public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
@@ -1193,32 +1196,32 @@ public data class Observation(
 
     public fun asReference(): Reference? = this as? Reference
 
-    public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
+    public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
+    public data class CodeableConcept(override val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
       Value
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Value
+    public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Value
 
-    public data class Boolean(public val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
+    public data class Boolean(override val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
 
-    public data class Integer(public val `value`: dev.ohs.fhir.model.r5.Integer) : Value
+    public data class Integer(override val `value`: dev.ohs.fhir.model.r5.Integer) : Value
 
-    public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Value
+    public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Value
 
-    public data class Ratio(public val `value`: dev.ohs.fhir.model.r5.Ratio) : Value
+    public data class Ratio(override val `value`: dev.ohs.fhir.model.r5.Ratio) : Value
 
-    public data class SampledData(public val `value`: dev.ohs.fhir.model.r5.SampledData) : Value
+    public data class SampledData(override val `value`: dev.ohs.fhir.model.r5.SampledData) : Value
 
-    public data class Time(public val `value`: dev.ohs.fhir.model.r5.Time) : Value
+    public data class Time(override val `value`: dev.ohs.fhir.model.r5.Time) : Value
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Value
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Value
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Value
+    public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Value
 
-    public data class Attachment(public val `value`: dev.ohs.fhir.model.r5.Attachment) : Value
+    public data class Attachment(override val `value`: dev.ohs.fhir.model.r5.Attachment) : Value
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Value
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Value
 
     public companion object {
       internal fun from(

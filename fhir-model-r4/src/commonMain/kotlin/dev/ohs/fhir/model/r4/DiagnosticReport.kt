@@ -423,14 +423,14 @@ public data class DiagnosticReport(
     }
   }
 
-  public sealed interface Effective {
+  public sealed interface Effective : FhirChoice {
     public fun asDateTime(): DateTime? = this as? DateTime
 
     public fun asPeriod(): Period? = this as? Period
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r4.DateTime) : Effective
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r4.DateTime) : Effective
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r4.Period) : Effective
+    public data class Period(override val `value`: dev.ohs.fhir.model.r4.Period) : Effective
 
     public companion object {
       internal fun from(

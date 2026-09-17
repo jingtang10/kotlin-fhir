@@ -713,18 +713,18 @@ public data class DocumentReference(
           }
         }
 
-      public sealed interface Value {
+      public sealed interface Value : FhirChoice {
         public fun asCoding(): Coding? = this as? Coding
 
         public fun asUri(): Uri? = this as? Uri
 
         public fun asCanonical(): Canonical? = this as? Canonical
 
-        public data class Coding(public val `value`: dev.ohs.fhir.model.r5.Coding) : Value
+        public data class Coding(override val `value`: dev.ohs.fhir.model.r5.Coding) : Value
 
-        public data class Uri(public val `value`: dev.ohs.fhir.model.r5.Uri) : Value
+        public data class Uri(override val `value`: dev.ohs.fhir.model.r5.Uri) : Value
 
-        public data class Canonical(public val `value`: dev.ohs.fhir.model.r5.Canonical) : Value
+        public data class Canonical(override val `value`: dev.ohs.fhir.model.r5.Canonical) : Value
 
         public companion object {
           internal fun from(

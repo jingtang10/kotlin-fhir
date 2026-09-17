@@ -440,18 +440,18 @@ public data class ChargeItem(
     }
   }
 
-  public sealed interface Occurrence {
+  public sealed interface Occurrence : FhirChoice {
     public fun asDateTime(): DateTime? = this as? DateTime
 
     public fun asPeriod(): Period? = this as? Period
 
     public fun asTiming(): Timing? = this as? Timing
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r4b.DateTime) : Occurrence
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r4b.DateTime) : Occurrence
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r4b.Period) : Occurrence
+    public data class Period(override val `value`: dev.ohs.fhir.model.r4b.Period) : Occurrence
 
-    public data class Timing(public val `value`: dev.ohs.fhir.model.r4b.Timing) : Occurrence
+    public data class Timing(override val `value`: dev.ohs.fhir.model.r4b.Timing) : Occurrence
 
     public companion object {
       internal fun from(
@@ -467,15 +467,16 @@ public data class ChargeItem(
     }
   }
 
-  public sealed interface Product {
+  public sealed interface Product : FhirChoice {
     public fun asReference(): Reference? = this as? Reference
 
     public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : Product
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) : Product
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept) :
-      Product
+    public data class CodeableConcept(
+      override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+    ) : Product
 
     public companion object {
       internal fun from(

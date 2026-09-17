@@ -686,16 +686,17 @@ public data class CoverageEligibilityRequest(
           }
         }
 
-      public sealed interface Diagnosis {
+      public sealed interface Diagnosis : FhirChoice {
         public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
         public fun asReference(): Reference? = this as? Reference
 
         public data class CodeableConcept(
-          public val `value`: dev.ohs.fhir.model.r4.CodeableConcept
+          override val `value`: dev.ohs.fhir.model.r4.CodeableConcept
         ) : Diagnosis
 
-        public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) : Diagnosis
+        public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) :
+          Diagnosis
 
         public companion object {
           internal fun from(
@@ -878,14 +879,14 @@ public data class CoverageEligibilityRequest(
     }
   }
 
-  public sealed interface Serviced {
+  public sealed interface Serviced : FhirChoice {
     public fun asDate(): Date? = this as? Date
 
     public fun asPeriod(): Period? = this as? Period
 
-    public data class Date(public val `value`: dev.ohs.fhir.model.r4.Date) : Serviced
+    public data class Date(override val `value`: dev.ohs.fhir.model.r4.Date) : Serviced
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r4.Period) : Serviced
+    public data class Period(override val `value`: dev.ohs.fhir.model.r4.Period) : Serviced
 
     public companion object {
       internal fun from(

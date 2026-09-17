@@ -574,19 +574,20 @@ public data class Ingredient(
               }
           }
 
-        public sealed interface Strength {
+        public sealed interface Strength : FhirChoice {
           public fun asRatio(): Ratio? = this as? Ratio
 
           public fun asRatioRange(): RatioRange? = this as? RatioRange
 
           public fun asQuantity(): Quantity? = this as? Quantity
 
-          public data class Ratio(public val `value`: dev.ohs.fhir.model.r5.Ratio) : Strength
+          public data class Ratio(override val `value`: dev.ohs.fhir.model.r5.Ratio) : Strength
 
-          public data class RatioRange(public val `value`: dev.ohs.fhir.model.r5.RatioRange) :
+          public data class RatioRange(override val `value`: dev.ohs.fhir.model.r5.RatioRange) :
             Strength
 
-          public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Strength
+          public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) :
+            Strength
 
           public companion object {
             internal fun from(
@@ -667,7 +668,7 @@ public data class Ingredient(
         }
       }
 
-      public sealed interface Presentation {
+      public sealed interface Presentation : FhirChoice {
         public fun asRatio(): Ratio? = this as? Ratio
 
         public fun asRatioRange(): RatioRange? = this as? RatioRange
@@ -676,16 +677,16 @@ public data class Ingredient(
 
         public fun asQuantity(): Quantity? = this as? Quantity
 
-        public data class Ratio(public val `value`: dev.ohs.fhir.model.r5.Ratio) : Presentation
+        public data class Ratio(override val `value`: dev.ohs.fhir.model.r5.Ratio) : Presentation
 
-        public data class RatioRange(public val `value`: dev.ohs.fhir.model.r5.RatioRange) :
+        public data class RatioRange(override val `value`: dev.ohs.fhir.model.r5.RatioRange) :
           Presentation
 
         public data class CodeableConcept(
-          public val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+          override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
         ) : Presentation
 
-        public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) :
+        public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) :
           Presentation
 
         public companion object {
@@ -704,7 +705,7 @@ public data class Ingredient(
         }
       }
 
-      public sealed interface Concentration {
+      public sealed interface Concentration : FhirChoice {
         public fun asRatio(): Ratio? = this as? Ratio
 
         public fun asRatioRange(): RatioRange? = this as? RatioRange
@@ -713,16 +714,16 @@ public data class Ingredient(
 
         public fun asQuantity(): Quantity? = this as? Quantity
 
-        public data class Ratio(public val `value`: dev.ohs.fhir.model.r5.Ratio) : Concentration
+        public data class Ratio(override val `value`: dev.ohs.fhir.model.r5.Ratio) : Concentration
 
-        public data class RatioRange(public val `value`: dev.ohs.fhir.model.r5.RatioRange) :
+        public data class RatioRange(override val `value`: dev.ohs.fhir.model.r5.RatioRange) :
           Concentration
 
         public data class CodeableConcept(
-          public val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+          override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
         ) : Concentration
 
-        public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) :
+        public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) :
           Concentration
 
         public companion object {

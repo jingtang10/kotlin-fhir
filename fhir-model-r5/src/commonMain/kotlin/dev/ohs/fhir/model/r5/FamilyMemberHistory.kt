@@ -493,7 +493,7 @@ public data class FamilyMemberHistory(
         }
       }
 
-    public sealed interface Onset {
+    public sealed interface Onset : FhirChoice {
       public fun asAge(): Age? = this as? Age
 
       public fun asRange(): Range? = this as? Range
@@ -502,13 +502,13 @@ public data class FamilyMemberHistory(
 
       public fun asString(): String? = this as? String
 
-      public data class Age(public val `value`: dev.ohs.fhir.model.r5.Age) : Onset
+      public data class Age(override val `value`: dev.ohs.fhir.model.r5.Age) : Onset
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Onset
+      public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Onset
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Onset
+      public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Onset
 
-      public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Onset
+      public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Onset
 
       public companion object {
         internal fun from(
@@ -691,7 +691,7 @@ public data class FamilyMemberHistory(
         }
       }
 
-    public sealed interface Performed {
+    public sealed interface Performed : FhirChoice {
       public fun asAge(): Age? = this as? Age
 
       public fun asRange(): Range? = this as? Range
@@ -702,15 +702,15 @@ public data class FamilyMemberHistory(
 
       public fun asDateTime(): DateTime? = this as? DateTime
 
-      public data class Age(public val `value`: dev.ohs.fhir.model.r5.Age) : Performed
+      public data class Age(override val `value`: dev.ohs.fhir.model.r5.Age) : Performed
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Performed
+      public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Performed
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Performed
+      public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Performed
 
-      public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Performed
+      public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Performed
 
-      public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Performed
+      public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Performed
 
       public companion object {
         internal fun from(
@@ -814,18 +814,18 @@ public data class FamilyMemberHistory(
     }
   }
 
-  public sealed interface Born {
+  public sealed interface Born : FhirChoice {
     public fun asPeriod(): Period? = this as? Period
 
     public fun asDate(): Date? = this as? Date
 
     public fun asString(): String? = this as? String
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Born
+    public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Born
 
-    public data class Date(public val `value`: dev.ohs.fhir.model.r5.Date) : Born
+    public data class Date(override val `value`: dev.ohs.fhir.model.r5.Date) : Born
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Born
+    public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Born
 
     public companion object {
       internal fun from(
@@ -841,19 +841,19 @@ public data class FamilyMemberHistory(
     }
   }
 
-  public sealed interface Age {
+  public sealed interface Age : FhirChoice {
     public fun asAge(): Age? = this as? Age
 
     public fun asRange(): Range? = this as? Range
 
     public fun asString(): String? = this as? String
 
-    public data class Age(public val `value`: dev.ohs.fhir.model.r5.Age) : FamilyMemberHistory.Age
+    public data class Age(override val `value`: dev.ohs.fhir.model.r5.Age) : FamilyMemberHistory.Age
 
-    public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) :
+    public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) :
       FamilyMemberHistory.Age
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r5.String) :
+    public data class String(override val `value`: dev.ohs.fhir.model.r5.String) :
       FamilyMemberHistory.Age
 
     public companion object {
@@ -870,7 +870,7 @@ public data class FamilyMemberHistory(
     }
   }
 
-  public sealed interface Deceased {
+  public sealed interface Deceased : FhirChoice {
     public fun asBoolean(): Boolean? = this as? Boolean
 
     public fun asAge(): Age? = this as? Age
@@ -881,15 +881,15 @@ public data class FamilyMemberHistory(
 
     public fun asString(): String? = this as? String
 
-    public data class Boolean(public val `value`: dev.ohs.fhir.model.r5.Boolean) : Deceased
+    public data class Boolean(override val `value`: dev.ohs.fhir.model.r5.Boolean) : Deceased
 
-    public data class Age(public val `value`: dev.ohs.fhir.model.r5.Age) : Deceased
+    public data class Age(override val `value`: dev.ohs.fhir.model.r5.Age) : Deceased
 
-    public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Deceased
+    public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Deceased
 
-    public data class Date(public val `value`: dev.ohs.fhir.model.r5.Date) : Deceased
+    public data class Date(override val `value`: dev.ohs.fhir.model.r5.Date) : Deceased
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Deceased
+    public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Deceased
 
     public companion object {
       internal fun from(

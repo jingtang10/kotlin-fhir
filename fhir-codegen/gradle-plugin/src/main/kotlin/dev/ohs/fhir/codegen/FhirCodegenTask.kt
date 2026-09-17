@@ -19,6 +19,7 @@ package dev.ohs.fhir.codegen
 import com.squareup.kotlinpoet.ClassName
 import dev.ohs.fhir.codegen.primitives.EnumerationFileSpecGenerator
 import dev.ohs.fhir.codegen.primitives.ExtensibleEnumerationFileSpecGenerator
+import dev.ohs.fhir.codegen.primitives.FhirChoiceFileSpecGenerator
 import dev.ohs.fhir.codegen.primitives.FhirDateFileSpecGenerator
 import dev.ohs.fhir.codegen.primitives.FhirDateSerializerFileSpecGenerator
 import dev.ohs.fhir.codegen.primitives.FhirDateTimeFileSpecGenerator
@@ -174,6 +175,9 @@ abstract class FhirCodegenTask : DefaultTask() {
     FhirEnumFileSpecGenerator.generate(packageName).writeTo(outputDir)
     EnumerationFileSpecGenerator.generate(packageName).writeTo(outputDir)
     ExtensibleEnumerationFileSpecGenerator.generate(packageName).writeTo(outputDir)
+
+    // Generates a common interface for choice types
+    FhirChoiceFileSpecGenerator.generate(packageName).writeTo(outputDir)
 
     // Generate custom serializers
     val serializersPackageName = "$packageName.serializers"

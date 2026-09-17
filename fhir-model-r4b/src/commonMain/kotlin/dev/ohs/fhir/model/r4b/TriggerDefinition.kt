@@ -102,7 +102,7 @@ public data class TriggerDefinition(
       }
     }
 
-  public sealed interface Timing {
+  public sealed interface Timing : FhirChoice {
     public fun asTiming(): Timing? = this as? Timing
 
     public fun asReference(): Reference? = this as? Reference
@@ -111,16 +111,16 @@ public data class TriggerDefinition(
 
     public fun asDateTime(): DateTime? = this as? DateTime
 
-    public data class Timing(public val `value`: dev.ohs.fhir.model.r4b.Timing) :
+    public data class Timing(override val `value`: dev.ohs.fhir.model.r4b.Timing) :
       TriggerDefinition.Timing
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) :
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) :
       TriggerDefinition.Timing
 
-    public data class Date(public val `value`: dev.ohs.fhir.model.r4b.Date) :
+    public data class Date(override val `value`: dev.ohs.fhir.model.r4b.Date) :
       TriggerDefinition.Timing
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r4b.DateTime) :
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r4b.DateTime) :
       TriggerDefinition.Timing
 
     public companion object {

@@ -313,14 +313,14 @@ public data class Specimen(
         }
       }
 
-    public sealed interface Collected {
+    public sealed interface Collected : FhirChoice {
       public fun asDateTime(): DateTime? = this as? DateTime
 
       public fun asPeriod(): Period? = this as? Period
 
-      public data class DateTime(public val `value`: dev.ohs.fhir.model.r4b.DateTime) : Collected
+      public data class DateTime(override val `value`: dev.ohs.fhir.model.r4b.DateTime) : Collected
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r4b.Period) : Collected
+      public data class Period(override val `value`: dev.ohs.fhir.model.r4b.Period) : Collected
 
       public companion object {
         internal fun from(
@@ -334,16 +334,16 @@ public data class Specimen(
       }
     }
 
-    public sealed interface FastingStatus {
+    public sealed interface FastingStatus : FhirChoice {
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
       public fun asDuration(): Duration? = this as? Duration
 
       public data class CodeableConcept(
-        public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+        override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
       ) : FastingStatus
 
-      public data class Duration(public val `value`: dev.ohs.fhir.model.r4b.Duration) :
+      public data class Duration(override val `value`: dev.ohs.fhir.model.r4b.Duration) :
         FastingStatus
 
       public companion object {
@@ -519,14 +519,14 @@ public data class Specimen(
         }
       }
 
-    public sealed interface Time {
+    public sealed interface Time : FhirChoice {
       public fun asDateTime(): DateTime? = this as? DateTime
 
       public fun asPeriod(): Period? = this as? Period
 
-      public data class DateTime(public val `value`: dev.ohs.fhir.model.r4b.DateTime) : Time
+      public data class DateTime(override val `value`: dev.ohs.fhir.model.r4b.DateTime) : Time
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r4b.Period) : Time
+      public data class Period(override val `value`: dev.ohs.fhir.model.r4b.Period) : Time
 
       public companion object {
         internal fun from(
@@ -689,16 +689,16 @@ public data class Specimen(
         }
       }
 
-    public sealed interface Additive {
+    public sealed interface Additive : FhirChoice {
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
       public fun asReference(): Reference? = this as? Reference
 
       public data class CodeableConcept(
-        public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+        override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
       ) : Additive
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : Additive
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) : Additive
 
       public companion object {
         internal fun from(

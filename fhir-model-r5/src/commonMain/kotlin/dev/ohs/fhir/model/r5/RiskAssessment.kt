@@ -300,14 +300,14 @@ public data class RiskAssessment(
         }
       }
 
-    public sealed interface Probability {
+    public sealed interface Probability : FhirChoice {
       public fun asDecimal(): Decimal? = this as? Decimal
 
       public fun asRange(): Range? = this as? Range
 
-      public data class Decimal(public val `value`: dev.ohs.fhir.model.r5.Decimal) : Probability
+      public data class Decimal(override val `value`: dev.ohs.fhir.model.r5.Decimal) : Probability
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Probability
+      public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Probability
 
       public companion object {
         internal fun from(
@@ -321,14 +321,14 @@ public data class RiskAssessment(
       }
     }
 
-    public sealed interface When {
+    public sealed interface When : FhirChoice {
       public fun asPeriod(): Period? = this as? Period
 
       public fun asRange(): Range? = this as? Range
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : When
+      public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : When
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : When
+      public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : When
 
       public companion object {
         internal fun from(
@@ -436,14 +436,14 @@ public data class RiskAssessment(
     }
   }
 
-  public sealed interface Occurrence {
+  public sealed interface Occurrence : FhirChoice {
     public fun asDateTime(): DateTime? = this as? DateTime
 
     public fun asPeriod(): Period? = this as? Period
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Occurrence
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Occurrence
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Occurrence
+    public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Occurrence
 
     public companion object {
       internal fun from(

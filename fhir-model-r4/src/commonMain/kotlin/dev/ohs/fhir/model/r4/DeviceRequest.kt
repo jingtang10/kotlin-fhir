@@ -327,7 +327,7 @@ public data class DeviceRequest(
         }
       }
 
-    public sealed interface Value {
+    public sealed interface Value : FhirChoice {
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
       public fun asQuantity(): Quantity? = this as? Quantity
@@ -336,14 +336,15 @@ public data class DeviceRequest(
 
       public fun asBoolean(): Boolean? = this as? Boolean
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
-        Value
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r4.CodeableConcept
+      ) : Value
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r4.Quantity) : Value
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r4.Quantity) : Value
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r4.Range) : Value
+      public data class Range(override val `value`: dev.ohs.fhir.model.r4.Range) : Value
 
-      public data class Boolean(public val `value`: dev.ohs.fhir.model.r4.Boolean) : Value
+      public data class Boolean(override val `value`: dev.ohs.fhir.model.r4.Boolean) : Value
 
       public companion object {
         internal fun from(
@@ -423,14 +424,14 @@ public data class DeviceRequest(
     }
   }
 
-  public sealed interface Code {
+  public sealed interface Code : FhirChoice {
     public fun asReference(): Reference? = this as? Reference
 
     public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) : Code
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) : Code
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
+    public data class CodeableConcept(override val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
       Code
 
     public companion object {
@@ -445,18 +446,18 @@ public data class DeviceRequest(
     }
   }
 
-  public sealed interface Occurrence {
+  public sealed interface Occurrence : FhirChoice {
     public fun asDateTime(): DateTime? = this as? DateTime
 
     public fun asPeriod(): Period? = this as? Period
 
     public fun asTiming(): Timing? = this as? Timing
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r4.DateTime) : Occurrence
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r4.DateTime) : Occurrence
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r4.Period) : Occurrence
+    public data class Period(override val `value`: dev.ohs.fhir.model.r4.Period) : Occurrence
 
-    public data class Timing(public val `value`: dev.ohs.fhir.model.r4.Timing) : Occurrence
+    public data class Timing(override val `value`: dev.ohs.fhir.model.r4.Timing) : Occurrence
 
     public companion object {
       internal fun from(

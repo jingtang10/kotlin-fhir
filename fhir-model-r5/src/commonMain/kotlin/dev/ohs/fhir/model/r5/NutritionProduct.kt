@@ -501,7 +501,7 @@ public data class NutritionProduct(
           }
       }
 
-    public sealed interface Value {
+    public sealed interface Value : FhirChoice {
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
       public fun asString(): String? = this as? String
@@ -514,18 +514,20 @@ public data class NutritionProduct(
 
       public fun asBoolean(): Boolean? = this as? Boolean
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+      ) : Value
+
+      public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Value
+
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
+
+      public data class Base64Binary(override val `value`: dev.ohs.fhir.model.r5.Base64Binary) :
         Value
 
-      public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Value
+      public data class Attachment(override val `value`: dev.ohs.fhir.model.r5.Attachment) : Value
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
-
-      public data class Base64Binary(public val `value`: dev.ohs.fhir.model.r5.Base64Binary) : Value
-
-      public data class Attachment(public val `value`: dev.ohs.fhir.model.r5.Attachment) : Value
-
-      public data class Boolean(public val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
+      public data class Boolean(override val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
 
       public companion object {
         internal fun from(

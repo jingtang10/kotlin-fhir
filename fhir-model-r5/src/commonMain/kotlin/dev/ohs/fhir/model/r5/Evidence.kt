@@ -1500,14 +1500,14 @@ public data class Evidence(
     }
   }
 
-  public sealed interface VersionAlgorithm {
+  public sealed interface VersionAlgorithm : FhirChoice {
     public fun asString(): String? = this as? String
 
     public fun asCoding(): Coding? = this as? Coding
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : VersionAlgorithm
+    public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : VersionAlgorithm
 
-    public data class Coding(public val `value`: dev.ohs.fhir.model.r5.Coding) : VersionAlgorithm
+    public data class Coding(override val `value`: dev.ohs.fhir.model.r5.Coding) : VersionAlgorithm
 
     public companion object {
       internal fun from(
@@ -1521,14 +1521,14 @@ public data class Evidence(
     }
   }
 
-  public sealed interface CiteAs {
+  public sealed interface CiteAs : FhirChoice {
     public fun asReference(): Reference? = this as? Reference
 
     public fun asMarkdown(): Markdown? = this as? Markdown
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : CiteAs
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : CiteAs
 
-    public data class Markdown(public val `value`: dev.ohs.fhir.model.r5.Markdown) : CiteAs
+    public data class Markdown(override val `value`: dev.ohs.fhir.model.r5.Markdown) : CiteAs
 
     public companion object {
       internal fun from(

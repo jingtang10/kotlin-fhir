@@ -302,14 +302,14 @@ public data class CareTeam(
         }
       }
 
-    public sealed interface Coverage {
+    public sealed interface Coverage : FhirChoice {
       public fun asPeriod(): Period? = this as? Period
 
       public fun asTiming(): Timing? = this as? Timing
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Coverage
+      public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Coverage
 
-      public data class Timing(public val `value`: dev.ohs.fhir.model.r5.Timing) : Coverage
+      public data class Timing(override val `value`: dev.ohs.fhir.model.r5.Timing) : Coverage
 
       public companion object {
         internal fun from(

@@ -771,19 +771,20 @@ public data class ActivityDefinition(
     }
   }
 
-  public sealed interface Subject {
+  public sealed interface Subject : FhirChoice {
     public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
     public fun asReference(): Reference? = this as? Reference
 
     public fun asCanonical(): Canonical? = this as? Canonical
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept) :
-      Subject
+    public data class CodeableConcept(
+      override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+    ) : Subject
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : Subject
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) : Subject
 
-    public data class Canonical(public val `value`: dev.ohs.fhir.model.r4b.Canonical) : Subject
+    public data class Canonical(override val `value`: dev.ohs.fhir.model.r4b.Canonical) : Subject
 
     public companion object {
       internal fun from(
@@ -799,7 +800,7 @@ public data class ActivityDefinition(
     }
   }
 
-  public sealed interface Timing {
+  public sealed interface Timing : FhirChoice {
     public fun asTiming(): Timing? = this as? Timing
 
     public fun asDateTime(): DateTime? = this as? DateTime
@@ -812,22 +813,22 @@ public data class ActivityDefinition(
 
     public fun asDuration(): Duration? = this as? Duration
 
-    public data class Timing(public val `value`: dev.ohs.fhir.model.r4b.Timing) :
+    public data class Timing(override val `value`: dev.ohs.fhir.model.r4b.Timing) :
       ActivityDefinition.Timing
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r4b.DateTime) :
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r4b.DateTime) :
       ActivityDefinition.Timing
 
-    public data class Age(public val `value`: dev.ohs.fhir.model.r4b.Age) :
+    public data class Age(override val `value`: dev.ohs.fhir.model.r4b.Age) :
       ActivityDefinition.Timing
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r4b.Period) :
+    public data class Period(override val `value`: dev.ohs.fhir.model.r4b.Period) :
       ActivityDefinition.Timing
 
-    public data class Range(public val `value`: dev.ohs.fhir.model.r4b.Range) :
+    public data class Range(override val `value`: dev.ohs.fhir.model.r4b.Range) :
       ActivityDefinition.Timing
 
-    public data class Duration(public val `value`: dev.ohs.fhir.model.r4b.Duration) :
+    public data class Duration(override val `value`: dev.ohs.fhir.model.r4b.Duration) :
       ActivityDefinition.Timing
 
     public companion object {
@@ -850,15 +851,16 @@ public data class ActivityDefinition(
     }
   }
 
-  public sealed interface Product {
+  public sealed interface Product : FhirChoice {
     public fun asReference(): Reference? = this as? Reference
 
     public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : Product
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) : Product
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept) :
-      Product
+    public data class CodeableConcept(
+      override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+    ) : Product
 
     public companion object {
       internal fun from(

@@ -103,7 +103,7 @@ public data class VirtualServiceDetail(
       }
     }
 
-  public sealed interface Address {
+  public sealed interface Address : FhirChoice {
     public fun asUrl(): Url? = this as? Url
 
     public fun asString(): String? = this as? String
@@ -112,14 +112,15 @@ public data class VirtualServiceDetail(
 
     public fun asExtendedContactDetail(): ExtendedContactDetail? = this as? ExtendedContactDetail
 
-    public data class Url(public val `value`: dev.ohs.fhir.model.r5.Url) : Address
+    public data class Url(override val `value`: dev.ohs.fhir.model.r5.Url) : Address
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Address
+    public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Address
 
-    public data class ContactPoint(public val `value`: dev.ohs.fhir.model.r5.ContactPoint) : Address
+    public data class ContactPoint(override val `value`: dev.ohs.fhir.model.r5.ContactPoint) :
+      Address
 
     public data class ExtendedContactDetail(
-      public val `value`: dev.ohs.fhir.model.r5.ExtendedContactDetail
+      override val `value`: dev.ohs.fhir.model.r5.ExtendedContactDetail
     ) : Address
 
     public companion object {

@@ -509,19 +509,19 @@ public data class CoverageEligibilityResponse(
             }
           }
 
-        public sealed interface Allowed {
+        public sealed interface Allowed : FhirChoice {
           public fun asUnsignedInt(): UnsignedInt? = this as? UnsignedInt
 
           public fun asString(): String? = this as? String
 
           public fun asMoney(): Money? = this as? Money
 
-          public data class UnsignedInt(public val `value`: dev.ohs.fhir.model.r4b.UnsignedInt) :
+          public data class UnsignedInt(override val `value`: dev.ohs.fhir.model.r4b.UnsignedInt) :
             Allowed
 
-          public data class String(public val `value`: dev.ohs.fhir.model.r4b.String) : Allowed
+          public data class String(override val `value`: dev.ohs.fhir.model.r4b.String) : Allowed
 
-          public data class Money(public val `value`: dev.ohs.fhir.model.r4b.Money) : Allowed
+          public data class Money(override val `value`: dev.ohs.fhir.model.r4b.Money) : Allowed
 
           public companion object {
             internal fun from(
@@ -537,19 +537,19 @@ public data class CoverageEligibilityResponse(
           }
         }
 
-        public sealed interface Used {
+        public sealed interface Used : FhirChoice {
           public fun asUnsignedInt(): UnsignedInt? = this as? UnsignedInt
 
           public fun asString(): String? = this as? String
 
           public fun asMoney(): Money? = this as? Money
 
-          public data class UnsignedInt(public val `value`: dev.ohs.fhir.model.r4b.UnsignedInt) :
+          public data class UnsignedInt(override val `value`: dev.ohs.fhir.model.r4b.UnsignedInt) :
             Used
 
-          public data class String(public val `value`: dev.ohs.fhir.model.r4b.String) : Used
+          public data class String(override val `value`: dev.ohs.fhir.model.r4b.String) : Used
 
-          public data class Money(public val `value`: dev.ohs.fhir.model.r4b.Money) : Used
+          public data class Money(override val `value`: dev.ohs.fhir.model.r4b.Money) : Used
 
           public companion object {
             internal fun from(
@@ -966,14 +966,14 @@ public data class CoverageEligibilityResponse(
     }
   }
 
-  public sealed interface Serviced {
+  public sealed interface Serviced : FhirChoice {
     public fun asDate(): Date? = this as? Date
 
     public fun asPeriod(): Period? = this as? Period
 
-    public data class Date(public val `value`: dev.ohs.fhir.model.r4b.Date) : Serviced
+    public data class Date(override val `value`: dev.ohs.fhir.model.r4b.Date) : Serviced
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r4b.Period) : Serviced
+    public data class Period(override val `value`: dev.ohs.fhir.model.r4b.Period) : Serviced
 
     public companion object {
       internal fun from(

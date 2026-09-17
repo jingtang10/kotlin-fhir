@@ -385,19 +385,19 @@ public data class PaymentReconciliation(
         }
       }
 
-    public sealed interface TargetItem {
+    public sealed interface TargetItem : FhirChoice {
       public fun asString(): String? = this as? String
 
       public fun asIdentifier(): Identifier? = this as? Identifier
 
       public fun asPositiveInt(): PositiveInt? = this as? PositiveInt
 
-      public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : TargetItem
+      public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : TargetItem
 
-      public data class Identifier(public val `value`: dev.ohs.fhir.model.r5.Identifier) :
+      public data class Identifier(override val `value`: dev.ohs.fhir.model.r5.Identifier) :
         TargetItem
 
-      public data class PositiveInt(public val `value`: dev.ohs.fhir.model.r5.PositiveInt) :
+      public data class PositiveInt(override val `value`: dev.ohs.fhir.model.r5.PositiveInt) :
         TargetItem
 
       public companion object {

@@ -243,15 +243,17 @@ public data class MedicinalProductContraindication(
           }
       }
 
-    public sealed interface Medication {
+    public sealed interface Medication : FhirChoice {
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
       public fun asReference(): Reference? = this as? Reference
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
-        Medication
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r4.CodeableConcept
+      ) : Medication
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) : Medication
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) :
+        Medication
 
       public companion object {
         internal fun from(

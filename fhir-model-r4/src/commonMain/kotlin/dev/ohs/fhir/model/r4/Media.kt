@@ -295,14 +295,14 @@ public data class Media(
         }
     }
 
-  public sealed interface Created {
+  public sealed interface Created : FhirChoice {
     public fun asDateTime(): DateTime? = this as? DateTime
 
     public fun asPeriod(): Period? = this as? Period
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r4.DateTime) : Created
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r4.DateTime) : Created
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r4.Period) : Created
+    public data class Period(override val `value`: dev.ohs.fhir.model.r4.Period) : Created
 
     public companion object {
       internal fun from(

@@ -592,16 +592,16 @@ public data class SpecimenDefinition(
             }
           }
 
-        public sealed interface Additive {
+        public sealed interface Additive : FhirChoice {
           public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
           public fun asReference(): Reference? = this as? Reference
 
           public data class CodeableConcept(
-            public val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+            override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
           ) : Additive
 
-          public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) :
+          public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) :
             Additive
 
           public companion object {
@@ -673,15 +673,15 @@ public data class SpecimenDefinition(
         }
       }
 
-      public sealed interface MinimumVolume {
+      public sealed interface MinimumVolume : FhirChoice {
         public fun asQuantity(): Quantity? = this as? Quantity
 
         public fun asString(): String? = this as? String
 
-        public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) :
+        public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) :
           MinimumVolume
 
-        public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : MinimumVolume
+        public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : MinimumVolume
 
         public companion object {
           internal fun from(
@@ -1025,14 +1025,14 @@ public data class SpecimenDefinition(
     }
   }
 
-  public sealed interface VersionAlgorithm {
+  public sealed interface VersionAlgorithm : FhirChoice {
     public fun asString(): String? = this as? String
 
     public fun asCoding(): Coding? = this as? Coding
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : VersionAlgorithm
+    public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : VersionAlgorithm
 
-    public data class Coding(public val `value`: dev.ohs.fhir.model.r5.Coding) : VersionAlgorithm
+    public data class Coding(override val `value`: dev.ohs.fhir.model.r5.Coding) : VersionAlgorithm
 
     public companion object {
       internal fun from(
@@ -1046,15 +1046,15 @@ public data class SpecimenDefinition(
     }
   }
 
-  public sealed interface Subject {
+  public sealed interface Subject : FhirChoice {
     public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
     public fun asReference(): Reference? = this as? Reference
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
+    public data class CodeableConcept(override val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
       Subject
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Subject
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Subject
 
     public companion object {
       internal fun from(

@@ -586,14 +586,14 @@ public data class ClinicalUseDefinition(
         }
       }
 
-    public sealed interface Duration {
+    public sealed interface Duration : FhirChoice {
       public fun asRange(): Range? = this as? Range
 
       public fun asString(): String? = this as? String
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Duration
+      public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Duration
 
-      public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Duration
+      public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Duration
 
       public companion object {
         internal fun from(
@@ -833,15 +833,15 @@ public data class ClinicalUseDefinition(
           }
         }
 
-      public sealed interface Item {
+      public sealed interface Item : FhirChoice {
         public fun asReference(): Reference? = this as? Reference
 
         public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-        public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Item
+        public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Item
 
         public data class CodeableConcept(
-          public val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+          override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
         ) : Item
 
         public companion object {

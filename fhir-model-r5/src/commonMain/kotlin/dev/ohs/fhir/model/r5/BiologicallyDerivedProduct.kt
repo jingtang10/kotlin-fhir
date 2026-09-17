@@ -297,14 +297,14 @@ public data class BiologicallyDerivedProduct(
         }
       }
 
-    public sealed interface Collected {
+    public sealed interface Collected : FhirChoice {
       public fun asDateTime(): DateTime? = this as? DateTime
 
       public fun asPeriod(): Period? = this as? Period
 
-      public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Collected
+      public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Collected
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Collected
+      public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Collected
 
       public companion object {
         internal fun from(
@@ -452,7 +452,7 @@ public data class BiologicallyDerivedProduct(
           }
       }
 
-    public sealed interface Value {
+    public sealed interface Value : FhirChoice {
       public fun asBoolean(): Boolean? = this as? Boolean
 
       public fun asInteger(): Integer? = this as? Integer
@@ -471,24 +471,25 @@ public data class BiologicallyDerivedProduct(
 
       public fun asAttachment(): Attachment? = this as? Attachment
 
-      public data class Boolean(public val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
+      public data class Boolean(override val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
 
-      public data class Integer(public val `value`: dev.ohs.fhir.model.r5.Integer) : Value
+      public data class Integer(override val `value`: dev.ohs.fhir.model.r5.Integer) : Value
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
-        Value
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+      ) : Value
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Value
+      public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Value
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Value
+      public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Value
 
-      public data class Ratio(public val `value`: dev.ohs.fhir.model.r5.Ratio) : Value
+      public data class Ratio(override val `value`: dev.ohs.fhir.model.r5.Ratio) : Value
 
-      public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Value
+      public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Value
 
-      public data class Attachment(public val `value`: dev.ohs.fhir.model.r5.Attachment) : Value
+      public data class Attachment(override val `value`: dev.ohs.fhir.model.r5.Attachment) : Value
 
       public companion object {
         internal fun from(

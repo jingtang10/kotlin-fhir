@@ -104,14 +104,14 @@ public data class ProductShelfLife(
       }
     }
 
-  public sealed interface Period {
+  public sealed interface Period : FhirChoice {
     public fun asDuration(): Duration? = this as? Duration
 
     public fun asString(): String? = this as? String
 
-    public data class Duration(public val `value`: dev.ohs.fhir.model.r5.Duration) : Period
+    public data class Duration(override val `value`: dev.ohs.fhir.model.r5.Duration) : Period
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Period
+    public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Period
 
     public companion object {
       internal fun from(

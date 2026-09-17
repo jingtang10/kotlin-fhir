@@ -406,14 +406,14 @@ public data class ArtifactAssessment(
     }
   }
 
-  public sealed interface CiteAs {
+  public sealed interface CiteAs : FhirChoice {
     public fun asReference(): Reference? = this as? Reference
 
     public fun asMarkdown(): Markdown? = this as? Markdown
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : CiteAs
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : CiteAs
 
-    public data class Markdown(public val `value`: dev.ohs.fhir.model.r5.Markdown) : CiteAs
+    public data class Markdown(override val `value`: dev.ohs.fhir.model.r5.Markdown) : CiteAs
 
     public companion object {
       internal fun from(
@@ -427,18 +427,18 @@ public data class ArtifactAssessment(
     }
   }
 
-  public sealed interface Artifact {
+  public sealed interface Artifact : FhirChoice {
     public fun asReference(): Reference? = this as? Reference
 
     public fun asCanonical(): Canonical? = this as? Canonical
 
     public fun asUri(): Uri? = this as? Uri
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Artifact
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Artifact
 
-    public data class Canonical(public val `value`: dev.ohs.fhir.model.r5.Canonical) : Artifact
+    public data class Canonical(override val `value`: dev.ohs.fhir.model.r5.Canonical) : Artifact
 
-    public data class Uri(public val `value`: dev.ohs.fhir.model.r5.Uri) : Artifact
+    public data class Uri(override val `value`: dev.ohs.fhir.model.r5.Uri) : Artifact
 
     public companion object {
       internal fun from(

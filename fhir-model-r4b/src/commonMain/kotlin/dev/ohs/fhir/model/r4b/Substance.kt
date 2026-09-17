@@ -372,16 +372,17 @@ public data class Substance(
         }
       }
 
-    public sealed interface Substance {
+    public sealed interface Substance : FhirChoice {
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
       public fun asReference(): Reference? = this as? Reference
 
       public data class CodeableConcept(
-        public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+        override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
       ) : Substance
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : Substance
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) :
+        Substance
 
       public companion object {
         internal fun from(

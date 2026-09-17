@@ -562,19 +562,19 @@ public data class PlanDefinition(
           }
         }
 
-      public sealed interface Detail {
+      public sealed interface Detail : FhirChoice {
         public fun asQuantity(): Quantity? = this as? Quantity
 
         public fun asRange(): Range? = this as? Range
 
         public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-        public data class Quantity(public val `value`: dev.ohs.fhir.model.r4.Quantity) : Detail
+        public data class Quantity(override val `value`: dev.ohs.fhir.model.r4.Quantity) : Detail
 
-        public data class Range(public val `value`: dev.ohs.fhir.model.r4.Range) : Detail
+        public data class Range(override val `value`: dev.ohs.fhir.model.r4.Range) : Detail
 
         public data class CodeableConcept(
-          public val `value`: dev.ohs.fhir.model.r4.CodeableConcept
+          override val `value`: dev.ohs.fhir.model.r4.CodeableConcept
         ) : Detail
 
         public companion object {
@@ -1154,14 +1154,14 @@ public data class PlanDefinition(
             }
         }
 
-      public sealed interface Offset {
+      public sealed interface Offset : FhirChoice {
         public fun asDuration(): Duration? = this as? Duration
 
         public fun asRange(): Range? = this as? Range
 
-        public data class Duration(public val `value`: dev.ohs.fhir.model.r4.Duration) : Offset
+        public data class Duration(override val `value`: dev.ohs.fhir.model.r4.Duration) : Offset
 
-        public data class Range(public val `value`: dev.ohs.fhir.model.r4.Range) : Offset
+        public data class Range(override val `value`: dev.ohs.fhir.model.r4.Range) : Offset
 
         public companion object {
           internal fun from(
@@ -1509,15 +1509,16 @@ public data class PlanDefinition(
       }
     }
 
-    public sealed interface Subject {
+    public sealed interface Subject : FhirChoice {
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
       public fun asReference(): Reference? = this as? Reference
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
-        Subject
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r4.CodeableConcept
+      ) : Subject
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) : Subject
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) : Subject
 
       public companion object {
         internal fun from(
@@ -1531,7 +1532,7 @@ public data class PlanDefinition(
       }
     }
 
-    public sealed interface Timing {
+    public sealed interface Timing : FhirChoice {
       public fun asDateTime(): DateTime? = this as? DateTime
 
       public fun asAge(): Age? = this as? Age
@@ -1544,17 +1545,19 @@ public data class PlanDefinition(
 
       public fun asTiming(): Timing? = this as? Timing
 
-      public data class DateTime(public val `value`: dev.ohs.fhir.model.r4.DateTime) : Action.Timing
+      public data class DateTime(override val `value`: dev.ohs.fhir.model.r4.DateTime) :
+        Action.Timing
 
-      public data class Age(public val `value`: dev.ohs.fhir.model.r4.Age) : Action.Timing
+      public data class Age(override val `value`: dev.ohs.fhir.model.r4.Age) : Action.Timing
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r4.Period) : Action.Timing
+      public data class Period(override val `value`: dev.ohs.fhir.model.r4.Period) : Action.Timing
 
-      public data class Duration(public val `value`: dev.ohs.fhir.model.r4.Duration) : Action.Timing
+      public data class Duration(override val `value`: dev.ohs.fhir.model.r4.Duration) :
+        Action.Timing
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r4.Range) : Action.Timing
+      public data class Range(override val `value`: dev.ohs.fhir.model.r4.Range) : Action.Timing
 
-      public data class Timing(public val `value`: dev.ohs.fhir.model.r4.Timing) : Action.Timing
+      public data class Timing(override val `value`: dev.ohs.fhir.model.r4.Timing) : Action.Timing
 
       public companion object {
         internal fun from(
@@ -1576,14 +1579,15 @@ public data class PlanDefinition(
       }
     }
 
-    public sealed interface Definition {
+    public sealed interface Definition : FhirChoice {
       public fun asCanonical(): Canonical? = this as? Canonical
 
       public fun asUri(): Uri? = this as? Uri
 
-      public data class Canonical(public val `value`: dev.ohs.fhir.model.r4.Canonical) : Definition
+      public data class Canonical(override val `value`: dev.ohs.fhir.model.r4.Canonical) :
+        Definition
 
-      public data class Uri(public val `value`: dev.ohs.fhir.model.r4.Uri) : Definition
+      public data class Uri(override val `value`: dev.ohs.fhir.model.r4.Uri) : Definition
 
       public companion object {
         internal fun from(
@@ -1825,15 +1829,15 @@ public data class PlanDefinition(
     }
   }
 
-  public sealed interface Subject {
+  public sealed interface Subject : FhirChoice {
     public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
     public fun asReference(): Reference? = this as? Reference
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
+    public data class CodeableConcept(override val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
       Subject
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) : Subject
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) : Subject
 
     public companion object {
       internal fun from(

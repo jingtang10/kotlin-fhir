@@ -234,18 +234,18 @@ public data class GuidanceResponse(
         }
     }
 
-  public sealed interface Module {
+  public sealed interface Module : FhirChoice {
     public fun asUri(): Uri? = this as? Uri
 
     public fun asCanonical(): Canonical? = this as? Canonical
 
     public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-    public data class Uri(public val `value`: dev.ohs.fhir.model.r4.Uri) : Module
+    public data class Uri(override val `value`: dev.ohs.fhir.model.r4.Uri) : Module
 
-    public data class Canonical(public val `value`: dev.ohs.fhir.model.r4.Canonical) : Module
+    public data class Canonical(override val `value`: dev.ohs.fhir.model.r4.Canonical) : Module
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
+    public data class CodeableConcept(override val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
       Module
 
     public companion object {

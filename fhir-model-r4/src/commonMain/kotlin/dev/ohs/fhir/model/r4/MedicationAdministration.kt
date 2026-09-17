@@ -500,14 +500,14 @@ public data class MedicationAdministration(
         }
       }
 
-    public sealed interface Rate {
+    public sealed interface Rate : FhirChoice {
       public fun asRatio(): Ratio? = this as? Ratio
 
       public fun asQuantity(): Quantity? = this as? Quantity
 
-      public data class Ratio(public val `value`: dev.ohs.fhir.model.r4.Ratio) : Rate
+      public data class Ratio(override val `value`: dev.ohs.fhir.model.r4.Ratio) : Rate
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r4.Quantity) : Rate
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r4.Quantity) : Rate
 
       public companion object {
         internal fun from(
@@ -641,15 +641,15 @@ public data class MedicationAdministration(
     }
   }
 
-  public sealed interface Medication {
+  public sealed interface Medication : FhirChoice {
     public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
     public fun asReference(): Reference? = this as? Reference
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
+    public data class CodeableConcept(override val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
       Medication
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) : Medication
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) : Medication
 
     public companion object {
       internal fun from(
@@ -663,14 +663,14 @@ public data class MedicationAdministration(
     }
   }
 
-  public sealed interface Effective {
+  public sealed interface Effective : FhirChoice {
     public fun asDateTime(): DateTime? = this as? DateTime
 
     public fun asPeriod(): Period? = this as? Period
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r4.DateTime) : Effective
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r4.DateTime) : Effective
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r4.Period) : Effective
+    public data class Period(override val `value`: dev.ohs.fhir.model.r4.Period) : Effective
 
     public companion object {
       internal fun from(

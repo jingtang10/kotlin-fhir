@@ -983,7 +983,7 @@ public data class CodeSystem(
             }
         }
 
-      public sealed interface Value {
+      public sealed interface Value : FhirChoice {
         public fun asCode(): Code? = this as? Code
 
         public fun asCoding(): Coding? = this as? Coding
@@ -998,19 +998,19 @@ public data class CodeSystem(
 
         public fun asDecimal(): Decimal? = this as? Decimal
 
-        public data class Code(public val `value`: dev.ohs.fhir.model.r4.Code) : Value
+        public data class Code(override val `value`: dev.ohs.fhir.model.r4.Code) : Value
 
-        public data class Coding(public val `value`: dev.ohs.fhir.model.r4.Coding) : Value
+        public data class Coding(override val `value`: dev.ohs.fhir.model.r4.Coding) : Value
 
-        public data class String(public val `value`: dev.ohs.fhir.model.r4.String) : Value
+        public data class String(override val `value`: dev.ohs.fhir.model.r4.String) : Value
 
-        public data class Integer(public val `value`: dev.ohs.fhir.model.r4.Integer) : Value
+        public data class Integer(override val `value`: dev.ohs.fhir.model.r4.Integer) : Value
 
-        public data class Boolean(public val `value`: dev.ohs.fhir.model.r4.Boolean) : Value
+        public data class Boolean(override val `value`: dev.ohs.fhir.model.r4.Boolean) : Value
 
-        public data class DateTime(public val `value`: dev.ohs.fhir.model.r4.DateTime) : Value
+        public data class DateTime(override val `value`: dev.ohs.fhir.model.r4.DateTime) : Value
 
-        public data class Decimal(public val `value`: dev.ohs.fhir.model.r4.Decimal) : Value
+        public data class Decimal(override val `value`: dev.ohs.fhir.model.r4.Decimal) : Value
 
         public companion object {
           internal fun from(

@@ -72,7 +72,7 @@ public data class Extension(
       }
     }
 
-  public sealed interface Value {
+  public sealed interface Value : FhirChoice {
     public fun asBase64Binary(): Base64Binary? = this as? Base64Binary
 
     public fun asBoolean(): Boolean? = this as? Boolean
@@ -181,124 +181,125 @@ public data class Extension(
 
     public fun asMeta(): Meta? = this as? Meta
 
-    public data class Base64Binary(public val `value`: dev.ohs.fhir.model.r5.Base64Binary) : Value
+    public data class Base64Binary(override val `value`: dev.ohs.fhir.model.r5.Base64Binary) : Value
 
-    public data class Boolean(public val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
+    public data class Boolean(override val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
 
-    public data class Canonical(public val `value`: dev.ohs.fhir.model.r5.Canonical) : Value
+    public data class Canonical(override val `value`: dev.ohs.fhir.model.r5.Canonical) : Value
 
-    public data class Code(public val `value`: dev.ohs.fhir.model.r5.Code) : Value
+    public data class Code(override val `value`: dev.ohs.fhir.model.r5.Code) : Value
 
-    public data class Date(public val `value`: dev.ohs.fhir.model.r5.Date) : Value
+    public data class Date(override val `value`: dev.ohs.fhir.model.r5.Date) : Value
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Value
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Value
 
-    public data class Decimal(public val `value`: dev.ohs.fhir.model.r5.Decimal) : Value
+    public data class Decimal(override val `value`: dev.ohs.fhir.model.r5.Decimal) : Value
 
-    public data class Id(public val `value`: dev.ohs.fhir.model.r5.Id) : Value
+    public data class Id(override val `value`: dev.ohs.fhir.model.r5.Id) : Value
 
-    public data class Instant(public val `value`: dev.ohs.fhir.model.r5.Instant) : Value
+    public data class Instant(override val `value`: dev.ohs.fhir.model.r5.Instant) : Value
 
-    public data class Integer(public val `value`: dev.ohs.fhir.model.r5.Integer) : Value
+    public data class Integer(override val `value`: dev.ohs.fhir.model.r5.Integer) : Value
 
-    public data class Integer64(public val `value`: dev.ohs.fhir.model.r5.Integer64) : Value
+    public data class Integer64(override val `value`: dev.ohs.fhir.model.r5.Integer64) : Value
 
-    public data class Markdown(public val `value`: dev.ohs.fhir.model.r5.Markdown) : Value
+    public data class Markdown(override val `value`: dev.ohs.fhir.model.r5.Markdown) : Value
 
-    public data class Oid(public val `value`: dev.ohs.fhir.model.r5.Oid) : Value
+    public data class Oid(override val `value`: dev.ohs.fhir.model.r5.Oid) : Value
 
-    public data class PositiveInt(public val `value`: dev.ohs.fhir.model.r5.PositiveInt) : Value
+    public data class PositiveInt(override val `value`: dev.ohs.fhir.model.r5.PositiveInt) : Value
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Value
+    public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Value
 
-    public data class Time(public val `value`: dev.ohs.fhir.model.r5.Time) : Value
+    public data class Time(override val `value`: dev.ohs.fhir.model.r5.Time) : Value
 
-    public data class UnsignedInt(public val `value`: dev.ohs.fhir.model.r5.UnsignedInt) : Value
+    public data class UnsignedInt(override val `value`: dev.ohs.fhir.model.r5.UnsignedInt) : Value
 
-    public data class Uri(public val `value`: dev.ohs.fhir.model.r5.Uri) : Value
+    public data class Uri(override val `value`: dev.ohs.fhir.model.r5.Uri) : Value
 
-    public data class Url(public val `value`: dev.ohs.fhir.model.r5.Url) : Value
+    public data class Url(override val `value`: dev.ohs.fhir.model.r5.Url) : Value
 
-    public data class Uuid(public val `value`: dev.ohs.fhir.model.r5.Uuid) : Value
+    public data class Uuid(override val `value`: dev.ohs.fhir.model.r5.Uuid) : Value
 
-    public data class Address(public val `value`: dev.ohs.fhir.model.r5.Address) : Value
+    public data class Address(override val `value`: dev.ohs.fhir.model.r5.Address) : Value
 
-    public data class Age(public val `value`: dev.ohs.fhir.model.r5.Age) : Value
+    public data class Age(override val `value`: dev.ohs.fhir.model.r5.Age) : Value
 
-    public data class Annotation(public val `value`: dev.ohs.fhir.model.r5.Annotation) : Value
+    public data class Annotation(override val `value`: dev.ohs.fhir.model.r5.Annotation) : Value
 
-    public data class Attachment(public val `value`: dev.ohs.fhir.model.r5.Attachment) : Value
+    public data class Attachment(override val `value`: dev.ohs.fhir.model.r5.Attachment) : Value
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
+    public data class CodeableConcept(override val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
       Value
 
     public data class CodeableReference(
-      public val `value`: dev.ohs.fhir.model.r5.CodeableReference
+      override val `value`: dev.ohs.fhir.model.r5.CodeableReference
     ) : Value
 
-    public data class Coding(public val `value`: dev.ohs.fhir.model.r5.Coding) : Value
+    public data class Coding(override val `value`: dev.ohs.fhir.model.r5.Coding) : Value
 
-    public data class ContactPoint(public val `value`: dev.ohs.fhir.model.r5.ContactPoint) : Value
+    public data class ContactPoint(override val `value`: dev.ohs.fhir.model.r5.ContactPoint) : Value
 
-    public data class Count(public val `value`: dev.ohs.fhir.model.r5.Count) : Value
+    public data class Count(override val `value`: dev.ohs.fhir.model.r5.Count) : Value
 
-    public data class Distance(public val `value`: dev.ohs.fhir.model.r5.Distance) : Value
+    public data class Distance(override val `value`: dev.ohs.fhir.model.r5.Distance) : Value
 
-    public data class Duration(public val `value`: dev.ohs.fhir.model.r5.Duration) : Value
+    public data class Duration(override val `value`: dev.ohs.fhir.model.r5.Duration) : Value
 
-    public data class HumanName(public val `value`: dev.ohs.fhir.model.r5.HumanName) : Value
+    public data class HumanName(override val `value`: dev.ohs.fhir.model.r5.HumanName) : Value
 
-    public data class Identifier(public val `value`: dev.ohs.fhir.model.r5.Identifier) : Value
+    public data class Identifier(override val `value`: dev.ohs.fhir.model.r5.Identifier) : Value
 
-    public data class Money(public val `value`: dev.ohs.fhir.model.r5.Money) : Value
+    public data class Money(override val `value`: dev.ohs.fhir.model.r5.Money) : Value
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Value
+    public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Value
 
-    public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
+    public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
 
-    public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Value
+    public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Value
 
-    public data class Ratio(public val `value`: dev.ohs.fhir.model.r5.Ratio) : Value
+    public data class Ratio(override val `value`: dev.ohs.fhir.model.r5.Ratio) : Value
 
-    public data class RatioRange(public val `value`: dev.ohs.fhir.model.r5.RatioRange) : Value
+    public data class RatioRange(override val `value`: dev.ohs.fhir.model.r5.RatioRange) : Value
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Value
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Value
 
-    public data class SampledData(public val `value`: dev.ohs.fhir.model.r5.SampledData) : Value
+    public data class SampledData(override val `value`: dev.ohs.fhir.model.r5.SampledData) : Value
 
-    public data class Signature(public val `value`: dev.ohs.fhir.model.r5.Signature) : Value
+    public data class Signature(override val `value`: dev.ohs.fhir.model.r5.Signature) : Value
 
-    public data class Timing(public val `value`: dev.ohs.fhir.model.r5.Timing) : Value
+    public data class Timing(override val `value`: dev.ohs.fhir.model.r5.Timing) : Value
 
-    public data class ContactDetail(public val `value`: dev.ohs.fhir.model.r5.ContactDetail) : Value
-
-    public data class DataRequirement(public val `value`: dev.ohs.fhir.model.r5.DataRequirement) :
+    public data class ContactDetail(override val `value`: dev.ohs.fhir.model.r5.ContactDetail) :
       Value
 
-    public data class Expression(public val `value`: dev.ohs.fhir.model.r5.Expression) : Value
+    public data class DataRequirement(override val `value`: dev.ohs.fhir.model.r5.DataRequirement) :
+      Value
+
+    public data class Expression(override val `value`: dev.ohs.fhir.model.r5.Expression) : Value
 
     public data class ParameterDefinition(
-      public val `value`: dev.ohs.fhir.model.r5.ParameterDefinition
+      override val `value`: dev.ohs.fhir.model.r5.ParameterDefinition
     ) : Value
 
-    public data class RelatedArtifact(public val `value`: dev.ohs.fhir.model.r5.RelatedArtifact) :
+    public data class RelatedArtifact(override val `value`: dev.ohs.fhir.model.r5.RelatedArtifact) :
       Value
 
     public data class TriggerDefinition(
-      public val `value`: dev.ohs.fhir.model.r5.TriggerDefinition
+      override val `value`: dev.ohs.fhir.model.r5.TriggerDefinition
     ) : Value
 
-    public data class UsageContext(public val `value`: dev.ohs.fhir.model.r5.UsageContext) : Value
+    public data class UsageContext(override val `value`: dev.ohs.fhir.model.r5.UsageContext) : Value
 
-    public data class Availability(public val `value`: dev.ohs.fhir.model.r5.Availability) : Value
+    public data class Availability(override val `value`: dev.ohs.fhir.model.r5.Availability) : Value
 
     public data class ExtendedContactDetail(
-      public val `value`: dev.ohs.fhir.model.r5.ExtendedContactDetail
+      override val `value`: dev.ohs.fhir.model.r5.ExtendedContactDetail
     ) : Value
 
-    public data class Dosage(public val `value`: dev.ohs.fhir.model.r5.Dosage) : Value
+    public data class Dosage(override val `value`: dev.ohs.fhir.model.r5.Dosage) : Value
 
-    public data class Meta(public val `value`: dev.ohs.fhir.model.r5.Meta) : Value
+    public data class Meta(override val `value`: dev.ohs.fhir.model.r5.Meta) : Value
 
     public companion object {
       internal fun from(

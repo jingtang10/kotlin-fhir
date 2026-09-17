@@ -470,14 +470,14 @@ public data class Composition(
           }
       }
 
-    public sealed interface Target {
+    public sealed interface Target : FhirChoice {
       public fun asIdentifier(): Identifier? = this as? Identifier
 
       public fun asReference(): Reference? = this as? Reference
 
-      public data class Identifier(public val `value`: dev.ohs.fhir.model.r4.Identifier) : Target
+      public data class Identifier(override val `value`: dev.ohs.fhir.model.r4.Identifier) : Target
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) : Target
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) : Target
 
       public companion object {
         internal fun from(

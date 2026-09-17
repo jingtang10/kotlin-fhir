@@ -844,14 +844,14 @@ public data class Immunization(
     }
   }
 
-  public sealed interface Occurrence {
+  public sealed interface Occurrence : FhirChoice {
     public fun asDateTime(): DateTime? = this as? DateTime
 
     public fun asString(): String? = this as? String
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Occurrence
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Occurrence
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Occurrence
+    public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Occurrence
 
     public companion object {
       internal fun from(

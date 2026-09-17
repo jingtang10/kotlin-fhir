@@ -562,15 +562,16 @@ public data class MedicationDispense(
     }
   }
 
-  public sealed interface StatusReason {
+  public sealed interface StatusReason : FhirChoice {
     public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
     public fun asReference(): Reference? = this as? Reference
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
+    public data class CodeableConcept(override val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
       StatusReason
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) : StatusReason
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) :
+      StatusReason
 
     public companion object {
       internal fun from(
@@ -584,15 +585,15 @@ public data class MedicationDispense(
     }
   }
 
-  public sealed interface Medication {
+  public sealed interface Medication : FhirChoice {
     public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
     public fun asReference(): Reference? = this as? Reference
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
+    public data class CodeableConcept(override val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
       Medication
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) : Medication
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) : Medication
 
     public companion object {
       internal fun from(

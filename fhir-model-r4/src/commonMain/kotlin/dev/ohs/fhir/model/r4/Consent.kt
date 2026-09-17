@@ -1021,14 +1021,14 @@ public data class Consent(
     }
   }
 
-  public sealed interface Source {
+  public sealed interface Source : FhirChoice {
     public fun asAttachment(): Attachment? = this as? Attachment
 
     public fun asReference(): Reference? = this as? Reference
 
-    public data class Attachment(public val `value`: dev.ohs.fhir.model.r4.Attachment) : Source
+    public data class Attachment(override val `value`: dev.ohs.fhir.model.r4.Attachment) : Source
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) : Source
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) : Source
 
     public companion object {
       internal fun from(

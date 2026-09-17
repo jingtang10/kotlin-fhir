@@ -969,14 +969,15 @@ public data class DeviceDefinition(
     }
   }
 
-  public sealed interface Manufacturer {
+  public sealed interface Manufacturer : FhirChoice {
     public fun asString(): String? = this as? String
 
     public fun asReference(): Reference? = this as? Reference
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r4.String) : Manufacturer
+    public data class String(override val `value`: dev.ohs.fhir.model.r4.String) : Manufacturer
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) : Manufacturer
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) :
+      Manufacturer
 
     public companion object {
       internal fun from(

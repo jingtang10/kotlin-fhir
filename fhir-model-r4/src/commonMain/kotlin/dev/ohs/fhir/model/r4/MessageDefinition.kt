@@ -648,14 +648,14 @@ public data class MessageDefinition(
     }
   }
 
-  public sealed interface Event {
+  public sealed interface Event : FhirChoice {
     public fun asCoding(): Coding? = this as? Coding
 
     public fun asUri(): Uri? = this as? Uri
 
-    public data class Coding(public val `value`: dev.ohs.fhir.model.r4.Coding) : Event
+    public data class Coding(override val `value`: dev.ohs.fhir.model.r4.Coding) : Event
 
-    public data class Uri(public val `value`: dev.ohs.fhir.model.r4.Uri) : Event
+    public data class Uri(override val `value`: dev.ohs.fhir.model.r4.Uri) : Event
 
     public companion object {
       internal fun from(

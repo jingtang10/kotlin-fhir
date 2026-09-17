@@ -1250,7 +1250,7 @@ public data class StructureMap(
               }
             }
 
-          public sealed interface Value {
+          public sealed interface Value : FhirChoice {
             public fun asId(): Id? = this as? Id
 
             public fun asString(): String? = this as? String
@@ -1267,21 +1267,21 @@ public data class StructureMap(
 
             public fun asDateTime(): DateTime? = this as? DateTime
 
-            public data class Id(public val `value`: dev.ohs.fhir.model.r5.Id) : Value
+            public data class Id(override val `value`: dev.ohs.fhir.model.r5.Id) : Value
 
-            public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Value
+            public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Value
 
-            public data class Boolean(public val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
+            public data class Boolean(override val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
 
-            public data class Integer(public val `value`: dev.ohs.fhir.model.r5.Integer) : Value
+            public data class Integer(override val `value`: dev.ohs.fhir.model.r5.Integer) : Value
 
-            public data class Decimal(public val `value`: dev.ohs.fhir.model.r5.Decimal) : Value
+            public data class Decimal(override val `value`: dev.ohs.fhir.model.r5.Decimal) : Value
 
-            public data class Date(public val `value`: dev.ohs.fhir.model.r5.Date) : Value
+            public data class Date(override val `value`: dev.ohs.fhir.model.r5.Date) : Value
 
-            public data class Time(public val `value`: dev.ohs.fhir.model.r5.Time) : Value
+            public data class Time(override val `value`: dev.ohs.fhir.model.r5.Time) : Value
 
-            public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Value
+            public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Value
 
             public companion object {
               internal fun from(
@@ -1717,14 +1717,14 @@ public data class StructureMap(
     }
   }
 
-  public sealed interface VersionAlgorithm {
+  public sealed interface VersionAlgorithm : FhirChoice {
     public fun asString(): String? = this as? String
 
     public fun asCoding(): Coding? = this as? Coding
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : VersionAlgorithm
+    public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : VersionAlgorithm
 
-    public data class Coding(public val `value`: dev.ohs.fhir.model.r5.Coding) : VersionAlgorithm
+    public data class Coding(override val `value`: dev.ohs.fhir.model.r5.Coding) : VersionAlgorithm
 
     public companion object {
       internal fun from(

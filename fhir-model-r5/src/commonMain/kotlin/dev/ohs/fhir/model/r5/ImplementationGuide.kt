@@ -1228,18 +1228,18 @@ public data class ImplementationGuide(
             }
         }
 
-      public sealed interface Source {
+      public sealed interface Source : FhirChoice {
         public fun asUrl(): Url? = this as? Url
 
         public fun asString(): String? = this as? String
 
         public fun asMarkdown(): Markdown? = this as? Markdown
 
-        public data class Url(public val `value`: dev.ohs.fhir.model.r5.Url) : Source
+        public data class Url(override val `value`: dev.ohs.fhir.model.r5.Url) : Source
 
-        public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Source
+        public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Source
 
-        public data class Markdown(public val `value`: dev.ohs.fhir.model.r5.Markdown) : Source
+        public data class Markdown(override val `value`: dev.ohs.fhir.model.r5.Markdown) : Source
 
         public companion object {
           internal fun from(
@@ -2120,14 +2120,14 @@ public data class ImplementationGuide(
     }
   }
 
-  public sealed interface VersionAlgorithm {
+  public sealed interface VersionAlgorithm : FhirChoice {
     public fun asString(): String? = this as? String
 
     public fun asCoding(): Coding? = this as? Coding
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : VersionAlgorithm
+    public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : VersionAlgorithm
 
-    public data class Coding(public val `value`: dev.ohs.fhir.model.r5.Coding) : VersionAlgorithm
+    public data class Coding(override val `value`: dev.ohs.fhir.model.r5.Coding) : VersionAlgorithm
 
     public companion object {
       internal fun from(

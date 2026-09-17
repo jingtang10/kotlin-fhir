@@ -362,7 +362,7 @@ public data class MolecularSequence(
           }
         }
 
-      public sealed interface Sequence {
+      public sealed interface Sequence : FhirChoice {
         public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
         public fun asString(): String? = this as? String
@@ -370,12 +370,13 @@ public data class MolecularSequence(
         public fun asReference(): Reference? = this as? Reference
 
         public data class CodeableConcept(
-          public val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+          override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
         ) : Sequence
 
-        public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Sequence
+        public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Sequence
 
-        public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Sequence
+        public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) :
+          Sequence
 
         public companion object {
           internal fun from(

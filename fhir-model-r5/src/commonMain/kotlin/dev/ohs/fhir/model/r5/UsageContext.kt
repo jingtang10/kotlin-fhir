@@ -74,7 +74,7 @@ public data class UsageContext(
         }
     }
 
-  public sealed interface Value {
+  public sealed interface Value : FhirChoice {
     public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
     public fun asQuantity(): Quantity? = this as? Quantity
@@ -83,14 +83,14 @@ public data class UsageContext(
 
     public fun asReference(): Reference? = this as? Reference
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
+    public data class CodeableConcept(override val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
       Value
 
-    public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
+    public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
 
-    public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Value
+    public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Value
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Value
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Value
 
     public companion object {
       internal fun from(

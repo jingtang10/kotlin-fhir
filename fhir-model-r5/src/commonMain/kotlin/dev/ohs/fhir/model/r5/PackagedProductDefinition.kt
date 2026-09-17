@@ -527,7 +527,7 @@ public data class PackagedProductDefinition(
           }
         }
 
-      public sealed interface Value {
+      public sealed interface Value : FhirChoice {
         public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
         public fun asQuantity(): Quantity? = this as? Quantity
@@ -539,16 +539,16 @@ public data class PackagedProductDefinition(
         public fun asAttachment(): Attachment? = this as? Attachment
 
         public data class CodeableConcept(
-          public val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+          override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
         ) : Value
 
-        public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
+        public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
 
-        public data class Date(public val `value`: dev.ohs.fhir.model.r5.Date) : Value
+        public data class Date(override val `value`: dev.ohs.fhir.model.r5.Date) : Value
 
-        public data class Boolean(public val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
+        public data class Boolean(override val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
 
-        public data class Attachment(public val `value`: dev.ohs.fhir.model.r5.Attachment) : Value
+        public data class Attachment(override val `value`: dev.ohs.fhir.model.r5.Attachment) : Value
 
         public companion object {
           internal fun from(

@@ -241,18 +241,18 @@ public data class Timing(
         }
       }
 
-    public sealed interface Bounds {
+    public sealed interface Bounds : FhirChoice {
       public fun asDuration(): Duration? = this as? Duration
 
       public fun asRange(): Range? = this as? Range
 
       public fun asPeriod(): Period? = this as? Period
 
-      public data class Duration(public val `value`: dev.ohs.fhir.model.r4.Duration) : Bounds
+      public data class Duration(override val `value`: dev.ohs.fhir.model.r4.Duration) : Bounds
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r4.Range) : Bounds
+      public data class Range(override val `value`: dev.ohs.fhir.model.r4.Range) : Bounds
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r4.Period) : Bounds
+      public data class Period(override val `value`: dev.ohs.fhir.model.r4.Period) : Bounds
 
       public companion object {
         internal fun from(

@@ -356,18 +356,20 @@ public data class DeviceUsage(
     }
   }
 
-  public sealed interface Timing {
+  public sealed interface Timing : FhirChoice {
     public fun asTiming(): Timing? = this as? Timing
 
     public fun asPeriod(): Period? = this as? Period
 
     public fun asDateTime(): DateTime? = this as? DateTime
 
-    public data class Timing(public val `value`: dev.ohs.fhir.model.r5.Timing) : DeviceUsage.Timing
+    public data class Timing(override val `value`: dev.ohs.fhir.model.r5.Timing) :
+      DeviceUsage.Timing
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : DeviceUsage.Timing
+    public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) :
+      DeviceUsage.Timing
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) :
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) :
       DeviceUsage.Timing
 
     public companion object {

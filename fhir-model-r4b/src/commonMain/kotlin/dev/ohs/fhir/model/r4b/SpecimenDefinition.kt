@@ -379,16 +379,16 @@ public data class SpecimenDefinition(
             }
           }
 
-        public sealed interface Additive {
+        public sealed interface Additive : FhirChoice {
           public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
           public fun asReference(): Reference? = this as? Reference
 
           public data class CodeableConcept(
-            public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+            override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
           ) : Additive
 
-          public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) :
+          public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) :
             Additive
 
           public companion object {
@@ -460,15 +460,16 @@ public data class SpecimenDefinition(
         }
       }
 
-      public sealed interface MinimumVolume {
+      public sealed interface MinimumVolume : FhirChoice {
         public fun asQuantity(): Quantity? = this as? Quantity
 
         public fun asString(): String? = this as? String
 
-        public data class Quantity(public val `value`: dev.ohs.fhir.model.r4b.Quantity) :
+        public data class Quantity(override val `value`: dev.ohs.fhir.model.r4b.Quantity) :
           MinimumVolume
 
-        public data class String(public val `value`: dev.ohs.fhir.model.r4b.String) : MinimumVolume
+        public data class String(override val `value`: dev.ohs.fhir.model.r4b.String) :
+          MinimumVolume
 
         public companion object {
           internal fun from(

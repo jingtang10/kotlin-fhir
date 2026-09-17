@@ -1410,7 +1410,7 @@ public data class ValueSet(
           }
         }
 
-      public sealed interface Value {
+      public sealed interface Value : FhirChoice {
         public fun asString(): String? = this as? String
 
         public fun asBoolean(): Boolean? = this as? Boolean
@@ -1425,19 +1425,19 @@ public data class ValueSet(
 
         public fun asDateTime(): DateTime? = this as? DateTime
 
-        public data class String(public val `value`: dev.ohs.fhir.model.r4b.String) : Value
+        public data class String(override val `value`: dev.ohs.fhir.model.r4b.String) : Value
 
-        public data class Boolean(public val `value`: dev.ohs.fhir.model.r4b.Boolean) : Value
+        public data class Boolean(override val `value`: dev.ohs.fhir.model.r4b.Boolean) : Value
 
-        public data class Integer(public val `value`: dev.ohs.fhir.model.r4b.Integer) : Value
+        public data class Integer(override val `value`: dev.ohs.fhir.model.r4b.Integer) : Value
 
-        public data class Decimal(public val `value`: dev.ohs.fhir.model.r4b.Decimal) : Value
+        public data class Decimal(override val `value`: dev.ohs.fhir.model.r4b.Decimal) : Value
 
-        public data class Uri(public val `value`: dev.ohs.fhir.model.r4b.Uri) : Value
+        public data class Uri(override val `value`: dev.ohs.fhir.model.r4b.Uri) : Value
 
-        public data class Code(public val `value`: dev.ohs.fhir.model.r4b.Code) : Value
+        public data class Code(override val `value`: dev.ohs.fhir.model.r4b.Code) : Value
 
-        public data class DateTime(public val `value`: dev.ohs.fhir.model.r4b.DateTime) : Value
+        public data class DateTime(override val `value`: dev.ohs.fhir.model.r4b.DateTime) : Value
 
         public companion object {
           internal fun from(

@@ -378,15 +378,15 @@ public data class GenomicStudy(
           }
         }
 
-      public sealed interface GeneratedBy {
+      public sealed interface GeneratedBy : FhirChoice {
         public fun asIdentifier(): Identifier? = this as? Identifier
 
         public fun asReference(): Reference? = this as? Reference
 
-        public data class Identifier(public val `value`: dev.ohs.fhir.model.r5.Identifier) :
+        public data class Identifier(override val `value`: dev.ohs.fhir.model.r5.Identifier) :
           GeneratedBy
 
-        public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) :
+        public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) :
           GeneratedBy
 
         public companion object {

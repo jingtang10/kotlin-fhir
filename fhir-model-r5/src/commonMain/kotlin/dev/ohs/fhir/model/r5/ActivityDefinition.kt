@@ -893,14 +893,14 @@ public data class ActivityDefinition(
     }
   }
 
-  public sealed interface VersionAlgorithm {
+  public sealed interface VersionAlgorithm : FhirChoice {
     public fun asString(): String? = this as? String
 
     public fun asCoding(): Coding? = this as? Coding
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : VersionAlgorithm
+    public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : VersionAlgorithm
 
-    public data class Coding(public val `value`: dev.ohs.fhir.model.r5.Coding) : VersionAlgorithm
+    public data class Coding(override val `value`: dev.ohs.fhir.model.r5.Coding) : VersionAlgorithm
 
     public companion object {
       internal fun from(
@@ -914,19 +914,19 @@ public data class ActivityDefinition(
     }
   }
 
-  public sealed interface Subject {
+  public sealed interface Subject : FhirChoice {
     public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
     public fun asReference(): Reference? = this as? Reference
 
     public fun asCanonical(): Canonical? = this as? Canonical
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
+    public data class CodeableConcept(override val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
       Subject
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Subject
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Subject
 
-    public data class Canonical(public val `value`: dev.ohs.fhir.model.r5.Canonical) : Subject
+    public data class Canonical(override val `value`: dev.ohs.fhir.model.r5.Canonical) : Subject
 
     public companion object {
       internal fun from(
@@ -942,7 +942,7 @@ public data class ActivityDefinition(
     }
   }
 
-  public sealed interface Timing {
+  public sealed interface Timing : FhirChoice {
     public fun asTiming(): Timing? = this as? Timing
 
     public fun asAge(): Age? = this as? Age
@@ -951,15 +951,16 @@ public data class ActivityDefinition(
 
     public fun asDuration(): Duration? = this as? Duration
 
-    public data class Timing(public val `value`: dev.ohs.fhir.model.r5.Timing) :
+    public data class Timing(override val `value`: dev.ohs.fhir.model.r5.Timing) :
       ActivityDefinition.Timing
 
-    public data class Age(public val `value`: dev.ohs.fhir.model.r5.Age) : ActivityDefinition.Timing
-
-    public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) :
+    public data class Age(override val `value`: dev.ohs.fhir.model.r5.Age) :
       ActivityDefinition.Timing
 
-    public data class Duration(public val `value`: dev.ohs.fhir.model.r5.Duration) :
+    public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) :
+      ActivityDefinition.Timing
+
+    public data class Duration(override val `value`: dev.ohs.fhir.model.r5.Duration) :
       ActivityDefinition.Timing
 
     public companion object {
@@ -978,14 +979,14 @@ public data class ActivityDefinition(
     }
   }
 
-  public sealed interface AsNeeded {
+  public sealed interface AsNeeded : FhirChoice {
     public fun asBoolean(): Boolean? = this as? Boolean
 
     public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-    public data class Boolean(public val `value`: dev.ohs.fhir.model.r5.Boolean) : AsNeeded
+    public data class Boolean(override val `value`: dev.ohs.fhir.model.r5.Boolean) : AsNeeded
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
+    public data class CodeableConcept(override val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
       AsNeeded
 
     public companion object {
@@ -1000,14 +1001,14 @@ public data class ActivityDefinition(
     }
   }
 
-  public sealed interface Product {
+  public sealed interface Product : FhirChoice {
     public fun asReference(): Reference? = this as? Reference
 
     public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Product
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Product
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
+    public data class CodeableConcept(override val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
       Product
 
     public companion object {

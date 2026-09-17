@@ -560,14 +560,14 @@ public data class Provenance(
     }
   }
 
-  public sealed interface Occurred {
+  public sealed interface Occurred : FhirChoice {
     public fun asPeriod(): Period? = this as? Period
 
     public fun asDateTime(): DateTime? = this as? DateTime
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Occurred
+    public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Occurred
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Occurred
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Occurred
 
     public companion object {
       internal fun from(

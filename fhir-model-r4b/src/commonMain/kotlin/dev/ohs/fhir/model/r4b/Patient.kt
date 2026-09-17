@@ -748,14 +748,14 @@ public data class Patient(
     }
   }
 
-  public sealed interface Deceased {
+  public sealed interface Deceased : FhirChoice {
     public fun asBoolean(): Boolean? = this as? Boolean
 
     public fun asDateTime(): DateTime? = this as? DateTime
 
-    public data class Boolean(public val `value`: dev.ohs.fhir.model.r4b.Boolean) : Deceased
+    public data class Boolean(override val `value`: dev.ohs.fhir.model.r4b.Boolean) : Deceased
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r4b.DateTime) : Deceased
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r4b.DateTime) : Deceased
 
     public companion object {
       internal fun from(
@@ -769,14 +769,14 @@ public data class Patient(
     }
   }
 
-  public sealed interface MultipleBirth {
+  public sealed interface MultipleBirth : FhirChoice {
     public fun asBoolean(): Boolean? = this as? Boolean
 
     public fun asInteger(): Integer? = this as? Integer
 
-    public data class Boolean(public val `value`: dev.ohs.fhir.model.r4b.Boolean) : MultipleBirth
+    public data class Boolean(override val `value`: dev.ohs.fhir.model.r4b.Boolean) : MultipleBirth
 
-    public data class Integer(public val `value`: dev.ohs.fhir.model.r4b.Integer) : MultipleBirth
+    public data class Integer(override val `value`: dev.ohs.fhir.model.r4b.Integer) : MultipleBirth
 
     public companion object {
       internal fun from(

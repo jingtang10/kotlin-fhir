@@ -799,15 +799,15 @@ public data class MedicationRequest(
         }
       }
 
-    public sealed interface Allowed {
+    public sealed interface Allowed : FhirChoice {
       public fun asBoolean(): Boolean? = this as? Boolean
 
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-      public data class Boolean(public val `value`: dev.ohs.fhir.model.r4b.Boolean) : Allowed
+      public data class Boolean(override val `value`: dev.ohs.fhir.model.r4b.Boolean) : Allowed
 
       public data class CodeableConcept(
-        public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+        override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
       ) : Allowed
 
       public companion object {
@@ -888,14 +888,14 @@ public data class MedicationRequest(
     }
   }
 
-  public sealed interface Reported {
+  public sealed interface Reported : FhirChoice {
     public fun asBoolean(): Boolean? = this as? Boolean
 
     public fun asReference(): Reference? = this as? Reference
 
-    public data class Boolean(public val `value`: dev.ohs.fhir.model.r4b.Boolean) : Reported
+    public data class Boolean(override val `value`: dev.ohs.fhir.model.r4b.Boolean) : Reported
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : Reported
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) : Reported
 
     public companion object {
       internal fun from(
@@ -909,15 +909,16 @@ public data class MedicationRequest(
     }
   }
 
-  public sealed interface Medication {
+  public sealed interface Medication : FhirChoice {
     public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
     public fun asReference(): Reference? = this as? Reference
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept) :
-      Medication
+    public data class CodeableConcept(
+      override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+    ) : Medication
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : Medication
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) : Medication
 
     public companion object {
       internal fun from(

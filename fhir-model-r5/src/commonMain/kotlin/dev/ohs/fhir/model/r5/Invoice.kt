@@ -454,14 +454,14 @@ public data class Invoice(
         }
       }
 
-    public sealed interface Serviced {
+    public sealed interface Serviced : FhirChoice {
       public fun asDate(): Date? = this as? Date
 
       public fun asPeriod(): Period? = this as? Period
 
-      public data class Date(public val `value`: dev.ohs.fhir.model.r5.Date) : Serviced
+      public data class Date(override val `value`: dev.ohs.fhir.model.r5.Date) : Serviced
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Serviced
+      public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Serviced
 
       public companion object {
         internal fun from(
@@ -475,15 +475,17 @@ public data class Invoice(
       }
     }
 
-    public sealed interface ChargeItem {
+    public sealed interface ChargeItem : FhirChoice {
       public fun asReference(): Reference? = this as? Reference
 
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : ChargeItem
-
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) :
         ChargeItem
+
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+      ) : ChargeItem
 
       public companion object {
         internal fun from(
@@ -573,14 +575,14 @@ public data class Invoice(
     }
   }
 
-  public sealed interface Period {
+  public sealed interface Period : FhirChoice {
     public fun asDate(): Date? = this as? Date
 
     public fun asPeriod(): Period? = this as? Period
 
-    public data class Date(public val `value`: dev.ohs.fhir.model.r5.Date) : Invoice.Period
+    public data class Date(override val `value`: dev.ohs.fhir.model.r5.Date) : Invoice.Period
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Invoice.Period
+    public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Invoice.Period
 
     public companion object {
       internal fun from(

@@ -440,7 +440,7 @@ public data class EvidenceReport(
             }
         }
 
-      public sealed interface Value {
+      public sealed interface Value : FhirChoice {
         public fun asReference(): Reference? = this as? Reference
 
         public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
@@ -451,17 +451,17 @@ public data class EvidenceReport(
 
         public fun asRange(): Range? = this as? Range
 
-        public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Value
+        public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Value
 
         public data class CodeableConcept(
-          public val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+          override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
         ) : Value
 
-        public data class Boolean(public val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
+        public data class Boolean(override val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
 
-        public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
+        public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
 
-        public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Value
+        public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Value
 
         public companion object {
           internal fun from(
@@ -1179,14 +1179,14 @@ public data class EvidenceReport(
     }
   }
 
-  public sealed interface CiteAs {
+  public sealed interface CiteAs : FhirChoice {
     public fun asReference(): Reference? = this as? Reference
 
     public fun asMarkdown(): Markdown? = this as? Markdown
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : CiteAs
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : CiteAs
 
-    public data class Markdown(public val `value`: dev.ohs.fhir.model.r5.Markdown) : CiteAs
+    public data class Markdown(override val `value`: dev.ohs.fhir.model.r5.Markdown) : CiteAs
 
     public companion object {
       internal fun from(

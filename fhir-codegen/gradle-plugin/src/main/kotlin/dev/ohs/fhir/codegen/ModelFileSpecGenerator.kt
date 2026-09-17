@@ -502,9 +502,11 @@ private fun TypeSpec.Builder.addSealedInterfaces(
   for (element in elements.filter { it.path.endsWith("[x]") }) {
     val fieldName = element.getElementName()
     val sealedInterfaceClassName = enclosingModelClassName.nestedClass(fieldName.capitalized())
+    val fhirChoiceClassName = ClassName(enclosingModelClassName.packageName, "FhirChoice")
     addType(
       TypeSpec.interfaceBuilder(sealedInterfaceClassName)
         .addModifiers(KModifier.SEALED)
+        .addSuperinterface(fhirChoiceClassName)
         .apply {
           for (type in element.type!!) {
             val expansionName = choiceTypeExpansionName(type)
@@ -518,6 +520,7 @@ private fun TypeSpec.Builder.addSealedInterfaces(
                 )
                 .addProperty(
                   PropertySpec.builder("value", propertyMapper.mapTypeToClassName(type))
+                    .addModifiers(KModifier.OVERRIDE)
                     .initializer("value")
                     .build()
                 )

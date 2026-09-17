@@ -568,7 +568,7 @@ public data class Condition(
     }
   }
 
-  public sealed interface Onset {
+  public sealed interface Onset : FhirChoice {
     public fun asDateTime(): DateTime? = this as? DateTime
 
     public fun asAge(): Age? = this as? Age
@@ -579,15 +579,15 @@ public data class Condition(
 
     public fun asString(): String? = this as? String
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Onset
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Onset
 
-    public data class Age(public val `value`: dev.ohs.fhir.model.r5.Age) : Onset
+    public data class Age(override val `value`: dev.ohs.fhir.model.r5.Age) : Onset
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Onset
+    public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Onset
 
-    public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Onset
+    public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Onset
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Onset
+    public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Onset
 
     public companion object {
       internal fun from(
@@ -607,7 +607,7 @@ public data class Condition(
     }
   }
 
-  public sealed interface Abatement {
+  public sealed interface Abatement : FhirChoice {
     public fun asDateTime(): DateTime? = this as? DateTime
 
     public fun asAge(): Age? = this as? Age
@@ -618,15 +618,15 @@ public data class Condition(
 
     public fun asString(): String? = this as? String
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Abatement
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Abatement
 
-    public data class Age(public val `value`: dev.ohs.fhir.model.r5.Age) : Abatement
+    public data class Age(override val `value`: dev.ohs.fhir.model.r5.Age) : Abatement
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Abatement
+    public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Abatement
 
-    public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Abatement
+    public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Abatement
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Abatement
+    public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Abatement
 
     public companion object {
       internal fun from(

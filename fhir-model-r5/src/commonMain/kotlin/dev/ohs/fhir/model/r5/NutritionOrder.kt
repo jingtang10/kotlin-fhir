@@ -1644,14 +1644,14 @@ public data class NutritionOrder(
         }
       }
 
-      public sealed interface Rate {
+      public sealed interface Rate : FhirChoice {
         public fun asQuantity(): Quantity? = this as? Quantity
 
         public fun asRatio(): Ratio? = this as? Ratio
 
-        public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Rate
+        public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Rate
 
-        public data class Ratio(public val `value`: dev.ohs.fhir.model.r5.Ratio) : Rate
+        public data class Ratio(override val `value`: dev.ohs.fhir.model.r5.Ratio) : Rate
 
         public companion object {
           internal fun from(

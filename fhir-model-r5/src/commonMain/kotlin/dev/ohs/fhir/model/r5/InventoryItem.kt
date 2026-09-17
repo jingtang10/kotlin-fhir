@@ -751,7 +751,7 @@ public data class InventoryItem(
           }
       }
 
-    public sealed interface Value {
+    public sealed interface Value : FhirChoice {
       public fun asString(): String? = this as? String
 
       public fun asInteger(): Integer? = this as? Integer
@@ -778,32 +778,33 @@ public data class InventoryItem(
 
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-      public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Value
+      public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Value
 
-      public data class Integer(public val `value`: dev.ohs.fhir.model.r5.Integer) : Value
+      public data class Integer(override val `value`: dev.ohs.fhir.model.r5.Integer) : Value
 
-      public data class Decimal(public val `value`: dev.ohs.fhir.model.r5.Decimal) : Value
+      public data class Decimal(override val `value`: dev.ohs.fhir.model.r5.Decimal) : Value
 
-      public data class Boolean(public val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
+      public data class Boolean(override val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
 
-      public data class Url(public val `value`: dev.ohs.fhir.model.r5.Url) : Value
+      public data class Url(override val `value`: dev.ohs.fhir.model.r5.Url) : Value
 
-      public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Value
+      public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Value
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Value
+      public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Value
 
-      public data class Ratio(public val `value`: dev.ohs.fhir.model.r5.Ratio) : Value
+      public data class Ratio(override val `value`: dev.ohs.fhir.model.r5.Ratio) : Value
 
-      public data class Annotation(public val `value`: dev.ohs.fhir.model.r5.Annotation) : Value
+      public data class Annotation(override val `value`: dev.ohs.fhir.model.r5.Annotation) : Value
 
-      public data class Address(public val `value`: dev.ohs.fhir.model.r5.Address) : Value
+      public data class Address(override val `value`: dev.ohs.fhir.model.r5.Address) : Value
 
-      public data class Duration(public val `value`: dev.ohs.fhir.model.r5.Duration) : Value
+      public data class Duration(override val `value`: dev.ohs.fhir.model.r5.Duration) : Value
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
-        Value
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+      ) : Value
 
       public companion object {
         internal fun from(

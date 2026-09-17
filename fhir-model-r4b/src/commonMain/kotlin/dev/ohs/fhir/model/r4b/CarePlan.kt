@@ -599,18 +599,18 @@ public data class CarePlan(
           }
         }
 
-      public sealed interface Scheduled {
+      public sealed interface Scheduled : FhirChoice {
         public fun asTiming(): Timing? = this as? Timing
 
         public fun asPeriod(): Period? = this as? Period
 
         public fun asString(): String? = this as? String
 
-        public data class Timing(public val `value`: dev.ohs.fhir.model.r4b.Timing) : Scheduled
+        public data class Timing(override val `value`: dev.ohs.fhir.model.r4b.Timing) : Scheduled
 
-        public data class Period(public val `value`: dev.ohs.fhir.model.r4b.Period) : Scheduled
+        public data class Period(override val `value`: dev.ohs.fhir.model.r4b.Period) : Scheduled
 
-        public data class String(public val `value`: dev.ohs.fhir.model.r4b.String) : Scheduled
+        public data class String(override val `value`: dev.ohs.fhir.model.r4b.String) : Scheduled
 
         public companion object {
           internal fun from(
@@ -626,16 +626,17 @@ public data class CarePlan(
         }
       }
 
-      public sealed interface Product {
+      public sealed interface Product : FhirChoice {
         public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
         public fun asReference(): Reference? = this as? Reference
 
         public data class CodeableConcept(
-          public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+          override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
         ) : Product
 
-        public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : Product
+        public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) :
+          Product
 
         public companion object {
           internal fun from(

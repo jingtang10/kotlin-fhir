@@ -671,14 +671,14 @@ public data class NutritionIntake(
     }
   }
 
-  public sealed interface Occurrence {
+  public sealed interface Occurrence : FhirChoice {
     public fun asDateTime(): DateTime? = this as? DateTime
 
     public fun asPeriod(): Period? = this as? Period
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Occurrence
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Occurrence
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Occurrence
+    public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Occurrence
 
     public companion object {
       internal fun from(
@@ -692,14 +692,14 @@ public data class NutritionIntake(
     }
   }
 
-  public sealed interface Reported {
+  public sealed interface Reported : FhirChoice {
     public fun asBoolean(): Boolean? = this as? Boolean
 
     public fun asReference(): Reference? = this as? Reference
 
-    public data class Boolean(public val `value`: dev.ohs.fhir.model.r5.Boolean) : Reported
+    public data class Boolean(override val `value`: dev.ohs.fhir.model.r5.Boolean) : Reported
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Reported
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Reported
 
     public companion object {
       internal fun from(

@@ -289,7 +289,7 @@ public data class Group(
           }
       }
 
-    public sealed interface Value {
+    public sealed interface Value : FhirChoice {
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
       public fun asBoolean(): Boolean? = this as? Boolean
@@ -300,16 +300,17 @@ public data class Group(
 
       public fun asReference(): Reference? = this as? Reference
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
-        Value
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r4.CodeableConcept
+      ) : Value
 
-      public data class Boolean(public val `value`: dev.ohs.fhir.model.r4.Boolean) : Value
+      public data class Boolean(override val `value`: dev.ohs.fhir.model.r4.Boolean) : Value
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r4.Quantity) : Value
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r4.Quantity) : Value
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r4.Range) : Value
+      public data class Range(override val `value`: dev.ohs.fhir.model.r4.Range) : Value
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) : Value
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) : Value
 
       public companion object {
         internal fun from(

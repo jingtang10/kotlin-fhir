@@ -294,14 +294,14 @@ public data class RegulatedAuthorization(
         }
       }
 
-    public sealed interface Date {
+    public sealed interface Date : FhirChoice {
       public fun asPeriod(): Period? = this as? Period
 
       public fun asDateTime(): DateTime? = this as? DateTime
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r4b.Period) : Date
+      public data class Period(override val `value`: dev.ohs.fhir.model.r4b.Period) : Date
 
-      public data class DateTime(public val `value`: dev.ohs.fhir.model.r4b.DateTime) : Date
+      public data class DateTime(override val `value`: dev.ohs.fhir.model.r4b.DateTime) : Date
 
       public companion object {
         internal fun from(

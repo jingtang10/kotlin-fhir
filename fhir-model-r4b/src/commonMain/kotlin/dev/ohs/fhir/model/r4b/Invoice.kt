@@ -613,15 +613,16 @@ public data class Invoice(
       }
     }
 
-    public sealed interface ChargeItem {
+    public sealed interface ChargeItem : FhirChoice {
       public fun asReference(): Reference? = this as? Reference
 
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : ChargeItem
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) :
+        ChargeItem
 
       public data class CodeableConcept(
-        public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+        override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
       ) : ChargeItem
 
       public companion object {

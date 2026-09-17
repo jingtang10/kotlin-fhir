@@ -304,14 +304,14 @@ public data class MessageHeader(
         }
       }
 
-    public sealed interface Endpoint {
+    public sealed interface Endpoint : FhirChoice {
       public fun asUrl(): Url? = this as? Url
 
       public fun asReference(): Reference? = this as? Reference
 
-      public data class Url(public val `value`: dev.ohs.fhir.model.r5.Url) : Endpoint
+      public data class Url(override val `value`: dev.ohs.fhir.model.r5.Url) : Endpoint
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Endpoint
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Endpoint
 
       public companion object {
         internal fun from(
@@ -478,14 +478,14 @@ public data class MessageHeader(
         }
       }
 
-    public sealed interface Endpoint {
+    public sealed interface Endpoint : FhirChoice {
       public fun asUrl(): Url? = this as? Url
 
       public fun asReference(): Reference? = this as? Reference
 
-      public data class Url(public val `value`: dev.ohs.fhir.model.r5.Url) : Endpoint
+      public data class Url(override val `value`: dev.ohs.fhir.model.r5.Url) : Endpoint
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Endpoint
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Endpoint
 
       public companion object {
         internal fun from(
@@ -727,14 +727,14 @@ public data class MessageHeader(
     }
   }
 
-  public sealed interface Event {
+  public sealed interface Event : FhirChoice {
     public fun asCoding(): Coding? = this as? Coding
 
     public fun asCanonical(): Canonical? = this as? Canonical
 
-    public data class Coding(public val `value`: dev.ohs.fhir.model.r5.Coding) : Event
+    public data class Coding(override val `value`: dev.ohs.fhir.model.r5.Coding) : Event
 
-    public data class Canonical(public val `value`: dev.ohs.fhir.model.r5.Canonical) : Event
+    public data class Canonical(override val `value`: dev.ohs.fhir.model.r5.Canonical) : Event
 
     public companion object {
       internal fun from(

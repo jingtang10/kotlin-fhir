@@ -347,18 +347,19 @@ public data class Communication(
         }
       }
 
-    public sealed interface Content {
+    public sealed interface Content : FhirChoice {
       public fun asString(): String? = this as? String
 
       public fun asAttachment(): Attachment? = this as? Attachment
 
       public fun asReference(): Reference? = this as? Reference
 
-      public data class String(public val `value`: dev.ohs.fhir.model.r4b.String) : Content
+      public data class String(override val `value`: dev.ohs.fhir.model.r4b.String) : Content
 
-      public data class Attachment(public val `value`: dev.ohs.fhir.model.r4b.Attachment) : Content
+      public data class Attachment(override val `value`: dev.ohs.fhir.model.r4b.Attachment) :
+        Content
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : Content
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) : Content
 
       public companion object {
         internal fun from(

@@ -232,14 +232,14 @@ public data class Dosage(
         }
       }
 
-    public sealed interface Dose {
+    public sealed interface Dose : FhirChoice {
       public fun asRange(): Range? = this as? Range
 
       public fun asQuantity(): Quantity? = this as? Quantity
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r4.Range) : Dose
+      public data class Range(override val `value`: dev.ohs.fhir.model.r4.Range) : Dose
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r4.Quantity) : Dose
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r4.Quantity) : Dose
 
       public companion object {
         internal fun from(
@@ -253,18 +253,18 @@ public data class Dosage(
       }
     }
 
-    public sealed interface Rate {
+    public sealed interface Rate : FhirChoice {
       public fun asRatio(): Ratio? = this as? Ratio
 
       public fun asRange(): Range? = this as? Range
 
       public fun asQuantity(): Quantity? = this as? Quantity
 
-      public data class Ratio(public val `value`: dev.ohs.fhir.model.r4.Ratio) : Rate
+      public data class Ratio(override val `value`: dev.ohs.fhir.model.r4.Ratio) : Rate
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r4.Range) : Rate
+      public data class Range(override val `value`: dev.ohs.fhir.model.r4.Range) : Rate
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r4.Quantity) : Rate
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r4.Quantity) : Rate
 
       public companion object {
         internal fun from(
@@ -351,14 +351,14 @@ public data class Dosage(
     }
   }
 
-  public sealed interface AsNeeded {
+  public sealed interface AsNeeded : FhirChoice {
     public fun asBoolean(): Boolean? = this as? Boolean
 
     public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-    public data class Boolean(public val `value`: dev.ohs.fhir.model.r4.Boolean) : AsNeeded
+    public data class Boolean(override val `value`: dev.ohs.fhir.model.r4.Boolean) : AsNeeded
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
+    public data class CodeableConcept(override val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
       AsNeeded
 
     public companion object {

@@ -761,15 +761,15 @@ public data class Immunization(
         }
       }
 
-    public sealed interface DoseNumber {
+    public sealed interface DoseNumber : FhirChoice {
       public fun asPositiveInt(): PositiveInt? = this as? PositiveInt
 
       public fun asString(): String? = this as? String
 
-      public data class PositiveInt(public val `value`: dev.ohs.fhir.model.r4.PositiveInt) :
+      public data class PositiveInt(override val `value`: dev.ohs.fhir.model.r4.PositiveInt) :
         DoseNumber
 
-      public data class String(public val `value`: dev.ohs.fhir.model.r4.String) : DoseNumber
+      public data class String(override val `value`: dev.ohs.fhir.model.r4.String) : DoseNumber
 
       public companion object {
         internal fun from(
@@ -783,15 +783,15 @@ public data class Immunization(
       }
     }
 
-    public sealed interface SeriesDoses {
+    public sealed interface SeriesDoses : FhirChoice {
       public fun asPositiveInt(): PositiveInt? = this as? PositiveInt
 
       public fun asString(): String? = this as? String
 
-      public data class PositiveInt(public val `value`: dev.ohs.fhir.model.r4.PositiveInt) :
+      public data class PositiveInt(override val `value`: dev.ohs.fhir.model.r4.PositiveInt) :
         SeriesDoses
 
-      public data class String(public val `value`: dev.ohs.fhir.model.r4.String) : SeriesDoses
+      public data class String(override val `value`: dev.ohs.fhir.model.r4.String) : SeriesDoses
 
       public companion object {
         internal fun from(
@@ -888,14 +888,14 @@ public data class Immunization(
     }
   }
 
-  public sealed interface Occurrence {
+  public sealed interface Occurrence : FhirChoice {
     public fun asDateTime(): DateTime? = this as? DateTime
 
     public fun asString(): String? = this as? String
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r4.DateTime) : Occurrence
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r4.DateTime) : Occurrence
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r4.String) : Occurrence
+    public data class String(override val `value`: dev.ohs.fhir.model.r4.String) : Occurrence
 
     public companion object {
       internal fun from(

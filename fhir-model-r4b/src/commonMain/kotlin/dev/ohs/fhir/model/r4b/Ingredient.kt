@@ -549,14 +549,14 @@ public data class Ingredient(
             }
           }
 
-        public sealed interface Strength {
+        public sealed interface Strength : FhirChoice {
           public fun asRatio(): Ratio? = this as? Ratio
 
           public fun asRatioRange(): RatioRange? = this as? RatioRange
 
-          public data class Ratio(public val `value`: dev.ohs.fhir.model.r4b.Ratio) : Strength
+          public data class Ratio(override val `value`: dev.ohs.fhir.model.r4b.Ratio) : Strength
 
-          public data class RatioRange(public val `value`: dev.ohs.fhir.model.r4b.RatioRange) :
+          public data class RatioRange(override val `value`: dev.ohs.fhir.model.r4b.RatioRange) :
             Strength
 
           public companion object {
@@ -637,14 +637,14 @@ public data class Ingredient(
         }
       }
 
-      public sealed interface Presentation {
+      public sealed interface Presentation : FhirChoice {
         public fun asRatio(): Ratio? = this as? Ratio
 
         public fun asRatioRange(): RatioRange? = this as? RatioRange
 
-        public data class Ratio(public val `value`: dev.ohs.fhir.model.r4b.Ratio) : Presentation
+        public data class Ratio(override val `value`: dev.ohs.fhir.model.r4b.Ratio) : Presentation
 
-        public data class RatioRange(public val `value`: dev.ohs.fhir.model.r4b.RatioRange) :
+        public data class RatioRange(override val `value`: dev.ohs.fhir.model.r4b.RatioRange) :
           Presentation
 
         public companion object {
@@ -659,14 +659,14 @@ public data class Ingredient(
         }
       }
 
-      public sealed interface Concentration {
+      public sealed interface Concentration : FhirChoice {
         public fun asRatio(): Ratio? = this as? Ratio
 
         public fun asRatioRange(): RatioRange? = this as? RatioRange
 
-        public data class Ratio(public val `value`: dev.ohs.fhir.model.r4b.Ratio) : Concentration
+        public data class Ratio(override val `value`: dev.ohs.fhir.model.r4b.Ratio) : Concentration
 
-        public data class RatioRange(public val `value`: dev.ohs.fhir.model.r4b.RatioRange) :
+        public data class RatioRange(override val `value`: dev.ohs.fhir.model.r4b.RatioRange) :
           Concentration
 
         public companion object {

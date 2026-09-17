@@ -439,14 +439,14 @@ public data class ClaimResponse(
           }
       }
 
-    public sealed interface When {
+    public sealed interface When : FhirChoice {
       public fun asDateTime(): DateTime? = this as? DateTime
 
       public fun asPeriod(): Period? = this as? Period
 
-      public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : When
+      public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : When
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : When
+      public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : When
 
       public companion object {
         internal fun from(
@@ -2153,14 +2153,14 @@ public data class ClaimResponse(
       }
     }
 
-    public sealed interface Serviced {
+    public sealed interface Serviced : FhirChoice {
       public fun asDate(): Date? = this as? Date
 
       public fun asPeriod(): Period? = this as? Period
 
-      public data class Date(public val `value`: dev.ohs.fhir.model.r5.Date) : Serviced
+      public data class Date(override val `value`: dev.ohs.fhir.model.r5.Date) : Serviced
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Serviced
+      public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Serviced
 
       public companion object {
         internal fun from(
@@ -2174,19 +2174,20 @@ public data class ClaimResponse(
       }
     }
 
-    public sealed interface Location {
+    public sealed interface Location : FhirChoice {
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
       public fun asAddress(): Address? = this as? Address
 
       public fun asReference(): Reference? = this as? Reference
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
-        Location
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+      ) : Location
 
-      public data class Address(public val `value`: dev.ohs.fhir.model.r5.Address) : Location
+      public data class Address(override val `value`: dev.ohs.fhir.model.r5.Address) : Location
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Location
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Location
 
       public companion object {
         internal fun from(

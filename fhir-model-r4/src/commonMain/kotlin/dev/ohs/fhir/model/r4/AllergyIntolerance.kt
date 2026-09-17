@@ -574,7 +574,7 @@ public data class AllergyIntolerance(
     }
   }
 
-  public sealed interface Onset {
+  public sealed interface Onset : FhirChoice {
     public fun asDateTime(): DateTime? = this as? DateTime
 
     public fun asAge(): Age? = this as? Age
@@ -585,15 +585,15 @@ public data class AllergyIntolerance(
 
     public fun asString(): String? = this as? String
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r4.DateTime) : Onset
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r4.DateTime) : Onset
 
-    public data class Age(public val `value`: dev.ohs.fhir.model.r4.Age) : Onset
+    public data class Age(override val `value`: dev.ohs.fhir.model.r4.Age) : Onset
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r4.Period) : Onset
+    public data class Period(override val `value`: dev.ohs.fhir.model.r4.Period) : Onset
 
-    public data class Range(public val `value`: dev.ohs.fhir.model.r4.Range) : Onset
+    public data class Range(override val `value`: dev.ohs.fhir.model.r4.Range) : Onset
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r4.String) : Onset
+    public data class String(override val `value`: dev.ohs.fhir.model.r4.String) : Onset
 
     public companion object {
       internal fun from(

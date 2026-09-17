@@ -338,7 +338,7 @@ public data class Goal(
         }
       }
 
-    public sealed interface Detail {
+    public sealed interface Detail : FhirChoice {
       public fun asQuantity(): Quantity? = this as? Quantity
 
       public fun asRange(): Range? = this as? Range
@@ -353,21 +353,21 @@ public data class Goal(
 
       public fun asRatio(): Ratio? = this as? Ratio
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r4b.Quantity) : Detail
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r4b.Quantity) : Detail
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r4b.Range) : Detail
+      public data class Range(override val `value`: dev.ohs.fhir.model.r4b.Range) : Detail
 
       public data class CodeableConcept(
-        public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+        override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
       ) : Detail
 
-      public data class String(public val `value`: dev.ohs.fhir.model.r4b.String) : Detail
+      public data class String(override val `value`: dev.ohs.fhir.model.r4b.String) : Detail
 
-      public data class Boolean(public val `value`: dev.ohs.fhir.model.r4b.Boolean) : Detail
+      public data class Boolean(override val `value`: dev.ohs.fhir.model.r4b.Boolean) : Detail
 
-      public data class Integer(public val `value`: dev.ohs.fhir.model.r4b.Integer) : Detail
+      public data class Integer(override val `value`: dev.ohs.fhir.model.r4b.Integer) : Detail
 
-      public data class Ratio(public val `value`: dev.ohs.fhir.model.r4b.Ratio) : Detail
+      public data class Ratio(override val `value`: dev.ohs.fhir.model.r4b.Ratio) : Detail
 
       public companion object {
         internal fun from(
@@ -391,14 +391,14 @@ public data class Goal(
       }
     }
 
-    public sealed interface Due {
+    public sealed interface Due : FhirChoice {
       public fun asDate(): Date? = this as? Date
 
       public fun asDuration(): Duration? = this as? Duration
 
-      public data class Date(public val `value`: dev.ohs.fhir.model.r4b.Date) : Due
+      public data class Date(override val `value`: dev.ohs.fhir.model.r4b.Date) : Due
 
-      public data class Duration(public val `value`: dev.ohs.fhir.model.r4b.Duration) : Due
+      public data class Duration(override val `value`: dev.ohs.fhir.model.r4b.Duration) : Due
 
       public companion object {
         internal fun from(
@@ -487,15 +487,16 @@ public data class Goal(
     }
   }
 
-  public sealed interface Start {
+  public sealed interface Start : FhirChoice {
     public fun asDate(): Date? = this as? Date
 
     public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-    public data class Date(public val `value`: dev.ohs.fhir.model.r4b.Date) : Start
+    public data class Date(override val `value`: dev.ohs.fhir.model.r4b.Date) : Start
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept) :
-      Start
+    public data class CodeableConcept(
+      override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+    ) : Start
 
     public companion object {
       internal fun from(

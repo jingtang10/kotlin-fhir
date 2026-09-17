@@ -614,7 +614,7 @@ public data class Procedure(
     }
   }
 
-  public sealed interface Performed {
+  public sealed interface Performed : FhirChoice {
     public fun asDateTime(): DateTime? = this as? DateTime
 
     public fun asPeriod(): Period? = this as? Period
@@ -625,15 +625,15 @@ public data class Procedure(
 
     public fun asRange(): Range? = this as? Range
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r4.DateTime) : Performed
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r4.DateTime) : Performed
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r4.Period) : Performed
+    public data class Period(override val `value`: dev.ohs.fhir.model.r4.Period) : Performed
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r4.String) : Performed
+    public data class String(override val `value`: dev.ohs.fhir.model.r4.String) : Performed
 
-    public data class Age(public val `value`: dev.ohs.fhir.model.r4.Age) : Performed
+    public data class Age(override val `value`: dev.ohs.fhir.model.r4.Age) : Performed
 
-    public data class Range(public val `value`: dev.ohs.fhir.model.r4.Range) : Performed
+    public data class Range(override val `value`: dev.ohs.fhir.model.r4.Range) : Performed
 
     public companion object {
       internal fun from(

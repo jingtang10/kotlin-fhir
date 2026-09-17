@@ -565,7 +565,7 @@ public data class EvidenceVariable(
       }
     }
 
-    public sealed interface Definition {
+    public sealed interface Definition : FhirChoice {
       public fun asReference(): Reference? = this as? Reference
 
       public fun asCanonical(): Canonical? = this as? Canonical
@@ -574,15 +574,17 @@ public data class EvidenceVariable(
 
       public fun asExpression(): Expression? = this as? Expression
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : Definition
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) :
+        Definition
 
-      public data class Canonical(public val `value`: dev.ohs.fhir.model.r4b.Canonical) : Definition
+      public data class Canonical(override val `value`: dev.ohs.fhir.model.r4b.Canonical) :
+        Definition
 
       public data class CodeableConcept(
-        public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+        override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
       ) : Definition
 
-      public data class Expression(public val `value`: dev.ohs.fhir.model.r4b.Expression) :
+      public data class Expression(override val `value`: dev.ohs.fhir.model.r4b.Expression) :
         Definition
 
       public companion object {
@@ -745,7 +747,7 @@ public data class EvidenceVariable(
         }
       }
 
-    public sealed interface Value {
+    public sealed interface Value : FhirChoice {
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
       public fun asQuantity(): Quantity? = this as? Quantity
@@ -753,12 +755,12 @@ public data class EvidenceVariable(
       public fun asRange(): Range? = this as? Range
 
       public data class CodeableConcept(
-        public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+        override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
       ) : Value
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r4b.Quantity) : Value
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r4b.Quantity) : Value
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r4b.Range) : Value
+      public data class Range(override val `value`: dev.ohs.fhir.model.r4b.Range) : Value
 
       public companion object {
         internal fun from(

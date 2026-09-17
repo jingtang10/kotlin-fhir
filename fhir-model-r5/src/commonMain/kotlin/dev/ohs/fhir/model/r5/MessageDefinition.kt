@@ -690,14 +690,14 @@ public data class MessageDefinition(
     }
   }
 
-  public sealed interface VersionAlgorithm {
+  public sealed interface VersionAlgorithm : FhirChoice {
     public fun asString(): String? = this as? String
 
     public fun asCoding(): Coding? = this as? Coding
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : VersionAlgorithm
+    public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : VersionAlgorithm
 
-    public data class Coding(public val `value`: dev.ohs.fhir.model.r5.Coding) : VersionAlgorithm
+    public data class Coding(override val `value`: dev.ohs.fhir.model.r5.Coding) : VersionAlgorithm
 
     public companion object {
       internal fun from(
@@ -711,14 +711,14 @@ public data class MessageDefinition(
     }
   }
 
-  public sealed interface Event {
+  public sealed interface Event : FhirChoice {
     public fun asCoding(): Coding? = this as? Coding
 
     public fun asUri(): Uri? = this as? Uri
 
-    public data class Coding(public val `value`: dev.ohs.fhir.model.r5.Coding) : Event
+    public data class Coding(override val `value`: dev.ohs.fhir.model.r5.Coding) : Event
 
-    public data class Uri(public val `value`: dev.ohs.fhir.model.r5.Uri) : Event
+    public data class Uri(override val `value`: dev.ohs.fhir.model.r5.Uri) : Event
 
     public companion object {
       internal fun from(

@@ -593,14 +593,14 @@ public data class Coverage(
       }
     }
 
-    public sealed interface Value {
+    public sealed interface Value : FhirChoice {
       public fun asQuantity(): Quantity? = this as? Quantity
 
       public fun asMoney(): Money? = this as? Money
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r4.Quantity) : Value
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r4.Quantity) : Value
 
-      public data class Money(public val `value`: dev.ohs.fhir.model.r4.Money) : Value
+      public data class Money(override val `value`: dev.ohs.fhir.model.r4.Money) : Value
 
       public companion object {
         internal fun from(

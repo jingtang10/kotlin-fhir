@@ -424,7 +424,7 @@ public data class EvidenceReport(
             }
         }
 
-      public sealed interface Value {
+      public sealed interface Value : FhirChoice {
         public fun asReference(): Reference? = this as? Reference
 
         public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
@@ -435,17 +435,17 @@ public data class EvidenceReport(
 
         public fun asRange(): Range? = this as? Range
 
-        public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : Value
+        public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) : Value
 
         public data class CodeableConcept(
-          public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+          override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
         ) : Value
 
-        public data class Boolean(public val `value`: dev.ohs.fhir.model.r4b.Boolean) : Value
+        public data class Boolean(override val `value`: dev.ohs.fhir.model.r4b.Boolean) : Value
 
-        public data class Quantity(public val `value`: dev.ohs.fhir.model.r4b.Quantity) : Value
+        public data class Quantity(override val `value`: dev.ohs.fhir.model.r4b.Quantity) : Value
 
-        public data class Range(public val `value`: dev.ohs.fhir.model.r4b.Range) : Value
+        public data class Range(override val `value`: dev.ohs.fhir.model.r4b.Range) : Value
 
         public companion object {
           internal fun from(
@@ -663,14 +663,14 @@ public data class EvidenceReport(
           }
       }
 
-    public sealed interface Target {
+    public sealed interface Target : FhirChoice {
       public fun asIdentifier(): Identifier? = this as? Identifier
 
       public fun asReference(): Reference? = this as? Reference
 
-      public data class Identifier(public val `value`: dev.ohs.fhir.model.r4b.Identifier) : Target
+      public data class Identifier(override val `value`: dev.ohs.fhir.model.r4b.Identifier) : Target
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : Target
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) : Target
 
       public companion object {
         internal fun from(
@@ -1056,14 +1056,14 @@ public data class EvidenceReport(
     }
   }
 
-  public sealed interface CiteAs {
+  public sealed interface CiteAs : FhirChoice {
     public fun asReference(): Reference? = this as? Reference
 
     public fun asMarkdown(): Markdown? = this as? Markdown
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : CiteAs
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) : CiteAs
 
-    public data class Markdown(public val `value`: dev.ohs.fhir.model.r4b.Markdown) : CiteAs
+    public data class Markdown(override val `value`: dev.ohs.fhir.model.r4b.Markdown) : CiteAs
 
     public companion object {
       internal fun from(

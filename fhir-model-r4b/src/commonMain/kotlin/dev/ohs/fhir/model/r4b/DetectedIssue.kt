@@ -488,14 +488,14 @@ public data class DetectedIssue(
     }
   }
 
-  public sealed interface Identified {
+  public sealed interface Identified : FhirChoice {
     public fun asDateTime(): DateTime? = this as? DateTime
 
     public fun asPeriod(): Period? = this as? Period
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r4b.DateTime) : Identified
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r4b.DateTime) : Identified
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r4b.Period) : Identified
+    public data class Period(override val `value`: dev.ohs.fhir.model.r4b.Period) : Identified
 
     public companion object {
       internal fun from(

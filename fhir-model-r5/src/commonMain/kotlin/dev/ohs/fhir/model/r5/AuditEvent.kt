@@ -513,18 +513,18 @@ public data class AuditEvent(
         }
       }
 
-    public sealed interface Network {
+    public sealed interface Network : FhirChoice {
       public fun asReference(): Reference? = this as? Reference
 
       public fun asUri(): Uri? = this as? Uri
 
       public fun asString(): String? = this as? String
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Network
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Network
 
-      public data class Uri(public val `value`: dev.ohs.fhir.model.r5.Uri) : Network
+      public data class Uri(override val `value`: dev.ohs.fhir.model.r5.Uri) : Network
 
-      public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Network
+      public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Network
 
       public companion object {
         internal fun from(
@@ -952,7 +952,7 @@ public data class AuditEvent(
             }
         }
 
-      public sealed interface Value {
+      public sealed interface Value : FhirChoice {
         public fun asQuantity(): Quantity? = this as? Quantity
 
         public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
@@ -975,29 +975,29 @@ public data class AuditEvent(
 
         public fun asBase64Binary(): Base64Binary? = this as? Base64Binary
 
-        public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
+        public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
 
         public data class CodeableConcept(
-          public val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+          override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
         ) : Value
 
-        public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Value
+        public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Value
 
-        public data class Boolean(public val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
+        public data class Boolean(override val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
 
-        public data class Integer(public val `value`: dev.ohs.fhir.model.r5.Integer) : Value
+        public data class Integer(override val `value`: dev.ohs.fhir.model.r5.Integer) : Value
 
-        public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Value
+        public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Value
 
-        public data class Ratio(public val `value`: dev.ohs.fhir.model.r5.Ratio) : Value
+        public data class Ratio(override val `value`: dev.ohs.fhir.model.r5.Ratio) : Value
 
-        public data class Time(public val `value`: dev.ohs.fhir.model.r5.Time) : Value
+        public data class Time(override val `value`: dev.ohs.fhir.model.r5.Time) : Value
 
-        public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Value
+        public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Value
 
-        public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Value
+        public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Value
 
-        public data class Base64Binary(public val `value`: dev.ohs.fhir.model.r5.Base64Binary) :
+        public data class Base64Binary(override val `value`: dev.ohs.fhir.model.r5.Base64Binary) :
           Value
 
         public companion object {
@@ -1197,14 +1197,14 @@ public data class AuditEvent(
     }
   }
 
-  public sealed interface Occurred {
+  public sealed interface Occurred : FhirChoice {
     public fun asPeriod(): Period? = this as? Period
 
     public fun asDateTime(): DateTime? = this as? DateTime
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Occurred
+    public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Occurred
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Occurred
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Occurred
 
     public companion object {
       internal fun from(

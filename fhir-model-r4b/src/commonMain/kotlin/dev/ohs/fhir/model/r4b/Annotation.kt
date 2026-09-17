@@ -73,14 +73,14 @@ public data class Annotation(
       }
     }
 
-  public sealed interface Author {
+  public sealed interface Author : FhirChoice {
     public fun asReference(): Reference? = this as? Reference
 
     public fun asString(): String? = this as? String
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : Author
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) : Author
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r4b.String) : Author
+    public data class String(override val `value`: dev.ohs.fhir.model.r4b.String) : Author
 
     public companion object {
       internal fun from(

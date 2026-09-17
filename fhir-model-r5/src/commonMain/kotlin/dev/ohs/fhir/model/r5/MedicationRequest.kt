@@ -872,15 +872,16 @@ public data class MedicationRequest(
         }
       }
 
-    public sealed interface Allowed {
+    public sealed interface Allowed : FhirChoice {
       public fun asBoolean(): Boolean? = this as? Boolean
 
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-      public data class Boolean(public val `value`: dev.ohs.fhir.model.r5.Boolean) : Allowed
+      public data class Boolean(override val `value`: dev.ohs.fhir.model.r5.Boolean) : Allowed
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
-        Allowed
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+      ) : Allowed
 
       public companion object {
         internal fun from(

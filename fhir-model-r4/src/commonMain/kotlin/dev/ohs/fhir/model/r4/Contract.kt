@@ -1094,7 +1094,7 @@ public data class Contract(
             }
           }
 
-        public sealed interface Value {
+        public sealed interface Value : FhirChoice {
           public fun asBoolean(): Boolean? = this as? Boolean
 
           public fun asDecimal(): Decimal? = this as? Decimal
@@ -1119,29 +1119,30 @@ public data class Contract(
 
           public fun asReference(): Reference? = this as? Reference
 
-          public data class Boolean(public val `value`: dev.ohs.fhir.model.r4.Boolean) : Value
+          public data class Boolean(override val `value`: dev.ohs.fhir.model.r4.Boolean) : Value
 
-          public data class Decimal(public val `value`: dev.ohs.fhir.model.r4.Decimal) : Value
+          public data class Decimal(override val `value`: dev.ohs.fhir.model.r4.Decimal) : Value
 
-          public data class Integer(public val `value`: dev.ohs.fhir.model.r4.Integer) : Value
+          public data class Integer(override val `value`: dev.ohs.fhir.model.r4.Integer) : Value
 
-          public data class Date(public val `value`: dev.ohs.fhir.model.r4.Date) : Value
+          public data class Date(override val `value`: dev.ohs.fhir.model.r4.Date) : Value
 
-          public data class DateTime(public val `value`: dev.ohs.fhir.model.r4.DateTime) : Value
+          public data class DateTime(override val `value`: dev.ohs.fhir.model.r4.DateTime) : Value
 
-          public data class Time(public val `value`: dev.ohs.fhir.model.r4.Time) : Value
+          public data class Time(override val `value`: dev.ohs.fhir.model.r4.Time) : Value
 
-          public data class String(public val `value`: dev.ohs.fhir.model.r4.String) : Value
+          public data class String(override val `value`: dev.ohs.fhir.model.r4.String) : Value
 
-          public data class Uri(public val `value`: dev.ohs.fhir.model.r4.Uri) : Value
+          public data class Uri(override val `value`: dev.ohs.fhir.model.r4.Uri) : Value
 
-          public data class Attachment(public val `value`: dev.ohs.fhir.model.r4.Attachment) : Value
+          public data class Attachment(override val `value`: dev.ohs.fhir.model.r4.Attachment) :
+            Value
 
-          public data class Coding(public val `value`: dev.ohs.fhir.model.r4.Coding) : Value
+          public data class Coding(override val `value`: dev.ohs.fhir.model.r4.Coding) : Value
 
-          public data class Quantity(public val `value`: dev.ohs.fhir.model.r4.Quantity) : Value
+          public data class Quantity(override val `value`: dev.ohs.fhir.model.r4.Quantity) : Value
 
-          public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) : Value
+          public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) : Value
 
           public companion object {
             internal fun from(
@@ -1709,16 +1710,17 @@ public data class Contract(
             }
           }
 
-        public sealed interface Entity {
+        public sealed interface Entity : FhirChoice {
           public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
           public fun asReference(): Reference? = this as? Reference
 
           public data class CodeableConcept(
-            public val `value`: dev.ohs.fhir.model.r4.CodeableConcept
+            override val `value`: dev.ohs.fhir.model.r4.CodeableConcept
           ) : Entity
 
-          public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) : Entity
+          public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) :
+            Entity
 
           public companion object {
             internal fun from(
@@ -2238,18 +2240,19 @@ public data class Contract(
         }
       }
 
-      public sealed interface Occurrence {
+      public sealed interface Occurrence : FhirChoice {
         public fun asDateTime(): DateTime? = this as? DateTime
 
         public fun asPeriod(): Period? = this as? Period
 
         public fun asTiming(): Timing? = this as? Timing
 
-        public data class DateTime(public val `value`: dev.ohs.fhir.model.r4.DateTime) : Occurrence
+        public data class DateTime(override val `value`: dev.ohs.fhir.model.r4.DateTime) :
+          Occurrence
 
-        public data class Period(public val `value`: dev.ohs.fhir.model.r4.Period) : Occurrence
+        public data class Period(override val `value`: dev.ohs.fhir.model.r4.Period) : Occurrence
 
-        public data class Timing(public val `value`: dev.ohs.fhir.model.r4.Timing) : Occurrence
+        public data class Timing(override val `value`: dev.ohs.fhir.model.r4.Timing) : Occurrence
 
         public companion object {
           internal fun from(
@@ -2429,15 +2432,16 @@ public data class Contract(
       }
     }
 
-    public sealed interface Topic {
+    public sealed interface Topic : FhirChoice {
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
       public fun asReference(): Reference? = this as? Reference
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
-        Topic
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r4.CodeableConcept
+      ) : Topic
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) : Topic
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) : Topic
 
       public companion object {
         internal fun from(
@@ -2750,14 +2754,14 @@ public data class Contract(
         }
       }
 
-    public sealed interface Content {
+    public sealed interface Content : FhirChoice {
       public fun asAttachment(): Attachment? = this as? Attachment
 
       public fun asReference(): Reference? = this as? Reference
 
-      public data class Attachment(public val `value`: dev.ohs.fhir.model.r4.Attachment) : Content
+      public data class Attachment(override val `value`: dev.ohs.fhir.model.r4.Attachment) : Content
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) : Content
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) : Content
 
       public companion object {
         internal fun from(
@@ -2880,14 +2884,14 @@ public data class Contract(
         }
       }
 
-    public sealed interface Content {
+    public sealed interface Content : FhirChoice {
       public fun asAttachment(): Attachment? = this as? Attachment
 
       public fun asReference(): Reference? = this as? Reference
 
-      public data class Attachment(public val `value`: dev.ohs.fhir.model.r4.Attachment) : Content
+      public data class Attachment(override val `value`: dev.ohs.fhir.model.r4.Attachment) : Content
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) : Content
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) : Content
 
       public companion object {
         internal fun from(
@@ -3007,14 +3011,14 @@ public data class Contract(
         }
       }
 
-    public sealed interface Content {
+    public sealed interface Content : FhirChoice {
       public fun asAttachment(): Attachment? = this as? Attachment
 
       public fun asReference(): Reference? = this as? Reference
 
-      public data class Attachment(public val `value`: dev.ohs.fhir.model.r4.Attachment) : Content
+      public data class Attachment(override val `value`: dev.ohs.fhir.model.r4.Attachment) : Content
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) : Content
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) : Content
 
       public companion object {
         internal fun from(
@@ -3082,15 +3086,15 @@ public data class Contract(
     }
   }
 
-  public sealed interface Topic {
+  public sealed interface Topic : FhirChoice {
     public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
     public fun asReference(): Reference? = this as? Reference
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
+    public data class CodeableConcept(override val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
       Topic
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) : Topic
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) : Topic
 
     public companion object {
       internal fun from(
@@ -3104,15 +3108,15 @@ public data class Contract(
     }
   }
 
-  public sealed interface LegallyBinding {
+  public sealed interface LegallyBinding : FhirChoice {
     public fun asAttachment(): Attachment? = this as? Attachment
 
     public fun asReference(): Reference? = this as? Reference
 
-    public data class Attachment(public val `value`: dev.ohs.fhir.model.r4.Attachment) :
+    public data class Attachment(override val `value`: dev.ohs.fhir.model.r4.Attachment) :
       LegallyBinding
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) :
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) :
       LegallyBinding
 
     public companion object {

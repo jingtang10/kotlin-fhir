@@ -626,15 +626,16 @@ public data class AdverseEvent(
       }
     }
 
-    public sealed interface Instance {
+    public sealed interface Instance : FhirChoice {
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
       public fun asReference(): Reference? = this as? Reference
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
-        Instance
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+      ) : Instance
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Instance
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Instance
 
       public companion object {
         internal fun from(
@@ -767,15 +768,16 @@ public data class AdverseEvent(
         }
       }
 
-    public sealed interface Item {
+    public sealed interface Item : FhirChoice {
       public fun asReference(): Reference? = this as? Reference
 
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Item
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Item
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
-        Item
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+      ) : Item
 
       public companion object {
         internal fun from(
@@ -898,15 +900,16 @@ public data class AdverseEvent(
         }
       }
 
-    public sealed interface Item {
+    public sealed interface Item : FhirChoice {
       public fun asReference(): Reference? = this as? Reference
 
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Item
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Item
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
-        Item
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+      ) : Item
 
       public companion object {
         internal fun from(
@@ -1032,15 +1035,16 @@ public data class AdverseEvent(
         }
       }
 
-    public sealed interface Item {
+    public sealed interface Item : FhirChoice {
       public fun asReference(): Reference? = this as? Reference
 
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Item
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Item
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
-        Item
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+      ) : Item
 
       public companion object {
         internal fun from(
@@ -1171,15 +1175,16 @@ public data class AdverseEvent(
         }
       }
 
-    public sealed interface Item {
+    public sealed interface Item : FhirChoice {
       public fun asReference(): Reference? = this as? Reference
 
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Item
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Item
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
-        Item
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+      ) : Item
 
       public companion object {
         internal fun from(
@@ -1256,18 +1261,18 @@ public data class AdverseEvent(
     }
   }
 
-  public sealed interface Occurrence {
+  public sealed interface Occurrence : FhirChoice {
     public fun asDateTime(): DateTime? = this as? DateTime
 
     public fun asPeriod(): Period? = this as? Period
 
     public fun asTiming(): Timing? = this as? Timing
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Occurrence
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Occurrence
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Occurrence
+    public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Occurrence
 
-    public data class Timing(public val `value`: dev.ohs.fhir.model.r5.Timing) : Occurrence
+    public data class Timing(override val `value`: dev.ohs.fhir.model.r5.Timing) : Occurrence
 
     public companion object {
       internal fun from(

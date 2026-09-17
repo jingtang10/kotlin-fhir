@@ -783,7 +783,7 @@ public data class Citation(
           }
       }
 
-    public sealed interface Target {
+    public sealed interface Target : FhirChoice {
       public fun asUri(): Uri? = this as? Uri
 
       public fun asIdentifier(): Identifier? = this as? Identifier
@@ -792,13 +792,13 @@ public data class Citation(
 
       public fun asAttachment(): Attachment? = this as? Attachment
 
-      public data class Uri(public val `value`: dev.ohs.fhir.model.r4b.Uri) : Target
+      public data class Uri(override val `value`: dev.ohs.fhir.model.r4b.Uri) : Target
 
-      public data class Identifier(public val `value`: dev.ohs.fhir.model.r4b.Identifier) : Target
+      public data class Identifier(override val `value`: dev.ohs.fhir.model.r4b.Identifier) : Target
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : Target
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) : Target
 
-      public data class Attachment(public val `value`: dev.ohs.fhir.model.r4b.Attachment) : Target
+      public data class Attachment(override val `value`: dev.ohs.fhir.model.r4b.Attachment) : Target
 
       public companion object {
         internal fun from(
@@ -1660,7 +1660,7 @@ public data class Citation(
             }
         }
 
-      public sealed interface Target {
+      public sealed interface Target : FhirChoice {
         public fun asUri(): Uri? = this as? Uri
 
         public fun asIdentifier(): Identifier? = this as? Identifier
@@ -1669,13 +1669,15 @@ public data class Citation(
 
         public fun asAttachment(): Attachment? = this as? Attachment
 
-        public data class Uri(public val `value`: dev.ohs.fhir.model.r4b.Uri) : Target
+        public data class Uri(override val `value`: dev.ohs.fhir.model.r4b.Uri) : Target
 
-        public data class Identifier(public val `value`: dev.ohs.fhir.model.r4b.Identifier) : Target
+        public data class Identifier(override val `value`: dev.ohs.fhir.model.r4b.Identifier) :
+          Target
 
-        public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : Target
+        public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) : Target
 
-        public data class Attachment(public val `value`: dev.ohs.fhir.model.r4b.Attachment) : Target
+        public data class Attachment(override val `value`: dev.ohs.fhir.model.r4b.Attachment) :
+          Target
 
         public companion object {
           internal fun from(

@@ -529,14 +529,14 @@ public data class Practitioner(
     }
   }
 
-  public sealed interface Deceased {
+  public sealed interface Deceased : FhirChoice {
     public fun asBoolean(): Boolean? = this as? Boolean
 
     public fun asDateTime(): DateTime? = this as? DateTime
 
-    public data class Boolean(public val `value`: dev.ohs.fhir.model.r5.Boolean) : Deceased
+    public data class Boolean(override val `value`: dev.ohs.fhir.model.r5.Boolean) : Deceased
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Deceased
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Deceased
 
     public companion object {
       internal fun from(

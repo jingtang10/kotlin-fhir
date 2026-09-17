@@ -284,14 +284,14 @@ public data class SubstanceSpecification(
         }
       }
 
-    public sealed interface Amount {
+    public sealed interface Amount : FhirChoice {
       public fun asQuantity(): Quantity? = this as? Quantity
 
       public fun asString(): String? = this as? String
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r4.Quantity) : Amount
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r4.Quantity) : Amount
 
-      public data class String(public val `value`: dev.ohs.fhir.model.r4.String) : Amount
+      public data class String(override val `value`: dev.ohs.fhir.model.r4.String) : Amount
 
       public companion object {
         internal fun from(
@@ -454,16 +454,17 @@ public data class SubstanceSpecification(
         }
       }
 
-    public sealed interface DefiningSubstance {
+    public sealed interface DefiningSubstance : FhirChoice {
       public fun asReference(): Reference? = this as? Reference
 
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) :
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) :
         DefiningSubstance
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
-        DefiningSubstance
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r4.CodeableConcept
+      ) : DefiningSubstance
 
       public companion object {
         internal fun from(
@@ -477,14 +478,14 @@ public data class SubstanceSpecification(
       }
     }
 
-    public sealed interface Amount {
+    public sealed interface Amount : FhirChoice {
       public fun asQuantity(): Quantity? = this as? Quantity
 
       public fun asString(): String? = this as? String
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r4.Quantity) : Amount
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r4.Quantity) : Amount
 
-      public data class String(public val `value`: dev.ohs.fhir.model.r4.String) : Amount
+      public data class String(override val `value`: dev.ohs.fhir.model.r4.String) : Amount
 
       public companion object {
         internal fun from(
@@ -1654,15 +1655,16 @@ public data class SubstanceSpecification(
         }
       }
 
-    public sealed interface Substance {
+    public sealed interface Substance : FhirChoice {
       public fun asReference(): Reference? = this as? Reference
 
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) : Substance
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) : Substance
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
-        Substance
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r4.CodeableConcept
+      ) : Substance
 
       public companion object {
         internal fun from(
@@ -1676,7 +1678,7 @@ public data class SubstanceSpecification(
       }
     }
 
-    public sealed interface Amount {
+    public sealed interface Amount : FhirChoice {
       public fun asQuantity(): Quantity? = this as? Quantity
 
       public fun asRange(): Range? = this as? Range
@@ -1685,13 +1687,13 @@ public data class SubstanceSpecification(
 
       public fun asString(): String? = this as? String
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r4.Quantity) : Amount
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r4.Quantity) : Amount
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r4.Range) : Amount
+      public data class Range(override val `value`: dev.ohs.fhir.model.r4.Range) : Amount
 
-      public data class Ratio(public val `value`: dev.ohs.fhir.model.r4.Ratio) : Amount
+      public data class Ratio(override val `value`: dev.ohs.fhir.model.r4.Ratio) : Amount
 
-      public data class String(public val `value`: dev.ohs.fhir.model.r4.String) : Amount
+      public data class String(override val `value`: dev.ohs.fhir.model.r4.String) : Amount
 
       public companion object {
         internal fun from(

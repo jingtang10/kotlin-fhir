@@ -582,16 +582,16 @@ public data class MedicationKnowledge(
         }
       }
 
-    public sealed interface Item {
+    public sealed interface Item : FhirChoice {
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
       public fun asReference(): Reference? = this as? Reference
 
       public data class CodeableConcept(
-        public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+        override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
       ) : Item
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : Item
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) : Item
 
       public companion object {
         internal fun from(
@@ -1150,16 +1150,16 @@ public data class MedicationKnowledge(
           }
         }
 
-      public sealed interface Characteristic {
+      public sealed interface Characteristic : FhirChoice {
         public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
         public fun asQuantity(): Quantity? = this as? Quantity
 
         public data class CodeableConcept(
-          public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+          override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
         ) : Characteristic
 
-        public data class Quantity(public val `value`: dev.ohs.fhir.model.r4b.Quantity) :
+        public data class Quantity(override val `value`: dev.ohs.fhir.model.r4b.Quantity) :
           Characteristic
 
         public companion object {
@@ -1235,16 +1235,17 @@ public data class MedicationKnowledge(
       }
     }
 
-    public sealed interface Indication {
+    public sealed interface Indication : FhirChoice {
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
       public fun asReference(): Reference? = this as? Reference
 
       public data class CodeableConcept(
-        public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+        override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
       ) : Indication
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : Indication
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) :
+        Indication
 
       public companion object {
         internal fun from(
@@ -1633,7 +1634,7 @@ public data class MedicationKnowledge(
         }
       }
 
-    public sealed interface Value {
+    public sealed interface Value : FhirChoice {
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
       public fun asString(): String? = this as? String
@@ -1643,14 +1644,14 @@ public data class MedicationKnowledge(
       public fun asBase64Binary(): Base64Binary? = this as? Base64Binary
 
       public data class CodeableConcept(
-        public val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
+        override val `value`: dev.ohs.fhir.model.r4b.CodeableConcept
       ) : Value
 
-      public data class String(public val `value`: dev.ohs.fhir.model.r4b.String) : Value
+      public data class String(override val `value`: dev.ohs.fhir.model.r4b.String) : Value
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r4b.Quantity) : Value
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r4b.Quantity) : Value
 
-      public data class Base64Binary(public val `value`: dev.ohs.fhir.model.r4b.Base64Binary) :
+      public data class Base64Binary(override val `value`: dev.ohs.fhir.model.r4b.Base64Binary) :
         Value
 
       public companion object {

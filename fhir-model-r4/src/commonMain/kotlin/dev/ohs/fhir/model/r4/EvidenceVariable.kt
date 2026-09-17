@@ -461,7 +461,7 @@ public data class EvidenceVariable(
         }
       }
 
-    public sealed interface Definition {
+    public sealed interface Definition : FhirChoice {
       public fun asReference(): Reference? = this as? Reference
 
       public fun asCanonical(): Canonical? = this as? Canonical
@@ -474,21 +474,25 @@ public data class EvidenceVariable(
 
       public fun asTriggerDefinition(): TriggerDefinition? = this as? TriggerDefinition
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r4.Reference) : Definition
-
-      public data class Canonical(public val `value`: dev.ohs.fhir.model.r4.Canonical) : Definition
-
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r4.Reference) :
         Definition
 
-      public data class Expression(public val `value`: dev.ohs.fhir.model.r4.Expression) :
+      public data class Canonical(override val `value`: dev.ohs.fhir.model.r4.Canonical) :
         Definition
 
-      public data class DataRequirement(public val `value`: dev.ohs.fhir.model.r4.DataRequirement) :
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r4.CodeableConcept
+      ) : Definition
+
+      public data class Expression(override val `value`: dev.ohs.fhir.model.r4.Expression) :
         Definition
+
+      public data class DataRequirement(
+        override val `value`: dev.ohs.fhir.model.r4.DataRequirement
+      ) : Definition
 
       public data class TriggerDefinition(
-        public val `value`: dev.ohs.fhir.model.r4.TriggerDefinition
+        override val `value`: dev.ohs.fhir.model.r4.TriggerDefinition
       ) : Definition
 
       public companion object {
@@ -511,7 +515,7 @@ public data class EvidenceVariable(
       }
     }
 
-    public sealed interface ParticipantEffective {
+    public sealed interface ParticipantEffective : FhirChoice {
       public fun asDateTime(): DateTime? = this as? DateTime
 
       public fun asPeriod(): Period? = this as? Period
@@ -520,16 +524,16 @@ public data class EvidenceVariable(
 
       public fun asTiming(): Timing? = this as? Timing
 
-      public data class DateTime(public val `value`: dev.ohs.fhir.model.r4.DateTime) :
+      public data class DateTime(override val `value`: dev.ohs.fhir.model.r4.DateTime) :
         ParticipantEffective
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r4.Period) :
+      public data class Period(override val `value`: dev.ohs.fhir.model.r4.Period) :
         ParticipantEffective
 
-      public data class Duration(public val `value`: dev.ohs.fhir.model.r4.Duration) :
+      public data class Duration(override val `value`: dev.ohs.fhir.model.r4.Duration) :
         ParticipantEffective
 
-      public data class Timing(public val `value`: dev.ohs.fhir.model.r4.Timing) :
+      public data class Timing(override val `value`: dev.ohs.fhir.model.r4.Timing) :
         ParticipantEffective
 
       public companion object {

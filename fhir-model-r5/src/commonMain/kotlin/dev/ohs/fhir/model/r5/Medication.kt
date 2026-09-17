@@ -295,19 +295,20 @@ public data class Medication(
         }
       }
 
-    public sealed interface Strength {
+    public sealed interface Strength : FhirChoice {
       public fun asRatio(): Ratio? = this as? Ratio
 
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
       public fun asQuantity(): Quantity? = this as? Quantity
 
-      public data class Ratio(public val `value`: dev.ohs.fhir.model.r5.Ratio) : Strength
+      public data class Ratio(override val `value`: dev.ohs.fhir.model.r5.Ratio) : Strength
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
-        Strength
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+      ) : Strength
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Strength
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Strength
 
       public companion object {
         internal fun from(

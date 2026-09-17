@@ -591,15 +591,16 @@ public data class MedicationKnowledge(
           }
       }
 
-    public sealed interface Cost {
+    public sealed interface Cost : FhirChoice {
       public fun asMoney(): Money? = this as? Money
 
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-      public data class Money(public val `value`: dev.ohs.fhir.model.r5.Money) : Cost
+      public data class Money(override val `value`: dev.ohs.fhir.model.r5.Money) : Cost
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
-        Cost
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+      ) : Cost
 
       public companion object {
         internal fun from(
@@ -1120,7 +1121,7 @@ public data class MedicationKnowledge(
             }
           }
 
-        public sealed interface Value {
+        public sealed interface Value : FhirChoice {
           public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
           public fun asQuantity(): Quantity? = this as? Quantity
@@ -1128,12 +1129,12 @@ public data class MedicationKnowledge(
           public fun asRange(): Range? = this as? Range
 
           public data class CodeableConcept(
-            public val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+            override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
           ) : Value
 
-          public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
+          public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
 
-          public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Value
+          public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Value
 
           public companion object {
             internal fun from(
@@ -1411,14 +1412,14 @@ public data class MedicationKnowledge(
         }
       }
 
-    public sealed interface Source {
+    public sealed interface Source : FhirChoice {
       public fun asString(): String? = this as? String
 
       public fun asUri(): Uri? = this as? Uri
 
-      public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Source
+      public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Source
 
-      public data class Uri(public val `value`: dev.ohs.fhir.model.r5.Uri) : Source
+      public data class Uri(override val `value`: dev.ohs.fhir.model.r5.Uri) : Source
 
       public companion object {
         internal fun from(
@@ -1754,19 +1755,19 @@ public data class MedicationKnowledge(
             }
         }
 
-      public sealed interface Value {
+      public sealed interface Value : FhirChoice {
         public fun asQuantity(): Quantity? = this as? Quantity
 
         public fun asRange(): Range? = this as? Range
 
         public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-        public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
+        public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
 
-        public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Value
+        public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Value
 
         public data class CodeableConcept(
-          public val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+          override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
         ) : Value
 
         public companion object {
@@ -2409,20 +2410,20 @@ public data class MedicationKnowledge(
           }
         }
 
-      public sealed interface Strength {
+      public sealed interface Strength : FhirChoice {
         public fun asRatio(): Ratio? = this as? Ratio
 
         public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
         public fun asQuantity(): Quantity? = this as? Quantity
 
-        public data class Ratio(public val `value`: dev.ohs.fhir.model.r5.Ratio) : Strength
+        public data class Ratio(override val `value`: dev.ohs.fhir.model.r5.Ratio) : Strength
 
         public data class CodeableConcept(
-          public val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+          override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
         ) : Strength
 
-        public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Strength
+        public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Strength
 
         public companion object {
           internal fun from(
@@ -2569,7 +2570,7 @@ public data class MedicationKnowledge(
           }
         }
 
-      public sealed interface Value {
+      public sealed interface Value : FhirChoice {
         public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
         public fun asString(): String? = this as? String
@@ -2581,17 +2582,17 @@ public data class MedicationKnowledge(
         public fun asAttachment(): Attachment? = this as? Attachment
 
         public data class CodeableConcept(
-          public val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+          override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
         ) : Value
 
-        public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Value
+        public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Value
 
-        public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
+        public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
 
-        public data class Base64Binary(public val `value`: dev.ohs.fhir.model.r5.Base64Binary) :
+        public data class Base64Binary(override val `value`: dev.ohs.fhir.model.r5.Base64Binary) :
           Value
 
-        public data class Attachment(public val `value`: dev.ohs.fhir.model.r5.Attachment) : Value
+        public data class Attachment(override val `value`: dev.ohs.fhir.model.r5.Attachment) : Value
 
         public companion object {
           internal fun from(

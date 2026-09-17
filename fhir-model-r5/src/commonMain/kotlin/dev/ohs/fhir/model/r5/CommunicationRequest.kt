@@ -370,19 +370,20 @@ public data class CommunicationRequest(
         }
       }
 
-    public sealed interface Content {
+    public sealed interface Content : FhirChoice {
       public fun asAttachment(): Attachment? = this as? Attachment
 
       public fun asReference(): Reference? = this as? Reference
 
       public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-      public data class Attachment(public val `value`: dev.ohs.fhir.model.r5.Attachment) : Content
+      public data class Attachment(override val `value`: dev.ohs.fhir.model.r5.Attachment) : Content
 
-      public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Content
+      public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Content
 
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
-        Content
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+      ) : Content
 
       public companion object {
         internal fun from(
@@ -465,14 +466,14 @@ public data class CommunicationRequest(
     }
   }
 
-  public sealed interface Occurrence {
+  public sealed interface Occurrence : FhirChoice {
     public fun asDateTime(): DateTime? = this as? DateTime
 
     public fun asPeriod(): Period? = this as? Period
 
-    public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Occurrence
+    public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Occurrence
 
-    public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Occurrence
+    public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Occurrence
 
     public companion object {
       internal fun from(

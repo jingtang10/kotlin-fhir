@@ -93,14 +93,14 @@ public data class Population(
       }
     }
 
-  public sealed interface Age {
+  public sealed interface Age : FhirChoice {
     public fun asRange(): Range? = this as? Range
 
     public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
-    public data class Range(public val `value`: dev.ohs.fhir.model.r4.Range) : Age
+    public data class Range(override val `value`: dev.ohs.fhir.model.r4.Range) : Age
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
+    public data class CodeableConcept(override val `value`: dev.ohs.fhir.model.r4.CodeableConcept) :
       Age
 
     public companion object {

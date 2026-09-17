@@ -569,14 +569,14 @@ public data class RequestGroup(
             }
         }
 
-      public sealed interface Offset {
+      public sealed interface Offset : FhirChoice {
         public fun asDuration(): Duration? = this as? Duration
 
         public fun asRange(): Range? = this as? Range
 
-        public data class Duration(public val `value`: dev.ohs.fhir.model.r4.Duration) : Offset
+        public data class Duration(override val `value`: dev.ohs.fhir.model.r4.Duration) : Offset
 
-        public data class Range(public val `value`: dev.ohs.fhir.model.r4.Range) : Offset
+        public data class Range(override val `value`: dev.ohs.fhir.model.r4.Range) : Offset
 
         public companion object {
           internal fun from(
@@ -654,7 +654,7 @@ public data class RequestGroup(
       }
     }
 
-    public sealed interface Timing {
+    public sealed interface Timing : FhirChoice {
       public fun asDateTime(): DateTime? = this as? DateTime
 
       public fun asAge(): Age? = this as? Age
@@ -667,17 +667,19 @@ public data class RequestGroup(
 
       public fun asTiming(): Timing? = this as? Timing
 
-      public data class DateTime(public val `value`: dev.ohs.fhir.model.r4.DateTime) : Action.Timing
+      public data class DateTime(override val `value`: dev.ohs.fhir.model.r4.DateTime) :
+        Action.Timing
 
-      public data class Age(public val `value`: dev.ohs.fhir.model.r4.Age) : Action.Timing
+      public data class Age(override val `value`: dev.ohs.fhir.model.r4.Age) : Action.Timing
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r4.Period) : Action.Timing
+      public data class Period(override val `value`: dev.ohs.fhir.model.r4.Period) : Action.Timing
 
-      public data class Duration(public val `value`: dev.ohs.fhir.model.r4.Duration) : Action.Timing
+      public data class Duration(override val `value`: dev.ohs.fhir.model.r4.Duration) :
+        Action.Timing
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r4.Range) : Action.Timing
+      public data class Range(override val `value`: dev.ohs.fhir.model.r4.Range) : Action.Timing
 
-      public data class Timing(public val `value`: dev.ohs.fhir.model.r4.Timing) : Action.Timing
+      public data class Timing(override val `value`: dev.ohs.fhir.model.r4.Timing) : Action.Timing
 
       public companion object {
         internal fun from(

@@ -934,14 +934,15 @@ public data class ImplementationGuide(
           }
         }
 
-      public sealed interface Example {
+      public sealed interface Example : FhirChoice {
         public fun asBoolean(): Boolean? = this as? Boolean
 
         public fun asCanonical(): Canonical? = this as? Canonical
 
-        public data class Boolean(public val `value`: dev.ohs.fhir.model.r4b.Boolean) : Example
+        public data class Boolean(override val `value`: dev.ohs.fhir.model.r4b.Boolean) : Example
 
-        public data class Canonical(public val `value`: dev.ohs.fhir.model.r4b.Canonical) : Example
+        public data class Canonical(override val `value`: dev.ohs.fhir.model.r4b.Canonical) :
+          Example
 
         public companion object {
           internal fun from(
@@ -1149,14 +1150,14 @@ public data class ImplementationGuide(
             }
         }
 
-      public sealed interface Name {
+      public sealed interface Name : FhirChoice {
         public fun asUrl(): Url? = this as? Url
 
         public fun asReference(): Reference? = this as? Reference
 
-        public data class Url(public val `value`: dev.ohs.fhir.model.r4b.Url) : Name
+        public data class Url(override val `value`: dev.ohs.fhir.model.r4b.Url) : Name
 
-        public data class Reference(public val `value`: dev.ohs.fhir.model.r4b.Reference) : Name
+        public data class Reference(override val `value`: dev.ohs.fhir.model.r4b.Reference) : Name
 
         public companion object {
           internal fun from(
@@ -1721,14 +1722,15 @@ public data class ImplementationGuide(
           }
         }
 
-      public sealed interface Example {
+      public sealed interface Example : FhirChoice {
         public fun asBoolean(): Boolean? = this as? Boolean
 
         public fun asCanonical(): Canonical? = this as? Canonical
 
-        public data class Boolean(public val `value`: dev.ohs.fhir.model.r4b.Boolean) : Example
+        public data class Boolean(override val `value`: dev.ohs.fhir.model.r4b.Boolean) : Example
 
-        public data class Canonical(public val `value`: dev.ohs.fhir.model.r4b.Canonical) : Example
+        public data class Canonical(override val `value`: dev.ohs.fhir.model.r4b.Canonical) :
+          Example
 
         public companion object {
           internal fun from(

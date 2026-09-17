@@ -2815,14 +2815,15 @@ public data class TestScript(
               }
             }
 
-          public sealed interface Link {
+          public sealed interface Link : FhirChoice {
             public fun asUri(): Uri? = this as? Uri
 
             public fun asCanonical(): Canonical? = this as? Canonical
 
-            public data class Uri(public val `value`: dev.ohs.fhir.model.r5.Uri) : Link
+            public data class Uri(override val `value`: dev.ohs.fhir.model.r5.Uri) : Link
 
-            public data class Canonical(public val `value`: dev.ohs.fhir.model.r5.Canonical) : Link
+            public data class Canonical(override val `value`: dev.ohs.fhir.model.r5.Canonical) :
+              Link
 
             public companion object {
               internal fun from(
@@ -3821,14 +3822,14 @@ public data class TestScript(
     }
   }
 
-  public sealed interface VersionAlgorithm {
+  public sealed interface VersionAlgorithm : FhirChoice {
     public fun asString(): String? = this as? String
 
     public fun asCoding(): Coding? = this as? Coding
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : VersionAlgorithm
+    public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : VersionAlgorithm
 
-    public data class Coding(public val `value`: dev.ohs.fhir.model.r5.Coding) : VersionAlgorithm
+    public data class Coding(override val `value`: dev.ohs.fhir.model.r5.Coding) : VersionAlgorithm
 
     public companion object {
       internal fun from(

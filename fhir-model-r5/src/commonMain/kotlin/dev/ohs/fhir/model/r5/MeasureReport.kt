@@ -756,7 +756,7 @@ public data class MeasureReport(
                 }
             }
 
-          public sealed interface Value {
+          public sealed interface Value : FhirChoice {
             public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
             public fun asBoolean(): Boolean? = this as? Boolean
@@ -768,16 +768,17 @@ public data class MeasureReport(
             public fun asReference(): Reference? = this as? Reference
 
             public data class CodeableConcept(
-              public val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+              override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
             ) : Value
 
-            public data class Boolean(public val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
+            public data class Boolean(override val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
 
-            public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
+            public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
 
-            public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Value
+            public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Value
 
-            public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Value
+            public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) :
+              Value
 
             public companion object {
               internal fun from(
@@ -1053,7 +1054,7 @@ public data class MeasureReport(
           }
         }
 
-        public sealed interface Value {
+        public sealed interface Value : FhirChoice {
           public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
           public fun asBoolean(): Boolean? = this as? Boolean
@@ -1065,16 +1066,16 @@ public data class MeasureReport(
           public fun asReference(): Reference? = this as? Reference
 
           public data class CodeableConcept(
-            public val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+            override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
           ) : Value
 
-          public data class Boolean(public val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
+          public data class Boolean(override val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
 
-          public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
+          public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
 
-          public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Value
+          public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Value
 
-          public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Value
+          public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Value
 
           public companion object {
             internal fun from(
@@ -1094,7 +1095,7 @@ public data class MeasureReport(
           }
         }
 
-        public sealed interface MeasureScore {
+        public sealed interface MeasureScore : FhirChoice {
           public fun asQuantity(): Quantity? = this as? Quantity
 
           public fun asDateTime(): DateTime? = this as? DateTime
@@ -1107,21 +1108,22 @@ public data class MeasureReport(
 
           public fun asDuration(): Duration? = this as? Duration
 
-          public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) :
+          public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) :
             MeasureScore
 
-          public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) :
+          public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) :
             MeasureScore
 
           public data class CodeableConcept(
-            public val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+            override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
           ) : MeasureScore
 
-          public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : MeasureScore
+          public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) :
+            MeasureScore
 
-          public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : MeasureScore
+          public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : MeasureScore
 
-          public data class Duration(public val `value`: dev.ohs.fhir.model.r5.Duration) :
+          public data class Duration(override val `value`: dev.ohs.fhir.model.r5.Duration) :
             MeasureScore
 
           public companion object {
@@ -1289,7 +1291,7 @@ public data class MeasureReport(
       }
     }
 
-    public sealed interface MeasureScore {
+    public sealed interface MeasureScore : FhirChoice {
       public fun asQuantity(): Quantity? = this as? Quantity
 
       public fun asDateTime(): DateTime? = this as? DateTime
@@ -1302,18 +1304,22 @@ public data class MeasureReport(
 
       public fun asDuration(): Duration? = this as? Duration
 
-      public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : MeasureScore
-
-      public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : MeasureScore
-
-      public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
+      public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) :
         MeasureScore
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : MeasureScore
+      public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) :
+        MeasureScore
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : MeasureScore
+      public data class CodeableConcept(
+        override val `value`: dev.ohs.fhir.model.r5.CodeableConcept
+      ) : MeasureScore
 
-      public data class Duration(public val `value`: dev.ohs.fhir.model.r5.Duration) : MeasureScore
+      public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : MeasureScore
+
+      public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : MeasureScore
+
+      public data class Duration(override val `value`: dev.ohs.fhir.model.r5.Duration) :
+        MeasureScore
 
       public companion object {
         internal fun from(

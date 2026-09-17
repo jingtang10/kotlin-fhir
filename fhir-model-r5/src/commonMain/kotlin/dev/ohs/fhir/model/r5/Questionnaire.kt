@@ -763,7 +763,7 @@ public data class Questionnaire(
             }
         }
 
-      public sealed interface Answer {
+      public sealed interface Answer : FhirChoice {
         public fun asBoolean(): Boolean? = this as? Boolean
 
         public fun asDecimal(): Decimal? = this as? Decimal
@@ -784,25 +784,25 @@ public data class Questionnaire(
 
         public fun asReference(): Reference? = this as? Reference
 
-        public data class Boolean(public val `value`: dev.ohs.fhir.model.r5.Boolean) : Answer
+        public data class Boolean(override val `value`: dev.ohs.fhir.model.r5.Boolean) : Answer
 
-        public data class Decimal(public val `value`: dev.ohs.fhir.model.r5.Decimal) : Answer
+        public data class Decimal(override val `value`: dev.ohs.fhir.model.r5.Decimal) : Answer
 
-        public data class Integer(public val `value`: dev.ohs.fhir.model.r5.Integer) : Answer
+        public data class Integer(override val `value`: dev.ohs.fhir.model.r5.Integer) : Answer
 
-        public data class Date(public val `value`: dev.ohs.fhir.model.r5.Date) : Answer
+        public data class Date(override val `value`: dev.ohs.fhir.model.r5.Date) : Answer
 
-        public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Answer
+        public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Answer
 
-        public data class Time(public val `value`: dev.ohs.fhir.model.r5.Time) : Answer
+        public data class Time(override val `value`: dev.ohs.fhir.model.r5.Time) : Answer
 
-        public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Answer
+        public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Answer
 
-        public data class Coding(public val `value`: dev.ohs.fhir.model.r5.Coding) : Answer
+        public data class Coding(override val `value`: dev.ohs.fhir.model.r5.Coding) : Answer
 
-        public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Answer
+        public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Answer
 
-        public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Answer
+        public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Answer
 
         public companion object {
           internal fun from(
@@ -969,7 +969,7 @@ public data class Questionnaire(
           }
         }
 
-      public sealed interface Value {
+      public sealed interface Value : FhirChoice {
         public fun asInteger(): Integer? = this as? Integer
 
         public fun asDate(): Date? = this as? Date
@@ -982,17 +982,17 @@ public data class Questionnaire(
 
         public fun asReference(): Reference? = this as? Reference
 
-        public data class Integer(public val `value`: dev.ohs.fhir.model.r5.Integer) : Value
+        public data class Integer(override val `value`: dev.ohs.fhir.model.r5.Integer) : Value
 
-        public data class Date(public val `value`: dev.ohs.fhir.model.r5.Date) : Value
+        public data class Date(override val `value`: dev.ohs.fhir.model.r5.Date) : Value
 
-        public data class Time(public val `value`: dev.ohs.fhir.model.r5.Time) : Value
+        public data class Time(override val `value`: dev.ohs.fhir.model.r5.Time) : Value
 
-        public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Value
+        public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Value
 
-        public data class Coding(public val `value`: dev.ohs.fhir.model.r5.Coding) : Value
+        public data class Coding(override val `value`: dev.ohs.fhir.model.r5.Coding) : Value
 
-        public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Value
+        public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Value
 
         public companion object {
           internal fun from(
@@ -1138,7 +1138,7 @@ public data class Questionnaire(
           }
         }
 
-      public sealed interface Value {
+      public sealed interface Value : FhirChoice {
         public fun asBoolean(): Boolean? = this as? Boolean
 
         public fun asDecimal(): Decimal? = this as? Decimal
@@ -1163,29 +1163,29 @@ public data class Questionnaire(
 
         public fun asReference(): Reference? = this as? Reference
 
-        public data class Boolean(public val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
+        public data class Boolean(override val `value`: dev.ohs.fhir.model.r5.Boolean) : Value
 
-        public data class Decimal(public val `value`: dev.ohs.fhir.model.r5.Decimal) : Value
+        public data class Decimal(override val `value`: dev.ohs.fhir.model.r5.Decimal) : Value
 
-        public data class Integer(public val `value`: dev.ohs.fhir.model.r5.Integer) : Value
+        public data class Integer(override val `value`: dev.ohs.fhir.model.r5.Integer) : Value
 
-        public data class Date(public val `value`: dev.ohs.fhir.model.r5.Date) : Value
+        public data class Date(override val `value`: dev.ohs.fhir.model.r5.Date) : Value
 
-        public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Value
+        public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Value
 
-        public data class Time(public val `value`: dev.ohs.fhir.model.r5.Time) : Value
+        public data class Time(override val `value`: dev.ohs.fhir.model.r5.Time) : Value
 
-        public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : Value
+        public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : Value
 
-        public data class Uri(public val `value`: dev.ohs.fhir.model.r5.Uri) : Value
+        public data class Uri(override val `value`: dev.ohs.fhir.model.r5.Uri) : Value
 
-        public data class Attachment(public val `value`: dev.ohs.fhir.model.r5.Attachment) : Value
+        public data class Attachment(override val `value`: dev.ohs.fhir.model.r5.Attachment) : Value
 
-        public data class Coding(public val `value`: dev.ohs.fhir.model.r5.Coding) : Value
+        public data class Coding(override val `value`: dev.ohs.fhir.model.r5.Coding) : Value
 
-        public data class Quantity(public val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
+        public data class Quantity(override val `value`: dev.ohs.fhir.model.r5.Quantity) : Value
 
-        public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Value
+        public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Value
 
         public companion object {
           internal fun from(
@@ -1564,14 +1564,14 @@ public data class Questionnaire(
     }
   }
 
-  public sealed interface VersionAlgorithm {
+  public sealed interface VersionAlgorithm : FhirChoice {
     public fun asString(): String? = this as? String
 
     public fun asCoding(): Coding? = this as? Coding
 
-    public data class String(public val `value`: dev.ohs.fhir.model.r5.String) : VersionAlgorithm
+    public data class String(override val `value`: dev.ohs.fhir.model.r5.String) : VersionAlgorithm
 
-    public data class Coding(public val `value`: dev.ohs.fhir.model.r5.Coding) : VersionAlgorithm
+    public data class Coding(override val `value`: dev.ohs.fhir.model.r5.Coding) : VersionAlgorithm
 
     public companion object {
       internal fun from(

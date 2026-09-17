@@ -940,14 +940,14 @@ public data class RequestOrchestration(
             }
         }
 
-      public sealed interface Offset {
+      public sealed interface Offset : FhirChoice {
         public fun asDuration(): Duration? = this as? Duration
 
         public fun asRange(): Range? = this as? Range
 
-        public data class Duration(public val `value`: dev.ohs.fhir.model.r5.Duration) : Offset
+        public data class Duration(override val `value`: dev.ohs.fhir.model.r5.Duration) : Offset
 
-        public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Offset
+        public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Offset
 
         public companion object {
           internal fun from(
@@ -1104,14 +1104,14 @@ public data class RequestOrchestration(
           }
         }
 
-      public sealed interface Actor {
+      public sealed interface Actor : FhirChoice {
         public fun asCanonical(): Canonical? = this as? Canonical
 
         public fun asReference(): Reference? = this as? Reference
 
-        public data class Canonical(public val `value`: dev.ohs.fhir.model.r5.Canonical) : Actor
+        public data class Canonical(override val `value`: dev.ohs.fhir.model.r5.Canonical) : Actor
 
-        public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Actor
+        public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Actor
 
         public companion object {
           internal fun from(
@@ -1363,7 +1363,7 @@ public data class RequestOrchestration(
       }
     }
 
-    public sealed interface Timing {
+    public sealed interface Timing : FhirChoice {
       public fun asDateTime(): DateTime? = this as? DateTime
 
       public fun asAge(): Age? = this as? Age
@@ -1376,17 +1376,19 @@ public data class RequestOrchestration(
 
       public fun asTiming(): Timing? = this as? Timing
 
-      public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Action.Timing
+      public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) :
+        Action.Timing
 
-      public data class Age(public val `value`: dev.ohs.fhir.model.r5.Age) : Action.Timing
+      public data class Age(override val `value`: dev.ohs.fhir.model.r5.Age) : Action.Timing
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Action.Timing
+      public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Action.Timing
 
-      public data class Duration(public val `value`: dev.ohs.fhir.model.r5.Duration) : Action.Timing
+      public data class Duration(override val `value`: dev.ohs.fhir.model.r5.Duration) :
+        Action.Timing
 
-      public data class Range(public val `value`: dev.ohs.fhir.model.r5.Range) : Action.Timing
+      public data class Range(override val `value`: dev.ohs.fhir.model.r5.Range) : Action.Timing
 
-      public data class Timing(public val `value`: dev.ohs.fhir.model.r5.Timing) : Action.Timing
+      public data class Timing(override val `value`: dev.ohs.fhir.model.r5.Timing) : Action.Timing
 
       public companion object {
         internal fun from(
@@ -1408,14 +1410,15 @@ public data class RequestOrchestration(
       }
     }
 
-    public sealed interface Definition {
+    public sealed interface Definition : FhirChoice {
       public fun asCanonical(): Canonical? = this as? Canonical
 
       public fun asUri(): Uri? = this as? Uri
 
-      public data class Canonical(public val `value`: dev.ohs.fhir.model.r5.Canonical) : Definition
+      public data class Canonical(override val `value`: dev.ohs.fhir.model.r5.Canonical) :
+        Definition
 
-      public data class Uri(public val `value`: dev.ohs.fhir.model.r5.Uri) : Definition
+      public data class Uri(override val `value`: dev.ohs.fhir.model.r5.Uri) : Definition
 
       public companion object {
         internal fun from(

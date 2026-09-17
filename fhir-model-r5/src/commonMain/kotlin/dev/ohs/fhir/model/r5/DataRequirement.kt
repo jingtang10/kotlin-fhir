@@ -335,18 +335,18 @@ public data class DataRequirement(
         }
       }
 
-    public sealed interface Value {
+    public sealed interface Value : FhirChoice {
       public fun asDateTime(): DateTime? = this as? DateTime
 
       public fun asPeriod(): Period? = this as? Period
 
       public fun asDuration(): Duration? = this as? Duration
 
-      public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Value
+      public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Value
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Value
+      public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Value
 
-      public data class Duration(public val `value`: dev.ohs.fhir.model.r5.Duration) : Value
+      public data class Duration(override val `value`: dev.ohs.fhir.model.r5.Duration) : Value
 
       public companion object {
         internal fun from(
@@ -484,18 +484,18 @@ public data class DataRequirement(
         }
       }
 
-    public sealed interface Value {
+    public sealed interface Value : FhirChoice {
       public fun asDateTime(): DateTime? = this as? DateTime
 
       public fun asPeriod(): Period? = this as? Period
 
       public fun asDuration(): Duration? = this as? Duration
 
-      public data class DateTime(public val `value`: dev.ohs.fhir.model.r5.DateTime) : Value
+      public data class DateTime(override val `value`: dev.ohs.fhir.model.r5.DateTime) : Value
 
-      public data class Period(public val `value`: dev.ohs.fhir.model.r5.Period) : Value
+      public data class Period(override val `value`: dev.ohs.fhir.model.r5.Period) : Value
 
-      public data class Duration(public val `value`: dev.ohs.fhir.model.r5.Duration) : Value
+      public data class Duration(override val `value`: dev.ohs.fhir.model.r5.Duration) : Value
 
       public companion object {
         internal fun from(
@@ -654,15 +654,15 @@ public data class DataRequirement(
     }
   }
 
-  public sealed interface Subject {
+  public sealed interface Subject : FhirChoice {
     public fun asCodeableConcept(): CodeableConcept? = this as? CodeableConcept
 
     public fun asReference(): Reference? = this as? Reference
 
-    public data class CodeableConcept(public val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
+    public data class CodeableConcept(override val `value`: dev.ohs.fhir.model.r5.CodeableConcept) :
       Subject
 
-    public data class Reference(public val `value`: dev.ohs.fhir.model.r5.Reference) : Subject
+    public data class Reference(override val `value`: dev.ohs.fhir.model.r5.Reference) : Subject
 
     public companion object {
       internal fun from(
